@@ -60,16 +60,18 @@
 
 typedef enum {
     InitPState,
-    FirstState,
-} TemplateFSMState_t;
+    PING,
+    LISTEN,
+} PingFSMState_t;
 
 static const char *StateNames[] = {
 	"InitPState",
-	"FirstState",
+	"PING",
+    "LISTEN"
 };
 
 
-static TemplateFSMState_t CurrentState = InitPState; // <- change enum name to match ENUM
+static PingFSMState_t CurrentState = InitPState; // <- change enum name to match ENUM
 static uint8_t MyPriority;
 
 
@@ -87,7 +89,7 @@ static uint8_t MyPriority;
  *        to rename this to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t InitTemplateFSM(uint8_t Priority)
+uint8_t PingFSMInit(uint8_t Priority)
 {
     MyPriority = Priority;
     // put us into the Initial PseudoState
@@ -109,7 +111,7 @@ uint8_t InitTemplateFSM(uint8_t Priority)
  *        be posted to. Remember to rename to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t PostTemplateFSM(ES_Event ThisEvent)
+uint8_t PingFSMPost(ES_Event ThisEvent)
 {
     return ES_PostToService(MyPriority, ThisEvent);
 }
@@ -126,7 +128,7 @@ uint8_t PostTemplateFSM(ES_Event ThisEvent)
  * @note Remember to rename to something appropriate.
  *       Returns ES_NO_EVENT if the event have been "consumed."
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-ES_Event RunTemplateFSM(ES_Event ThisEvent)
+ES_Event PingFSMRun(ES_Event ThisEvent)
 {
     uint8_t makeTransition = FALSE; // use to flag transition
     TemplateFSMState_t nextState; // <- need to change enum type here

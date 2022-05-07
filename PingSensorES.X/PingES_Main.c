@@ -3,6 +3,9 @@
 #include <stdio.h>
 #include "ES_Configure.h"
 #include "ES_Framework.h"
+#include "PingEventChecker.h"
+#include "PingFSM.h"
+
 
 void main(void)
 {

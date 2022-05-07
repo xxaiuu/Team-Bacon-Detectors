@@ -34,6 +34,7 @@
 #include "PingFSM.h"
 #include "AD.h"
 #include <stdio.h>
+#include <stdint.h>
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -62,6 +63,7 @@ static ES_Event storedEvent;
 /*******************************************************************************
  * PRIVATE MODULE VARIABLES                                                    *
  ******************************************************************************/
+static uint8_t lastEchoPinState;
 
 /* Any private module level variable that you might need for keeping track of
    events would be placed here. Private variables should be STATIC so that they
@@ -109,6 +111,28 @@ uint8_t TemplateCheckBattery(void) {
 #endif   
     }
     return (returnVal);
+}
+
+
+void InputChangeEventInit(void){
+    lastEchoPinState = PING_ECHO_PIN;
+}
+
+uint8_t InputChangeEvent(void){
+    uint8_t WasEvent = False;
+    if(PING_ECHO_PIN != lastEchoPinState){
+        ES_EVENT EchoEvent;
+        EchoEvent.EventType = ECHO_INPUT_CHANGE;
+        EchoEvent.EventParam = (uint16_t) PING_ECHO_PIN;
+#ifndef EVENTCHECKER_TEST
+        PingFSMPost(EchoEvent);
+#else
+        SaveEvent(EchoEvent);
+#endif
+        WasEvent = TRUE;
+    }
+    LastLightState = CurrLightState;
+    return WasEvent;
 }
 
 /* 

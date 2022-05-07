@@ -19,8 +19,8 @@
  * Modified on September 12, 2016, 7:59 PM
  */
 
-#ifndef TEMPLATEEVENTCHECKER_H
-#define	TEMPLATEEVENTCHECKER_H
+#ifndef PINGEVENTCHECKER_H
+#define	PINGEVENTCHECKER_H
 
 /*******************************************************************************
  * PUBLIC #INCLUDES                                                            *
@@ -32,7 +32,7 @@
 /*******************************************************************************
  * PUBLIC #DEFINES                                                             *
  ******************************************************************************/
-
+#define PORTY04_BIT PING_ECHO_PIN
 
 /*******************************************************************************
  * PUBLIC TYPEDEFS                                                             *
@@ -42,6 +42,9 @@
 /*******************************************************************************
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
+void InputChangeEventInit(void);
+uint8_t InputChangeEvent(void);
+
 
 /**
  * @Function TemplateCheckBattery(void)
