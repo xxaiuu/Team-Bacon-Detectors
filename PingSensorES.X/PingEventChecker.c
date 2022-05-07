@@ -33,6 +33,7 @@
 #include "timers.h"
 #include "PingFSM.h"
 #include "AD.h"
+//#include "IO_Ports.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -105,7 +106,7 @@ uint8_t TemplateCheckBattery(void) {
         returnVal = TRUE;
         lastEvent = curEvent; // update history
 #ifndef EVENTCHECKER_TEST           // keep this as is for test harness
-        PostGenericService(thisEvent);
+        //PostGenericService(thisEvent);
 #else
         SaveEvent(thisEvent);
 #endif   
@@ -116,14 +117,17 @@ uint8_t TemplateCheckBattery(void) {
 
 void InputChangeEventInit(void){
     lastEchoPinState = PING_ECHO_PIN;
+//   lastEchoPinState = PORTY04_BIT;
 }
 
 uint8_t InputChangeEvent(void){
-    uint8_t WasEvent = False;
-    if(PING_ECHO_PIN != lastEchoPinState){
-        ES_EVENT EchoEvent;
+    uint8_t WasEvent = FALSE;
+    static uint8_t currEchoPinState = PING_ECHO_PIN;
+//    static uint8_t currEchoPinState = PORTY04_BIT;
+    if(currEchoPinState != lastEchoPinState){
+        ES_Event EchoEvent;
         EchoEvent.EventType = ECHO_INPUT_CHANGE;
-        EchoEvent.EventParam = (uint16_t) PING_ECHO_PIN;
+        EchoEvent.EventParam = (uint16_t) currEchoPinState;
 #ifndef EVENTCHECKER_TEST
         PingFSMPost(EchoEvent);
 #else
@@ -131,7 +135,7 @@ uint8_t InputChangeEvent(void){
 #endif
         WasEvent = TRUE;
     }
-    LastLightState = CurrLightState;
+    lastEchoPinState = currEchoPinState;
     return WasEvent;
 }
 

@@ -144,7 +144,7 @@ static const char *EventNames[] = {
 // the name of the Init function
 #define SERV_1_INIT PingFSMInit
 // the name of the run function
-#define SERV_1_RUN PingFMSRun
+#define SERV_1_RUN PingFSMRun
 // How big should this services Queue be?
 #define SERV_1_QUEUE_SIZE 3
 #endif

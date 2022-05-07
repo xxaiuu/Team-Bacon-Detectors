@@ -28,11 +28,13 @@
 
 #include "ES_Configure.h"   // defines ES_Event, INIT_EVENT, ENTRY_EVENT, and EXIT_EVENT
 #include "BOARD.h"
+#include "IO_Ports.h"
+#include "GeneralHeaderFile.h"
 
 /*******************************************************************************
  * PUBLIC #DEFINES                                                             *
  ******************************************************************************/
-#define PORTY04_BIT PING_ECHO_PIN
+//#define PING_ECHO_PIN PORTY04_BIT 
 
 /*******************************************************************************
  * PUBLIC TYPEDEFS                                                             *

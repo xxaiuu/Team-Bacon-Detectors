@@ -22,12 +22,13 @@
       <itemPath>../../../../../ECE118/include/ES_ServiceHeaders.h</itemPath>
       <itemPath>../../../../../ECE118/include/ES_TattleTale.h</itemPath>
       <itemPath>../../../../../ECE118/include/ES_Timers.h</itemPath>
-      <itemPath>../../../../../ECE118/include/IO_Ports.h</itemPath>
       <itemPath>../../../../../ECE118/include/LED.h</itemPath>
       <itemPath>../../../../../ECE118/include/RC_Servo.h</itemPath>
       <itemPath>../../../../../ECE118/include/pwm.h</itemPath>
       <itemPath>../../../../../ECE118/include/serial.h</itemPath>
       <itemPath>../../../../../ECE118/include/timers.h</itemPath>
+      <itemPath>../../../../../ECE118/include/IO_Ports.h</itemPath>
+      <itemPath>GeneralHeaderFile.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
