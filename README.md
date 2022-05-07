@@ -4,6 +4,8 @@
 Aspects of the final project:
 
 - navigate to a triangular tower (which radiates a 2khz frequency) while ignoring other noise frequency (1.5khz and 2.5khz)
+
+
       - this is done by a beacon detector
       
 - do not fall off the playfield table
