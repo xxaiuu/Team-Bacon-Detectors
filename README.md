@@ -1,5 +1,5 @@
 # Final Project Code For ECE118 
-## Group 2: Samuel Indurkar, Tony Chen and Alexandria Liu 
+### Group 2: Samuel Indurkar, Tony Chen and Alexandria Liu 
 
 Aspects of the final project:
 
