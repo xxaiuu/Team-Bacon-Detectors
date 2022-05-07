@@ -1,6 +1,7 @@
-# ECE118FinalProject
-Final Project Code For ECE118 by Samuel Indurkar, Tony Chen and Alexandria Liu  (Group2)
+Final Project Code For ECE118 
 ===============================================================================================
+Group 2: Samuel Indurkar, Tony Chen and Alexandria Liu 
+
 Aspects of the final project:
 
 - navigate to a triangular tower (which radiates a 2khz frequency) while ignoring other noise frequency (1.5khz and 2.5khz)
