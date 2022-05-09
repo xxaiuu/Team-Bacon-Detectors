@@ -121,7 +121,7 @@
         <property key="enable-unroll-loops" value="false"/>
         <property key="exclude-floating-point" value="false"/>
         <property key="extra-include-directories"
-                  value=".;..\..\..\..\..\ECE118\include"/>
+                  value=".;..\..\..\..\..\ECE118\include;..\..\..\..\..\ECE118"/>
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
