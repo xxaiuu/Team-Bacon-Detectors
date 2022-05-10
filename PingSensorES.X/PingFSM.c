@@ -148,14 +148,16 @@ ES_Event PingFSMRun(ES_Event ThisEvent)
             // transition from the initial pseudo-state into the actual
             // initial state
             
+            printf("In INITP");
             //init the IO pins
             //configure trigger output to pin Y03
             PORTY03_TRIS = 0; //set as output
             PORTY03_LAT = 0; //set initially as low
             
             //configure echo input pin as Y04
-            PORTY04_TRIS = 1; //set as input
-            InputChangeEventInit();
+            //PORTY04_TRIS = 1; //set as input
+            IO_PortsSetPortInputs(PORTY, PIN4 );
+            //InputChangeEventInit();
             //start PingTimer
             ES_Timer_InitTimer(PING_TRIGGER_TIMER, 1);
             // now put the machine into the actual initial state
@@ -166,6 +168,7 @@ ES_Event PingFSMRun(ES_Event ThisEvent)
         break;
 
     case PING: // in the first state, replace this with appropriate state
+        printf("In PING");
         PING_TRIGGER_PIN = 1; //set trigger high
         if (ThisEvent.EventType == ES_TIMEOUT)// only respond to ES_Init
         {
@@ -179,6 +182,7 @@ ES_Event PingFSMRun(ES_Event ThisEvent)
         break;
         
     case LISTEN:
+        printf("In LISTEN");
         if (ThisEvent.EventType == ECHO_INPUT_CHANGE)// only respond to ES_Init
         {
             if(PING_ECHO_PIN){

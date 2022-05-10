@@ -65,7 +65,7 @@ static ES_Event storedEvent;
 /*******************************************************************************
  * PRIVATE MODULE VARIABLES                                                    *
  ******************************************************************************/
-static uint8_t lastEchoPinState;
+static uint8_t lastEchoPinState = 0;
 
 /* Any private module level variable that you might need for keeping track of
    events would be placed here. Private variables should be STATIC so that they
@@ -122,9 +122,11 @@ void InputChangeEventInit(void){
 }
 
 uint8_t InputChangeEvent(void){
+    //printf("Checking ECHOCHANGE Event");
     uint8_t WasEvent = FALSE;
 //    static uint8_t currEchoPinState = PING_ECHO_PIN;
     uint8_t currEchoPinState = PORTY04_BIT;
+    printf("Y04 = %d", currEchoPinState);
     if(currEchoPinState != lastEchoPinState){
         ES_Event EchoEvent;
         EchoEvent.EventType = ECHO_INPUT_CHANGE;
@@ -135,6 +137,7 @@ uint8_t InputChangeEvent(void){
         SaveEvent(EchoEvent);
 #endif
         WasEvent = TRUE;
+        printf("EchoChangeEvent");
     }
     lastEchoPinState = currEchoPinState;
     return WasEvent;
