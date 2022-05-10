@@ -25,7 +25,7 @@
 /*******************************************************************************
  * MODULE #INCLUDE                                                             *
  ******************************************************************************/
-
+#include "xc.h"
 #include "ES_Configure.h"
 #include "PingEventChecker.h"
 #include "ES_Events.h"
@@ -33,7 +33,8 @@
 #include "timers.h"
 #include "PingFSM.h"
 #include "AD.h"
-//#include "IO_Ports.h"
+#include "GeneralHeaderFile.h"
+#include "IO_Ports.h"
 #include <stdio.h>
 #include <stdint.h>
 
@@ -122,8 +123,8 @@ void InputChangeEventInit(void){
 
 uint8_t InputChangeEvent(void){
     uint8_t WasEvent = FALSE;
-    static uint8_t currEchoPinState = PING_ECHO_PIN;
-//    static uint8_t currEchoPinState = PORTY04_BIT;
+//    static uint8_t currEchoPinState = PING_ECHO_PIN;
+    uint8_t currEchoPinState = PORTY04_BIT;
     if(currEchoPinState != lastEchoPinState){
         ES_Event EchoEvent;
         EchoEvent.EventType = ECHO_INPUT_CHANGE;

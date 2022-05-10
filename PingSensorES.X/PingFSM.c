@@ -30,8 +30,8 @@
 
 #include "ES_Configure.h"
 #include "ES_Framework.h"
-
 #include "PingFSM.h"
+#include "PingEventChecker.h"
 #include <BOARD.h>
 //Uncomment these for the Roaches
 //#include "roach.h"

@@ -10,6 +10,7 @@
 #include "timers.h"
 #include "IO_ports.h"
 #include "BOARD.h"
+#include "GeneralHeaderFile.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -39,10 +40,10 @@ int main(void) {
         //printf("TIMER value: %x\n\r", TIMERS_GetTime());
 
         while(TIMERS_GetTime() <= startOutputTime + 1){ //1 Tick = 1ms
-            PORTY03_LAT = 1; //set high 
+            PING_TRIGGER_PIN = 1; //set high 
             printf("HIGH\n\r");
         }
-        PORTY03_LAT = 0; //set high 
+        PING_TRIGGER_PIN = 0; //set high 
 
         //CODE TO WAIT BEFORE NEXT HIGH PULSE
 //        while(TIMERS_GetTime() <= startOutputTime + 9){ //1 Tick = 1ms
@@ -54,12 +55,12 @@ int main(void) {
         while (1){
             //printf("LISTENING");
             
-            if( PORTY04_BIT && (startInputTime == 0)){
+            if( PING_ECHO_PIN && (startInputTime == 0)){
                 //pin went high, get time stamp
                 startInputTime = TIMERS_GetTime();
                 printf("EH \n\r\t");
             }
-            if (!PORTY04_BIT && startInputTime){
+            if (!PING_ECHO_PIN && startInputTime){
                 //pin went low
                 printf("EL \n\r\t");
                 flightTime = TIMERS_GetTime() - startInputTime;
