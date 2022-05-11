@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/PingES_Main.c</file>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/PingEventChecker.h</file>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/PingEventChecker.c</file>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/ES_Configure.h</file>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/PingFSM.c</file>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/PingFSM.h</file>
+            <file>file:/C:/ECE118/include/IO_Ports.h</file>
+            <file>file:/C:/ECE118/src/IO_Ports.c</file>
+            <file>file:/C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/PingSensorES.X/GeneralHeaderFile.h</file>
+            <file>file:/C:/ECE118/include/ES_Timers.h</file>
+            <file>file:/C:/ECE118/include/ES_Framework.h</file>
+            <file>file:/C:/ECE118/src/pwm.c</file>
+            <file>file:/C:/ECE118/include/timers.h</file>
+            <file>file:/C:/ECE118/src/timers.c</file>
+            <file>file:/C:/ECE118/src/serial.c</file>
+        </group>
+    </open-files>
+</project-private>
