@@ -1,6 +1,10 @@
 # Final Project Code For ECE118 
 ### Group 2: Samuel Indurkar, Tony Chen and Alexandria Liu 
 
+(Note: PingSensor.X contains blocking code for ping sensors <working>, and it has a resolution of 6 inches;
+      PingSensorsES.X is an attempt to work with the "Event_Service Framework", but found no way to change the 
+      resolution to 2 inches (we need to change the timers to µ seconds))
+      
 Aspects of the final project:
 
 - navigate to a triangular tower (which radiates a 2khz frequency) while ignoring other noise frequency (1.5khz and 2.5khz)
