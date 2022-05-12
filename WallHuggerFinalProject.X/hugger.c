@@ -1,12 +1,12 @@
 /*
- * File:   roach.c
+ * File:   hugger.c
  * Author: mdunne, elkaim
  *
  * Created on December 15, 2011, 12:59 PM
  * Modified to remove PLIB on June 29, 2021
  */
 
-#include <wondir.h>
+#include <hugger.h>
 #include <BOARD.h>
 #include <xc.h>
 #include "IO_Ports.h"
@@ -19,31 +19,35 @@
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 
-#define LEFT_DIR LATBbits.LATB3
-#define LEFT_DIR_INV LATBbits.LATB2
-#define RIGHT_DIR LATEbits.LATE5
-#define RIGHT_DIR_INV LATEbits.LATE6
+#define LEFT_DIR LATBbits.LATB3                   //PORTV04_LAT
+#define LEFT_DIR_INV LATBbits.LATB2               //PORTV03_LAT
+#define RIGHT_DIR LATEbits.LATE5                  //PORTY11_LAT
+#define RIGHT_DIR_INV LATEbits.LATE6              //PORTY09_LAT
 
+/**************************************************
 #define HALL_FRONT_LEFT _RB8
 #define HALL_FRONT_RIGHT _RD9
 #define HALL_REAR_RIGHT _RD8
 #define HALL_REAR_LEFT _RB10
+**************************************************/
+  
+ 
+#define LEFT_DIR_TRIS _TRISB3                     //PORTV04_TRIS
+#define LEFT_DIR_INV_TRIS _TRISB2                 //PORTV03_TRIS
+#define RIGHT_DIR_TRIS _TRISE5                    //PORTY11_TRIS
+#define RIGHT_DIR_INV_TRIS _TRISE6                //PORTY09_TRIS
 
-#define LEFT_DIR_TRIS _TRISB3
-#define LEFT_DIR_INV_TRIS _TRISB2
-#define RIGHT_DIR_TRIS _TRISE5
-#define RIGHT_DIR_INV_TRIS _TRISE6
-
+/************************************************
 #define HALL_FRONT_LEFT_TRIS _TRISB8
 #define HALL_FRONT_RIGHT_TRIS _TRISD9
 #define HALL_REAR_RIGHT_TRIS _TRISD8
 #define HALL_REAR_LEFT_TRIS _TRISB10
+ * ***********************************************/
 
 #define LEFT_PWM PWM_PORTY10
 #define RIGHT_PWM PWM_PORTY12
 
-#define LIGHT_SENSOR ROACH_LIGHT_SENSOR
-#define ROACH_BAT_VOLTAGE BAT_VOLTAGE
+#define HUGGER_BAT_VOLTAGE BAT_VOLTAGE
 
 
 
@@ -54,15 +58,15 @@
  ******************************************************************************/
 
 /**
- * @Function Roach_Init(void)
+ * @Function Hugger_Init(void)
  * @param None.
  * @return None.
- * @brief  Performs all the initialization necessary for the roach. this includes initializing 
+ * @brief  Performs all the initialization necessary for the Hugger. this includes initializing 
  * the PWM module, the A/D converter, the data directions on some pins, and 
  * setting the initial motor directions.
  * @note  None.
  * @author Max Dunne, 2012.01.06 */
-void Roach_Init(void)
+void Hugger_Init(void)
 {
 
     //set the control pins for the motors
@@ -79,19 +83,21 @@ void Roach_Init(void)
     RIGHT_DIR = 0;
     RIGHT_DIR_INV = ~RIGHT_DIR;
 
+    /**************************************************
     //set up the hall effect sensors
     HALL_FRONT_LEFT_TRIS = 1;
     HALL_FRONT_RIGHT_TRIS = 1;
     HALL_REAR_RIGHT_TRIS = 1;
     HALL_REAR_LEFT_TRIS = 1;
+     * ************************************************/
 
     //set up the light bank
 
-    uint8_t CurPin;
-    for (CurPin = 0; CurPin < NUMLEDS; CurPin++) {
-        LED_SetPinOutput(CurPin);
-        LED_Off(CurPin);
-    }
+//    uint8_t CurPin;
+//    for (CurPin = 0; CurPin < NUMLEDS; CurPin++) {
+//        LED_SetPinOutput(CurPin);
+//        LED_Off(CurPin);
+//    }
     //while (1);
 
     //Initialize the light sensor
@@ -105,15 +111,15 @@ void Roach_Init(void)
 }
 
 /**
- * @Function Roach_LeftMtrSpeed(char newSpeed)
+ * @Function Hugger_LeftMtrSpeed(char newSpeed)
  * @param newSpeed - A value between -100 and 100 which is the new speed
  * @param of the motor. 0 stops the motor. A negative value is reverse.
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char Roach_LeftMtrSpeed(char newSpeed)
+char Hugger_LeftMtrSpeed(char newSpeed)
 {
-    if ((newSpeed < -WONDIR_MAX_SPEED) || (newSpeed > ROACH_MAX_SPEED)) {
+    if ((newSpeed < -HUGGER_MAX_SPEED) || (newSpeed > HUGGER_MAX_SPEED)) {
         return (ERROR);
     }
     newSpeed = -newSpeed;
@@ -125,7 +131,7 @@ char Roach_LeftMtrSpeed(char newSpeed)
         LEFT_DIR = 1;
     }
     LEFT_DIR_INV = ~(LEFT_DIR);
-    if (PWM_SetDutyCycle(LEFT_PWM, newSpeed * (MAX_PWM / ROACH_MAX_SPEED)) == ERROR) {
+    if (PWM_SetDutyCycle(LEFT_PWM, newSpeed * (MAX_PWM / HUGGER_MAX_SPEED)) == ERROR) {
         //printf("ERROR: setting channel 1 speed!\n");
         return (ERROR);
     }
@@ -133,15 +139,15 @@ char Roach_LeftMtrSpeed(char newSpeed)
 }
 
 /**
- * @Function Roach_RightMtrSpeed(char newSpeed)
+ * @Function Hugger_RightMtrSpeed(char newSpeed)
  * @param newSpeed - A value between -100 and 100 which is the new speed
  * @param of the motor. 0 stops the motor. A negative value is reverse.
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char Roach_RightMtrSpeed(char newSpeed)
+char Hugger_RightMtrSpeed(char newSpeed)
 {
-    if ((newSpeed < -ROACH_MAX_SPEED) || (newSpeed > ROACH_MAX_SPEED)) {
+    if ((newSpeed < -HUGGER_MAX_SPEED) || (newSpeed > HUGGER_MAX_SPEED)) {
         return (ERROR);
     }
     if (newSpeed < 0) {
@@ -151,7 +157,7 @@ char Roach_RightMtrSpeed(char newSpeed)
         RIGHT_DIR = 1;
     }
     RIGHT_DIR_INV = ~(RIGHT_DIR);
-    if (PWM_SetDutyCycle(RIGHT_PWM, newSpeed * (MAX_PWM / ROACH_MAX_SPEED)) == ERROR) {
+    if (PWM_SetDutyCycle(RIGHT_PWM, newSpeed * (MAX_PWM / HUGGER_MAX_SPEED)) == ERROR) {
         //puts("\aERROR: setting channel 1 speed!\n");
         return (ERROR);
     }
@@ -159,147 +165,147 @@ char Roach_RightMtrSpeed(char newSpeed)
 }
 
 /**
- * @Function Roach_LightLevel(void)
+ * @Function Hugger_LightLevel(void)
  * @param None.
  * @return a 10-bit value corresponding to the amount of light received.
  * @brief  Returns the current light level. A higher value means less light is detected.
  * @author Max Dunne, 2012.01.06 */
-unsigned int Roach_LightLevel(void)
+unsigned int Hugger_LightLevel(void)
 {
     return AD_ReadADPin(LIGHT_SENSOR);
 }
 
 /**
- * @Function Roach_BatteryVoltage(void)
+ * @Function Hugger_BatteryVoltage(void)
  * @param None.
- * @return a 10-bit value corresponding to the current voltage of the roach
- * @brief  returns a 10:1 scaled value of the roach battery level
+ * @return a 10-bit value corresponding to the current voltage of the Hugger
+ * @brief  returns a 10:1 scaled value of the Hugger battery level
  * @author Max Dunne, 2013.07.12 */
-unsigned int Roach_BatteryVoltage(void)
+unsigned int Hugger_BatteryVoltage(void)
 {
-    return AD_ReadADPin(ROACH_BAT_VOLTAGE);
+    return AD_ReadADPin(HUGGER_BAT_VOLTAGE);
 }
 
 /**
- * @Function Roach_ReadFrontLeftBumper(void)
+ * @Function Hugger_ReadFrontLeftBumper(void)
  * @param None.
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the front left bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Roach_ReadFrontLeftBumper(void)
+unsigned char Hugger_ReadFrontLeftBumper(void)
 {
     return !HALL_FRONT_LEFT;
 }
 
 /**
- * @Function Roach_ReadFrontRightBumper(void)
+ * @Function Hugger_ReadFrontRightBumper(void)
  * @param None.
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the front right bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Roach_ReadFrontRightBumper(void)
+unsigned char Hugger_ReadFrontRightBumper(void)
 {
     return !HALL_FRONT_RIGHT;
 }
 
 /**
- * @Function Roach_ReadRearLeftBumper(void)
+ * @Function Hugger_ReadRearLeftBumper(void)
  * @param None.
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the rear left bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Roach_ReadRearLeftBumper(void)
+unsigned char Hugger_ReadRearLeftBumper(void)
 {
     return !HALL_REAR_LEFT;
 }
 
 /**
- * @Function Roach_ReadRearRightBumper(void)
+ * @Function Hugger_ReadRearRightBumper(void)
  * @param None.
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the rear right bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Roach_ReadRearRightBumper(void)
+unsigned char Hugger_ReadRearRightBumper(void)
 {
     return !HALL_REAR_RIGHT;
 }
 
 /**
- * @Function Roach_ReadBumpers(void)
+ * @Function Hugger_ReadBumpers(void)
  * @param None.
  * @return 4-bit value representing all four bumpers in following order: front left,front right, rear left, rear right
  * @brief  Returns the state of all 4 bumpers
  * @author Max Dunne, 2012.01.06 */
-unsigned char Roach_ReadBumpers(void)
+unsigned char Hugger_ReadBumpers(void)
 {
     //unsigned char bump_state;
     //bump_state = (!HALL_FRONT_LEFT + ((!HALL_FRONT_RIGHT) << 1)+((!HALL_REAR_LEFT) << 2)+((!HALL_REAR_RIGHT) << 3));
     return (!HALL_FRONT_LEFT + ((!HALL_FRONT_RIGHT) << 1)+((!HALL_REAR_LEFT) << 2)+((!HALL_REAR_RIGHT) << 3));
 }
+//
+///**
+// * @Function Hugger_LEDSSet( unsigned char pattern)
+// * @param pattern - sets LEDs on (1) or off (0) as in the pattern.
+// * @return SUCCESS or ERROR
+// * @brief  Forces the LEDs in (bank) to on (1) or off (0) to match the pattern.
+// * @author Gabriel Hugh Elkaim, 2011.12.25 01:16 Max Dunne 2015.09.18 */
+//char Hugger_LEDSSet(uint16_t pattern)
+//{
+//    char i;
+//    for (i = 0; i < NUMLEDS; i++) {
+//        if (pattern & (1 << i)) {
+//            LED_On(i);
+//        } else {
+//            LED_Off(i);
+//        }
+//    }
+//    return SUCCESS;
+//}
+//
+///**
+// * @Function Hugger_LEDSGet(void)
+// * @return uint16_t: ERROR or state of BANK
+// * @author Max Dunne, 203.10.21 01:16 2015.09.18 */
+//uint16_t Hugger_LEDSGet(void)
+//{
+//    uint16_t LEDStatus = 0;
+//    int8_t i;
+//    for (i = (NUMLEDS - 1); i >= 0; i--) {
+//        LEDStatus |= !LED_Get(i);
+//        LEDStatus <<= 1;
+//        //        printf("%d\t",i);
+//    }
+//    LEDStatus >>= 1;
+//    return LEDStatus;
+//    return 0;
+//}
+//
+///**
+// * @Function Hugger_BarGraph(uint8_t Number)
+// * @param Number - value to light between 0 and 12 leds
+// * @return SUCCESS or ERROR
+// * @brief  allows all leds to be used as a bar graph
+// * @author  Max Dunne 2015.09.18 */
+//
+//
+//char Hugger_BarGraph(uint8_t Number)
+//{
+//    if (Number > NUMLEDS) {
+//        return ERROR;
+//    }
+//    uint16_t Pattern = 0;
+//    uint8_t iterations;
+//
+//    for (iterations = 0; iterations < Number; iterations++) {
+//        Pattern <<= 1;
+//        Pattern |= 1;
+//    }
+//    Hugger_LEDSSet(Pattern);
+//    return SUCCESS;
+//}
 
-/**
- * @Function Roach_LEDSSet( unsigned char pattern)
- * @param pattern - sets LEDs on (1) or off (0) as in the pattern.
- * @return SUCCESS or ERROR
- * @brief  Forces the LEDs in (bank) to on (1) or off (0) to match the pattern.
- * @author Gabriel Hugh Elkaim, 2011.12.25 01:16 Max Dunne 2015.09.18 */
-char Roach_LEDSSet(uint16_t pattern)
-{
-    char i;
-    for (i = 0; i < NUMLEDS; i++) {
-        if (pattern & (1 << i)) {
-            LED_On(i);
-        } else {
-            LED_Off(i);
-        }
-    }
-    return SUCCESS;
-}
-
-/**
- * @Function Roach_LEDSGet(void)
- * @return uint16_t: ERROR or state of BANK
- * @author Max Dunne, 203.10.21 01:16 2015.09.18 */
-uint16_t Roach_LEDSGet(void)
-{
-    uint16_t LEDStatus = 0;
-    int8_t i;
-    for (i = (NUMLEDS - 1); i >= 0; i--) {
-        LEDStatus |= !LED_Get(i);
-        LEDStatus <<= 1;
-        //        printf("%d\t",i);
-    }
-    LEDStatus >>= 1;
-    return LEDStatus;
-    return 0;
-}
-
-/**
- * @Function Roach_BarGraph(uint8_t Number)
- * @param Number - value to light between 0 and 12 leds
- * @return SUCCESS or ERROR
- * @brief  allows all leds to be used as a bar graph
- * @author  Max Dunne 2015.09.18 */
-
-
-char Roach_BarGraph(uint8_t Number)
-{
-    if (Number > NUMLEDS) {
-        return ERROR;
-    }
-    uint16_t Pattern = 0;
-    uint8_t iterations;
-
-    for (iterations = 0; iterations < Number; iterations++) {
-        Pattern <<= 1;
-        Pattern |= 1;
-    }
-    Roach_LEDSSet(Pattern);
-    return SUCCESS;
-}
-
-//#define ROACH_TEST
-#ifdef ROACH_TEST
+//#define Hugger_TEST
+#ifdef Hugger_TEST
 #pragma config FPLLIDIV 	= DIV_2		//PLL Input Divider
 #pragma config FPLLMUL 		= MUL_20	//PLL Multiplier
 #pragma config FPLLODIV 	= DIV_1 	//System PLL Output Clock Divid

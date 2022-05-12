@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=WonDirectionFinalProject.X
+PROJECTNAME=WallHuggerFinalProject.X
 
 # Active Configuration
 DEFAULTCONF=default

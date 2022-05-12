@@ -26,7 +26,11 @@
       <itemPath>../../../../../ECE118/include/roach.h</itemPath>
       <itemPath>../../../../../ECE118/include/serial.h</itemPath>
       <itemPath>../../../../../ECE118/include/timers.h</itemPath>
-      <itemPath>wondir.h</itemPath>
+      <itemPath>hugger.h</itemPath>
+      <itemPath>ES_Configure.h</itemPath>
+      <itemPath>TemplateEventChecker.h</itemPath>
+      <itemPath>TemplateHSM.h</itemPath>
+      <itemPath>TemplateSubHSM.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -52,7 +56,11 @@
       <itemPath>../../../../../ECE118/src/roach.c</itemPath>
       <itemPath>../../../../../ECE118/src/serial.c</itemPath>
       <itemPath>../../../../../ECE118/src/timers.c</itemPath>
-      <itemPath>wondir.c</itemPath>
+      <itemPath>hugger.c</itemPath>
+      <itemPath>TemplateES_Main.c</itemPath>
+      <itemPath>TemplateEventChecker.c</itemPath>
+      <itemPath>TemplateHSM.c</itemPath>
+      <itemPath>TemplateSubHSM.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -62,6 +70,7 @@
   </logicalFolder>
   <sourceRootList>
     <Elem>../../../../../ECE118</Elem>
+    <Elem>.</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
