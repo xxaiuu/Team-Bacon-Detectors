@@ -19,17 +19,17 @@
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 
-#define LEFT_DIR LATBbits.LATB3                   //PORTV04_LAT
-#define LEFT_DIR_INV LATBbits.LATB2               //PORTV03_LAT
-#define RIGHT_DIR LATEbits.LATE5                  //PORTY11_LAT
-#define RIGHT_DIR_INV LATEbits.LATE6              //PORTY09_LAT
+#define LEFT_DIR_LAT LATBbits.LATB3                   //PORTV04_LAT
+#define LEFT_DIR_INV_LAT LATBbits.LATB2               //PORTV03_LAT
+#define RIGHT_DIR_LAT LATEbits.LATE5                  //PORTY11_LAT
+#define RIGHT_DIR_INV_LAT LATEbits.LATE6              //PORTY09_LAT
 
-/**************************************************
-#define HALL_FRONT_LEFT _RB8
-#define HALL_FRONT_RIGHT _RD9
-#define HALL_REAR_RIGHT _RD8
-#define HALL_REAR_LEFT _RB10
-**************************************************/
+
+#define FRONT_LEFT_BUMPER_BIT _RB8                      //PORTV07_BIT
+#define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
+#define REAR_RIGHT_BUMPER_BIT _RD8                      //PORTZ08_BIT
+#define REAR_LEFT_BUMPER_BIT _RB10                      //PORTW04_BIT
+
   
  
 #define LEFT_DIR_TRIS _TRISB3                     //PORTV04_TRIS
@@ -37,12 +37,27 @@
 #define RIGHT_DIR_TRIS _TRISE5                    //PORTY11_TRIS
 #define RIGHT_DIR_INV_TRIS _TRISE6                //PORTY09_TRIS
 
-/************************************************
-#define HALL_FRONT_LEFT_TRIS _TRISB8
-#define HALL_FRONT_RIGHT_TRIS _TRISD9
-#define HALL_REAR_RIGHT_TRIS _TRISD8
-#define HALL_REAR_LEFT_TRIS _TRISB10
- * ***********************************************/
+
+#define FRONT_LEFT_BUMPER_TRIS _TRISB8
+#define FRONT_RIGHT_BUMPER_TRIS _TRISD9
+#define REAR_RIGHT_BUMPER_TRIS _TRISD8
+#define REAR_LEFT_BUMPER_TRIS _TRISB10
+
+//tape sensor pins
+#define CENTER_TAPESENSOR_TRIS PORTZ03_TRIS
+#define LEFT_TAPESENSOR_TRIS PORTZ04_TRIS
+#define RIGHT_TAPESENSOR_TRIS PORTZ05_TRIS
+#define BACK_TAPESENSOR_TRIS PORTZ06_TRIS
+#define TOPLEFT_TAPESENSOR_TRIS PORTZ07_TRIS
+#define TOPRIGHT_TAPESENSOR_TRIS PORTZ09_TRIS
+
+#define CENTER_TAPESENSOR_BIT PORTZ03_BIT
+#define LEFT_TAPESENSOR_BIT PORTZ04_BIT
+#define RIGHT_TAPESENSOR_BIT PORTZ05_BIT
+#define BACK_TAPESENSOR_BIT PORTZ06_BIT
+#define TOPLEFT_TAPESENSOR_BIT PORTZ07_BIT
+#define TOPRIGHT_TAPESENSOR_BIT PORTZ09_BIT
+
 
 #define LEFT_PWM PWM_PORTY10
 #define RIGHT_PWM PWM_PORTY12
@@ -78,18 +93,18 @@ void Hugger_Init(void)
     LEFT_DIR_INV_TRIS = 0;
     RIGHT_DIR_TRIS = 0;
     RIGHT_DIR_INV_TRIS = 0;
-    LEFT_DIR = 0;
-    LEFT_DIR_INV = ~LEFT_DIR;
-    RIGHT_DIR = 0;
-    RIGHT_DIR_INV = ~RIGHT_DIR;
+    LEFT_DIR_LAT = 0;
+    LEFT_DIR_INV_LAT = ~LEFT_DIR_LAT;
+    RIGHT_DIR_LAT = 0;
+    RIGHT_DIR_INV_LAT = ~RIGHT_DIR_LAT;
 
-    /**************************************************
-    //set up the hall effect sensors
-    HALL_FRONT_LEFT_TRIS = 1;
-    HALL_FRONT_RIGHT_TRIS = 1;
-    HALL_REAR_RIGHT_TRIS = 1;
-    HALL_REAR_LEFT_TRIS = 1;
-     * ************************************************/
+    
+    //set up the bumper switches
+    FRONT_LEFT_BUMPER_TRIS = 1;
+    FRONT_RIGHT_BUMPER_TRIS = 1;
+    REAR_RIGHT_BUMPER_TRIS = 1;
+    REAR_LEFT_BUMPER_TRIS = 1;
+    
 
     //set up the light bank
 
@@ -186,6 +201,63 @@ unsigned int Hugger_BatteryVoltage(void)
     return AD_ReadADPin(HUGGER_BAT_VOLTAGE);
 }
 
+
+/**
+ * reading Tape Sensor Values
+ * @return 
+ */
+
+uint8_t HuggerReadFrontTape(void){
+    
+}
+
+uint8_t HuggerReadLeftTape(void){
+    
+}
+
+uint8_t HuggerReadRightTape(void){
+    
+}
+
+uint8_t HuggerReadBackTape(void){
+    
+}
+
+uint8_t HuggerReadTopRightTape(void){
+    
+}
+
+uint8_t HuggerReadTopLeftTape(void){
+    
+}
+
+/**
+ * Function to set Servo Position
+ * @return 
+ */
+void HuggerSetServo(char newSpeed){
+    
+}
+
+/**
+ * Function to read value of Track Wire
+ *
+ * @return 
+ */
+uint8_t HuggerReadTrackWire(char num){
+    
+}
+
+/**
+ * Function to read Beacon Detector
+ * @return 
+ */
+uint8_t HuggerReadBeacon(void){
+    
+}
+
+
+
 /**
  * @Function Hugger_ReadFrontLeftBumper(void)
  * @param None.
@@ -194,7 +266,7 @@ unsigned int Hugger_BatteryVoltage(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadFrontLeftBumper(void)
 {
-    return !HALL_FRONT_LEFT;
+    return !FRONT_LEFT_BUMPER;
 }
 
 /**
@@ -205,7 +277,7 @@ unsigned char Hugger_ReadFrontLeftBumper(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadFrontRightBumper(void)
 {
-    return !HALL_FRONT_RIGHT;
+    return !FRONT_RIGHT_BUMPER;
 }
 
 /**
@@ -216,7 +288,7 @@ unsigned char Hugger_ReadFrontRightBumper(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadRearLeftBumper(void)
 {
-    return !HALL_REAR_LEFT;
+    return !REAR_LEFT_BUMPER;
 }
 
 /**
@@ -227,7 +299,7 @@ unsigned char Hugger_ReadRearLeftBumper(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadRearRightBumper(void)
 {
-    return !HALL_REAR_RIGHT;
+    return !REAR_RIGHT_BUMPER;
 }
 
 /**
@@ -240,7 +312,7 @@ unsigned char Hugger_ReadBumpers(void)
 {
     //unsigned char bump_state;
     //bump_state = (!HALL_FRONT_LEFT + ((!HALL_FRONT_RIGHT) << 1)+((!HALL_REAR_LEFT) << 2)+((!HALL_REAR_RIGHT) << 3));
-    return (!HALL_FRONT_LEFT + ((!HALL_FRONT_RIGHT) << 1)+((!HALL_REAR_LEFT) << 2)+((!HALL_REAR_RIGHT) << 3));
+    return (!FRONT_LEFT_BUMPER + ((!FRONT_RIGHT_BUMPER) << 1)+((!REAR_LEFT_BUMPER) << 2)+((!REAR_RIGHT_BUMPER) << 3));
 }
 //
 ///**
