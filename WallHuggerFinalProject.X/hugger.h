@@ -63,7 +63,7 @@ char HuggerRightMtrSpeed(char newSpeed);
  * @return a 10-bit value corresponding to the amount of light received.
  * @brief  Returns the current light level. A higher value means less light is detected.
  * @author Max Dunne, 2012.01.06 */
-unsigned int Hugger_LightLevel(void);
+//unsigned int Hugger_LightLevel(void);
 
 /**
  * reading Tape Sensor Values

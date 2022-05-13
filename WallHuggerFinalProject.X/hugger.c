@@ -24,7 +24,8 @@
 #define LEFT_DIR_INV_LAT LATBbits.LATB2               //PORTV03_LAT
 #define RIGHT_DIR_LAT LATEbits.LATE5                  //PORTY11_LAT
 #define RIGHT_DIR_INV_LAT LATEbits.LATE6              //PORTY09_LAT
-
+#define LEFT_PWM PWM_PORTY10
+#define RIGHT_PWM PWM_PORTY12
 
 #define FRONT_LEFT_BUMPER_BIT _RB8                      //PORTV07_BIT
 #define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
@@ -62,9 +63,16 @@
 // Servo for launching mechanism
 #define RCSERVO_PIN RC_PORTW07
 
+//Track Wire Detectors
+#define TRACKWIRE_1 AD_PORTV5
+#define TRACKWIRE_2 AD_PORTV6
+#define TRACKWIRE_HIGH 600
+#define TRACKWIRE_LOW 400
 
-#define LEFT_PWM PWM_PORTY10
-#define RIGHT_PWM PWM_PORTY12
+//Beacon Detector
+#define BEACON_TRIS PORTW05_TRIS
+#define BEACON_BIT PORTW05_BIT
+
 
 #define HUGGER_BAT_VOLTAGE BAT_VOLTAGE
 
@@ -121,6 +129,10 @@ void Hugger_Init(void)
     RC_Init();
     RC_AddPins(RCSERVO_PIN);
     
+    
+    //Beacon INIT
+    BEACON_TRIS = 1;
+    
     //set up the light bank
 
 //    uint8_t CurPin;
@@ -135,7 +147,8 @@ void Hugger_Init(void)
     //    printf("Current pins: %d\n",AD_ActivePins());
     //    printf("Add Result: %d\n",AD_AddPins(LIGHT_SENSOR));
     //    while(1);
-    AD_AddPins(LIGHT_SENSOR);
+    AD_AddPins(AD_PORTV5 | AD_PORTV6);
+    
 
     //enable interrupts
 }
@@ -200,10 +213,10 @@ char Hugger_RightMtrSpeed(char newSpeed)
  * @return a 10-bit value corresponding to the amount of light received.
  * @brief  Returns the current light level. A higher value means less light is detected.
  * @author Max Dunne, 2012.01.06 */
-unsigned int Hugger_LightLevel(void)
-{
-    return AD_ReadADPin(LIGHT_SENSOR);
-}
+//unsigned int Hugger_LightLevel(void)
+//{
+//    return AD_ReadADPin(LIGHT_SENSOR);
+//}
 
 /**
  * @Function Hugger_BatteryVoltage(void)
@@ -262,10 +275,30 @@ void HuggerSetServo(char newSpeed){
 
 /**
  * Function to read value of Track Wire
- *
- * @return 
+ * read TrackWire_1, num = 0
+ * read TrackWire_2, num != 0 
+ * @return 2 - HIGH
+ *         1 - LOW
+ *         0 - NULL (deadzone, remain unchanged)
  */
-uint8_t HuggerReadTrackWire(char num){
+int HuggerReadTrackWire(char num){
+    unsigned int ADReading = 0;
+    if(!num){
+        //read TrackWire_1
+        if (AD_IsNewDataReady()){
+            ADReading = AD_ReadADPin(TRACKWIRE_1);
+        }
+    }else if(num){
+        //read TrackWire_2
+        if (AD_IsNewDataReady()){
+            ADReading = AD_ReadADPin(TRACKWIRE_2);
+        }
+    }
+    
+    //Hysteresis
+    if (ADReading > TRACKWIRE_HIGH) return 2;
+    if (ADReading < TRACKWIRE_LOW) return 1;
+    return 0;
     
 }
 
@@ -274,7 +307,7 @@ uint8_t HuggerReadTrackWire(char num){
  * @return 
  */
 uint8_t HuggerReadBeacon(void){
-    
+    return BEACON_BIT;
 }
 
 
