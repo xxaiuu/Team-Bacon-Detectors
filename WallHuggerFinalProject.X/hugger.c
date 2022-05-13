@@ -10,6 +10,7 @@
 #include <BOARD.h>
 #include <xc.h>
 #include "IO_Ports.h"
+#include "RC_Servo.h"
 
 #include <pwm.h>
 #include <serial.h>
@@ -58,6 +59,9 @@
 #define TOPLEFT_TAPESENSOR_BIT PORTZ07_BIT
 #define TOPRIGHT_TAPESENSOR_BIT PORTZ09_BIT
 
+// Servo for launching mechanism
+#define RCSERVO_PIN RC_PORTW07
+
 
 #define LEFT_PWM PWM_PORTY10
 #define RIGHT_PWM PWM_PORTY12
@@ -105,7 +109,18 @@ void Hugger_Init(void)
     REAR_RIGHT_BUMPER_TRIS = 1;
     REAR_LEFT_BUMPER_TRIS = 1;
     
-
+    //set up TAPE sensors
+    CENTER_TAPESENSOR_TRIS = 1;
+    LEFT_TAPESENSOR_TRIS = 1;
+    RIGHT_TAPESENSOR_TRIS = 1;
+    BACK_TAPESENSOR_TRIS = 1;
+    TOPLEFT_TAPESENSOR_TRIS = 1;
+    TOPRIGHT_TAPESENSOR_TRIS = 1;
+    
+    //RCServo INIT
+    RC_Init();
+    RC_AddPins(RCSERVO_PIN);
+    
     //set up the light bank
 
 //    uint8_t CurPin;
@@ -140,12 +155,12 @@ char Hugger_LeftMtrSpeed(char newSpeed)
     newSpeed = -newSpeed;
   
     if (newSpeed < 0) {
-        LEFT_DIR = 0;
+        LEFT_DIR_LAT = 0;
         newSpeed = newSpeed * (-1); // set speed to a positive value
     } else {
-        LEFT_DIR = 1;
+        LEFT_DIR_LAT = 1;
     }
-    LEFT_DIR_INV = ~(LEFT_DIR);
+    LEFT_DIR_INV_LAT = ~(LEFT_DIR_LAT);
     if (PWM_SetDutyCycle(LEFT_PWM, newSpeed * (MAX_PWM / HUGGER_MAX_SPEED)) == ERROR) {
         //printf("ERROR: setting channel 1 speed!\n");
         return (ERROR);
@@ -166,12 +181,12 @@ char Hugger_RightMtrSpeed(char newSpeed)
         return (ERROR);
     }
     if (newSpeed < 0) {
-        RIGHT_DIR = 0;
+        RIGHT_DIR_LAT = 0;
         newSpeed = newSpeed * (-1); // set speed to a positive value
     } else {
-        RIGHT_DIR = 1;
+        RIGHT_DIR_LAT = 1;
     }
-    RIGHT_DIR_INV = ~(RIGHT_DIR);
+    RIGHT_DIR_INV_LAT = ~(RIGHT_DIR_LAT);
     if (PWM_SetDutyCycle(RIGHT_PWM, newSpeed * (MAX_PWM / HUGGER_MAX_SPEED)) == ERROR) {
         //puts("\aERROR: setting channel 1 speed!\n");
         return (ERROR);
@@ -207,35 +222,41 @@ unsigned int Hugger_BatteryVoltage(void)
  * @return 
  */
 
-uint8_t HuggerReadFrontTape(void){
-    
+uint8_t HuggerReadCenterTape(void){
+    return CENTER_TAPESENSOR_BIT;
 }
 
 uint8_t HuggerReadLeftTape(void){
-    
+    return LEFT_TAPESENSOR_BIT;
 }
 
 uint8_t HuggerReadRightTape(void){
-    
+    return RIGHT_TAPESENSOR_BIT;
 }
 
 uint8_t HuggerReadBackTape(void){
-    
+    return BACK_TAPESENSOR_BIT;
 }
 
 uint8_t HuggerReadTopRightTape(void){
-    
+    return TOPRIGHT_TAPESENSOR_BIT;
 }
 
 uint8_t HuggerReadTopLeftTape(void){
-    
+    return TOPLEFT_TAPESENSOR_BIT;
 }
 
 /**
  * Function to set Servo Position
+ * newSpeed in range [1000, 2000]
  * @return 
  */
 void HuggerSetServo(char newSpeed){
+    
+    if ( newSpeed < 1000) newSpeed = 1000; 
+    if ( newSpeed > 2000) newSpeed = 2000; 
+    
+    RC_SetPulseTime(RCSERVO_PIN, newSpeed);
     
 }
 
@@ -266,7 +287,7 @@ uint8_t HuggerReadBeacon(void){
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadFrontLeftBumper(void)
 {
-    return !FRONT_LEFT_BUMPER;
+    return !FRONT_LEFT_BUMPER_BIT;
 }
 
 /**
@@ -277,7 +298,7 @@ unsigned char Hugger_ReadFrontLeftBumper(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadFrontRightBumper(void)
 {
-    return !FRONT_RIGHT_BUMPER;
+    return !FRONT_RIGHT_BUMPER_BIT;
 }
 
 /**
@@ -288,7 +309,7 @@ unsigned char Hugger_ReadFrontRightBumper(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadRearLeftBumper(void)
 {
-    return !REAR_LEFT_BUMPER;
+    return !REAR_LEFT_BUMPER_BIT;
 }
 
 /**
@@ -299,7 +320,7 @@ unsigned char Hugger_ReadRearLeftBumper(void)
  * @author Max Dunne, 2012.01.06 */
 unsigned char Hugger_ReadRearRightBumper(void)
 {
-    return !REAR_RIGHT_BUMPER;
+    return !REAR_RIGHT_BUMPER_BIT;
 }
 
 /**
@@ -312,7 +333,7 @@ unsigned char Hugger_ReadBumpers(void)
 {
     //unsigned char bump_state;
     //bump_state = (!HALL_FRONT_LEFT + ((!HALL_FRONT_RIGHT) << 1)+((!HALL_REAR_LEFT) << 2)+((!HALL_REAR_RIGHT) << 3));
-    return (!FRONT_LEFT_BUMPER + ((!FRONT_RIGHT_BUMPER) << 1)+((!REAR_LEFT_BUMPER) << 2)+((!REAR_RIGHT_BUMPER) << 3));
+    return (!FRONT_LEFT_BUMPER_BIT + ((!FRONT_RIGHT_BUMPER_BIT) << 1)+((!REAR_LEFT_BUMPER_BIT) << 2)+((!REAR_RIGHT_BUMPER_BIT) << 3));
 }
 //
 ///**

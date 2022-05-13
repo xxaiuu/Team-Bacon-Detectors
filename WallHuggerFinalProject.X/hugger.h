@@ -70,7 +70,7 @@ unsigned int Hugger_LightLevel(void);
  * @return 
  */
 
-uint8_t HuggerReadFrontTape(void);
+uint8_t HuggerReadCenterTape(void);
 uint8_t HuggerReadLeftTape(void);
 uint8_t HuggerReadRightTape(void);
 uint8_t HuggerReadBackTape(void);
@@ -79,6 +79,7 @@ uint8_t HuggerReadTopLeftTape(void);
 
 /**
  * Function to set Servo Position
+ * newSpeed in range [1000, 2000]
  * @return 
  */
 void HuggerSetServo(char newSpeed);
