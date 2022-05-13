@@ -33,10 +33,30 @@ int main(void) {
 //        
 //    }
     
+    //Testing bumper switches
+     PORTW05_TRIS = 1;  // Setting W05 was input
+     int prevVal = 1; 
+     int switch_signal;
+     while(1){
+         switch_signal = PORTW05_BIT;
+//         printf("W05: %d\r\n", PORTW05_BIT);
+         
+         if (prevVal != switch_signal){
+            printf("SWITCH: %d\r\n", switch_signal);
+            prevVal = switch_signal; 
+        }
+     }
     
-    //testing pins
-    PORTV03_TRIS = 0; //set W05 as input 
-     
+//    //testing pins
+//    PORTV03_TRIS = 0; //set W05 as input 
+    
+    /*******************************************************************************
+     Set All pins to Output and drive them high.
+    
+     Using an LED (circuit) and a jump wire, each pin was tested to see if
+     it would make the LED light up as it should when driven high. 
+    ********************************************************************************/    
+    /* 
     //PORT V TEST
     PORTV03_TRIS = 0;
     PORTV04_TRIS  = 0;
@@ -147,6 +167,6 @@ int main(void) {
         PORTZ12_LAT = 1;
         
     }
-    
+    */   
     return 0;
 }
