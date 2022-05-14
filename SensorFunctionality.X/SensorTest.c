@@ -21,18 +21,33 @@ int main(void) {
     
     printf("Starting Test Harness");
     
-    //testing Beacon Detector
-    int prevBeacon = 1; 
-    int currBeacon; 
+    
+    //testing Track Wire Detector
+    int prevTrack = 1; 
+    int currTrack; 
     while (1){
-        currBeacon = HuggerReadBeacon();
+        currTrack = HuggerReadTrackWire(1);
         //printf("Y03: %d\r\n", PORTW05_BIT);
-        if (prevBeacon != currBeacon){
-            printf("Beacon: %d\r\n", currBeacon);
-            prevBeacon = currBeacon; 
+        if (prevTrack != currTrack && (currTrack != 0)){
+            printf("Track: %d\r\n", currTrack);
+            prevTrack = currTrack; 
         }
         
     }
+    
+    
+//    //testing Beacon Detector
+//    int prevBeacon = 1; 
+//    int currBeacon; 
+//    while (1){
+//        currBeacon = HuggerReadBeacon();
+//        //printf("Y03: %d\r\n", PORTW05_BIT);
+//        if (prevBeacon != currBeacon){
+//            printf("Beacon: %d\r\n", currBeacon);
+//            prevBeacon = currBeacon; 
+//        }
+//        
+//    }
     
     
 //    //testing tape sensors
