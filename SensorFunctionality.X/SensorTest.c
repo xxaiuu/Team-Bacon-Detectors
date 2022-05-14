@@ -10,30 +10,35 @@
 #include "BOARD.h"
 #include "timers.h"
 #include "IO_Ports.h"
-#include "hugger.h"
+#include "bosshog.h"
 #include <stdio.h>
 
 int main(void) {
     
     BOARD_Init();
     TIMERS_Init();
-    Hugger_Init();
+    Bosshog_Init();
     
     printf("Starting Test Harness");
-    
-    
-    //testing Track Wire Detector
-    int prevTrack = 1; 
-    int currTrack; 
-    while (1){
-        currTrack = HuggerReadTrackWire(1);
-        //printf("Y03: %d\r\n", PORTW05_BIT);
-        if (prevTrack != currTrack && (currTrack != 0)){
-            printf("Track: %d\r\n", currTrack);
-            prevTrack = currTrack; 
-        }
-        
+    printf("Servo\r\n");
+    while(1){
+        BosshogSetServo(2000);
+
     }
+    
+    
+//    //testing Track Wire Detector
+//    int prevTrack = 1; 
+//    int currTrack; 
+//    while (1){
+//        currTrack = HuggerReadTrackWire(1);
+//        //printf("Y03: %d\r\n", PORTW05_BIT);
+//        if (prevTrack != currTrack && (currTrack != 0)){
+//            printf("Track: %d\r\n", currTrack);
+//            prevTrack = currTrack; 
+//        }
+//        
+//    }
     
     
 //    //testing Beacon Detector

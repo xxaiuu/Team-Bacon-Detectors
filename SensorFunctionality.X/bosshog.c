@@ -276,12 +276,12 @@ uint8_t BosshogReadTopCenterTape(void){
  * newSpeed in range [1000, 2000]
  * @return 
  */
-void BosshogSetServo(int newPos){
+void BosshogSetServo(int newSpeed){
     
-    if ( newPos < 1000) newPos = 1000; 
-    if ( newPos > 2000) newPos = 2000; 
+    if ( newSpeed < 1000) newSpeed = 1000; 
+    if ( newSpeed > 2000) newSpeed = 2000; 
     
-    RC_SetPulseTime(RCSERVO_PIN, newPos);
+    RC_SetPulseTime(RCSERVO_PIN, newSpeed);
     
 }
 

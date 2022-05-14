@@ -93,7 +93,7 @@ uint8_t BosshogReadTopCenterTape(void);
  * newSpeed in range [1000, 2000]
  * @return 
  */
-void BosshogSetServo(int newPos);
+void BosshogSetServo(int newSpeed);
 
 /**
  * Function to read value of Track Wire

@@ -12,7 +12,7 @@
       <itemPath>../../../../../ECE118/include/pwm.h</itemPath>
       <itemPath>../../../../../ECE118/include/serial.h</itemPath>
       <itemPath>../../../../../ECE118/include/timers.h</itemPath>
-      <itemPath>hugger.h</itemPath>
+      <itemPath>bosshog.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -31,8 +31,8 @@
       <itemPath>SensorTest.c</itemPath>
       <itemPath>../../../../../ECE118/src/AD.c</itemPath>
       <itemPath>../../../../../ECE118/src/BOARD.c</itemPath>
-      <itemPath>hugger.c</itemPath>
       <itemPath>../../../../../ECE118/MotorTest.c</itemPath>
+      <itemPath>bosshog.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -88,6 +88,20 @@
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
       <item path="../../../../../ECE118/MotorTest.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
       </item>
       <C32>
         <property key="additional-warnings" value="false"/>
