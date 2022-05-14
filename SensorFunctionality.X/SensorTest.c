@@ -10,14 +10,30 @@
 #include "BOARD.h"
 #include "timers.h"
 #include "IO_Ports.h"
+#include "hugger.h"
 #include <stdio.h>
 
 int main(void) {
     
     BOARD_Init();
     TIMERS_Init();
+    Hugger_Init();
     
     printf("Starting Test Harness");
+    
+    //testing Beacon Detector
+    int prevBeacon = 1; 
+    int currBeacon; 
+    while (1){
+        currBeacon = HuggerReadBeacon();
+        //printf("Y03: %d\r\n", PORTW05_BIT);
+        if (prevBeacon != currBeacon){
+            printf("Beacon: %d\r\n", currBeacon);
+            prevBeacon = currBeacon; 
+        }
+        
+    }
+    
     
 //    //testing tape sensors
 //    PORTW05_TRIS = 1; //set W05 as input 
@@ -33,19 +49,19 @@ int main(void) {
 //        
 //    }
     
-    //Testing bumper switches
-     PORTW05_TRIS = 1;  // Setting W05 was input
-     int prevVal = 1; 
-     int switch_signal;
-     while(1){
-         switch_signal = PORTW05_BIT;
-//         printf("W05: %d\r\n", PORTW05_BIT);
-         
-         if (prevVal != switch_signal){
-            printf("SWITCH: %d\r\n", switch_signal);
-            prevVal = switch_signal; 
-        }
-     }
+//    //Testing bumper switches
+//     PORTW05_TRIS = 1;  // Setting W05 was input
+//     int prevVal = 1; 
+//     int switch_signal;
+//     while(1){
+//         switch_signal = PORTW05_BIT;
+////         printf("W05: %d\r\n", PORTW05_BIT);
+//         
+//         if (prevVal != switch_signal){
+//            printf("SWITCH: %d\r\n", switch_signal);
+//            prevVal = switch_signal; 
+//        }
+//     }
     
 //    //testing pins
 //    PORTV03_TRIS = 0; //set W05 as input 
