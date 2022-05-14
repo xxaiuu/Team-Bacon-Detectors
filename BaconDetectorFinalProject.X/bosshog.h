@@ -28,6 +28,12 @@
 #define BEACON_PRESENT 1
 #define BEACON_ABSENT 0
 
+#define TRACK_WIRE_PRESENT 2
+#define TRACK_WIRE_ABSENT 1
+
+#define TAPE_WHITE 0
+#define TAPE_BLACK 1
+
 #define BOSSHOG_MAX_SPEED 100 
 
 /**
@@ -79,6 +85,8 @@ uint8_t BosshogReadRightTape(void);
 uint8_t BosshogReadBackTape(void);
 uint8_t BosshogReadTopRightTape(void);
 uint8_t BosshogReadTopLeftTape(void);
+uint8_t BosshogReadTopCenterTape(void);
+
 
 /**
  * Function to set Servo Position
@@ -89,8 +97,11 @@ void BosshogSetServo(char newSpeed);
 
 /**
  * Function to read value of Track Wire
- *
- * @return 
+ * read TrackWire_1, num = 0
+ * read TrackWire_2, num != 0 
+ * @return 2 - HIGH
+ *         1 - LOW
+ *         0 - NULL (deadzone, remain unchanged)
  */
 uint8_t BosshogReadTrackWire(char num);
 
@@ -141,6 +152,17 @@ unsigned char Bosshog_ReadRearLeftBumper(void);
  * @brief  Returns the state of the rear right bumper
  * @author Max Dunne, 2012.01.06 */
 unsigned char Bosshog_ReadRearRightBumper(void);
+
+
+/**
+ * @Function Bosshog_ReadSideBumper(void)
+ * @param None.
+ * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
+ * @brief  Returns the state of the rear right bumper
+ * @author Max Dunne, 2012.01.06 */
+unsigned char Bosshog_ReadSideBumper(void);
+
+
 
 /**
  * @Function Bosshog_ReadBumpers(void)
