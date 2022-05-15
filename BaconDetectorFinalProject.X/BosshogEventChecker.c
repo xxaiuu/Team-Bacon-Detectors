@@ -34,7 +34,8 @@
 #include "bosshog.h"
 #include <stdio.h>
 #include "timers.h"
-
+#include <stdint.h>
+#include "BosshogHSM.h"
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
  ******************************************************************************/
@@ -115,19 +116,22 @@ uint8_t TemplateCheckBattery(void) {
 }
 
 uint8_t BeaconEvent(void){
-    static uint8_t currBeacon;
+    printf("Running BeaconEvent Checker\r\n");
+    uint8_t currBeacon;
     currBeacon = BosshogReadBeacon();
     uint8_t WasEvent = FALSE;
     if (currBeacon != lastBeacon && currBeacon == BEACON_PRESENT){
-        ES_EVENT BeaconEvent;
+        ES_Event BeaconEvent;
         BeaconEvent.EventType = BEACON_DETECTED; 
         BeaconEvent.EventParam = (uint16_t) currBeacon;
+        //printf("BEACONDETECTED\r\n");
         PostBosshogHSM(BeaconEvent);
         WasEvent = TRUE;
     }else if (currBeacon != lastBeacon && currBeacon == BEACON_ABSENT){
-        ES_EVENT BeaconEvent;
+        ES_Event BeaconEvent;
         BeaconEvent.EventType = BEACON_LOST; 
         BeaconEvent.EventParam = (uint16_t) currBeacon;
+        //printf("BEACONLOST\r\n");
         PostBosshogHSM(BeaconEvent);
         WasEvent = TRUE;
     }

@@ -1,14 +1,14 @@
 build/default/production/_ext/1990330219/roach.o: c:\ece118\src\roach.c \
- c:\ece118\include\roach.h c:\ece118\include\board.h \
- c:\ece118\include\pwm.h c:\ece118\include\serial.h \
- c:\ece118\include\ad.h
+ C:/ECE118/include/roach.h C:/ECE118/include/BOARD.h \
+ C:/ECE118/include/pwm.h C:/ECE118/include/serial.h \
+ C:/ECE118/include/AD.h
 
-c:\ece118\include\roach.h:
+C:/ECE118/include/roach.h:
 
-c:\ece118\include\board.h:
+C:/ECE118/include/BOARD.h:
 
-c:\ece118\include\pwm.h:
+C:/ECE118/include/pwm.h:
 
-c:\ece118\include\serial.h:
+C:/ECE118/include/serial.h:
 
-c:\ece118\include\ad.h:
+C:/ECE118/include/AD.h:

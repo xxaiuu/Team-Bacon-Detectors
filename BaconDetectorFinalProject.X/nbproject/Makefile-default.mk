@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../../../../../ECE118/src/AD.c ../../../../../ECE118/src/BOARD.c ../../../../../ECE118/src/ES_CheckEvents.c ../../../../../ECE118/src/ES_Framework.c ../../../../../ECE118/src/ES_KeyboardInput.c ../../../../../ECE118/src/ES_PostList.c ../../../../../ECE118/src/ES_Queue.c ../../../../../ECE118/src/ES_TattleTale.c ../../../../../ECE118/src/ES_Timers.c ../../../../../ECE118/src/IO_Ports.c ../../../../../ECE118/src/LED.c ../../../../../ECE118/src/RC_Servo.c ../../../../../ECE118/src/pwm.c ../../../../../ECE118/src/roach.c ../../../../../ECE118/src/serial.c ../../../../../ECE118/src/timers.c bosshog.c BosshogES_Main.c BosshogEventChecker.c BosshogHSM.c BosshogSubHSM.c EventService.c
+SOURCEFILES_QUOTED_IF_SPACED=../../../../../ECE118/src/AD.c ../../../../../ECE118/src/BOARD.c ../../../../../ECE118/src/ES_CheckEvents.c ../../../../../ECE118/src/ES_Framework.c ../../../../../ECE118/src/ES_KeyboardInput.c ../../../../../ECE118/src/ES_PostList.c ../../../../../ECE118/src/ES_Queue.c ../../../../../ECE118/src/ES_TattleTale.c ../../../../../ECE118/src/ES_Timers.c ../../../../../ECE118/src/IO_Ports.c ../../../../../ECE118/src/LED.c ../../../../../ECE118/src/RC_Servo.c ../../../../../ECE118/src/pwm.c ../../../../../ECE118/src/roach.c ../../../../../ECE118/src/serial.c ../../../../../ECE118/src/timers.c bosshog.c BosshogES_Main.c BosshogHSM.c BosshogSubHSM.c EventService.c BosshogEventChecker.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1990330219/AD.o ${OBJECTDIR}/_ext/1990330219/BOARD.o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ${OBJECTDIR}/_ext/1990330219/LED.o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ${OBJECTDIR}/_ext/1990330219/pwm.o ${OBJECTDIR}/_ext/1990330219/roach.o ${OBJECTDIR}/_ext/1990330219/serial.o ${OBJECTDIR}/_ext/1990330219/timers.o ${OBJECTDIR}/bosshog.o ${OBJECTDIR}/BosshogES_Main.o ${OBJECTDIR}/BosshogEventChecker.o ${OBJECTDIR}/BosshogHSM.o ${OBJECTDIR}/BosshogSubHSM.o ${OBJECTDIR}/EventService.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1990330219/AD.o.d ${OBJECTDIR}/_ext/1990330219/BOARD.o.d ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d ${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d ${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d ${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d ${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d ${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d ${OBJECTDIR}/_ext/1990330219/LED.o.d ${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d ${OBJECTDIR}/_ext/1990330219/pwm.o.d ${OBJECTDIR}/_ext/1990330219/roach.o.d ${OBJECTDIR}/_ext/1990330219/serial.o.d ${OBJECTDIR}/_ext/1990330219/timers.o.d ${OBJECTDIR}/bosshog.o.d ${OBJECTDIR}/BosshogES_Main.o.d ${OBJECTDIR}/BosshogEventChecker.o.d ${OBJECTDIR}/BosshogHSM.o.d ${OBJECTDIR}/BosshogSubHSM.o.d ${OBJECTDIR}/EventService.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1990330219/AD.o ${OBJECTDIR}/_ext/1990330219/BOARD.o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ${OBJECTDIR}/_ext/1990330219/LED.o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ${OBJECTDIR}/_ext/1990330219/pwm.o ${OBJECTDIR}/_ext/1990330219/roach.o ${OBJECTDIR}/_ext/1990330219/serial.o ${OBJECTDIR}/_ext/1990330219/timers.o ${OBJECTDIR}/bosshog.o ${OBJECTDIR}/BosshogES_Main.o ${OBJECTDIR}/BosshogHSM.o ${OBJECTDIR}/BosshogSubHSM.o ${OBJECTDIR}/EventService.o ${OBJECTDIR}/BosshogEventChecker.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1990330219/AD.o.d ${OBJECTDIR}/_ext/1990330219/BOARD.o.d ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d ${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d ${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d ${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d ${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d ${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d ${OBJECTDIR}/_ext/1990330219/LED.o.d ${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d ${OBJECTDIR}/_ext/1990330219/pwm.o.d ${OBJECTDIR}/_ext/1990330219/roach.o.d ${OBJECTDIR}/_ext/1990330219/serial.o.d ${OBJECTDIR}/_ext/1990330219/timers.o.d ${OBJECTDIR}/bosshog.o.d ${OBJECTDIR}/BosshogES_Main.o.d ${OBJECTDIR}/BosshogHSM.o.d ${OBJECTDIR}/BosshogSubHSM.o.d ${OBJECTDIR}/EventService.o.d ${OBJECTDIR}/BosshogEventChecker.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1990330219/AD.o ${OBJECTDIR}/_ext/1990330219/BOARD.o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ${OBJECTDIR}/_ext/1990330219/LED.o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ${OBJECTDIR}/_ext/1990330219/pwm.o ${OBJECTDIR}/_ext/1990330219/roach.o ${OBJECTDIR}/_ext/1990330219/serial.o ${OBJECTDIR}/_ext/1990330219/timers.o ${OBJECTDIR}/bosshog.o ${OBJECTDIR}/BosshogES_Main.o ${OBJECTDIR}/BosshogEventChecker.o ${OBJECTDIR}/BosshogHSM.o ${OBJECTDIR}/BosshogSubHSM.o ${OBJECTDIR}/EventService.o
+OBJECTFILES=${OBJECTDIR}/_ext/1990330219/AD.o ${OBJECTDIR}/_ext/1990330219/BOARD.o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ${OBJECTDIR}/_ext/1990330219/LED.o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ${OBJECTDIR}/_ext/1990330219/pwm.o ${OBJECTDIR}/_ext/1990330219/roach.o ${OBJECTDIR}/_ext/1990330219/serial.o ${OBJECTDIR}/_ext/1990330219/timers.o ${OBJECTDIR}/bosshog.o ${OBJECTDIR}/BosshogES_Main.o ${OBJECTDIR}/BosshogHSM.o ${OBJECTDIR}/BosshogSubHSM.o ${OBJECTDIR}/EventService.o ${OBJECTDIR}/BosshogEventChecker.o
 
 # Source Files
-SOURCEFILES=../../../../../ECE118/src/AD.c ../../../../../ECE118/src/BOARD.c ../../../../../ECE118/src/ES_CheckEvents.c ../../../../../ECE118/src/ES_Framework.c ../../../../../ECE118/src/ES_KeyboardInput.c ../../../../../ECE118/src/ES_PostList.c ../../../../../ECE118/src/ES_Queue.c ../../../../../ECE118/src/ES_TattleTale.c ../../../../../ECE118/src/ES_Timers.c ../../../../../ECE118/src/IO_Ports.c ../../../../../ECE118/src/LED.c ../../../../../ECE118/src/RC_Servo.c ../../../../../ECE118/src/pwm.c ../../../../../ECE118/src/roach.c ../../../../../ECE118/src/serial.c ../../../../../ECE118/src/timers.c bosshog.c BosshogES_Main.c BosshogEventChecker.c BosshogHSM.c BosshogSubHSM.c EventService.c
+SOURCEFILES=../../../../../ECE118/src/AD.c ../../../../../ECE118/src/BOARD.c ../../../../../ECE118/src/ES_CheckEvents.c ../../../../../ECE118/src/ES_Framework.c ../../../../../ECE118/src/ES_KeyboardInput.c ../../../../../ECE118/src/ES_PostList.c ../../../../../ECE118/src/ES_Queue.c ../../../../../ECE118/src/ES_TattleTale.c ../../../../../ECE118/src/ES_Timers.c ../../../../../ECE118/src/IO_Ports.c ../../../../../ECE118/src/LED.c ../../../../../ECE118/src/RC_Servo.c ../../../../../ECE118/src/pwm.c ../../../../../ECE118/src/roach.c ../../../../../ECE118/src/serial.c ../../../../../ECE118/src/timers.c bosshog.c BosshogES_Main.c BosshogHSM.c BosshogSubHSM.c EventService.c BosshogEventChecker.c
 
 
 
@@ -107,270 +107,270 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/_ext/1990330219/AD.o: ../../../../../ECE118/src/AD.c  .generated_files/flags/default/582d13b3ea09c65b261d3803c35c8c2616b22ee2 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/AD.o: ../../../../../ECE118/src/AD.c  .generated_files/flags/default/9fd65ea3804b55a97c54de78680b97a01bc4ade7 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/AD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/AD.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/AD.o.d" -o ${OBJECTDIR}/_ext/1990330219/AD.o ../../../../../ECE118/src/AD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/AD.o.d" -o ${OBJECTDIR}/_ext/1990330219/AD.o ../../../../../ECE118/src/AD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/BOARD.o: ../../../../../ECE118/src/BOARD.c  .generated_files/flags/default/50686b8e9faef3c9d9fd10926261e31f58871664 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/BOARD.o: ../../../../../ECE118/src/BOARD.c  .generated_files/flags/default/f9f7a6c313a652ca58979379f1f70489a34c45f5 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/BOARD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/BOARD.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/BOARD.o.d" -o ${OBJECTDIR}/_ext/1990330219/BOARD.o ../../../../../ECE118/src/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/BOARD.o.d" -o ${OBJECTDIR}/_ext/1990330219/BOARD.o ../../../../../ECE118/src/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o: ../../../../../ECE118/src/ES_CheckEvents.c  .generated_files/flags/default/314e10f62dc6983fa05f11fc74ceb83c8b7351f0 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o: ../../../../../ECE118/src/ES_CheckEvents.c  .generated_files/flags/default/94465465eba08fdc2460941fb834a2fd76c6c540 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ../../../../../ECE118/src/ES_CheckEvents.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ../../../../../ECE118/src/ES_CheckEvents.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_Framework.o: ../../../../../ECE118/src/ES_Framework.c  .generated_files/flags/default/393d2bd6f7ab72ab0d7a9a861fd33856c1cb2080 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_Framework.o: ../../../../../ECE118/src/ES_Framework.c  .generated_files/flags/default/c02dd919426cdbaf365b849574d890a9bd8559c7 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Framework.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ../../../../../ECE118/src/ES_Framework.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ../../../../../ECE118/src/ES_Framework.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o: ../../../../../ECE118/src/ES_KeyboardInput.c  .generated_files/flags/default/b249c6378b772d62297aa336354d11da2ca1545d .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o: ../../../../../ECE118/src/ES_KeyboardInput.c  .generated_files/flags/default/49bd1b05728df10863d6d77cdfc58b3ce350f436 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ../../../../../ECE118/src/ES_KeyboardInput.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ../../../../../ECE118/src/ES_KeyboardInput.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_PostList.o: ../../../../../ECE118/src/ES_PostList.c  .generated_files/flags/default/f763050e895b1d0637753204e8ed52580ad7b82b .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_PostList.o: ../../../../../ECE118/src/ES_PostList.c  .generated_files/flags/default/74ed0a9eff8e184f0aeaff0d1241e2d33a17cf9a .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_PostList.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ../../../../../ECE118/src/ES_PostList.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ../../../../../ECE118/src/ES_PostList.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_Queue.o: ../../../../../ECE118/src/ES_Queue.c  .generated_files/flags/default/91f93298c6a7e380321b0c1d38f24e7e168cf3b .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_Queue.o: ../../../../../ECE118/src/ES_Queue.c  .generated_files/flags/default/23cef0b132553dda1518d5ce6a8e89ddf0a60ab9 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Queue.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ../../../../../ECE118/src/ES_Queue.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ../../../../../ECE118/src/ES_Queue.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o: ../../../../../ECE118/src/ES_TattleTale.c  .generated_files/flags/default/99ab173fe35c367393b6178ae5beb263353c25b4 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o: ../../../../../ECE118/src/ES_TattleTale.c  .generated_files/flags/default/5f0eb0a45f1c7c03792b16bf0e374f292ea96809 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ../../../../../ECE118/src/ES_TattleTale.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ../../../../../ECE118/src/ES_TattleTale.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_Timers.o: ../../../../../ECE118/src/ES_Timers.c  .generated_files/flags/default/dcf2d4bb6589ed9f054e4a5161f743ae216cb699 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_Timers.o: ../../../../../ECE118/src/ES_Timers.c  .generated_files/flags/default/853ff630118e1c48385c3a668f9010709009aac9 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Timers.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ../../../../../ECE118/src/ES_Timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ../../../../../ECE118/src/ES_Timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/IO_Ports.o: ../../../../../ECE118/src/IO_Ports.c  .generated_files/flags/default/368c6ad27461a7baa8501b0037031716aaf4eccf .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/IO_Ports.o: ../../../../../ECE118/src/IO_Ports.c  .generated_files/flags/default/61a460a06863a39ad32a9bb97bee6ff71deef47e .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/IO_Ports.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d" -o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ../../../../../ECE118/src/IO_Ports.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d" -o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ../../../../../ECE118/src/IO_Ports.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/LED.o: ../../../../../ECE118/src/LED.c  .generated_files/flags/default/8bbc71b4f680cd8aaa850f682e0d36b80a77502d .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/LED.o: ../../../../../ECE118/src/LED.c  .generated_files/flags/default/c87ef54e44ce67aa679233c42ccd8144cf287a7f .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/LED.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/LED.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/LED.o.d" -o ${OBJECTDIR}/_ext/1990330219/LED.o ../../../../../ECE118/src/LED.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/LED.o.d" -o ${OBJECTDIR}/_ext/1990330219/LED.o ../../../../../ECE118/src/LED.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/RC_Servo.o: ../../../../../ECE118/src/RC_Servo.c  .generated_files/flags/default/4720037968e07e51f52139372fd8fe504719a592 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/RC_Servo.o: ../../../../../ECE118/src/RC_Servo.c  .generated_files/flags/default/9e3a8d7674e553a242d6c2d44e6dcd5f1fd75576 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/RC_Servo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d" -o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ../../../../../ECE118/src/RC_Servo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d" -o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ../../../../../ECE118/src/RC_Servo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/pwm.o: ../../../../../ECE118/src/pwm.c  .generated_files/flags/default/b68dddc3e6b030fbf2202085cc00a436c45615fa .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/pwm.o: ../../../../../ECE118/src/pwm.c  .generated_files/flags/default/e128269a893da25c6a127551440f801553e71fbd .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/pwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/pwm.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/pwm.o.d" -o ${OBJECTDIR}/_ext/1990330219/pwm.o ../../../../../ECE118/src/pwm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/pwm.o.d" -o ${OBJECTDIR}/_ext/1990330219/pwm.o ../../../../../ECE118/src/pwm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/roach.o: ../../../../../ECE118/src/roach.c  .generated_files/flags/default/43837ad9aed4739051af76bab8e8e473c22cebbf .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/roach.o: ../../../../../ECE118/src/roach.c  .generated_files/flags/default/5a5b8af8f36479972b1cad283e9936862b36ede9 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/roach.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/roach.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/roach.o.d" -o ${OBJECTDIR}/_ext/1990330219/roach.o ../../../../../ECE118/src/roach.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/roach.o.d" -o ${OBJECTDIR}/_ext/1990330219/roach.o ../../../../../ECE118/src/roach.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/serial.o: ../../../../../ECE118/src/serial.c  .generated_files/flags/default/ab34e3d6042b90547006dc061b80ab8eb99d9e92 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/serial.o: ../../../../../ECE118/src/serial.c  .generated_files/flags/default/28f557e82547528f76dfcdbe11034bd4f7991512 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/serial.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/serial.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/serial.o.d" -o ${OBJECTDIR}/_ext/1990330219/serial.o ../../../../../ECE118/src/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/serial.o.d" -o ${OBJECTDIR}/_ext/1990330219/serial.o ../../../../../ECE118/src/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/timers.o: ../../../../../ECE118/src/timers.c  .generated_files/flags/default/564e92d52ee16272adbb62e57d004f7ee75453e6 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/timers.o: ../../../../../ECE118/src/timers.c  .generated_files/flags/default/61edceaaf81d0328323de4d81f7e28b0b0fcb58b .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/timers.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/timers.o ../../../../../ECE118/src/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/timers.o ../../../../../ECE118/src/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/bosshog.o: bosshog.c  .generated_files/flags/default/e59d924aabf9dd0b05737c16fce18cbee9ea9751 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/bosshog.o: bosshog.c  .generated_files/flags/default/fb47d8f708ed4ede29f1e749aae94f9a01d0cb01 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/bosshog.o.d 
 	@${RM} ${OBJECTDIR}/bosshog.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/bosshog.o.d" -o ${OBJECTDIR}/bosshog.o bosshog.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/bosshog.o.d" -o ${OBJECTDIR}/bosshog.o bosshog.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/BosshogES_Main.o: BosshogES_Main.c  .generated_files/flags/default/a2e66323d9cc2a47f49f2adbd8acb62208afa090 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/BosshogES_Main.o: BosshogES_Main.c  .generated_files/flags/default/e0e53d38688fcc05cbe59af941917d8cdaae0298 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/BosshogES_Main.o.d 
 	@${RM} ${OBJECTDIR}/BosshogES_Main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogES_Main.o.d" -o ${OBJECTDIR}/BosshogES_Main.o BosshogES_Main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogES_Main.o.d" -o ${OBJECTDIR}/BosshogES_Main.o BosshogES_Main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/BosshogEventChecker.o: BosshogEventChecker.c  .generated_files/flags/default/ccddb06e80e4ce17ec016c293a1f47f9cb354ee5 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/BosshogEventChecker.o.d 
-	@${RM} ${OBJECTDIR}/BosshogEventChecker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogEventChecker.o.d" -o ${OBJECTDIR}/BosshogEventChecker.o BosshogEventChecker.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/BosshogHSM.o: BosshogHSM.c  .generated_files/flags/default/7cf49505789e269a1d99f79f4980598e45a46e76 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/BosshogHSM.o: BosshogHSM.c  .generated_files/flags/default/f0844c36113a180f943ad0bd90f9e65c8686a59b .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/BosshogHSM.o.d 
 	@${RM} ${OBJECTDIR}/BosshogHSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogHSM.o.d" -o ${OBJECTDIR}/BosshogHSM.o BosshogHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogHSM.o.d" -o ${OBJECTDIR}/BosshogHSM.o BosshogHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/BosshogSubHSM.o: BosshogSubHSM.c  .generated_files/flags/default/249f2226c7be7ef391c8a7b7dc52fd47cb753fd5 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/BosshogSubHSM.o: BosshogSubHSM.c  .generated_files/flags/default/bc01061d78aac952179e6213de29814ca22eb7bb .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/BosshogSubHSM.o.d 
 	@${RM} ${OBJECTDIR}/BosshogSubHSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogSubHSM.o.d" -o ${OBJECTDIR}/BosshogSubHSM.o BosshogSubHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogSubHSM.o.d" -o ${OBJECTDIR}/BosshogSubHSM.o BosshogSubHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/EventService.o: EventService.c  .generated_files/flags/default/d71659ab1320b905b67e13f43f4d03f7374c62d0 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/EventService.o: EventService.c  .generated_files/flags/default/9d55a6f3c32917afbb88813e7f1b8ea1a4225717 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/EventService.o.d 
 	@${RM} ${OBJECTDIR}/EventService.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/EventService.o.d" -o ${OBJECTDIR}/EventService.o EventService.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/EventService.o.d" -o ${OBJECTDIR}/EventService.o EventService.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/BosshogEventChecker.o: BosshogEventChecker.c  .generated_files/flags/default/97808fe8ce387f36e466897c2a792a6ae818d0dc .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/BosshogEventChecker.o.d 
+	@${RM} ${OBJECTDIR}/BosshogEventChecker.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG   -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogEventChecker.o.d" -o ${OBJECTDIR}/BosshogEventChecker.o BosshogEventChecker.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 else
-${OBJECTDIR}/_ext/1990330219/AD.o: ../../../../../ECE118/src/AD.c  .generated_files/flags/default/ff4c8f79469b9987c27fdd7988d42a9969aefcb4 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/AD.o: ../../../../../ECE118/src/AD.c  .generated_files/flags/default/416be187f15ee106d32550472ab174fd4eb1112b .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/AD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/AD.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/AD.o.d" -o ${OBJECTDIR}/_ext/1990330219/AD.o ../../../../../ECE118/src/AD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/AD.o.d" -o ${OBJECTDIR}/_ext/1990330219/AD.o ../../../../../ECE118/src/AD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/BOARD.o: ../../../../../ECE118/src/BOARD.c  .generated_files/flags/default/bb3e7726bffed2a9f6abb71fc2ffba5176cf8f1d .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/BOARD.o: ../../../../../ECE118/src/BOARD.c  .generated_files/flags/default/9fc897f78bbb85c1f7843278361ce41e8d18788e .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/BOARD.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/BOARD.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/BOARD.o.d" -o ${OBJECTDIR}/_ext/1990330219/BOARD.o ../../../../../ECE118/src/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/BOARD.o.d" -o ${OBJECTDIR}/_ext/1990330219/BOARD.o ../../../../../ECE118/src/BOARD.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o: ../../../../../ECE118/src/ES_CheckEvents.c  .generated_files/flags/default/d829368d2aadc1b2760dbd8e7518b74cd44390b .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o: ../../../../../ECE118/src/ES_CheckEvents.c  .generated_files/flags/default/71ca3944be2d05f05c54b8c501380e690390d6c8 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ../../../../../ECE118/src/ES_CheckEvents.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_CheckEvents.o ../../../../../ECE118/src/ES_CheckEvents.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_Framework.o: ../../../../../ECE118/src/ES_Framework.c  .generated_files/flags/default/ac05858d0ae033cf634ccd07419e8b4fb28ded09 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_Framework.o: ../../../../../ECE118/src/ES_Framework.c  .generated_files/flags/default/8203a5e2ceb9f4badb4200ea081156b9ea0ef733 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Framework.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ../../../../../ECE118/src/ES_Framework.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Framework.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Framework.o ../../../../../ECE118/src/ES_Framework.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o: ../../../../../ECE118/src/ES_KeyboardInput.c  .generated_files/flags/default/830c5a34a3fb7556d75caf54d2bd3cf20ec2f771 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o: ../../../../../ECE118/src/ES_KeyboardInput.c  .generated_files/flags/default/20734439e4bed1571f160fd499fc2175dff849a2 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ../../../../../ECE118/src/ES_KeyboardInput.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_KeyboardInput.o ../../../../../ECE118/src/ES_KeyboardInput.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_PostList.o: ../../../../../ECE118/src/ES_PostList.c  .generated_files/flags/default/5e36273339707530232f736c9a209bee2bd8fb38 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_PostList.o: ../../../../../ECE118/src/ES_PostList.c  .generated_files/flags/default/b48b38b35c1ece6c968c13993398a4771dafd439 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_PostList.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ../../../../../ECE118/src/ES_PostList.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_PostList.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_PostList.o ../../../../../ECE118/src/ES_PostList.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_Queue.o: ../../../../../ECE118/src/ES_Queue.c  .generated_files/flags/default/d0ac28d9abb2d60de5d74cbe17c266e30a2cf472 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_Queue.o: ../../../../../ECE118/src/ES_Queue.c  .generated_files/flags/default/c9801ef5c775651bd2c84a3192ca2896e0714178 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Queue.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ../../../../../ECE118/src/ES_Queue.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Queue.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Queue.o ../../../../../ECE118/src/ES_Queue.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o: ../../../../../ECE118/src/ES_TattleTale.c  .generated_files/flags/default/7a50500c548338ef0ae6152e6419d544ffc09001 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o: ../../../../../ECE118/src/ES_TattleTale.c  .generated_files/flags/default/f03ba588369fcc65216b66ca74d1b2e03e2de2cd .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ../../../../../ECE118/src/ES_TattleTale.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_TattleTale.o ../../../../../ECE118/src/ES_TattleTale.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/ES_Timers.o: ../../../../../ECE118/src/ES_Timers.c  .generated_files/flags/default/f491684dbe39ec41ec12b9058155d710e82e9708 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/ES_Timers.o: ../../../../../ECE118/src/ES_Timers.c  .generated_files/flags/default/72db0d68e81a10e901b8585a2b736aec79031536 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/ES_Timers.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ../../../../../ECE118/src/ES_Timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/ES_Timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/ES_Timers.o ../../../../../ECE118/src/ES_Timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/IO_Ports.o: ../../../../../ECE118/src/IO_Ports.c  .generated_files/flags/default/19593776ae0d8b48d2afc72cc97e5e3bead5895a .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/IO_Ports.o: ../../../../../ECE118/src/IO_Ports.c  .generated_files/flags/default/3ae30d785ddb3d93168fcb5b09c0d165b4b29b8f .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/IO_Ports.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d" -o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ../../../../../ECE118/src/IO_Ports.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/IO_Ports.o.d" -o ${OBJECTDIR}/_ext/1990330219/IO_Ports.o ../../../../../ECE118/src/IO_Ports.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/LED.o: ../../../../../ECE118/src/LED.c  .generated_files/flags/default/45a87e75b0b84e916c4672120aabfc14199c5d85 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/LED.o: ../../../../../ECE118/src/LED.c  .generated_files/flags/default/edfbd92068c3b85ce3f88975b337f5dcf48f5568 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/LED.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/LED.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/LED.o.d" -o ${OBJECTDIR}/_ext/1990330219/LED.o ../../../../../ECE118/src/LED.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/LED.o.d" -o ${OBJECTDIR}/_ext/1990330219/LED.o ../../../../../ECE118/src/LED.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/RC_Servo.o: ../../../../../ECE118/src/RC_Servo.c  .generated_files/flags/default/e1762273b47504e23cc7216f77fdbe669b443d2e .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/RC_Servo.o: ../../../../../ECE118/src/RC_Servo.c  .generated_files/flags/default/3353bd8b7ffa3550ce00b676eebc36130c437ef7 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/RC_Servo.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d" -o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ../../../../../ECE118/src/RC_Servo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/RC_Servo.o.d" -o ${OBJECTDIR}/_ext/1990330219/RC_Servo.o ../../../../../ECE118/src/RC_Servo.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/pwm.o: ../../../../../ECE118/src/pwm.c  .generated_files/flags/default/81f5eb05c94a5340c4a023c343b58b9b1a21fa01 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/pwm.o: ../../../../../ECE118/src/pwm.c  .generated_files/flags/default/e010bdd196f1f8c7eba24f2c382a0d0a86263df8 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/pwm.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/pwm.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/pwm.o.d" -o ${OBJECTDIR}/_ext/1990330219/pwm.o ../../../../../ECE118/src/pwm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/pwm.o.d" -o ${OBJECTDIR}/_ext/1990330219/pwm.o ../../../../../ECE118/src/pwm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/roach.o: ../../../../../ECE118/src/roach.c  .generated_files/flags/default/5cc191a79bbb2e2ee09db84f9385330224efeb4 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/roach.o: ../../../../../ECE118/src/roach.c  .generated_files/flags/default/a4019462cfc247e3a80580e160c7d7f00577efda .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/roach.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/roach.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/roach.o.d" -o ${OBJECTDIR}/_ext/1990330219/roach.o ../../../../../ECE118/src/roach.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/roach.o.d" -o ${OBJECTDIR}/_ext/1990330219/roach.o ../../../../../ECE118/src/roach.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/serial.o: ../../../../../ECE118/src/serial.c  .generated_files/flags/default/6c828462cdc5f2ec07acd2e4d38bba9d76f77fc .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/serial.o: ../../../../../ECE118/src/serial.c  .generated_files/flags/default/f418671312318524f833166eafe07eeaeeb7162 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/serial.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/serial.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/serial.o.d" -o ${OBJECTDIR}/_ext/1990330219/serial.o ../../../../../ECE118/src/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/serial.o.d" -o ${OBJECTDIR}/_ext/1990330219/serial.o ../../../../../ECE118/src/serial.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/_ext/1990330219/timers.o: ../../../../../ECE118/src/timers.c  .generated_files/flags/default/ddade8180702edc63178a33b5edf56ab874d45fc .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/_ext/1990330219/timers.o: ../../../../../ECE118/src/timers.c  .generated_files/flags/default/1359a3603287e968250017837bfec0ab599749e0 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}/_ext/1990330219" 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/timers.o.d 
 	@${RM} ${OBJECTDIR}/_ext/1990330219/timers.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/timers.o ../../../../../ECE118/src/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/_ext/1990330219/timers.o.d" -o ${OBJECTDIR}/_ext/1990330219/timers.o ../../../../../ECE118/src/timers.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/bosshog.o: bosshog.c  .generated_files/flags/default/3040bb71f84346b05be03d3806c267cbc6e6eb7 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/bosshog.o: bosshog.c  .generated_files/flags/default/d798829dd6d16e1f1cb745ec95c1885e05204df0 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/bosshog.o.d 
 	@${RM} ${OBJECTDIR}/bosshog.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/bosshog.o.d" -o ${OBJECTDIR}/bosshog.o bosshog.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/bosshog.o.d" -o ${OBJECTDIR}/bosshog.o bosshog.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/BosshogES_Main.o: BosshogES_Main.c  .generated_files/flags/default/c06923593d0fe5b4b5cba8e8b329158a2f232dc8 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/BosshogES_Main.o: BosshogES_Main.c  .generated_files/flags/default/8f4186d38108a7406f07a72d2c5fa8804ad577ee .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/BosshogES_Main.o.d 
 	@${RM} ${OBJECTDIR}/BosshogES_Main.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogES_Main.o.d" -o ${OBJECTDIR}/BosshogES_Main.o BosshogES_Main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogES_Main.o.d" -o ${OBJECTDIR}/BosshogES_Main.o BosshogES_Main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/BosshogEventChecker.o: BosshogEventChecker.c  .generated_files/flags/default/99a8a59745ddd11e23d75f9d0380a0fc25edabb7 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/BosshogEventChecker.o.d 
-	@${RM} ${OBJECTDIR}/BosshogEventChecker.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogEventChecker.o.d" -o ${OBJECTDIR}/BosshogEventChecker.o BosshogEventChecker.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/BosshogHSM.o: BosshogHSM.c  .generated_files/flags/default/a2e9efd8eeee22929ab3f9ca9c76dbbc46c1fd94 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/BosshogHSM.o: BosshogHSM.c  .generated_files/flags/default/e5b134b238f2342b7969d885566e6236b73da7 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/BosshogHSM.o.d 
 	@${RM} ${OBJECTDIR}/BosshogHSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogHSM.o.d" -o ${OBJECTDIR}/BosshogHSM.o BosshogHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogHSM.o.d" -o ${OBJECTDIR}/BosshogHSM.o BosshogHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/BosshogSubHSM.o: BosshogSubHSM.c  .generated_files/flags/default/2f637626d3e766e5e72a6c5029e6ae1f0e68aadc .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/BosshogSubHSM.o: BosshogSubHSM.c  .generated_files/flags/default/573fb42a07454fb37892a9f373b480e58bb616b0 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/BosshogSubHSM.o.d 
 	@${RM} ${OBJECTDIR}/BosshogSubHSM.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/BosshogSubHSM.o.d" -o ${OBJECTDIR}/BosshogSubHSM.o BosshogSubHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogSubHSM.o.d" -o ${OBJECTDIR}/BosshogSubHSM.o BosshogSubHSM.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/EventService.o: EventService.c  .generated_files/flags/default/b9696a77005911680222de4f5336e782a324edef .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+${OBJECTDIR}/EventService.o: EventService.c  .generated_files/flags/default/f958adaf0cf94845cdc7d10365a8bb8966ee5217 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/EventService.o.d 
 	@${RM} ${OBJECTDIR}/EventService.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"../../../../../ECE118" -I"../../../../../ECE118/include" -MP -MMD -MF "${OBJECTDIR}/EventService.o.d" -o ${OBJECTDIR}/EventService.o EventService.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/EventService.o.d" -o ${OBJECTDIR}/EventService.o EventService.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/BosshogEventChecker.o: BosshogEventChecker.c  .generated_files/flags/default/ff908046fccead4e28da4001317d02cf2ff5e940 .generated_files/flags/default/25cf332145e109ecc94cb8c88ed46e464b66686
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/BosshogEventChecker.o.d 
+	@${RM} ${OBJECTDIR}/BosshogEventChecker.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -fno-common -I"." -I"C:/ECE118" -I"C:/ECE118/include" -I"C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X" -MP -MMD -MF "${OBJECTDIR}/BosshogEventChecker.o.d" -o ${OBJECTDIR}/BosshogEventChecker.o BosshogEventChecker.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 

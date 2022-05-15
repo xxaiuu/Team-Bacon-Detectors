@@ -26,7 +26,7 @@
 #include <stdio.h>
 #include "BosshogEventChecker.h"
 #include "bosshog.h"
-
+#include "BosshogHSM.h"
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
  ******************************************************************************/
@@ -250,8 +250,8 @@ uint8_t SBEvent(void){
 
 uint8_t TrackWireEvent(void){
     int numTracks = 0;
-    static uint8_t CurrTrack1 = BosshogReadTrackWire(0);
-    static uint8_t CurrTrack2 = BosshogReadTrackWire(1);
+    uint8_t CurrTrack1 = BosshogReadTrackWire(0);
+    uint8_t CurrTrack2 = BosshogReadTrackWire(1);
     uint8_t WasEvent = FALSE;
     if(CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT){
         numTracks++;

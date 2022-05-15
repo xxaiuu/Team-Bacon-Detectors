@@ -1,9 +1,9 @@
 build/default/production/_ext/1990330219/RC_Servo.o: \
- c:\ece118\src\rc_servo.c c:\ece118\include\board.h \
- c:\ece118\include\rc_servo.h c:\ece118\include\serial.h
+ c:\ece118\src\rc_servo.c C:/ECE118/include/BOARD.h \
+ C:/ECE118/include/RC_Servo.h C:/ECE118/include/SERIAL.h
 
-c:\ece118\include\board.h:
+C:/ECE118/include/BOARD.h:
 
-c:\ece118\include\rc_servo.h:
+C:/ECE118/include/RC_Servo.h:
 
-c:\ece118\include\serial.h:
+C:/ECE118/include/SERIAL.h:

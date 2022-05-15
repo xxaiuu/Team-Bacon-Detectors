@@ -1,17 +1,21 @@
 build/default/production/_ext/1990330219/ES_PostList.o: \
  c:\ece118\src\es_postlist.c ES_Configure.h \
- c:\ece118\include\es_general.h c:\ece118\include\es_postlist.h \
- c:\ece118\include\ES_Events.h c:\ece118\include\es_serviceheaders.h \
- c:\ece118\include\ES_KeyboardInput.h
+ C:/ECE118/include/ES_General.h C:/ECE118/include/ES_PostList.h \
+ C:/ECE118/include/ES_Events.h C:/ECE118/include/ES_ServiceHeaders.h \
+ C:/ECE118/include/ES_KeyboardInput.h EventService.h ES_Configure.h
 
 ES_Configure.h:
 
-c:\ece118\include\es_general.h:
+C:/ECE118/include/ES_General.h:
 
-c:\ece118\include\es_postlist.h:
+C:/ECE118/include/ES_PostList.h:
 
-c:\ece118\include\ES_Events.h:
+C:/ECE118/include/ES_Events.h:
 
-c:\ece118\include\es_serviceheaders.h:
+C:/ECE118/include/ES_ServiceHeaders.h:
 
-c:\ece118\include\ES_KeyboardInput.h:
+C:/ECE118/include/ES_KeyboardInput.h:
+
+EventService.h:
+
+ES_Configure.h:

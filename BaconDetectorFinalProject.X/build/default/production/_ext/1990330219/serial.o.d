@@ -1,6 +1,6 @@
 build/default/production/_ext/1990330219/serial.o: c:\ece118\src\serial.c \
- c:\ece118\include\serial.h c:\ece118\include\board.h
+ C:/ECE118/include/serial.h C:/ECE118/include/BOARD.h
 
-c:\ece118\include\serial.h:
+C:/ECE118/include/serial.h:
 
-c:\ece118\include\board.h:
+C:/ECE118/include/BOARD.h:

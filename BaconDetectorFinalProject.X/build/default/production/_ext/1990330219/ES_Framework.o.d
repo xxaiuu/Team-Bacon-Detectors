@@ -1,61 +1,66 @@
 build/default/production/_ext/1990330219/ES_Framework.o: \
- c:\ece118\src\es_framework.c ES_Configure.h c:\ece118\include\es_queue.h \
- c:\ece118\include\ES_Events.h c:\ece118\include\es_postlist.h \
- c:\ece118\include\es_checkevents.h c:\ece118\include\es_lookuptables.h \
- c:\ece118\include\es_timers.h c:\ece118\include\es_framework.h \
- c:\ece118\include\ES_Timers.h c:\ece118\include\ES_CheckEvents.h \
- c:\ece118\include\ES_General.h c:\ece118\include\ES_KeyboardInput.h \
- c:\ece118\include\ES_LookupTables.h c:\ece118\include\ES_Port.h \
- c:\ece118\include\ES_PostList.h c:\ece118\include\ES_PriorTables.h \
- c:\ece118\include\ES_Queue.h c:\ece118\include\ES_ServiceHeaders.h \
- c:\ece118\include\ES_TattleTale.h c:\ece118\include\es_keyboardinput.h \
- c:\ece118\include\es_events.h c:\ece118\include\board.h \
- c:\ece118\include\es_serviceheaders.h c:\ece118\include\serial.h
+ c:\ece118\src\es_framework.c ES_Configure.h C:/ECE118/include/ES_Queue.h \
+ C:/ECE118/include/ES_Events.h C:/ECE118/include/ES_PostList.h \
+ C:/ECE118/include/ES_CheckEvents.h C:/ECE118/include/ES_LookupTables.h \
+ C:/ECE118/include/ES_Timers.h C:/ECE118/include/ES_Framework.h \
+ C:/ECE118/include/ES_Timers.h C:/ECE118/include/ES_CheckEvents.h \
+ C:/ECE118/include/ES_General.h C:/ECE118/include/ES_KeyboardInput.h \
+ C:/ECE118/include/ES_LookupTables.h C:/ECE118/include/ES_Port.h \
+ C:/ECE118/include/ES_PostList.h C:/ECE118/include/ES_PriorTables.h \
+ C:/ECE118/include/ES_Queue.h C:/ECE118/include/ES_ServiceHeaders.h \
+ EventService.h ES_Configure.h C:/ECE118/include/ES_TattleTale.h \
+ C:/ECE118/include/ES_KeyboardInput.h C:/ECE118/include/ES_Events.h \
+ C:/ECE118/include/BOARD.h C:/ECE118/include/ES_ServiceHeaders.h \
+ C:/ECE118/include/serial.h
 
 ES_Configure.h:
 
-c:\ece118\include\es_queue.h:
+C:/ECE118/include/ES_Queue.h:
 
-c:\ece118\include\ES_Events.h:
+C:/ECE118/include/ES_Events.h:
 
-c:\ece118\include\es_postlist.h:
+C:/ECE118/include/ES_PostList.h:
 
-c:\ece118\include\es_checkevents.h:
+C:/ECE118/include/ES_CheckEvents.h:
 
-c:\ece118\include\es_lookuptables.h:
+C:/ECE118/include/ES_LookupTables.h:
 
-c:\ece118\include\es_timers.h:
+C:/ECE118/include/ES_Timers.h:
 
-c:\ece118\include\es_framework.h:
+C:/ECE118/include/ES_Framework.h:
 
-c:\ece118\include\ES_Timers.h:
+C:/ECE118/include/ES_Timers.h:
 
-c:\ece118\include\ES_CheckEvents.h:
+C:/ECE118/include/ES_CheckEvents.h:
 
-c:\ece118\include\ES_General.h:
+C:/ECE118/include/ES_General.h:
 
-c:\ece118\include\ES_KeyboardInput.h:
+C:/ECE118/include/ES_KeyboardInput.h:
 
-c:\ece118\include\ES_LookupTables.h:
+C:/ECE118/include/ES_LookupTables.h:
 
-c:\ece118\include\ES_Port.h:
+C:/ECE118/include/ES_Port.h:
 
-c:\ece118\include\ES_PostList.h:
+C:/ECE118/include/ES_PostList.h:
 
-c:\ece118\include\ES_PriorTables.h:
+C:/ECE118/include/ES_PriorTables.h:
 
-c:\ece118\include\ES_Queue.h:
+C:/ECE118/include/ES_Queue.h:
 
-c:\ece118\include\ES_ServiceHeaders.h:
+C:/ECE118/include/ES_ServiceHeaders.h:
 
-c:\ece118\include\ES_TattleTale.h:
+EventService.h:
 
-c:\ece118\include\es_keyboardinput.h:
+ES_Configure.h:
 
-c:\ece118\include\es_events.h:
+C:/ECE118/include/ES_TattleTale.h:
 
-c:\ece118\include\board.h:
+C:/ECE118/include/ES_KeyboardInput.h:
 
-c:\ece118\include\es_serviceheaders.h:
+C:/ECE118/include/ES_Events.h:
 
-c:\ece118\include\serial.h:
+C:/ECE118/include/BOARD.h:
+
+C:/ECE118/include/ES_ServiceHeaders.h:
+
+C:/ECE118/include/serial.h:

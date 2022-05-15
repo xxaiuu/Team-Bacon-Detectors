@@ -1,47 +1,51 @@
 build/default/production/_ext/1990330219/ES_KeyboardInput.o: \
- c:\ece118\src\es_keyboardinput.c c:\ece118\include\board.h \
- ES_Configure.h c:\ece118\include\es_framework.h \
- c:\ece118\include\ES_Events.h c:\ece118\include\ES_Timers.h \
- c:\ece118\include\ES_CheckEvents.h c:\ece118\include\ES_General.h \
- c:\ece118\include\ES_KeyboardInput.h c:\ece118\include\ES_LookupTables.h \
- c:\ece118\include\ES_Port.h c:\ece118\include\ES_PostList.h \
- c:\ece118\include\ES_PriorTables.h c:\ece118\include\ES_Queue.h \
- c:\ece118\include\ES_ServiceHeaders.h c:\ece118\include\ES_TattleTale.h \
- c:\ece118\include\es_tattletale.h c:\ece118\include\es_keyboardinput.h \
- c:\ece118\include\serial.h
+ c:\ece118\src\es_keyboardinput.c C:/ECE118/include/BOARD.h \
+ ES_Configure.h C:/ECE118/include/ES_Framework.h \
+ C:/ECE118/include/ES_Events.h C:/ECE118/include/ES_Timers.h \
+ C:/ECE118/include/ES_CheckEvents.h C:/ECE118/include/ES_General.h \
+ C:/ECE118/include/ES_KeyboardInput.h C:/ECE118/include/ES_LookupTables.h \
+ C:/ECE118/include/ES_Port.h C:/ECE118/include/ES_PostList.h \
+ C:/ECE118/include/ES_PriorTables.h C:/ECE118/include/ES_Queue.h \
+ C:/ECE118/include/ES_ServiceHeaders.h EventService.h ES_Configure.h \
+ C:/ECE118/include/ES_TattleTale.h C:/ECE118/include/ES_TattleTale.h \
+ C:/ECE118/include/ES_KeyboardInput.h C:/ECE118/include/serial.h
 
-c:\ece118\include\board.h:
+C:/ECE118/include/BOARD.h:
 
 ES_Configure.h:
 
-c:\ece118\include\es_framework.h:
+C:/ECE118/include/ES_Framework.h:
 
-c:\ece118\include\ES_Events.h:
+C:/ECE118/include/ES_Events.h:
 
-c:\ece118\include\ES_Timers.h:
+C:/ECE118/include/ES_Timers.h:
 
-c:\ece118\include\ES_CheckEvents.h:
+C:/ECE118/include/ES_CheckEvents.h:
 
-c:\ece118\include\ES_General.h:
+C:/ECE118/include/ES_General.h:
 
-c:\ece118\include\ES_KeyboardInput.h:
+C:/ECE118/include/ES_KeyboardInput.h:
 
-c:\ece118\include\ES_LookupTables.h:
+C:/ECE118/include/ES_LookupTables.h:
 
-c:\ece118\include\ES_Port.h:
+C:/ECE118/include/ES_Port.h:
 
-c:\ece118\include\ES_PostList.h:
+C:/ECE118/include/ES_PostList.h:
 
-c:\ece118\include\ES_PriorTables.h:
+C:/ECE118/include/ES_PriorTables.h:
 
-c:\ece118\include\ES_Queue.h:
+C:/ECE118/include/ES_Queue.h:
 
-c:\ece118\include\ES_ServiceHeaders.h:
+C:/ECE118/include/ES_ServiceHeaders.h:
 
-c:\ece118\include\ES_TattleTale.h:
+EventService.h:
 
-c:\ece118\include\es_tattletale.h:
+ES_Configure.h:
 
-c:\ece118\include\es_keyboardinput.h:
+C:/ECE118/include/ES_TattleTale.h:
 
-c:\ece118\include\serial.h:
+C:/ECE118/include/ES_TattleTale.h:
+
+C:/ECE118/include/ES_KeyboardInput.h:
+
+C:/ECE118/include/serial.h:

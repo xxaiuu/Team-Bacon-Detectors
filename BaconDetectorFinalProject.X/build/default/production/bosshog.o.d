@@ -1,18 +1,18 @@
 build/default/production/bosshog.o: bosshog.c bosshog.h \
- c:\ece118\include\board.h c:\ece118\include\io_ports.h \
- c:\ece118\include\rc_servo.h c:\ece118\include\pwm.h \
- c:\ece118\include\serial.h c:\ece118\include\ad.h
+ C:/ECE118/include/BOARD.h C:/ECE118/include/IO_Ports.h \
+ C:/ECE118/include/RC_Servo.h C:/ECE118/include/pwm.h \
+ C:/ECE118/include/serial.h C:/ECE118/include/AD.h
 
 bosshog.h:
 
-c:\ece118\include\board.h:
+C:/ECE118/include/BOARD.h:
 
-c:\ece118\include\io_ports.h:
+C:/ECE118/include/IO_Ports.h:
 
-c:\ece118\include\rc_servo.h:
+C:/ECE118/include/RC_Servo.h:
 
-c:\ece118\include\pwm.h:
+C:/ECE118/include/pwm.h:
 
-c:\ece118\include\serial.h:
+C:/ECE118/include/serial.h:
 
-c:\ece118\include\ad.h:
+C:/ECE118/include/AD.h:
