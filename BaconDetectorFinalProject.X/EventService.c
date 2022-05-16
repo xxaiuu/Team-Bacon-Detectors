@@ -305,6 +305,7 @@ uint8_t BCTEvent (void){
         TapeEvent.EventType = BC_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("BCTEvent\r\n");
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -443,6 +444,7 @@ uint8_t TCTEvent (void){
  * @author J. Edward Carryer, 2011.10.23 19:25 */
 ES_Event RunEventService(ES_Event ThisEvent)
 {
+    //printf("RUNEVENTSERVICE\r\n");
     ES_Event ReturnEvent;
     ReturnEvent.EventType = ES_NO_EVENT; // assume no errors
 

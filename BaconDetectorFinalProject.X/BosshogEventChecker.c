@@ -116,7 +116,7 @@ uint8_t TemplateCheckBattery(void) {
 }
 
 uint8_t BeaconEvent(void){
-    printf("Running BeaconEvent Checker\r\n");
+    //printf("Running BeaconEvent Checker\r\n");
     uint8_t currBeacon;
     currBeacon = BosshogReadBeacon();
     uint8_t WasEvent = FALSE;
