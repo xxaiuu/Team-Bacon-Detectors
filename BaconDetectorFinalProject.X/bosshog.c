@@ -19,68 +19,68 @@
 /*******************************************************************************
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
-//motors
-#define LEFT_DIR_LAT LATBbits.LATB3                   //PORTV04_LAT  IN1
-#define LEFT_DIR_INV_LAT LATBbits.LATB2               //PORTV03_LAT  IN2
-#define RIGHT_DIR_LAT LATEbits.LATE5                  //PORTY11_LAT  IN3
-#define RIGHT_DIR_INV_LAT LATEbits.LATE6              //PORTY09_LAT  IN4
-#define LEFT_PWM PWM_PORTY10                          //ENA
-#define RIGHT_PWM PWM_PORTY12                         //ENB 
-
-//bumper bits
-#define FRONT_LEFT_BUMPER_BIT _RB8                      //PORTV07_BIT
-#define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
-#define REAR_RIGHT_BUMPER_BIT _RD8                      //PORTZ08_BIT
-#define REAR_LEFT_BUMPER_BIT _RB10                      //PORTW04_BIT
-#define SIDE_BUMPER_BIT PORTV08_BIT
-  
- //motors
-#define LEFT_DIR_TRIS _TRISB3                     //PORTV04_TRIS
-#define LEFT_DIR_INV_TRIS _TRISB2                 //PORTV03_TRIS
-#define RIGHT_DIR_TRIS _TRISE5                    //PORTY11_TRIS
-#define RIGHT_DIR_INV_TRIS _TRISE6                //PORTY09_TRIS
-
-//bumper tris
-#define FRONT_LEFT_BUMPER_TRIS _TRISB8
-#define FRONT_RIGHT_BUMPER_TRIS _TRISD9
-#define REAR_RIGHT_BUMPER_TRIS _TRISD8
-#define REAR_LEFT_BUMPER_TRIS _TRISB10
-#define SIDE_BUMPER_TRIS PORTV08_TRIS
-
-//tape sensor pins
-#define CENTER_TAPESENSOR_TRIS PORTZ03_TRIS
-#define LEFT_TAPESENSOR_TRIS PORTZ04_TRIS
-#define RIGHT_TAPESENSOR_TRIS PORTZ05_TRIS
-#define BACK_TAPESENSOR_TRIS PORTZ06_TRIS
-#define TOPLEFT_TAPESENSOR_TRIS PORTZ07_TRIS
-#define TOPRIGHT_TAPESENSOR_TRIS PORTZ09_TRIS
-#define TOPCENTER_TAPESENSOR_TRIS PORTZ10_TRIS
-
-
-
-#define CENTER_TAPESENSOR_BIT PORTZ03_BIT
-#define LEFT_TAPESENSOR_BIT PORTZ04_BIT
-#define RIGHT_TAPESENSOR_BIT PORTZ05_BIT
-#define BACK_TAPESENSOR_BIT PORTZ06_BIT
-#define TOPLEFT_TAPESENSOR_BIT PORTZ07_BIT
-#define TOPRIGHT_TAPESENSOR_BIT PORTZ09_BIT
-#define TOPCENTER_TAPESENSOR_BIT PORTZ10_BIT
-
-// Servo for launching mechanism
-#define RCSERVO_PIN RC_PORTW07
-
-//Track Wire Detectors
-#define TRACKWIRE_1 AD_PORTV5
-#define TRACKWIRE_2 AD_PORTV6
-#define TRACKWIRE_HIGH 600
-#define TRACKWIRE_LOW 400
-
-//Beacon Detector
-#define BEACON_TRIS PORTW05_TRIS
-#define BEACON_BIT PORTW05_BIT
-
-
-#define BOSSHOG_BAT_VOLTAGE BAT_VOLTAGE
+////motors
+//#define LEFT_DIR_LAT LATBbits.LATB3                   //PORTV04_LAT  IN1
+//#define LEFT_DIR_INV_LAT LATBbits.LATB2               //PORTV03_LAT  IN2
+//#define RIGHT_DIR_LAT LATEbits.LATE5                  //PORTY11_LAT  IN3
+//#define RIGHT_DIR_INV_LAT LATEbits.LATE6              //PORTY09_LAT  IN4
+//#define LEFT_PWM PWM_PORTY10                          //ENA
+//#define RIGHT_PWM PWM_PORTY12                         //ENB 
+//
+////bumper bits
+//#define FRONT_LEFT_BUMPER_BIT _RB8                      //PORTV07_BIT
+//#define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
+//#define REAR_RIGHT_BUMPER_BIT _RD8                      //PORTZ08_BIT
+//#define REAR_LEFT_BUMPER_BIT _RB10                      //PORTW04_BIT
+//#define SIDE_BUMPER_BIT PORTV08_BIT
+//  
+// //motors
+//#define LEFT_DIR_TRIS _TRISB3                     //PORTV04_TRIS
+//#define LEFT_DIR_INV_TRIS _TRISB2                 //PORTV03_TRIS
+//#define RIGHT_DIR_TRIS _TRISE5                    //PORTY11_TRIS
+//#define RIGHT_DIR_INV_TRIS _TRISE6                //PORTY09_TRIS
+//
+////bumper tris
+//#define FRONT_LEFT_BUMPER_TRIS _TRISB8
+//#define FRONT_RIGHT_BUMPER_TRIS _TRISD9
+//#define REAR_RIGHT_BUMPER_TRIS _TRISD8
+//#define REAR_LEFT_BUMPER_TRIS _TRISB10
+//#define SIDE_BUMPER_TRIS PORTV08_TRIS
+//
+////tape sensor pins
+//#define CENTER_TAPESENSOR_TRIS PORTZ03_TRIS
+//#define LEFT_TAPESENSOR_TRIS PORTZ04_TRIS
+//#define RIGHT_TAPESENSOR_TRIS PORTZ05_TRIS
+//#define BACK_TAPESENSOR_TRIS PORTZ06_TRIS
+//#define TOPLEFT_TAPESENSOR_TRIS PORTZ07_TRIS
+//#define TOPRIGHT_TAPESENSOR_TRIS PORTZ09_TRIS
+//#define TOPCENTER_TAPESENSOR_TRIS PORTZ10_TRIS
+//
+//
+//
+//#define CENTER_TAPESENSOR_BIT PORTZ03_BIT
+//#define LEFT_TAPESENSOR_BIT PORTZ04_BIT
+//#define RIGHT_TAPESENSOR_BIT PORTZ05_BIT
+//#define BACK_TAPESENSOR_BIT PORTZ06_BIT
+//#define TOPLEFT_TAPESENSOR_BIT PORTZ07_BIT
+//#define TOPRIGHT_TAPESENSOR_BIT PORTZ09_BIT
+//#define TOPCENTER_TAPESENSOR_BIT PORTZ10_BIT
+//
+//// Servo for launching mechanism
+//#define RCSERVO_PIN RC_PORTW07
+//
+////Track Wire Detectors
+//#define TRACKWIRE_1 AD_PORTV5
+//#define TRACKWIRE_2 AD_PORTV6
+//#define TRACKWIRE_HIGH 600
+//#define TRACKWIRE_LOW 400
+//
+////Beacon Detector
+//#define BEACON_TRIS PORTW05_TRIS
+//#define BEACON_BIT PORTW05_BIT
+//
+//
+//#define BOSSHOG_BAT_VOLTAGE BAT_VOLTAGE
 
 
 

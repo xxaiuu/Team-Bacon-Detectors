@@ -249,6 +249,7 @@ uint8_t SBEvent(void){
 }
 
 uint8_t TrackWireEvent(void){
+    
     int numTracks = 0;
     uint8_t CurrTrack1 = BosshogReadTrackWire(0);
     uint8_t CurrTrack2 = BosshogReadTrackWire(1);

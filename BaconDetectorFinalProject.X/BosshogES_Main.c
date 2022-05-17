@@ -3,12 +3,14 @@
 #include <stdio.h>
 #include "ES_Configure.h"
 #include "ES_Framework.h"
+#include "bosshog.h"
 
 void main(void)
 {
     ES_Return_t ErrorType;
 
     BOARD_Init();
+    Bosshog_Init();
 
     printf("Starting ES Framework Template\r\n");
     printf("using the 2nd Generation Events & Services Framework\r\n");
