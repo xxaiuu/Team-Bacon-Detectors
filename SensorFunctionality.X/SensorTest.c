@@ -20,31 +20,29 @@ int main(void) {
     Bosshog_Init();
     
     printf("Starting Test Harness");
-    
     while(1){
         
-        Bosshog_LeftMtrSpeed(100);
-        Bosshog_RightMtrSpeed(100);
+       
         
-//        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(0);
-//        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(100);
-//        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(-100);
-//        } else {
-//            Bosshog_LeftMtrSpeed(0);
-//        }
-//       
-//        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(0);
-//        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
-//            Bosshog_RightMtrSpeed(100);
-//        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-//            Bosshog_RightMtrSpeed(-100);
-//        } else {
-//            Bosshog_RightMtrSpeed(0);
-//        }
+        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+            Bosshog_LeftMtrSpeed(0);
+        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
+            Bosshog_LeftMtrSpeed(100);
+        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+            Bosshog_LeftMtrSpeed(-100);
+        } else {
+            Bosshog_LeftMtrSpeed(0);
+        }
+       
+        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+            Bosshog_LeftMtrSpeed(0);
+        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
+            Bosshog_RightMtrSpeed(100);
+        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+            Bosshog_RightMtrSpeed(-100);
+        } else {
+            Bosshog_RightMtrSpeed(0);
+        }
        
        
     }
