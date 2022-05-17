@@ -25,8 +25,8 @@
 #define BUMPER_TRIPPED 1
 #define BUMPER_NOT_TRIPPED 0
 
-#define BEACON_PRESENT 1
-#define BEACON_ABSENT 0
+#define BEACON_PRESENT 0
+#define BEACON_ABSENT 1
 
 #define TRACK_WIRE_PRESENT 2
 #define TRACK_WIRE_ABSENT 1
@@ -55,7 +55,7 @@ void Bosshog_Init(void);
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char BosshogLeftMtrSpeed(char newSpeed);
+char Bosshog_LeftMtrSpeed(char newSpeed);
 
 /**
  * @Function Roach_RightMtrSpeed(char newSpeed)
@@ -64,7 +64,7 @@ char BosshogLeftMtrSpeed(char newSpeed);
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char BosshogRightMtrSpeed(char newSpeed);
+char Bosshog_RightMtrSpeed(char newSpeed);
 
 /**
  * @Function Bosshog_LightLevel(void)
@@ -93,7 +93,7 @@ uint8_t BosshogReadTopCenterTape(void);
  * newSpeed in range [1000, 2000]
  * @return 
  */
-void BosshogSetServo(int newSpeed);
+void BosshogSetServo(int newPos);
 
 /**
  * Function to read value of Track Wire
