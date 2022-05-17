@@ -254,6 +254,7 @@ uint8_t TrackWireEvent(void){
     uint8_t CurrTrack2 = BosshogReadTrackWire(1);
     uint8_t WasEvent = FALSE;
     if(CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT){
+        printf("TRACKWIRE 1 EVENT\r\n");
         numTracks++;
     }
     if(CurrTrack2 != LastTrack2 && CurrTrack2 == TRACK_WIRE_PRESENT){
@@ -305,7 +306,7 @@ uint8_t BCTEvent (void){
         TapeEvent.EventType = BC_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-        printf("BCTEvent\r\n");
+        //printf("BCTEvent\r\n");
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
