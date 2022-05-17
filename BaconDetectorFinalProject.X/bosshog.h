@@ -55,7 +55,7 @@ void Bosshog_Init(void);
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char BosshogLeftMtrSpeed(char newSpeed);
+char Bosshog_LeftMtrSpeed(char newSpeed);
 
 /**
  * @Function Roach_RightMtrSpeed(char newSpeed)
@@ -64,7 +64,7 @@ char BosshogLeftMtrSpeed(char newSpeed);
  * @return SUCCESS or ERROR
  * @brief  This function is used to set the speed and direction of the left motor.
  * @author Max Dunne, 2012.01.06 */
-char BosshogRightMtrSpeed(char newSpeed);
+char Bosshog_RightMtrSpeed(char newSpeed);
 
 /**
  * @Function Bosshog_LightLevel(void)

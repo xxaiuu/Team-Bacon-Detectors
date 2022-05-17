@@ -20,12 +20,12 @@
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 //motors
-#define LEFT_DIR_LAT LATBbits.LATB3                   //PORTV04_LAT
-#define LEFT_DIR_INV_LAT LATBbits.LATB2               //PORTV03_LAT
-#define RIGHT_DIR_LAT LATEbits.LATE5                  //PORTY11_LAT
-#define RIGHT_DIR_INV_LAT LATEbits.LATE6              //PORTY09_LAT
-#define LEFT_PWM PWM_PORTY10
-#define RIGHT_PWM PWM_PORTY12
+#define LEFT_DIR_LAT LATBbits.LATB3                   //PORTV04_LAT  IN1
+#define LEFT_DIR_INV_LAT LATBbits.LATB2               //PORTV03_LAT  IN2
+#define RIGHT_DIR_LAT LATEbits.LATE5                  //PORTY11_LAT  IN3
+#define RIGHT_DIR_INV_LAT LATEbits.LATE6              //PORTY09_LAT  IN4
+#define LEFT_PWM PWM_PORTY10                          //ENA
+#define RIGHT_PWM PWM_PORTY12                         //ENB 
 
 //bumper bits
 #define FRONT_LEFT_BUMPER_BIT _RB8                      //PORTV07_BIT
