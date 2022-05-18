@@ -52,6 +52,8 @@ typedef enum {
     Relocate,
     Navigate,
     Identify, 
+    Deposit,
+    FindNext, 
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
@@ -60,6 +62,8 @@ static const char *StateNames[] = {
 	"Relocate",
     "Navigate",
     "Identify",
+    "Deposit",
+    "FindNext",
 };
 
 
@@ -229,15 +233,17 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
             case FRB_PRESSED:
                 nextState = Identify; 
                 makeTransition = TRUE; 
-                //start 5 second timer
-                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+//                //start 5 second timer
+//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                Init_Identify_SubHSM();
 
                 break;
             case FLB_PRESSED:
                 nextState = Identify; 
                 makeTransition = TRUE;
-                //start 5 second timer
-                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+//                //start 5 second timer
+//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                Init_Identify_SubHSM();
 
                 break;
             default:
@@ -248,17 +254,50 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
         
         
     case Identify:
-        printf("In Identify state. Not Implemented Yet. \r\n");
+        printf("In Identify state. Not Fully Implemented Yet. \r\n");
         //has sub HSM
         //remember to initialize in previous state transition 
+        ThisEvent = Run_Identify_SubHSM(ThisEvent);
+
+        
+        //Transitions
+        switch (ThisEvent.EventType) {
+            //If any of the front bumpers get press, move to the identify state
+            //and start a 5 second timer
+            case FIVE_SEC_TIMER:
+                nextState = FindNext; 
+                makeTransition = TRUE; 
+//                //start 5 second timer
+//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
+                break;
+            case TRACK_WIRE_DETECTED:
+                nextState = Deposit; 
+                makeTransition = TRUE;
+//                //start 5 second timer
+//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
+                break;
+            default:
+                break;
+        }
+        
         break;
         
         
         
+    case Deposit:
+        printf("In Deposit state. Not Implemented Yet. \r\n");
+        //has sub HSM
+        //remember to initialize in previous state transition 
+        break; 
         
         
-        
-        
+    case FindNext:
+        printf("In FindNext state. Not Implemented Yet. \r\n");
+        //has sub HSM
+        //remember to initialize in previous state transition 
+        break;
         
         
         
