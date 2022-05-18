@@ -39,6 +39,7 @@
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
 //Include any defines you need to do
+#define motorspeed 75
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -163,8 +164,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
         // No Sub HSM in this State
         
         // Tank Turn Sweep Right
-        Bosshog_LeftMtrSpeed(100);
-        Bosshog_RightMtrSpeed(-100);
+        Bosshog_LeftMtrSpeed(motorspeed);
+        Bosshog_RightMtrSpeed(-motorspeed);
         
         //Transition 
         switch (ThisEvent.EventType) { 
@@ -189,11 +190,13 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
         //state machine does
         
         //Run the appropriate Sub HSM 
-        ThisEvent = RunBosshogSubHSM(ThisEvent);
+        ThisEvent = Run_Relocate_SubHSM(ThisEvent);
         switch (ThisEvent.EventType) {
-        case ES_NO_EVENT:
-        default:
-            break;
+            case FIVE_SEC_TIMER:
+                nextState = Sweep; 
+                makeTransition = TRUE; 
+            default:
+                break;
         }
         break;
     

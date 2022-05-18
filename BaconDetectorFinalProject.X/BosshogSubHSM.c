@@ -32,6 +32,9 @@
 #include "BOARD.h"
 #include "BosshogHSM.h"
 #include "BosshogSubHSM.h"
+#include "bosshog.h"
+
+#define motorspeed 75
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -39,11 +42,16 @@
 typedef enum {
     InitPSubState,
     SubFirstState,
+    AlignCenterTape, 
+    WalkAlongLine,
 } BosshogSubHSMState_t;
+
 
 static const char *StateNames[] = {
     "InitPSubState",
     "SubFirstState",
+    "AlignCenterTape",
+    "WalkAlongLine",
 };
 
 
@@ -193,24 +201,46 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
                 // initial state
 
                 // now put the machine into the actual initial state
-                nextState = SubFirstState;
+                nextState = AlignCenterTape;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
             }
             break;
 
-        case SubFirstState: // in the first state, replace this with correct names
+        case AlignCenterTape: // in the first state, replace this with correct names
+            //TANK TURN LEFT
+            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(-motorspeed);
+            
+            
+            //Transitions
             switch (ThisEvent.EventType) {
-            case ES_NO_EVENT:
-            default: // all unhandled events pass the event back up to the next level
-                break;
+                case BC_TAPE_BLACK:
+                    nextState = WalkAlongLine;
+                    makeTransition = TRUE;
+                    break;
+                    
+                default: // all unhandled events pass the event back up to the next level
+                    break;
             }
+            
             break;
 
+        case WalkAlongLine:
+            if(ThisEvent.EventType == BL_TAPE_BLACK){
+                //slight drift right
+            }
+            if(ThisEvent.EventType == BR_TAPE_BLACK){
+                //slight drift left
+            }
+            
+            //exit out of top hsm when 5 timer second is over
+            
         default: // all unhandled states fall into here
             break;
     } // end switch on Current State
 
+    
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
         RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
