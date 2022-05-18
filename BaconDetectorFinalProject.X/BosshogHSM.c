@@ -33,6 +33,8 @@
 #include "BOARD.h"
 #include "BosshogHSM.h"
 #include "BosshogSubHSM.h" //#include all sub state machines called
+#include "bosshog.h"
+#include <stdio.h>
 /*******************************************************************************
  * PRIVATE #DEFINES                                                            *
  ******************************************************************************/
@@ -44,13 +46,17 @@
 
 
 typedef enum {
-    InitPState,
-    FirstState,
+    Init,
+    Sweep,
+    Relocate,
+    Navigate,
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
-	"InitPState",
-	"FirstState",
+    "Init",
+	"Sweep",
+	"Relocate",
+    "Navigate",
 };
 
 
@@ -66,7 +72,7 @@ static const char *StateNames[] = {
 /* You will need MyPriority and the state variable; you may need others as well.
  * The type of state variable should match that of enum in header file. */
 
-static BosshogHSMState_t CurrentState = InitPState; // <- change enum name to match ENUM
+static BosshogHSMState_t CurrentState = Init; // <- change enum name to match ENUM
 static uint8_t MyPriority;
 
 
@@ -88,7 +94,7 @@ uint8_t InitBosshogHSM(uint8_t Priority)
 {
     MyPriority = Priority;
     // put us into the Initial PseudoState
-    CurrentState = InitPState;
+    CurrentState = Init;
     // post the initial transition event
     if (ES_PostToService(MyPriority, INIT_EVENT) == TRUE) {
         return TRUE;
@@ -134,7 +140,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
     ES_Tattle(); // trace call stack
 
     switch (CurrentState) {
-    case InitPState: // If current state is initial Pseudo State
+        
+    case Init: // If current state is initial Pseudo State
         if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
         {
             // this is where you would put any actions associated with the
@@ -143,17 +150,45 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
             // Initialize all sub-state machines
             InitBosshogSubHSM();
             // now put the machine into the actual initial state
-            nextState = FirstState;
+            nextState = Sweep;
             makeTransition = TRUE;
             ThisEvent.EventType = ES_NO_EVENT;
             ;
         }
         break;
 
-    case FirstState: // in the first state, replace this with correct names
-        // run sub-state machine for this state
+        
+    // Real Initial State of Top HSM
+    case Sweep:
+        // No Sub HSM in this State
+        
+        // Tank Turn Sweep Right
+        Bosshog_LeftMtrSpeed(100);
+        Bosshog_RightMtrSpeed(-100);
+        
+        //Transition 
+        switch (ThisEvent.EventType) { 
+            case BEACON_DETECTED:
+                nextState = Navigate; 
+                makeTransition = TRUE; 
+                break; 
+            
+            case FIVE_SEC_TIMER:        // when the 5 second timer expires 
+                nextState = Relocate; 
+                makeTransition = TRUE; 
+                break;
+                
+            default: 
+                break; 
+        }
+
+        break;
+        
+    case Relocate:
         //NOTE: the SubState Machine runs and responds to events before anything in the this
         //state machine does
+        
+        //Run the appropriate Sub HSM 
         ThisEvent = RunBosshogSubHSM(ThisEvent);
         switch (ThisEvent.EventType) {
         case ES_NO_EVENT:
@@ -161,10 +196,41 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
             break;
         }
         break;
+    
+        
+    case Navigate:
+        printf("In Navigate state. Not Implemented Yet. \r\n");
+        
+        break;
+        
+        
+       
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
     default: // all unhandled states fall into here
         break;
+    
+   
+    
     } // end switch on Current State
 
+    
+    
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
         RunBosshogHSM(EXIT_EVENT); // <- rename to your own Run function

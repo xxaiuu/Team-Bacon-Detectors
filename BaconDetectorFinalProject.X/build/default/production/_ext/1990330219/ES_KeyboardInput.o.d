@@ -7,6 +7,7 @@ build/default/production/_ext/1990330219/ES_KeyboardInput.o: \
  C:/ECE118/include/ES_Port.h C:/ECE118/include/ES_PostList.h \
  C:/ECE118/include/ES_PriorTables.h C:/ECE118/include/ES_Queue.h \
  C:/ECE118/include/ES_ServiceHeaders.h EventService.h ES_Configure.h \
+ BosshogHSM.h BosshogTimers.h C:/ECE118/include/ES_Events.h \
  C:/ECE118/include/ES_TattleTale.h C:/ECE118/include/ES_TattleTale.h \
  C:/ECE118/include/ES_KeyboardInput.h C:/ECE118/include/serial.h
 
@@ -41,6 +42,12 @@ C:/ECE118/include/ES_ServiceHeaders.h:
 EventService.h:
 
 ES_Configure.h:
+
+BosshogHSM.h:
+
+BosshogTimers.h:
+
+C:/ECE118/include/ES_Events.h:
 
 C:/ECE118/include/ES_TattleTale.h:
 

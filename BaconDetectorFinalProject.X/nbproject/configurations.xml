@@ -31,7 +31,8 @@
       <itemPath>BosshogSubHSM.h</itemPath>
       <itemPath>EventService.h</itemPath>
       <itemPath>ES_Configure.h</itemPath>
-      <itemPath>C:/Users/sindurka/MPLABXProjects/ECE118FinalProject/BaconDetectorFinalProject.X/BosshogEventChecker.h</itemPath>
+      <itemPath>BosshogEventChecker.h</itemPath>
+      <itemPath>BosshogTimers.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -63,6 +64,7 @@
       <itemPath>BosshogSubHSM.c</itemPath>
       <itemPath>EventService.c</itemPath>
       <itemPath>BosshogEventChecker.c</itemPath>
+      <itemPath>BosshogTimers.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

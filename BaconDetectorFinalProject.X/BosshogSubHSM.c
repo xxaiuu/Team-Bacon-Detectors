@@ -90,6 +90,29 @@ uint8_t InitBosshogSubHSM(void)
     return FALSE;
 }
 
+
+
+
+uint8_t InitRelocateSubHSM(void)
+{
+    ES_Event returnEvent;
+
+    CurrentState = InitPSubState;
+    
+    returnEvent = RunBosshogSubHSM(INIT_EVENT);
+    if (returnEvent.EventType == ES_NO_EVENT) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+
+
+
+
+
+
 /**
  * @Function RunTemplateSubHSM(ES_Event ThisEvent)
  * @param ThisEvent - the event (type and param) to be responded.
@@ -151,7 +174,55 @@ ES_Event RunBosshogSubHSM(ES_Event ThisEvent)
 }
 
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
+{
+    uint8_t makeTransition = FALSE; // use to flag transition
+    BosshogSubHSMState_t nextState; // <- change type to correct enum
+
+    ES_Tattle(); // trace call stack
+
+    switch (CurrentState) {
+        case InitPSubState: // If current state is initial Psedudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
+
+                // now put the machine into the actual initial state
+                nextState = SubFirstState;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+
+        case SubFirstState: // in the first state, replace this with correct names
+            switch (ThisEvent.EventType) {
+            case ES_NO_EVENT:
+            default: // all unhandled events pass the event back up to the next level
+                break;
+            }
+            break;
+
+        default: // all unhandled states fall into here
+            break;
+    } // end switch on Current State
+
+    if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
+        // recursively call the current state with an exit event
+        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        CurrentState = nextState;
+        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+    }
+
+    ES_Tail(); // trace call stack end
+    return ThisEvent;
+}
+
+
 /*******************************************************************************
  * PRIVATE FUNCTIONS                                                           *
  ******************************************************************************/
-
