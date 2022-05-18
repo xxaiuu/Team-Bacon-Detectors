@@ -19,7 +19,7 @@ int main(void) {
     TIMERS_Init();
     Bosshog_Init();
     
-    int MTRSpeed = 70;
+    int MTRSpeed = 55;
     
     printf("Starting Test Harness");
     while(1){
