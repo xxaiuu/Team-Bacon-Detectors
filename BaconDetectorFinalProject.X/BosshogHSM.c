@@ -51,6 +51,7 @@ typedef enum {
     Sweep,
     Relocate,
     Navigate,
+    Identify, 
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
@@ -58,6 +59,7 @@ static const char *StateNames[] = {
 	"Sweep",
 	"Relocate",
     "Navigate",
+    "Identify",
 };
 
 
@@ -167,16 +169,26 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
         Bosshog_LeftMtrSpeed(motorspeed);
         Bosshog_RightMtrSpeed(-motorspeed);
         
+        
         //Transition 
         switch (ThisEvent.EventType) { 
             case BEACON_DETECTED:
+                Init_Navigate_SubHSM();
+                
                 nextState = Navigate; 
                 makeTransition = TRUE; 
+                
+                Bosshog_LeftMtrSpeed(0);
+                Bosshog_RightMtrSpeed(0);
                 break; 
             
             case FIVE_SEC_TIMER:        // when the 5 second timer expires 
+                Init_Relocate_SubHSM();
+                
                 nextState = Relocate; 
                 makeTransition = TRUE; 
+                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
                 break;
                 
             default: 
@@ -191,10 +203,14 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
         
         //Run the appropriate Sub HSM 
         ThisEvent = Run_Relocate_SubHSM(ThisEvent);
+        
+        //Transitions
         switch (ThisEvent.EventType) {
             case FIVE_SEC_TIMER:
                 nextState = Sweep; 
                 makeTransition = TRUE; 
+                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
             default:
                 break;
         }
@@ -202,12 +218,40 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
     
         
     case Navigate:
-        printf("In Navigate state. Not Implemented Yet. \r\n");
+        //printf("In Navigate state. Not Implemented Yet. \r\n");
+        //has sub HSM
+        ThisEvent = Run_Navigate_SubHSM(ThisEvent);
+        
+        //Transitions
+        switch (ThisEvent.EventType) {
+            //If any of the front bumpers get press, move to the identify state
+            //and start a 5 second timer
+            case FRB_PRESSED:
+                nextState = Identify; 
+                makeTransition = TRUE; 
+                //start 5 second timer
+                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
+                break;
+            case FLB_PRESSED:
+                nextState = Identify; 
+                makeTransition = TRUE;
+                //start 5 second timer
+                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
+                break;
+            default:
+                break;
+        }
         
         break;
         
         
-       
+    case Identify:
+        printf("In Identify state. Not Implemented Yet. \r\n");
+        //has sub HSM
+        //remember to initialize in previous state transition 
+        break;
         
         
         

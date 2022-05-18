@@ -52,7 +52,8 @@
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
 uint8_t InitBosshogSubHSM(void);
-uint8_t InitRelocateSubHSM(void);
+uint8_t Init_Relocate_SubHSM(void);
+uint8_t Init_Navigate_SubHSM(void);
 
 
 
@@ -73,6 +74,8 @@ uint8_t InitRelocateSubHSM(void);
  * @author Gabriel H Elkaim, 2011.10.23 19:25 */
 ES_Event RunBosshogSubHSM(ES_Event ThisEvent);
 ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent);
+ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent);
+
 
 #endif /* SUB_HSM_Template_H */
 

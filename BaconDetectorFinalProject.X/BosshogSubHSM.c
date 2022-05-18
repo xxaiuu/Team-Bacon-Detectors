@@ -44,6 +44,8 @@ typedef enum {
     SubFirstState,
     AlignCenterTape, 
     WalkAlongLine,
+    Follow, 
+    Jig,
 } BosshogSubHSMState_t;
 
 
@@ -52,6 +54,8 @@ static const char *StateNames[] = {
     "SubFirstState",
     "AlignCenterTape",
     "WalkAlongLine",
+    "Follow",
+    "Jig",
 };
 
 
@@ -101,19 +105,31 @@ uint8_t InitBosshogSubHSM(void)
 
 
 
-uint8_t InitRelocateSubHSM(void)
+uint8_t Init_Relocate_SubHSM(void)
 {
     ES_Event returnEvent;
 
     CurrentState = InitPSubState;
     
-    returnEvent = RunBosshogSubHSM(INIT_EVENT);
+    returnEvent = Run_Relocate_SubHSM(INIT_EVENT);
     if (returnEvent.EventType == ES_NO_EVENT) {
         return TRUE;
     }
     return FALSE;
 }
 
+uint8_t Init_Navigate_SubHSM(void)
+{
+    ES_Event returnEvent;
+
+    CurrentState = InitPSubState;
+    
+    returnEvent = Run_Navigate_SubHSM(INIT_EVENT);
+    if (returnEvent.EventType == ES_NO_EVENT) {
+        return TRUE;
+    }
+    return FALSE;
+}
 
 
 
@@ -229,9 +245,13 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
         case WalkAlongLine:
             if(ThisEvent.EventType == BL_TAPE_BLACK){
                 //slight drift right
+                Bosshog_RightMtrSpeed(motorspeed);
+                Bosshog_LeftMtrSpeed(motorspeed - 10);
             }
             if(ThisEvent.EventType == BR_TAPE_BLACK){
                 //slight drift left
+                Bosshog_RightMtrSpeed(motorspeed - 10);
+                Bosshog_LeftMtrSpeed(motorspeed);
             }
             
             //exit out of top hsm when 5 timer second is over
@@ -251,6 +271,98 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
     ES_Tail(); // trace call stack end
     return ThisEvent;
 }
+
+
+
+ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent)
+{
+    //jumps out of subhsm when a front bumper is hit which is handled in the top hsm
+    
+    uint8_t makeTransition = FALSE; // use to flag transition
+    BosshogSubHSMState_t nextState; // <- change type to correct enum
+
+    ES_Tattle(); // trace call stack
+
+    switch (CurrentState) {
+        case InitPSubState: // If current state is initial Psedudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
+
+                // now put the machine into the actual initial state
+                nextState = Follow;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+
+        case Follow: // in the first state, replace this with correct names
+            //Go forward
+            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(motorspeed);
+            
+            
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case BEACON_LOST:
+                    nextState = Jig;
+                    makeTransition = TRUE;
+                    break;
+                    
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            
+            break;
+
+        case Jig:
+            
+            //Jig, turn in place to the left for 25 degree and then turn in place right for 50 degree 
+            //In theory, it should be able to find the signal again as it was already found before
+            //There is an edge cause that it won't be able to and 
+            //      the bot will have a net turn of 25 degree to the right
+            
+            //mess with jig time to change angle
+            //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
+            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(-motorspeed);
+            
+            if (ThisEvent.EventType == JIGGY_TIME){
+                Bosshog_RightMtrSpeed(-motorspeed);
+                Bosshog_LeftMtrSpeed(motorspeed);
+            }
+            
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case BEACON_DETECTED:
+                    nextState = Follow;
+                    makeTransition = TRUE;
+                    break;
+                    
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            
+            //exit out of top hsm when front bumper is hit
+            
+        default: // all unhandled states fall into here
+            break;
+    } // end switch on Current State
+
+    
+    if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
+        // recursively call the current state with an exit event
+        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        CurrentState = nextState;
+        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+    }
+
+    ES_Tail(); // trace call stack end
+    return ThisEvent;
+}
+
 
 
 /*******************************************************************************
