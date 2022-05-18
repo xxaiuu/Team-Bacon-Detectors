@@ -19,31 +19,49 @@ int main(void) {
     TIMERS_Init();
     Bosshog_Init();
     
+    int MTRSpeed = 70;
+    
     printf("Starting Test Harness");
     while(1){
         
+        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED ){
+            Bosshog_LeftMtrSpeed(0);
+            Bosshog_RightMtrSpeed(0);
+        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
+            Bosshog_LeftMtrSpeed(MTRSpeed);
+            Bosshog_RightMtrSpeed(MTRSpeed);
+        }
+        if (BosshogReadCenterTape()){
+            
+            Bosshog_LeftMtrSpeed(-MTRSpeed);
+            Bosshog_RightMtrSpeed(-MTRSpeed);
+        }
+        if ( BosshogReadBackTape()){
+            Bosshog_LeftMtrSpeed(MTRSpeed);
+            Bosshog_RightMtrSpeed(MTRSpeed);
+        }
+        
+//        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+//            Bosshog_LeftMtrSpeed(0);
+//        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
+//            Bosshog_LeftMtrSpeed(MTRSpeed);
+//        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+//            Bosshog_LeftMtrSpeed(-MTRSpeed);
+//        } else {
+//            Bosshog_LeftMtrSpeed(0);
+//        }
+//       
+//        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+//            Bosshog_RightMtrSpeed(0);
+//        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
+//            Bosshog_RightMtrSpeed(MTRSpeed);
+//        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+//            Bosshog_RightMtrSpeed(-MTRSpeed);
+//        }  else {
+//            Bosshog_RightMtrSpeed(0);
+//        }
        
         
-        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(0);
-        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(100);
-        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(-100);
-        } else {
-            Bosshog_LeftMtrSpeed(0);
-        }
-       
-        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(0);
-        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
-            Bosshog_RightMtrSpeed(100);
-        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-            Bosshog_RightMtrSpeed(-100);
-        } else {
-            Bosshog_RightMtrSpeed(0);
-        }
-       
        
     }
     
