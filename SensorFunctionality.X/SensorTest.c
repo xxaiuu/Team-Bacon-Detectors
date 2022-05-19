@@ -31,15 +31,15 @@ int main(void) {
             Bosshog_LeftMtrSpeed(MTRSpeed);
             Bosshog_RightMtrSpeed(MTRSpeed);
         }
-        if (BosshogReadCenterTape()){
-            
-            Bosshog_LeftMtrSpeed(-MTRSpeed);
-            Bosshog_RightMtrSpeed(-MTRSpeed);
-        }
-        if ( BosshogReadBackTape()){
-            Bosshog_LeftMtrSpeed(MTRSpeed);
-            Bosshog_RightMtrSpeed(MTRSpeed);
-        }
+//        if (BosshogReadCenterTape()){
+//            
+//            Bosshog_LeftMtrSpeed(-MTRSpeed);
+//            Bosshog_RightMtrSpeed(-MTRSpeed);
+//        }
+//        if ( BosshogReadBackTape()){
+//            Bosshog_LeftMtrSpeed(MTRSpeed);
+//            Bosshog_RightMtrSpeed(MTRSpeed);
+//        }
         
 //        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
 //            Bosshog_LeftMtrSpeed(0);
