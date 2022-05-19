@@ -58,6 +58,9 @@ typedef enum {
     TLT_TRT_One_For_Locate,
     TLT_TRT_One_For_BackLocate,
     DepositInit,
+    TCT_and_TRT_One_For_Deposit,
+    TLT_and_TRT_One_For_Deposit,
+    Scan,
 } BosshogSubHSMState_t;
 
 
@@ -78,7 +81,11 @@ static const char *StateNames[] = {
     "Corner",
     "BackCorner",
     "TLT_TRT_One_For_Locate",
+    "TLT_TRT_One_For_BackLocate",
     "DepositInit",
+    "TCT_and_TRT_One_For_Deposit",
+    "TLT_and_TRT_One_For_Deposit",
+    "Scan",
 };
 
 
@@ -726,9 +733,9 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             break;
 
         case DepositInit: // in the first state, replace this with correct names
-            //Drive Forward
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            //Drive Backward
+            Bosshog_RightMtrSpeed(-motorspeed);
+            Bosshog_LeftMtrSpeed(-motorspeed);
 
 
             if (ThisEvent.EventType == SB_RELEASED) {
@@ -744,8 +751,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
             //Transitions
             switch (ThisEvent.EventType) {
-                case BC_TAPE_BLACK:
-                    nextState = WalkAlongLine;
+                case TR_TAPE_BLACK:
+                    nextState = TLT_and_TRT_One_For_Deposit;
                     makeTransition = TRUE;
                     break;
 
@@ -755,19 +762,31 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
             break;
 
-        case WalkAlongLine:
-            if (ThisEvent.EventType == BL_TAPE_BLACK) {
-                //slight drift right
-                Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed - 10);
-            }
-            if (ThisEvent.EventType == BR_TAPE_BLACK) {
-                //slight drift left
-                Bosshog_RightMtrSpeed(motorspeed - 10);
-                Bosshog_LeftMtrSpeed(motorspeed);
+            //exit out of top hsm when 5 timer second is over
+
+        case TLT_and_TRT_One_For_Deposit:
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case TL_TAPE_BLACK:
+                    nextState = Scan;
+                    makeTransition = TRUE;
+                    break;
+
+                case TL_TAPE_WHITE:
+                    nextState = DepositInit;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
             }
 
-            //exit out of top hsm when 5 timer second is over
+            break;
+            
+        case Scan:
+            
+            
+            break;
 
         default: // all unhandled states fall into here
             break;

@@ -52,15 +52,15 @@ typedef enum {
     Sweep,
     Relocate,
     Navigate,
-    Identify, 
+    Identify,
     Deposit,
-    FindNext, 
+    FindNext,
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
     "Init",
-	"Sweep",
-	"Relocate",
+    "Sweep",
+    "Relocate",
     "Navigate",
     "Identify",
     "Deposit",
@@ -98,8 +98,7 @@ static uint8_t MyPriority;
  *        to rename this to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t InitBosshogHSM(uint8_t Priority)
-{
+uint8_t InitBosshogHSM(uint8_t Priority) {
     MyPriority = Priority;
     // put us into the Initial PseudoState
     CurrentState = Init;
@@ -120,8 +119,7 @@ uint8_t InitBosshogHSM(uint8_t Priority)
  *        be posted to. Remember to rename to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t PostBosshogHSM(ES_Event ThisEvent)
-{
+uint8_t PostBosshogHSM(ES_Event ThisEvent) {
     return ES_PostToService(MyPriority, ThisEvent);
 }
 
@@ -140,185 +138,189 @@ uint8_t PostBosshogHSM(ES_Event ThisEvent)
  *       not consumed as these need to pass pack to the higher level state machine.
  * @author J. Edward Carryer, 2011.10.23 19:25
  * @author Gabriel H Elkaim, 2011.10.23 19:25 */
-ES_Event RunBosshogHSM(ES_Event ThisEvent)
-{
+ES_Event RunBosshogHSM(ES_Event ThisEvent) {
     uint8_t makeTransition = FALSE; // use to flag transition
     BosshogHSMState_t nextState; // <- change type to correct enum
 
     ES_Tattle(); // trace call stack
 
     switch (CurrentState) {
-        
-    case Init: // If current state is initial Pseudo State
-        if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
-        {
-            // this is where you would put any actions associated with the
-            // transition from the initial pseudo-state into the actual
-            // initial state
-            // Initialize all sub-state machines
-            Init_Relocate_SubHSM();
-            Init_Navigate_SubHSM();
-            // now put the machine into the actual initial state
-            nextState = Sweep;
-            makeTransition = TRUE;
-            ThisEvent.EventType = ES_NO_EVENT;
-            ;
-        }
-        break;
 
-        
-    // Real Initial State of Top HSM
-    case Sweep:
-        // No Sub HSM in this State
-        
-        // Tank Turn Sweep Right
-        Bosshog_LeftMtrSpeed(motorspeed);
-        Bosshog_RightMtrSpeed(-motorspeed);
-        
-        
-        //Transition 
-        switch (ThisEvent.EventType) { 
-            case BEACON_DETECTED:
-                Init_Navigate_SubHSM();
-                
-                nextState = Navigate; 
-                makeTransition = TRUE; 
-                
-                Bosshog_LeftMtrSpeed(0);
-                Bosshog_RightMtrSpeed(0);
-                break; 
-            
-            case FIVE_SEC_TIMER:        // when the 5 second timer expires 
+        case Init: // If current state is initial Pseudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
+                // Initialize all sub-state machines
                 Init_Relocate_SubHSM();
-                
-                nextState = Relocate; 
-                makeTransition = TRUE; 
-                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-
-                break;
-                
-            default: 
-                break; 
-        }
-
-        break;
-        
-    case Relocate:
-        //NOTE: the SubState Machine runs and responds to events before anything in the this
-        //state machine does
-        
-        //Run the appropriate Sub HSM 
-        ThisEvent = Run_Relocate_SubHSM(ThisEvent);
-        
-        //Transitions
-        switch (ThisEvent.EventType) {
-            case FIVE_SEC_TIMER:
-                nextState = Sweep; 
-                makeTransition = TRUE; 
-                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-
-            default:
-                break;
-        }
-        break;
-    
-        
-    case Navigate:
-        //printf("In Navigate state. Not Implemented Yet. \r\n");
-        //has sub HSM
-        ThisEvent = Run_Navigate_SubHSM(ThisEvent);
-        
-        //Transitions
-        switch (ThisEvent.EventType) {
-            //If any of the front bumpers get press, move to the identify state
-            //and start a 5 second timer
-            case FRB_PRESSED:
-                nextState = Identify; 
-                makeTransition = TRUE; 
-//                //start 5 second timer
-//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-                Init_Identify_SubHSM();
-
-                break;
-            case FLB_PRESSED:
-                nextState = Identify; 
+                Init_Navigate_SubHSM();
+                // now put the machine into the actual initial state
+                nextState = Sweep;
                 makeTransition = TRUE;
-//                //start 5 second timer
-//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-                Init_Identify_SubHSM();
+                ThisEvent.EventType = ES_NO_EVENT;
+                ;
+            }
+            break;
 
-                break;
-            default:
-                break;
-        }
-        
-        break;
-        
-        
-    case Identify:
-        printf("In Identify state. Not Fully Implemented Yet. \r\n");
-        //has sub HSM
-        //remember to initialize in previous state transition 
-        ThisEvent = Run_Identify_SubHSM(ThisEvent);
 
-        
-        //Transitions
-        switch (ThisEvent.EventType) {
-            //If any of the front bumpers get press, move to the identify state
-            //and start a 5 second timer
-            case FIVE_SEC_TIMER:
-                nextState = FindNext; 
-                makeTransition = TRUE; 
-//                //start 5 second timer
-//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+            // Real Initial State of Top HSM
+        case Sweep:
+            // No Sub HSM in this State
 
-                break;
-            case TRACK_WIRE_DETECTED:
-                nextState = Deposit; 
-                makeTransition = TRUE;
-//                //start 5 second timer
-//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+            // Tank Turn Sweep Right
+            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(-motorspeed);
 
-                break;
-            default:
-                break;
-        }
-        
-        break;
-        
-        
-        
-    case Deposit:
-        printf("In Deposit state. Not Implemented Yet. \r\n");
-        //has sub HSM
-        //remember to initialize in previous state transition 
-        break; 
-        
-        
-    case FindNext:
-        printf("In FindNext state. Not Implemented Yet. \r\n");
-        //has sub HSM
-        //remember to initialize in previous state transition 
-        break;
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    default: // all unhandled states fall into here
-        break;
-    
-   
-    
+
+            //Transition 
+            switch (ThisEvent.EventType) {
+                case BEACON_DETECTED:
+                    Init_Navigate_SubHSM();
+
+                    nextState = Navigate;
+                    makeTransition = TRUE;
+
+                    Bosshog_LeftMtrSpeed(0);
+                    Bosshog_RightMtrSpeed(0);
+                    break;
+
+                case FIVE_SEC_TIMER: // when the 5 second timer expires 
+                    Init_Relocate_SubHSM();
+
+                    nextState = Relocate;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+
+                    break;
+
+                default:
+                    break;
+            }
+
+            break;
+
+        case Relocate:
+            //NOTE: the SubState Machine runs and responds to events before anything in the this
+            //state machine does
+
+            //Run the appropriate Sub HSM 
+            ThisEvent = Run_Relocate_SubHSM(ThisEvent);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case FIVE_SEC_TIMER:
+                    nextState = Sweep;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+
+                default:
+                    break;
+            }
+            break;
+
+
+        case Navigate:
+            //printf("In Navigate state. Not Implemented Yet. \r\n");
+            //has sub HSM
+            ThisEvent = Run_Navigate_SubHSM(ThisEvent);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                    //If any of the front bumpers get press, move to the identify state
+                    //and start a 5 second timer
+                case FRB_PRESSED:
+                    nextState = Identify;
+                    makeTransition = TRUE;
+                    //                //start 5 second timer
+                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                    Init_Identify_SubHSM();
+
+                    break;
+                case FLB_PRESSED:
+                    nextState = Identify;
+                    makeTransition = TRUE;
+                    //                //start 5 second timer
+                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                    Init_Identify_SubHSM();
+
+                    break;
+                default:
+                    break;
+            }
+
+            break;
+
+
+        case Identify:
+            printf("In Identify state. Not Fully Implemented Yet. \r\n");
+            //has sub HSM
+            //remember to initialize in previous state transition 
+            ThisEvent = Run_Identify_SubHSM(ThisEvent);
+
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                    //If any of the front bumpers get press, move to the identify state
+                    //and start a 5 second timer
+                case FIVE_SEC_TIMER:
+                    nextState = FindNext;
+                    makeTransition = TRUE;
+                    //                //start 5 second timer
+                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
+                    break;
+                case TRACK_WIRE_DETECTED:
+                    nextState = Deposit;
+                    makeTransition = TRUE;
+                    //                //start 5 second timer
+                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+
+                    break;
+                default:
+                    break;
+            }
+
+            break;
+
+
+
+        case Deposit:
+            printf("In Deposit state. Not Implemented Yet. \r\n");
+            //has sub HSM
+            //remember to initialize in previous state transition 
+            ThisEvent = Run_Deposit_SubHSM(ThisEvent);
+            
+            nextState = FindNext;
+            makeTransition = TRUE;
+
+            break;
+
+
+        case FindNext:
+            printf("In FindNext state. Not Implemented Yet. \r\n");
+            //has sub HSM
+            //remember to initialize in previous state transition 
+            break;
+
+
+
+
+
+
+
+
+
+
+        default: // all unhandled states fall into here
+            break;
+
+
+
     } // end switch on Current State
 
-    
-    
+
+
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
         RunBosshogHSM(EXIT_EVENT); // <- rename to your own Run function
