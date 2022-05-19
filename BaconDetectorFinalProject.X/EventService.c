@@ -284,8 +284,9 @@ uint8_t TrackWireEvent(void) {
 //        numTracks++;
 //    }
     //if (numTracks == 2) {
+    //printf("%d,%d\r\n",CurrTrack1,CurrTrack2);
     if ((CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_ABSENT) || ((CurrTrack1 == TRACK_WIRE_ABSENT && CurrTrack2 == TRACK_WIRE_PRESENT))){
-        printf("onyl seeing one\r\n");
+        //printf("only seeing one\r\n");
         LastBothTrack = 0;
     }
     if (CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_PRESENT  && (LastBothTrack == 0)){
