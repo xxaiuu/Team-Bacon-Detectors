@@ -120,9 +120,11 @@ uint8_t PostEventService(ES_Event ThisEvent)
 
 uint8_t FRBEvent(void){
     static uint8_t CurrBumper;
+    static uint8_t CurrBumperTop; 
     CurrBumper = Bosshog_ReadFrontRightBumper();
+    CurrBumperTop = Bosshog_ReadTopFrontRightBumper();
     uint8_t WasEvent = FALSE;
-    if(CurrBumper != LastFRB && CurrBumper == BUMPER_TRIPPED){
+    if((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED){
         ES_Event BumperEvent;
         BumperEvent.EventType = FRB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
@@ -139,7 +141,7 @@ uint8_t FRBEvent(void){
         PostBosshogHSM(BumperEvent); 
         WasEvent = TRUE;
     }
-    LastFRB = CurrBumper;
+    LastFRB = (CurrBumper | CurrBumperTop);
     return WasEvent;
 }
 

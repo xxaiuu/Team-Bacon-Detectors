@@ -377,10 +377,18 @@ unsigned char Bosshog_ReadSideBumper(void)
     return !SIDE_BUMPER_BIT;
 }
 
-unsigned char Bosshog_ReadTopFrontRightBumper(void);
-unsigned char Bosshog_ReadTopFrontLeftBumper(void);
-unsigned char Bosshog_ReadTopBackRightBumper(void);
-unsigned char Bosshog_ReadTopBackLeftBumper(void);
+unsigned char Bosshog_ReadTopFrontRightBumper(void){
+    return !TOP_FRONT_RIGHT_BUMPER_BIT;
+}
+unsigned char Bosshog_ReadTopFrontLeftBumper(void){
+    return !TOP_FRONT_LEFT_BUMPER_BIT;
+}
+unsigned char Bosshog_ReadTopBackRightBumper(void){
+    return !TOP_BACK_RIGHT_BUMPER_BIT;
+}
+unsigned char Bosshog_ReadTopBackLeftBumper(void){
+    return !TOP_BACK_LEFT_BUMPER_BIT;
+}
 
 /**
  * @Function Bosshog_ReadBumpers(void)
