@@ -263,7 +263,7 @@ uint8_t TrackWireEvent(void){
     if(CurrTrack2 != LastTrack2 && CurrTrack2 == TRACK_WIRE_PRESENT){
         numTracks++;
     }
-    if (numTracks){
+    if (numTracks == 2 ){
         ES_Event TrackEvent;
         TrackEvent.EventType = TRACK_WIRE_DETECTED;
         TrackEvent.EventParam = (uint16_t) numTracks;
@@ -438,27 +438,44 @@ uint8_t TCTEvent (void){
 
 
 uint8_t TL_and_TR_Event(void){
-    static uint8_t CurrTapeTL;
-    CurrTape = BosshogReadTopCenterTape();
+    static uint8_t CurrTapeTL, CurrTapeTR;
+    CurrTapeTL = BosshogReadTopLeftTape();
+    CurrTapeTR = BosshogReadTopRightTape();
     uint8_t WasEvent = FALSE;
-//    if(CurrTape != LastTCT && CurrTape == TAPE_BLACK){
-//        ES_Event TapeEvent;
-//        TapeEvent.EventType = TC_TAPE_BLACK;
-//        TapeEvent.EventParam = (uint16_t) CurrTape;
-//#ifndef EVENTCHECKER_TEST
-//        PostBosshogHSM(TapeEvent);
-//#else
-//        SaveEvent(BumperEvent);
-//#endif  
-//        WasEvent = TRUE;
-//    }else if(CurrTape != LastTCT && CurrTape == TAPE_WHITE){
-//        ES_Event TapeEvent;
-//        TapeEvent.EventType = TC_TAPE_WHITE;
-//        TapeEvent.EventParam = (uint16_t) CurrTape;
-//        PostBosshogHSM(TapeEvent); 
-//        WasEvent = TRUE;
-//    }
-//    LastTCT = CurrTape;
+    if((CurrTapeTL != LastTLT && CurrTapeTL == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)){
+        ES_Event TapeEvent;
+        TapeEvent.EventType = WALL_EDGE;
+        TapeEvent.EventParam = (uint16_t) CurrTapeTL + CurrTapeTR;
+#ifndef EVENTCHECKER_TEST
+        PostBosshogHSM(TapeEvent);
+#else
+        SaveEvent(BumperEvent);
+#endif  
+        WasEvent = TRUE;
+    }
+    LastTRT = CurrTapeTR;
+    LastTLT = CurrTapeTL;
+    return WasEvent;
+}
+
+uint8_t TR_and_TC_Event(void){
+    static uint8_t CurrTapeTC, CurrTapeTR;
+    CurrTapeTC = BosshogReadTopCenterTape();
+    CurrTapeTR = BosshogReadTopRightTape();
+    uint8_t WasEvent = FALSE;
+    if((CurrTapeTC != LastTCT && CurrTapeTC == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)){
+        ES_Event TapeEvent;
+        TapeEvent.EventType = TAPE_ALIGNED;
+        TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR;
+#ifndef EVENTCHECKER_TEST
+        PostBosshogHSM(TapeEvent);
+#else
+        SaveEvent(BumperEvent);
+#endif  
+        WasEvent = TRUE;
+    }
+    LastTRT = CurrTapeTR;
+    LastTCT = CurrTapeTC;
     return WasEvent;
 }
 
@@ -508,6 +525,7 @@ ES_Event RunEventService(ES_Event ThisEvent)
         TRTEvent();
         TCTEvent();
         TL_and_TR_Event();
+        TR_and_TC_Event();
         //reset ES TIMER
         ES_Timer_InitTimer(EVENT_TIMER,5);
 //        if (batVoltage > BATTERY_DISCONNECT_THRESHOLD) { // is battery connected?

@@ -69,6 +69,8 @@ typedef enum {
     TR_TAPE_WHITE,
     BEACON_DETECTED,
     BEACON_LOST,
+    TAPE_ALIGNED,  //TCT TRT black so we are aligned with hole to desposit
+    WALL_EDGE,     //TLT TRT black so we are at the edge of the wall need to turn
             
     FIVE_SEC_TIMER,
     JIGGY_TIME,
@@ -113,6 +115,8 @@ static const char *EventNames[] = {
     "TR_TAPE_WHITE",
     "BEACON_DETECTED",
     "BEACON_LOST",
+    "TAPE_ALIGNED",
+    "WALL_EDGE",
     "FIVE_SEC_TIMER",
     "JIGGY_TIME",
 	"NUMBEROFEVENTS",
