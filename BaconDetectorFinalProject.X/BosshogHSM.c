@@ -55,6 +55,8 @@ typedef enum {
     Identify,
     Deposit,
     FindNext,
+    FindNextInverse,
+    CantFind,
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
@@ -65,6 +67,8 @@ static const char *StateNames[] = {
     "Identify",
     "Deposit",
     "FindNext",
+    "FindNextInverse",
+    "CantFind",
 };
 
 
@@ -293,7 +297,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //has sub HSM
             //remember to initialize in previous state transition 
             ThisEvent = Run_Deposit_SubHSM(ThisEvent);
-            
+
             nextState = FindNext;
             makeTransition = TRUE;
 
@@ -304,13 +308,44 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
+            
+            
+                        //Transitions
+            switch (ThisEvent.EventType) {
+
+                case BEACON_DETECTED:
+                    nextState = Navigate;
+                    makeTransition = TRUE;
+
+                    break;
+                case BB_TAPE_BLACK:
+                    //DO 180 DEGREE TANK TURN
+                    // Timer will need to be used and adjusted
+                    Bosshog_LeftMtrSpeed(motorspeed);
+                    Bosshog_RightMtrSpeed(-motorspeed);
+                    
+                    nextState = FindNextInverse;
+                    makeTransition = TRUE;
+
+                    break;
+                default:
+                    break;
+            }
+            
             break;
 
 
-
-
-
-
+        case FindNextInverse:
+            printf("In FindNext state. Not Implemented Yet. \r\n");
+            //has sub HSM
+            //remember to initialize in previous state transition 
+            break;
+            
+        case CantFind:
+            printf("In FindNext state. Not Implemented Yet. \r\n");
+            // no sub hsm
+            //remember to initialize in previous state transition 
+            break;
 
 
 

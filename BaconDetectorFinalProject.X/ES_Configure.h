@@ -74,6 +74,7 @@ typedef enum {
             
     FIVE_SEC_TIMER,
     JIGGY_TIME,
+            SPIN_AROUND,
 	/* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
@@ -119,6 +120,7 @@ static const char *EventNames[] = {
     "WALL_EDGE",
     "FIVE_SEC_TIMER",
     "JIGGY_TIME",
+    "SPIN_AROUND",
 	"NUMBEROFEVENTS",
 };
 
@@ -141,7 +143,7 @@ static const char *EventNames[] = {
 #define TIMER0_RESP_FUNC PostEventService
 #define TIMER1_RESP_FUNC Post_timer_5_sec
 #define TIMER2_RESP_FUNC Post_jig_timer
-#define TIMER3_RESP_FUNC TIMER_UNUSED
+#define TIMER3_RESP_FUNC Post_180_timer
 #define TIMER4_RESP_FUNC TIMER_UNUSED
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
@@ -165,7 +167,7 @@ static const char *EventNames[] = {
 #define EVENT_TIMER 0 /*make sure this is enabled above and posting to the correct state machine*/
 #define Five_Second_Timer 1
 #define Timer_For_Jig 2
-
+#define Timer_For_180 3
 
 /****************************************************************************/
 // The maximum number of services sets an upper bound on the number of 
@@ -176,7 +178,7 @@ static const char *EventNames[] = {
 /****************************************************************************/
 // This macro determines that nuber of services that are *actually* used in
 // a particular application. It will vary in value from 1 to MAX_NUM_SERVICES
-#define NUM_SERVICES 5
+#define NUM_SERVICES 6
 
 /****************************************************************************/
 // These are the definitions for Service 0, the lowest priority service
@@ -249,11 +251,11 @@ static const char *EventNames[] = {
 // These are the definitions for Service 5
 #if NUM_SERVICES > 5
 // the header file with the public fuction prototypes
-#define SERV_5_HEADER "TestService.h"
+#define SERV_5_HEADER "BosshogTimers.h"
 // the name of the Init function
-#define SERV_5_INIT TestServiceInit
+#define SERV_5_INIT Init_180_timer
 // the name of the run function
-#define SERV_5_RUN TestServiceRun
+#define SERV_5_RUN Run_180_timer
 // How big should this services Queue be?
 #define SERV_5_QUEUE_SIZE 3
 #endif
