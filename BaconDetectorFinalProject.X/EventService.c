@@ -148,9 +148,11 @@ uint8_t FRBEvent(void){
 
 uint8_t FLBEvent(void){
     static uint8_t CurrBumper;
+    static uint8_t CurrBumperTop;
     CurrBumper = Bosshog_ReadFrontLeftBumper();
+    CurrBumperTop = Bosshog_ReadTopFrontLeftBumper();
     uint8_t WasEvent = FALSE;
-    if(CurrBumper != LastFLB && CurrBumper == BUMPER_TRIPPED){
+    if((CurrBumper | CurrBumperTop) != LastFLB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED){
         ES_Event BumperEvent;
         BumperEvent.EventType = FLB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
@@ -167,7 +169,7 @@ uint8_t FLBEvent(void){
         PostBosshogHSM(BumperEvent); 
         WasEvent = TRUE;
     }
-    LastFLB = CurrBumper;
+    LastFLB = (CurrBumper | CurrBumperTop);
     return WasEvent;
 }
 
@@ -175,9 +177,11 @@ uint8_t FLBEvent(void){
 
 uint8_t BRBEvent(void){
     static uint8_t CurrBumper;
+    static uint8_t CurrBumperTop; 
     CurrBumper = Bosshog_ReadRearRightBumper();
+    CurrBumperTop = Bosshog_ReadTopBackRightBumper();
     uint8_t WasEvent = FALSE;
-    if(CurrBumper != LastBRB && CurrBumper == BUMPER_TRIPPED){
+    if((CurrBumper | CurrBumperTop) != LastBRB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED){
         ES_Event BumperEvent;
         BumperEvent.EventType = BRB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
@@ -194,16 +198,18 @@ uint8_t BRBEvent(void){
         PostBosshogHSM(BumperEvent); 
         WasEvent = TRUE;
     }
-    LastBRB = CurrBumper;
+    LastBRB = (CurrBumper | CurrBumperTop);
     return WasEvent;
 }
 
 
 uint8_t BLBEvent(void){
     static uint8_t CurrBumper;
+    static uint8_t CurrBumperTop; 
     CurrBumper = Bosshog_ReadRearLeftBumper();
+    CurrBumperTop = Bosshog_ReadTopBackLeftBumper();
     uint8_t WasEvent = FALSE;
-    if(CurrBumper != LastBLB && CurrBumper == BUMPER_TRIPPED){
+    if((CurrBumper | CurrBumperTop) != LastBLB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED){
         ES_Event BumperEvent;
         BumperEvent.EventType = BLB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
@@ -220,7 +226,7 @@ uint8_t BLBEvent(void){
         PostBosshogHSM(BumperEvent); 
         WasEvent = TRUE;
     }
-    LastBLB = CurrBumper;
+    LastBLB = (CurrBumper | CurrBumperTop);
     return WasEvent;
 }
 
