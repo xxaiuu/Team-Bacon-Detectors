@@ -42,11 +42,11 @@
 typedef enum {
     InitPSubState,
     SubFirstState,
-    AlignCenterTape, 
+    AlignCenterTape,
     WalkAlongLine,
-    Follow, 
+    Follow,
     Jig,
-    Align, 
+    Align,
     Validate,
     IsDead,
     Evade,
@@ -55,6 +55,8 @@ typedef enum {
     BackLocate,
     Corner,
     BackCorner,
+    TLT_TRT_One_For_Locate,
+    TLT_TRT_One_For_BackLocate,
 } BosshogSubHSMState_t;
 
 
@@ -74,6 +76,7 @@ static const char *StateNames[] = {
     "BackLocate",
     "Corner",
     "BackCorner",
+    "TLT_TRT_One_For_Locate",
 };
 
 
@@ -108,8 +111,7 @@ static uint8_t MyPriority;
  *        to rename this to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t InitBosshogSubHSM(void)
-{
+uint8_t InitBosshogSubHSM(void) {
     ES_Event returnEvent;
 
     CurrentState = InitPSubState;
@@ -120,13 +122,11 @@ uint8_t InitBosshogSubHSM(void)
     return FALSE;
 }
 
-
-uint8_t Init_Relocate_SubHSM(void)
-{
+uint8_t Init_Relocate_SubHSM(void) {
     ES_Event returnEvent;
 
     CurrentState = InitPSubState;
-    
+
     returnEvent = Run_Relocate_SubHSM(INIT_EVENT);
     if (returnEvent.EventType == ES_NO_EVENT) {
         return TRUE;
@@ -134,12 +134,11 @@ uint8_t Init_Relocate_SubHSM(void)
     return FALSE;
 }
 
-uint8_t Init_Navigate_SubHSM(void)
-{
+uint8_t Init_Navigate_SubHSM(void) {
     ES_Event returnEvent;
 
     CurrentState = InitPSubState;
-    
+
     returnEvent = Run_Navigate_SubHSM(INIT_EVENT);
     if (returnEvent.EventType == ES_NO_EVENT) {
         return TRUE;
@@ -147,12 +146,11 @@ uint8_t Init_Navigate_SubHSM(void)
     return FALSE;
 }
 
-uint8_t Init_Identify_SubHSM(void)
-{
+uint8_t Init_Identify_SubHSM(void) {
     ES_Event returnEvent;
 
     CurrentState = InitPSubState;
-    
+
     returnEvent = Run_Identify_SubHSM(INIT_EVENT);
     if (returnEvent.EventType == ES_NO_EVENT) {
         return TRUE;
@@ -161,8 +159,17 @@ uint8_t Init_Identify_SubHSM(void)
 }
 
 
+uint8_t Init_Deposit_SubHSM(void) {
+    ES_Event returnEvent;
 
+    CurrentState = InitPSubState;
 
+    returnEvent = Run_Deposit_SubHSM(INIT_EVENT);
+    if (returnEvent.EventType == ES_NO_EVENT) {
+        return TRUE;
+    }
+    return FALSE;
+}
 
 /**
  * @Function RunTemplateSubHSM(ES_Event ThisEvent)
@@ -179,38 +186,37 @@ uint8_t Init_Identify_SubHSM(void)
  *       not consumed as these need to pass pack to the higher level state machine.
  * @author J. Edward Carryer, 2011.10.23 19:25
  * @author Gabriel H Elkaim, 2011.10.23 19:25 */
-ES_Event RunBosshogSubHSM(ES_Event ThisEvent)
-{
+ES_Event RunBosshogSubHSM(ES_Event ThisEvent) {
     uint8_t makeTransition = FALSE; // use to flag transition
     BosshogSubHSMState_t nextState; // <- change type to correct enum
 
     ES_Tattle(); // trace call stack
 
     switch (CurrentState) {
-    case InitPSubState: // If current state is initial Psedudo State
-        if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
-        {
-            // this is where you would put any actions associated with the
-            // transition from the initial pseudo-state into the actual
-            // initial state
+        case InitPSubState: // If current state is initial Psedudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
 
-            // now put the machine into the actual initial state
-            nextState = SubFirstState;
-            makeTransition = TRUE;
-            ThisEvent.EventType = ES_NO_EVENT;
-        }
-        break;
-
-    case SubFirstState: // in the first state, replace this with correct names
-        switch (ThisEvent.EventType) {
-        case ES_NO_EVENT:
-        default: // all unhandled events pass the event back up to the next level
+                // now put the machine into the actual initial state
+                nextState = SubFirstState;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
             break;
-        }
-        break;
-        
-    default: // all unhandled states fall into here
-        break;
+
+        case SubFirstState: // in the first state, replace this with correct names
+            switch (ThisEvent.EventType) {
+                case ES_NO_EVENT:
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            break;
+
+        default: // all unhandled states fall into here
+            break;
     } // end switch on Current State
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
@@ -227,9 +233,7 @@ ES_Event RunBosshogSubHSM(ES_Event ThisEvent)
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
-ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
-{
+ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
     uint8_t makeTransition = FALSE; // use to flag transition
     BosshogSubHSMState_t nextState; // <- change type to correct enum
 
@@ -254,40 +258,40 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
             //TANK TURN LEFT
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
-            
-            
+
+
             //Transitions
             switch (ThisEvent.EventType) {
                 case BC_TAPE_BLACK:
                     nextState = WalkAlongLine;
                     makeTransition = TRUE;
                     break;
-                    
+
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
-            
+
             break;
 
         case WalkAlongLine:
-            if(ThisEvent.EventType == BL_TAPE_BLACK){
+            if (ThisEvent.EventType == BL_TAPE_BLACK) {
                 //slight drift right
                 Bosshog_RightMtrSpeed(motorspeed);
                 Bosshog_LeftMtrSpeed(motorspeed - 10);
             }
-            if(ThisEvent.EventType == BR_TAPE_BLACK){
+            if (ThisEvent.EventType == BR_TAPE_BLACK) {
                 //slight drift left
                 Bosshog_RightMtrSpeed(motorspeed - 10);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
-            
+
             //exit out of top hsm when 5 timer second is over
-            
+
         default: // all unhandled states fall into here
             break;
     } // end switch on Current State
 
-    
+
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
         RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
@@ -299,12 +303,9 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent)
     return ThisEvent;
 }
 
-
-
-ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent)
-{
+ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
     //jumps out of subhsm when a front bumper is hit which is handled in the top hsm
-    
+
     uint8_t makeTransition = FALSE; // use to flag transition
     BosshogSubHSMState_t nextState; // <- change type to correct enum
 
@@ -329,56 +330,56 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent)
             //Go forward
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
-            
-            
+
+
             //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_LOST:
                     nextState = Jig;
                     makeTransition = TRUE;
                     break;
-                    
+
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
-            
+
             break;
 
         case Jig:
-            
+
             //Jig, turn in place to the left for 25 degree and then turn in place right for 50 degree 
             //In theory, it should be able to find the signal again as it was already found before
             //There is an edge cause that it won't be able to and 
             //      the bot will have a net turn of 25 degree to the right
-            
+
             //mess with jig time to change angle
             //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
-            
-            if (ThisEvent.EventType == JIGGY_TIME){
+
+            if (ThisEvent.EventType == JIGGY_TIME) {
                 Bosshog_RightMtrSpeed(-motorspeed);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
-            
+
             //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_DETECTED:
                     nextState = Follow;
                     makeTransition = TRUE;
                     break;
-                    
+
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
-            
+
             //exit out of top hsm when front bumper is hit
-            
+
         default: // all unhandled states fall into here
             break;
     } // end switch on Current State
 
-    
+
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
         RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
@@ -390,13 +391,9 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent)
     return ThisEvent;
 }
 
-
-
-
-ES_Event Run_Identify_SubHSM(ES_Event ThisEvent)
-{
+ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
     //jumps out of subhsm when a front bumper is hit which is handled in the top hsm
-    
+
     uint8_t makeTransition = FALSE; // use to flag transition
     BosshogSubHSMState_t nextState; // <- change type to correct enum
 
@@ -421,62 +418,62 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent)
             //Turn Right
             Bosshog_RightMtrSpeed(-motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
-            
+
             //Transitions
             switch (ThisEvent.EventType) {
                 case SB_PRESSED:
                     nextState = Validate;
                     makeTransition = TRUE;
-                    
+
                     Bosshog_RightMtrSpeed(0);
                     Bosshog_LeftMtrSpeed(0);
-                    
+
                     break;
-                    
+
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
-            
+
             break;
 
         case Validate:
             //This state checks the top center tape
-            
+
             //Transitions
             switch (ThisEvent.EventType) {
                 case TC_TAPE_BLACK:
                     nextState = IsDead;
                     makeTransition = TRUE;
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
                     break;
                 case TC_TAPE_WHITE:
                     nextState = Locate;
-                    makeTransition = TRUE;                    
+                    makeTransition = TRUE;
                     break;
-                    
+
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
-            
-            
+
+
             break;
-           
-            
-            
+
+
+
         case IsDead:
             //set motors to go forward
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
-            
+
             //also a transition but during the duration the timer is still active
-            if(ThisEvent.EventType == SB_RELEASED){
+            if (ThisEvent.EventType == SB_RELEASED) {
                 nextState = ReAlign;
                 makeTransition = TRUE;
             }
-            
+
             //when the 5 second timer time out
-            if(ThisEvent.EventType == FIVE_SEC_TIMER){
+            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
                 //stop motors
                 Bosshog_RightMtrSpeed(0);
                 Bosshog_LeftMtrSpeed(0);
@@ -487,68 +484,148 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent)
                     case TC_TAPE_BLACK:
                         nextState = Evade;
                         makeTransition = TRUE;
-                        ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                        ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
                         break;
                     case TC_TAPE_WHITE:
                         nextState = Locate;
-                        makeTransition = TRUE;                    
+                        makeTransition = TRUE;
                         break;
 
                     default: // all unhandled events pass the event back up to the next level
                         break;
                 }
             }
-            
+
             break;
-            
-            
-            
+
+
+
         case ReAlign:
             //Motors turn left
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
-            
+
             //Transition
-            if(ThisEvent.EventType == SB_PRESSED){
+            if (ThisEvent.EventType == SB_PRESSED) {
                 nextState = IsDead;
                 makeTransition = TRUE;
-                
+
                 Bosshog_RightMtrSpeed(0);
                 Bosshog_LeftMtrSpeed(0);
             }
             break;
-            
-           
+
+
         case Evade:
             //turn back and left
             Bosshog_RightMtrSpeed(-motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed - 15);
-            
-            if(ThisEvent.EventType == BB_TAPE_BLACK){
+
+            if (ThisEvent.EventType == BB_TAPE_BLACK) {
                 //set motors forward
                 Bosshog_RightMtrSpeed(motorspeed);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
-            
-            
+
+
             //exits out of this when timer expires 
             // which is handled in the top HSM
-            
+
             break;
-            
-            
+
+
         case Locate:
             //go straight
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
-            
-            if(ThisEvent.EventType == SB_RELEASED){
+
+            if (ThisEvent.EventType == SB_RELEASED) {
                 //slight turn left
                 Bosshog_RightMtrSpeed(motorspeed);
                 Bosshog_LeftMtrSpeed(motorspeed - 10);
             }
-            if(ThisEvent.EventType == SB_PRESSED){
+            if (ThisEvent.EventType == SB_PRESSED) {
+                //slight turn right
+                Bosshog_RightMtrSpeed(motorspeed - 10);
+                Bosshog_LeftMtrSpeed(motorspeed);
+            }
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case TL_TAPE_BLACK:
+                    nextState = TLT_TRT_One_For_Locate;
+                    makeTransition = TRUE;
+                    break;
+
+                case TC_TAPE_BLACK:
+                    nextState = BackLocate;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            //track wire will be handle at the top (exits out of this sub hsm)
+            break;
+
+        case TLT_TRT_One_For_Locate:
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case TR_TAPE_BLACK:
+                    nextState = Corner;
+                    makeTransition = TRUE;
+                    break;
+                case TR_TAPE_WHITE:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            break;
+
+        case Corner:
+            //Turn Hard Right
+            Bosshog_RightMtrSpeed(motorspeed + 25);
+            Bosshog_LeftMtrSpeed(motorspeed - 25);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case SB_PRESSED:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+                case FRB_PRESSED:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+
+                case FLB_PRESSED:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
+
+        case BackLocate:
+            // go straight back and do the inverse logic of Locate
+            Bosshog_RightMtrSpeed(-motorspeed);
+            Bosshog_LeftMtrSpeed(-motorspeed);
+
+            // no logic change. the logic makes sense in my head?
+            if (ThisEvent.EventType == SB_RELEASED) {
+                //slight turn left
+                Bosshog_RightMtrSpeed(motorspeed);
+                Bosshog_LeftMtrSpeed(motorspeed - 10);
+            }
+            if (ThisEvent.EventType == SB_PRESSED) {
                 //slight turn right
                 Bosshog_RightMtrSpeed(motorspeed - 10);
                 Bosshog_LeftMtrSpeed(motorspeed);
@@ -556,33 +633,65 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent)
             
             //Transitions
             switch (ThisEvent.EventType) {
-//                case TC_TAPE_BLACK:
-//                    nextState = Evade;
-//                    makeTransition = TRUE;
-//                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-//
-//                    break;
-//                case TC_TAPE_WHITE:
-//                    nextState = Locate;
-//                    makeTransition = TRUE;                    
-//                    break;
+                case TL_TAPE_BLACK:
+                    nextState = TLT_TRT_One_For_BackLocate;
+                    makeTransition = TRUE;
+                    break;
 
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
             
-            
+            break;
+
+        case TLT_TRT_One_For_BackLocate:
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case TR_TAPE_BLACK:
+                    nextState = BackCorner;
+                    makeTransition = TRUE;
+                    break;
+                case TR_TAPE_WHITE:
+                    nextState = BackLocate;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
             break;
             
+        case BackCorner:
+            //Turn Back Left
+            Bosshog_RightMtrSpeed(motorspeed - 25);
+            Bosshog_LeftMtrSpeed(motorspeed + 25);
             
-            
-            
-            
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case SB_PRESSED:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+                case BRB_PRESSED:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+
+                case BLB_PRESSED:
+                    nextState = Locate;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            break;
+
         default: // all unhandled states fall into here
             break;
     } // end switch on Current State
 
-    
+
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
         RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
