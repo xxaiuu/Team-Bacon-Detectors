@@ -98,6 +98,8 @@
 
 // Servo for launching mechanism
 #define RCSERVO_PIN RC_PORTW07
+#define LAUNCH 1200
+#define LOAD 2000
 
 //Track Wire Detectors
 #define TRACKWIRE_1 AD_PORTV5
