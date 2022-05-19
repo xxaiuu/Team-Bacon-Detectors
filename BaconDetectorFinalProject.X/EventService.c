@@ -55,6 +55,7 @@ static uint8_t LastSB = BUMPER_NOT_TRIPPED;
 //init TrackWire states
 static uint8_t LastTrack1 = TRACK_WIRE_ABSENT;
 static uint8_t LastTrack2 = TRACK_WIRE_ABSENT;
+static uint8_t LastBothTrack = 0;
 
 //init LastTape states
 static uint8_t LastBLT = TAPE_WHITE;
@@ -274,14 +275,22 @@ uint8_t TrackWireEvent(void) {
     uint8_t CurrTrack1 = BosshogReadTrackWire(0);
     uint8_t CurrTrack2 = BosshogReadTrackWire(1);
     uint8_t WasEvent = FALSE;
-    if (CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT) {
-        printf("TRACKWIRE 1 EVENT\r\n");
-        numTracks++;
+//    if (CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT) {
+//        printf("TRACKWIRE 1 EVENT\r\n");
+//        numTracks++;
+//    }
+//    if (CurrTrack2 != LastTrack2 && CurrTrack2 == TRACK_WIRE_PRESENT) {
+//        printf("TRACKWIRE 22222 \r\n");
+//        numTracks++;
+//    }
+    //if (numTracks == 2) {
+    if ((CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_ABSENT) || ((CurrTrack1 == TRACK_WIRE_ABSENT && CurrTrack2 == TRACK_WIRE_PRESENT))){
+        printf("onyl seeing one\r\n");
+        LastBothTrack = 0;
     }
-    if (CurrTrack2 != LastTrack2 && CurrTrack2 == TRACK_WIRE_PRESENT) {
-        numTracks++;
-    }
-    if (numTracks == 2) {
+    if (CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_PRESENT  && (LastBothTrack == 0)){
+        printf("TWO TRACK WIRES\r\n");
+        LastBothTrack = 1;
         ES_Event TrackEvent;
         TrackEvent.EventType = TRACK_WIRE_DETECTED;
         TrackEvent.EventParam = (uint16_t) numTracks;

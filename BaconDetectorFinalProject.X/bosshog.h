@@ -102,8 +102,8 @@
 #define LOAD 2000
 
 //Track Wire Detectors
-#define TRACKWIRE_1 AD_PORTV5
-#define TRACKWIRE_2 AD_PORTV6
+#define TRACKWIRE_1 AD_PORTV8
+#define TRACKWIRE_2 AD_PORTV5
 #define TRACKWIRE_HIGH 700
 #define TRACKWIRE_LOW 100
 

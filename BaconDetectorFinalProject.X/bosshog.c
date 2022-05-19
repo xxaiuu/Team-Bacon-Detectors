@@ -159,7 +159,7 @@ void Bosshog_Init(void)
     //    printf("Current pins: %d\n",AD_ActivePins());
     //    printf("Add Result: %d\n",AD_AddPins(LIGHT_SENSOR));
     //    while(1);
-    AD_AddPins(AD_PORTV5 | AD_PORTV6);
+    AD_AddPins(TRACKWIRE_1 | TRACKWIRE_2);
     
 
     //enable interrupts
