@@ -56,6 +56,8 @@ uint8_t Init_Relocate_SubHSM(void);
 uint8_t Init_Navigate_SubHSM(void);
 uint8_t Init_Identify_SubHSM(void);
 uint8_t Init_Deposit_SubHSM(void);
+uint8_t Init_FindNext_SubHSM(void);
+uint8_t Init_FindNextInverse_SubHSM(void);
 
 
 
@@ -79,6 +81,8 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent);
 ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent);
 ES_Event Run_Identify_SubHSM(ES_Event ThisEvent);
 ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent);
+ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent);
+ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent);
 
 
 #endif /* SUB_HSM_Template_H */

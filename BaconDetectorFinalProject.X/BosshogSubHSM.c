@@ -61,7 +61,11 @@ typedef enum {
     TCT_and_TRT_One_For_Deposit,
     TLT_and_TRT_One_For_Deposit,
     Scan,
-            Dispense,
+    Dispense,
+    Spin,
+    EvadeTower,
+            SpinOtherWay,
+            EvadeOtherWay,
 } BosshogSubHSMState_t;
 
 
@@ -88,6 +92,10 @@ static const char *StateNames[] = {
     "TLT_and_TRT_One_For_Deposit",
     "Scan",
     "Dispense",
+    "Spin",
+    "EvadeTower",
+    "SpinOtherWay",
+    "EvadeOtherWay",
 };
 
 
@@ -180,6 +188,40 @@ uint8_t Init_Deposit_SubHSM(void) {
     }
     return FALSE;
 }
+
+uint8_t Init_FindNext_SubHSM(void) {
+    ES_Event returnEvent;
+
+    CurrentState = InitPSubState;
+
+    returnEvent = Run_FindNext_SubHSM(INIT_EVENT);
+    if (returnEvent.EventType == ES_NO_EVENT) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+uint8_t Init_FindNextInverse_SubHSM(void) {
+    ES_Event returnEvent;
+
+    CurrentState = InitPSubState;
+
+    returnEvent = Run_FindNextInverse_SubHSM(INIT_EVENT);
+    if (returnEvent.EventType == ES_NO_EVENT) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+
+
+
+
+
+
+
+
+
 
 /**
  * @Function RunTemplateSubHSM(ES_Event ThisEvent)
@@ -818,18 +860,98 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                     break;
             }
             break;
-            
-            
+
+
         case Dispense:
             //Turn motor off
             Bosshog_RightMtrSpeed(0);
             Bosshog_LeftMtrSpeed(0);
-            
+
             //Relocate Sensor
             //exits out of the subhsm as makeTransition is false 
             //and no other cases are being handled. Top level auto sends it to find next state
             break;
-            
+
+
+        default: // all unhandled states fall into here
+            break;
+    } // end switch on Current State
+
+
+    if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
+        // recursively call the current state with an exit event
+        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        CurrentState = nextState;
+        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+    }
+
+    ES_Tail(); // trace call stack end
+    return ThisEvent;
+}
+
+ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
+    uint8_t makeTransition = FALSE; // use to flag transition
+    BosshogSubHSMState_t nextState; // <- change type to correct enum
+
+    ES_Tattle(); // trace call stack
+
+    switch (CurrentState) {
+        case InitPSubState: // If current state is initial Psedudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
+
+                // now put the machine into the actual initial state
+                nextState = Spin;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+
+        case Spin: // in the first state, replace this with correct names
+            //Spin backward, towards left
+            Bosshog_RightMtrSpeed(-motorspeed - 10);
+            Bosshog_LeftMtrSpeed(-motorspeed);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case BLB_PRESSED:
+                    nextState = EvadeTower;
+                    makeTransition = TRUE;
+
+                    //start timer
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
+
+        case EvadeTower:
+            //go forward and slightly left
+            Bosshog_RightMtrSpeed(motorspeed + 10);
+            Bosshog_LeftMtrSpeed(motorspeed);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case FIVE_SEC_TIMER:
+                    nextState = Spin;
+                    makeTransition = TRUE;
+
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
+            //jumps out of sub hsm whenever a beacon is detected or when a back tape is detected black
+            // or cant find timer expires
 
         default: // all unhandled states fall into here
             break;
@@ -848,7 +970,84 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 }
 
 
+ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
+    uint8_t makeTransition = FALSE; // use to flag transition
+    BosshogSubHSMState_t nextState; // <- change type to correct enum
 
+    ES_Tattle(); // trace call stack
+
+    switch (CurrentState) {
+        case InitPSubState: // If current state is initial Psedudo State
+            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+            {
+                // this is where you would put any actions associated with the
+                // transition from the initial pseudo-state into the actual
+                // initial state
+
+                // now put the machine into the actual initial state
+                nextState = SpinOtherWay;
+                makeTransition = TRUE;
+                ThisEvent.EventType = ES_NO_EVENT;
+            }
+            break;
+
+        case SpinOtherWay: // in the first state, replace this with correct names
+            //Spin backward, towards right
+            Bosshog_RightMtrSpeed(-motorspeed);
+            Bosshog_LeftMtrSpeed(-motorspeed - 10);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case BRB_PRESSED:
+                    nextState = EvadeOtherWay;
+                    makeTransition = TRUE;
+
+                    //start timer
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
+
+        case EvadeOtherWay:
+            //go forward and slightly right
+            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(motorspeed + 10);
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+                case FIVE_SEC_TIMER:
+                    nextState = SpinOtherWay;
+                    makeTransition = TRUE;
+
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
+            //jumps out of sub hsm whenever a beacon is detected or cant find timer expires
+
+        default: // all unhandled states fall into here
+            break;
+    } // end switch on Current State
+
+
+    if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
+        // recursively call the current state with an exit event
+        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        CurrentState = nextState;
+        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+    }
+
+    ES_Tail(); // trace call stack end
+    return ThisEvent;
+}
 
 
 /*******************************************************************************

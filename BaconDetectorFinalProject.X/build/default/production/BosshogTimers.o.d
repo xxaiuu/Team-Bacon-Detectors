@@ -7,7 +7,8 @@ build/default/production/BosshogTimers.o: BosshogTimers.c BosshogTimers.h \
  C:/ECE118/include/ES_PostList.h C:/ECE118/include/ES_PriorTables.h \
  C:/ECE118/include/ES_Queue.h C:/ECE118/include/ES_ServiceHeaders.h \
  ES_Configure.h EventService.h ES_Configure.h BosshogHSM.h \
- BosshogTimers.h C:/ECE118/include/ES_TattleTale.h
+ BosshogTimers.h C:/ECE118/include/ES_TattleTale.h bosshog.h \
+ C:/ECE118/include/IO_Ports.h
 
 BosshogTimers.h:
 
@@ -52,3 +53,7 @@ BosshogHSM.h:
 BosshogTimers.h:
 
 C:/ECE118/include/ES_TattleTale.h:
+
+bosshog.h:
+
+C:/ECE118/include/IO_Ports.h:

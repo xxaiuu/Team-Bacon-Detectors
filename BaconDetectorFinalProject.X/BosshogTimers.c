@@ -10,6 +10,7 @@
 
 
 #include "BosshogTimers.h"
+#include "bosshog.h"
 
 
 
@@ -161,6 +162,8 @@ ES_Event Run_180_timer(ES_Event this_timer)
         //ES_Timer_InitTimer(TURN_LEFT_TIMER, TIMER_1_TICKS); 
 
         timer.EventType = SPIN_AROUND;
+        Bosshog_RightMtrSpeed(0);
+        Bosshog_LeftMtrSpeed(0);
         //printf("180 Spin \r\n");
         PostBosshogHSM(timer);
 
