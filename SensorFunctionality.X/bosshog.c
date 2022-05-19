@@ -123,6 +123,10 @@ void Bosshog_Init(void)
     REAR_RIGHT_BUMPER_TRIS = 1;
     REAR_LEFT_BUMPER_TRIS = 1;
     SIDE_BUMPER_TRIS = 1;
+    TOP_FRONT_LEFT_BUMPER_TRIS = 1;
+    TOP_FRONT_RIGHT_BUMPER_TRIS = 1;
+    TOP_BACK_LEFT_BUMPER_TRIS = 1;
+    TOP_BACK_RIGHT_BUMPER_TRIS = 1;
     
     //set up TAPE sensors
     CENTER_TAPESENSOR_TRIS = 1;
@@ -371,6 +375,19 @@ unsigned char Bosshog_ReadRearRightBumper(void)
 unsigned char Bosshog_ReadSideBumper(void)
 {
     return !SIDE_BUMPER_BIT;
+}
+
+unsigned char Bosshog_ReadTopFrontRightBumper(void){
+    return !TOP_FRONT_RIGHT_BUMPER_BIT;
+}
+unsigned char Bosshog_ReadTopFrontLeftBumper(void){
+    return !TOP_FRONT_LEFT_BUMPER_BIT;
+}
+unsigned char Bosshog_ReadTopBackRightBumper(void){
+    return !TOP_BACK_RIGHT_BUMPER_BIT;
+}
+unsigned char Bosshog_ReadTopBackLeftBumper(void){
+    return !TOP_BACK_LEFT_BUMPER_BIT;
 }
 
 /**

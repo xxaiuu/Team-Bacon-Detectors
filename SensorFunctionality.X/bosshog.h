@@ -49,11 +49,14 @@
 
 //bumper bits
 #define FRONT_LEFT_BUMPER_BIT _RB8                      //PORTV07_BIT
-//#define FRONT_LEFT_BUMPER_BIT PORTX09_BIT                      //PORTV07_BIT
 #define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
 #define REAR_RIGHT_BUMPER_BIT _RD8                      //PORTZ08_BIT
 #define REAR_LEFT_BUMPER_BIT _RB10                      //PORTW04_BIT
 #define SIDE_BUMPER_BIT PORTX09_BIT
+#define TOP_FRONT_LEFT_BUMPER_BIT PORTX11_BIT
+#define TOP_FRONT_RIGHT_BUMPER_BIT PORTX08_BIT
+#define TOP_BACK_LEFT_BUMPER_BIT PORTX12_BIT
+#define TOP_BACK_RIGHT_BUMPER_BIT PORTX10_BIT
   
  //motors
 #define LEFT_DIR_TRIS _TRISB3                     //PORTV04_TRIS
@@ -63,11 +66,14 @@
 
 //bumper tris
 #define FRONT_LEFT_BUMPER_TRIS _TRISB8
-//#define FRONT_LEFT_BUMPER_TRIS PORTX09_TRIS
 #define FRONT_RIGHT_BUMPER_TRIS _TRISD9
 #define REAR_RIGHT_BUMPER_TRIS _TRISD8
 #define REAR_LEFT_BUMPER_TRIS _TRISB10
 #define SIDE_BUMPER_TRIS PORTX09_TRIS
+#define TOP_FRONT_LEFT_BUMPER_TRIS PORTX11_TRIS
+#define TOP_FRONT_RIGHT_BUMPER_TRIS PORTX08_TRIS
+#define TOP_BACK_LEFT_BUMPER_TRIS PORTX12_TRIS
+#define TOP_BACK_RIGHT_BUMPER_TRIS PORTX10_TRIS
 
 //tape sensor pins
 #define CENTER_TAPESENSOR_TRIS PORTZ03_TRIS
@@ -229,6 +235,17 @@ unsigned char Bosshog_ReadRearRightBumper(void);
  * @brief  Returns the state of the rear right bumper
  * @author Max Dunne, 2012.01.06 */
 unsigned char Bosshog_ReadSideBumper(void);
+
+/**
+ * @Function Bosshog_ReadFrontRightBumper(void)
+ * @param None.
+ * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
+ * @brief  Returns the state of the front right bumper
+ * @author Max Dunne, 2012.01.06 */
+unsigned char Bosshog_ReadTopFrontRightBumper(void);
+unsigned char Bosshog_ReadTopFrontLeftBumper(void);
+unsigned char Bosshog_ReadTopBackRightBumper(void);
+unsigned char Bosshog_ReadTopBackLeftBumper(void);
 
 
 

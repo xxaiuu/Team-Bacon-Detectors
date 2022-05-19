@@ -19,27 +19,45 @@ int main(void) {
     TIMERS_Init();
     Bosshog_Init();
     
-    int MTRSpeed = 55;
+    int MTRSpeed = 65;
     
     printf("Starting Test Harness");
     while(1){
         
-        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED ){
+//        if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
+//            printf("Top Front Right\r\n");
+//        }
+//        if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
+//            printf("Top Front Left\r\n");
+//        }
+//        if(Bosshog_ReadTopBackRightBumper() == BUMPER_TRIPPED){
+//            printf("Top Back Right\r\n");
+//        }
+//        if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
+//            printf("Top Back Left\r\n");
+//        }
+//        if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
+//            printf("Side\r\n");
+//        }
+        
+        
+        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
             Bosshog_LeftMtrSpeed(0);
             Bosshog_RightMtrSpeed(0);
-        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
+        }
+        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
             Bosshog_LeftMtrSpeed(MTRSpeed);
             Bosshog_RightMtrSpeed(MTRSpeed);
         }
-//        if (BosshogReadCenterTape()){
-//            
-//            Bosshog_LeftMtrSpeed(-MTRSpeed);
-//            Bosshog_RightMtrSpeed(-MTRSpeed);
-//        }
-//        if ( BosshogReadBackTape()){
-//            Bosshog_LeftMtrSpeed(MTRSpeed);
-//            Bosshog_RightMtrSpeed(MTRSpeed);
-//        }
+        if (BosshogReadCenterTape()){
+            
+            Bosshog_LeftMtrSpeed(-MTRSpeed);
+            Bosshog_RightMtrSpeed(-MTRSpeed);
+        }
+        if ( BosshogReadBackTape()){
+            Bosshog_LeftMtrSpeed(MTRSpeed);
+            Bosshog_RightMtrSpeed(MTRSpeed);
+        }
         
 //        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
 //            Bosshog_LeftMtrSpeed(0);
