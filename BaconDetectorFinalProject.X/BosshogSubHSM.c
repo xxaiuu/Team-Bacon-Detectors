@@ -61,6 +61,7 @@ typedef enum {
     TCT_and_TRT_One_For_Deposit,
     TLT_and_TRT_One_For_Deposit,
     Scan,
+            Dispense,
 } BosshogSubHSMState_t;
 
 
@@ -86,6 +87,7 @@ static const char *StateNames[] = {
     "TCT_and_TRT_One_For_Deposit",
     "TLT_and_TRT_One_For_Deposit",
     "Scan",
+    "Dispense",
 };
 
 
@@ -782,11 +784,52 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             }
 
             break;
-            
+
         case Scan:
-            
-            
+            //go forward and align with side
+            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(motorspeed);
+
+            switch (ThisEvent.EventType) {
+                case TC_TAPE_BLACK:
+                    nextState = TCT_and_TRT_One_For_Deposit;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
             break;
+
+        case TCT_and_TRT_One_For_Deposit:
+            switch (ThisEvent.EventType) {
+                case TR_TAPE_BLACK:
+                    nextState = Dispense;
+                    makeTransition = TRUE;
+                    break;
+
+                case TR_TAPE_WHITE:
+                    nextState = Scan;
+                    makeTransition = TRUE;
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            break;
+            
+            
+        case Dispense:
+            //Turn motor off
+            Bosshog_RightMtrSpeed(0);
+            Bosshog_LeftMtrSpeed(0);
+            
+            //Relocate Sensor
+            //exits out of the subhsm as makeTransition is false 
+            //and no other cases are being handled. Top level auto sends it to find next state
+            break;
+            
 
         default: // all unhandled states fall into here
             break;
