@@ -308,6 +308,7 @@ uint8_t BLTEvent(void) {
         TapeEvent.EventType = BL_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("BLT EVENT\r\n");
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -328,6 +329,8 @@ uint8_t BCTEvent(void) {
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
         //printf("BCTEvent\r\n");
+        printf("BCT EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -347,6 +350,8 @@ uint8_t BRTEvent(void) {
         TapeEvent.EventType = BR_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("BRT EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -366,6 +371,8 @@ uint8_t BBTEvent(void) {
         TapeEvent.EventType = BB_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("BBT EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -385,6 +392,8 @@ uint8_t TLTEvent(void) {
         TapeEvent.EventType = TL_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("TLT EVENT (Black)\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -394,6 +403,8 @@ uint8_t TLTEvent(void) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TL_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
+        printf("TLT EVENT (White)\r\n");
+
         PostBosshogHSM(TapeEvent);
         WasEvent = TRUE;
     }
@@ -410,6 +421,8 @@ uint8_t TRTEvent(void) {
         TapeEvent.EventType = TR_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("TRT EVENT (Black)\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -419,6 +432,8 @@ uint8_t TRTEvent(void) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TR_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
+        printf("TRT EVENT (White)\r\n");
+
         PostBosshogHSM(TapeEvent);
         WasEvent = TRUE;
     }
@@ -435,6 +450,8 @@ uint8_t TCTEvent(void) {
         TapeEvent.EventType = TC_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
+        printf("TCT EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -444,6 +461,8 @@ uint8_t TCTEvent(void) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TC_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
+        printf("TCT EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
         WasEvent = TRUE;
     }
@@ -461,6 +480,8 @@ uint8_t TL_and_TR_Event(void) {
         TapeEvent.EventType = WALL_EDGE;
         TapeEvent.EventParam = (uint16_t) CurrTapeTL + CurrTapeTR;
 #ifndef EVENTCHECKER_TEST
+        printf("TL and TR EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -482,6 +503,8 @@ uint8_t TR_and_TC_Event(void) {
         TapeEvent.EventType = TAPE_ALIGNED;
         TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR;
 #ifndef EVENTCHECKER_TEST
+        printf("TR and TC EVENT\r\n");
+
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -536,8 +559,8 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TLTEvent();
             TRTEvent();
             TCTEvent();
-            TL_and_TR_Event();
-            TR_and_TC_Event();
+            //TL_and_TR_Event();
+            //TR_and_TC_Event();
             //reset ES TIMER
             ES_Timer_InitTimer(EVENT_TIMER, 5);
             //        if (batVoltage > BATTERY_DISCONNECT_THRESHOLD) { // is battery connected?

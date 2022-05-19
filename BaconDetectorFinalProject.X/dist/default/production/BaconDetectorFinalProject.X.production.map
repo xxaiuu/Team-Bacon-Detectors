@@ -7,97 +7,97 @@ Archive member included to satisfy reference by file (symbol)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(floatunsisf.o)
                               build/default/production/_ext/1990330219/AD.o (__floatunsisf)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
-                              C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o (_bootstrap_exception_handler)
+                              C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o (_bootstrap_exception_handler)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
-                              C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o (_on_reset)
+                              C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o (_on_reset)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                              C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o (_on_bootstrap)
+                              C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o (_on_bootstrap)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                              C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o (_nmi_handler)
+                              C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o (_nmi_handler)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
-                              C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o (__pic32_data_init)
+                              C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o (__pic32_data_init)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                              C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o (_general_exception_context)
+                              C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o (_general_exception_context)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector0.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_0)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_0)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector1.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_1)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_1)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector2.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_2)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_2)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector3.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_3)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_3)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector5.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_5)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_5)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector6.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_6)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_6)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector7.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_7)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_7)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector8.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_8)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_8)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector9.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_9)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_9)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector10.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_10)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_10)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector11.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_11)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_11)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector12.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_12)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_12)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector13.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_13)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_13)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector14.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_14)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_14)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector15.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_15)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_15)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector17.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_17)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_17)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector18.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_18)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_18)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector19.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_19)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_19)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector21.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_21)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_21)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector22.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_22)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_22)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector23.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_23)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_23)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector25.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_25)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_25)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector26.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_26)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_26)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector28.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_28)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_28)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector29.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_29)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_29)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector30.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_30)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_30)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector31.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_31)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_31)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector32.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_32)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_32)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector33.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_33)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_33)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector34.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_34)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_34)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector35.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_35)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_35)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector36.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_36)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_36)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector37.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_37)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_37)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector38.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_38)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_38)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector39.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_39)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_39)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector40.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_40)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_40)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector41.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_41)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_41)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector42.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_42)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_42)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector43.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_43)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_43)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(vector44.o)
-                              C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o (__vector_dispatch_44)
+                              C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o (__vector_dispatch_44)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
                               c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o) (_general_exception_handler)
 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
@@ -136,72 +136,75 @@ Microchip PIC32 Memory-Usage Report
 kseg0 Program-Memory Usage
 section                    address  length [bytes]      (dec)  Description
 -------                 ----------  -------------------------  -----------
-.text                   0x9d002000         0x24a4        9380  App's exec code 
-.text                   0x9d0044a4          0xe98        3736  App's exec code 
-.dinit                  0x9d00533c          0xc80        3200   
-.text                   0x9d005fbc         0x16dc        5852  App's exec code 
-.text                   0x9d007698         0x14c8        5320  App's exec code 
-.text                   0x9d008b60         0x1078        4216  App's exec code 
-.text._do_print_cdnopux 0x9d009bd8          0x764        1892   
-.text                   0x9d00a33c          0xc50        3152  App's exec code 
-.text                   0x9d00af8c          0x5c0        1472  App's exec code 
-.rodata                 0x9d00b54c          0x44c        1100  Read-only const 
-.text                   0x9d00b998          0x834        2100  App's exec code 
-.text                   0x9d00c1cc          0x6f4        1780  App's exec code 
-.rodata                 0x9d00c8c0          0x5e4        1508  Read-only const 
-.rodata                 0x9d00cea4          0x580        1408  Read-only const 
-.rodata                 0x9d00d424          0x518        1304  Read-only const 
-.text.fpsubadd          0x9d00d93c          0x278         632   
-.text                   0x9d00dbb4          0x26c         620  App's exec code 
-.rodata                 0x9d00de20          0x4b8        1208  Read-only const 
-.rodata                 0x9d00e2d8          0x490        1168  Read-only const 
-.rodata                 0x9d00e768          0x490        1168  Read-only const 
-.rodata                 0x9d00ebf8          0x248         584  Read-only const 
-.text                   0x9d00ee40          0x2c4         708  App's exec code 
-.text                   0x9d00f104          0x124         292  App's exec code 
-.rodata                 0x9d00f228          0x120         288  Read-only const 
-.text                   0x9d00f348          0x110         272  App's exec code 
-.rodata                 0x9d00f458           0xf0         240  Read-only const 
-.text._outcnvrt         0x9d00f548           0xe8         232   
-.text                   0x9d00f630           0xdc         220  App's exec code 
-.text.general_exception 0x9d00f70c           0xdc         220   
-.text._flsbuf_simple    0x9d00f7e8           0xd4         212   
-.text                   0x9d00f8bc           0xac         172  App's exec code 
-.text.repl.constprop.0  0x9d00f968           0xa8         168   
-.rodata                 0x9d00fa10           0xa0         160  Read-only const 
-.text.fputc             0x9d00fab0           0xa0         160   
-.text                   0x9d00fb50           0x84         132  App's exec code 
-.text.fptoul            0x9d00fbd4           0x7c         124   
-.text._fwrite_simple    0x9d00fc50           0x74         116   
-.text._fflush_simple    0x9d00fcc4           0x70         112   
-.text.sitofp            0x9d00fd34           0x60          96   
-.text.strlen            0x9d00fd94           0x5c          92   
-.text.fputs             0x9d00fdf0           0x58          88   
-.text.main_entry        0x9d00fe48           0x54          84   
-.text._mon_write        0x9d00fe9c           0x54          84   
-.text.puts              0x9d00fef0           0x50          80   
-.text                   0x9d00ff40           0x48          72  App's exec code 
-.text._bootstrap_except 0x9d00ff88           0x48          72   
-.text._general_exceptio 0x9d00ffd0           0x48          72   
-.vector_default         0x9d010018           0x48          72   
-.text                   0x9d010060           0x44          68  App's exec code 
-.rodata                 0x9d0100a4           0x78         120  Read-only const 
-.text._printf_cdnopuxX  0x9d01011c           0x3c          60   
-.text._filbuf_simple    0x9d010158           0x34          52   
-.text._fsync_simple     0x9d01018c           0x30          48   
-.text.putchar           0x9d0101bc           0x24          36   
-.rodata                 0x9d0101e0           0x20          32  Read-only const 
-.text._vfprintf_cdnopux 0x9d010200           0x1c          28   
-.text.putc              0x9d01021c           0x1c          28   
-.MIPS.abiflags          0x9d010238           0x18          24   
-.text                   0x9d010250           0x18          24  App's exec code 
-.text._io_exit          0x9d010268           0x14          20   
-.rodata                 0x9d01027c           0x14          20  Read-only const 
-.text._io_exit          0x9d010290           0x14          20   
-.text._on_reset         0x9d0102a4            0x8           8   
-.text._on_bootstrap     0x9d0102ac            0x8           8   
-.rodata.str1.4          0x9d0102b4            0xc          12   
-      Total kseg0_program_mem used  :      0xe2c0       58048  48.9% of 0x1d000
+.text                   0x9d002000         0x2554        9556  App's exec code 
+.text                   0x9d004554          0xe98        3736  App's exec code 
+.dinit                  0x9d0053ec          0xc80        3200   
+.text                   0x9d00606c         0x16dc        5852  App's exec code 
+.text                   0x9d007748         0x14c8        5320  App's exec code 
+.text                   0x9d008c10         0x1078        4216  App's exec code 
+.text._do_print_cdnopux 0x9d009c88          0x764        1892   
+.text                   0x9d00a3ec          0xc50        3152  App's exec code 
+.text                   0x9d00b03c          0x5c0        1472  App's exec code 
+.rodata                 0x9d00b5fc          0x44c        1100  Read-only const 
+.text                   0x9d00ba48          0x834        2100  App's exec code 
+.text                   0x9d00c27c          0x3ec        1004  App's exec code 
+.rodata                 0x9d00c668          0x3b0         944  Read-only const 
+.text                   0x9d00ca18          0x308         776  App's exec code 
+.rodata                 0x9d00cd20          0x5cc        1484  Read-only const 
+.rodata                 0x9d00d2ec          0x52c        1324  Read-only const 
+.rodata                 0x9d00d818          0x288         648  Read-only const 
+.text.fpsubadd          0x9d00daa0          0x278         632   
+.text                   0x9d00dd18          0x26c         620  App's exec code 
+.rodata                 0x9d00df84          0x4b8        1208  Read-only const 
+.rodata                 0x9d00e43c          0x490        1168  Read-only const 
+.rodata                 0x9d00e8cc          0x490        1168  Read-only const 
+.rodata                 0x9d00ed5c          0x248         584  Read-only const 
+.text                   0x9d00efa4          0x2c4         708  App's exec code 
+.text                   0x9d00f268          0x124         292  App's exec code 
+.rodata                 0x9d00f38c          0x120         288  Read-only const 
+.text                   0x9d00f4ac          0x110         272  App's exec code 
+.rodata                 0x9d00f5bc           0xf0         240  Read-only const 
+.text._outcnvrt         0x9d00f6ac           0xe8         232   
+.text                   0x9d00f794           0xdc         220  App's exec code 
+.text.general_exception 0x9d00f870           0xdc         220   
+.text._flsbuf_simple    0x9d00f94c           0xd4         212   
+.text                   0x9d00fa20           0xac         172  App's exec code 
+.text.repl.constprop.0  0x9d00facc           0xa8         168   
+.rodata                 0x9d00fb74           0xa0         160  Read-only const 
+.text.fputc             0x9d00fc14           0xa0         160   
+.text                   0x9d00fcb4           0x84         132  App's exec code 
+.text.fptoul            0x9d00fd38           0x7c         124   
+.text._fwrite_simple    0x9d00fdb4           0x74         116   
+.text._fflush_simple    0x9d00fe28           0x70         112   
+.text.sitofp            0x9d00fe98           0x60          96   
+.text.strlen            0x9d00fef8           0x5c          92   
+.text.fputs             0x9d00ff54           0x58          88   
+.text.main_entry        0x9d00ffac           0x54          84   
+.text._mon_write        0x9d010000           0x54          84   
+.text.puts              0x9d010054           0x50          80   
+.text                   0x9d0100a4           0x48          72  App's exec code 
+.text._bootstrap_except 0x9d0100ec           0x48          72   
+.text._general_exceptio 0x9d010134           0x48          72   
+.vector_default         0x9d01017c           0x48          72   
+.text                   0x9d0101c4           0x44          68  App's exec code 
+.rodata                 0x9d010208           0x78         120  Read-only const 
+.text._printf_cdnopuxX  0x9d010280           0x3c          60   
+.text._filbuf_simple    0x9d0102bc           0x34          52   
+.text._fsync_simple     0x9d0102f0           0x30          48   
+.text.putchar           0x9d010320           0x24          36   
+.rodata                 0x9d010344           0x20          32  Read-only const 
+.text._vfprintf_cdnopux 0x9d010364           0x1c          28   
+.text.putc              0x9d010380           0x1c          28   
+.rodata.str1.4          0x9d01039c            0x4           4   
+.MIPS.abiflags          0x9d0103a0           0x18          24   
+.text                   0x9d0103b8           0x18          24  App's exec code 
+.text._io_exit          0x9d0103d0           0x14          20   
+.rodata                 0x9d0103e4           0x14          20  Read-only const 
+.text._io_exit          0x9d0103f8           0x14          20   
+.text._on_reset         0x9d01040c            0x8           8   
+.text._on_bootstrap     0x9d010414            0x8           8   
+.rodata.str1.4          0x9d01041c            0x8           8   
+      Total kseg0_program_mem used  :      0xe424       58404  49.2% of 0x1d000
 
 kseg0 Boot-Memory Usage
 section                    address  length [bytes]      (dec)  Description
@@ -266,7 +269,7 @@ section                    address  length [bytes]      (dec)  Description
 .bev_excpt              0xbd000380           0x10          16  BEV-Exception 
          Total kseg1_boot_mem used  :       0x1ac         428  36.6% of 0x490
         --------------------------------------------------------------------------
-         Total Program Memory used  :      0xe5e4       58852  46.5% of 0x1ee00
+         Total Program Memory used  :      0xe748       59208  46.8% of 0x1ee00
         --------------------------------------------------------------------------
 
 
@@ -380,16 +383,16 @@ Discarded input sections
  .reginfo       0x0000000000000000       0x18 build/default/production/BosshogTimers.o
  .MIPS.abiflags
                 0x0000000000000000       0x18 build/default/production/BosshogTimers.o
- .reginfo       0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
- .reginfo       0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
+                0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
- .reginfo       0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+                0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
+ .reginfo       0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
  .MIPS.abiflags
-                0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
- .discard       0x0000000000000000       0xb4 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+                0x0000000000000000       0x18 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
+ .discard       0x0000000000000000       0xb4 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
  .reginfo       0x0000000000000000       0x18 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
  .MIPS.abiflags
                 0x0000000000000000       0x18 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
@@ -899,16 +902,16 @@ END GROUP
 
 .reset          0x00000000bd000000      0x19c
  *(.reset)
- .reset         0x00000000bd000000        0x8 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .reset         0x00000000bd000000        0x8 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
                 0x00000000bd000000                _reset
  *(.reset.startup)
  .reset.startup
-                0x00000000bd000008      0x194 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+                0x00000000bd000008      0x194 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
                 0x00000000bd000008                _startup
 
 .bev_excpt      0x00000000bd000380       0x10
  *(.bev_handler)
- .bev_handler   0x00000000bd000380       0x10 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .bev_handler   0x00000000bd000380       0x10 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
 
 .dbg_excpt      0x00000000bd000480        0x0
                 0x00000000bd000480                . = (. + DEFINED (_DEBUGGER)?0x8:0x0)
@@ -918,7 +921,7 @@ END GROUP
 
 .app_excpt      0x000000009d001180       0x10
  *(.gen_handler)
- .gen_handler   0x000000009d001180       0x10 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .gen_handler   0x000000009d001180       0x10 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
 
 .vector_0       0x000000009d001200        0x8
  *(.vector_0)
@@ -1749,7 +1752,7 @@ END GROUP
  .debug_abbrev  0x00000000000032fe      0x1ee c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_umoddi3.o)
  .debug_abbrev  0x00000000000034ec       0x37 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
 
-.debug_line     0x0000000000000000     0x572c
+.debug_line     0x0000000000000000     0x5736
  *(.debug_line)
  .debug_line    0x0000000000000000      0x47b build/default/production/_ext/1990330219/AD.o
  .debug_line    0x000000000000047b      0x1a5 build/default/production/_ext/1990330219/BOARD.o
@@ -1771,18 +1774,18 @@ END GROUP
  .debug_line    0x0000000000003564      0x290 build/default/production/BosshogES_Main.o
  .debug_line    0x00000000000037f4      0x1eb build/default/production/BosshogHSM.o
  .debug_line    0x00000000000039df      0x434 build/default/production/BosshogSubHSM.o
- .debug_line    0x0000000000003e13      0x650 build/default/production/EventService.o
- .debug_line    0x0000000000004463      0x205 build/default/production/BosshogEventChecker.o
- .debug_line    0x0000000000004668      0x246 build/default/production/BosshogTimers.o
- .debug_line    0x00000000000048ae       0xba c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(floatunsisf.o)
- .debug_line    0x0000000000004968       0xca c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
- .debug_line    0x0000000000004a32       0xa6 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
- .debug_line    0x0000000000004ad8       0xaa c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
- .debug_line    0x0000000000004b82       0xc8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
- .debug_line    0x0000000000004c4a       0xc9 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
- .debug_line    0x0000000000004d13      0x490 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_udivdi3.o)
- .debug_line    0x00000000000051a3      0x4d9 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_umoddi3.o)
- .debug_line    0x000000000000567c       0xb0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
+ .debug_line    0x0000000000003e13      0x65a build/default/production/EventService.o
+ .debug_line    0x000000000000446d      0x205 build/default/production/BosshogEventChecker.o
+ .debug_line    0x0000000000004672      0x246 build/default/production/BosshogTimers.o
+ .debug_line    0x00000000000048b8       0xba c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(floatunsisf.o)
+ .debug_line    0x0000000000004972       0xca c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+ .debug_line    0x0000000000004a3c       0xa6 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+ .debug_line    0x0000000000004ae2       0xaa c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+ .debug_line    0x0000000000004b8c       0xc8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+ .debug_line    0x0000000000004c54       0xc9 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+ .debug_line    0x0000000000004d1d      0x490 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_udivdi3.o)
+ .debug_line    0x00000000000051ad      0x4d9 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_umoddi3.o)
+ .debug_line    0x0000000000005686       0xb0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
 
 .debug_frame    0x0000000000000000     0x1ae4
  *(.debug_frame)
@@ -1942,11 +1945,11 @@ END GROUP
  .gnu.attributes
                 0x0000000000000170       0x10 build/default/production/BosshogTimers.o
  .gnu.attributes
-                0x0000000000000180       0x10 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+                0x0000000000000180       0x10 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
  .gnu.attributes
-                0x0000000000000190       0x10 C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
+                0x0000000000000190       0x10 C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
  .gnu.attributes
-                0x00000000000001a0       0x10 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+                0x00000000000001a0       0x10 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
  .gnu.attributes
                 0x00000000000001b0       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
  .gnu.attributes
@@ -2075,9 +2078,9 @@ END GROUP
                 0x0000000000000590       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_umoddi3.o)
  .gnu.attributes
                 0x00000000000005a0       0x10 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
-LOAD C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
-LOAD C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
-LOAD C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+LOAD C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
+LOAD C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
+LOAD C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
 LOAD c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
 LOAD c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a
 START GROUP
@@ -2538,22 +2541,22 @@ LOAD data_init
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
 
 .bss%z127       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+ .bss           0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
 
 .data%z128      0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+ .data          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
 
 .bss%z129       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
+ .bss           0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
 
 .data%z130      0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
+ .data          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
 
 .bss%z131       0x0000000000000000        0x0
- .bss           0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .bss           0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
 
 .data%z132      0x0000000000000000        0x0
- .data          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .data          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
 
 .bss%z133       0x0000000000000000        0x0
  .bss           0x0000000000000000        0x0 build/default/production/BosshogTimers.o
@@ -2633,7 +2636,7 @@ LOAD data_init
                 0x00000000bfc00480       0x2c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\debug-exception-return.o
                 0x00000000bfc00480                __DbgExecReturn
 
-.text           0x000000009d002000     0x24a4
+.text           0x000000009d002000     0x2554
  .text          0x000000009d002000     0x15c0 build/default/production/_ext/1990330219/LED.o
                 0x000000009d002000                LED_Init
                 0x000000009d002048                LED_AddBanks
@@ -2645,7 +2648,7 @@ LOAD data_init
                 0x000000009d002d5c                LED_SetBank
                 0x000000009d003090                LED_GetBank
                 0x000000009d003340                LED_End
- .text          0x000000009d0035c0      0xee4 build/default/production/EventService.o
+ .text          0x000000009d0035c0      0xf94 build/default/production/EventService.o
                 0x000000009d0035c0                InitEventService
                 0x000000009d003648                PostEventService
                 0x000000009d003690                FRBEvent
@@ -2655,447 +2658,453 @@ LOAD data_init
                 0x000000009d003b30                SBEvent
                 0x000000009d003c10                TrackWireEvent
                 0x000000009d003d18                BLTEvent
-                0x000000009d003da8                BCTEvent
-                0x000000009d003e38                BRTEvent
-                0x000000009d003ec8                BBTEvent
-                0x000000009d003f58                TLTEvent
-                0x000000009d004038                TRTEvent
-                0x000000009d004118                TCTEvent
-                0x000000009d0041f8                TL_and_TR_Event
-                0x000000009d0042cc                TR_and_TC_Event
-                0x000000009d0043a0                RunEventService
+                0x000000009d003db8                BCTEvent
+                0x000000009d003e58                BRTEvent
+                0x000000009d003ef8                BBTEvent
+                0x000000009d003f98                TLTEvent
+                0x000000009d004098                TRTEvent
+                0x000000009d004198                TCTEvent
+                0x000000009d004298                TL_and_TR_Event
+                0x000000009d00437c                TR_and_TC_Event
+                0x000000009d004460                RunEventService
 
-.text           0x000000009d0044a4      0xe98
- .text          0x000000009d0044a4      0xe98 build/default/production/_ext/1990330219/RC_Servo.o
-                0x000000009d0044a4                RC_Init
-                0x000000009d0045f8                RC_AddPins
-                0x000000009d0046ac                RC_RemovePins
-                0x000000009d004760                RC_ListPins
-                0x000000009d004788                RC_SetPulseTime
-                0x000000009d0048b4                RC_GetPulseTime
-                0x000000009d004970                RC_ChangePending
-                0x000000009d0049c0                RC_End
-                0x000000009d004a00                RC_InstallPins
-                0x000000009d004b74                RC_DeletePins
-                0x000000009d004cb0                RC_ShutDown
-                0x000000009d004d58                Timer4IntHandler
+.text           0x000000009d004554      0xe98
+ .text          0x000000009d004554      0xe98 build/default/production/_ext/1990330219/RC_Servo.o
+                0x000000009d004554                RC_Init
+                0x000000009d0046a8                RC_AddPins
+                0x000000009d00475c                RC_RemovePins
+                0x000000009d004810                RC_ListPins
+                0x000000009d004838                RC_SetPulseTime
+                0x000000009d004964                RC_GetPulseTime
+                0x000000009d004a20                RC_ChangePending
+                0x000000009d004a70                RC_End
+                0x000000009d004ab0                RC_InstallPins
+                0x000000009d004c24                RC_DeletePins
+                0x000000009d004d60                RC_ShutDown
+                0x000000009d004e08                Timer4IntHandler
 
-.dinit          0x000000009d00533c      0xc80
- .dinit         0x000000009d00533c      0xc80 data_init
+.dinit          0x000000009d0053ec      0xc80
+ .dinit         0x000000009d0053ec      0xc80 data_init
 
-.text           0x000000009d005fbc     0x16dc
- .text          0x000000009d005fbc      0xbb0 build/default/production/_ext/1990330219/IO_Ports.o
-                0x000000009d005fbc                IO_PortsSetPortDirection
-                0x000000009d00603c                IO_PortsSetPortInputs
-                0x000000009d0060b8                IO_PortsSetPortOutputs
-                0x000000009d006134                IO_PortsReadPort
-                0x000000009d006234                IO_PortsWritePort
-                0x000000009d0062b4                IO_PortsSetPortBits
-                0x000000009d006330                IO_PortsClearPortBits
-                0x000000009d0063ac                IO_PortsTogglePortBits
-                0x000000009d006428                PortReadV
-                0x000000009d0064f8                PortReadW
-                0x000000009d0065c8                PortReadX
-                0x000000009d006708                PortReadY
-                0x000000009d006848                PortReadZ
-                0x000000009d006988                PortHandleHardwareIndirection
- .text          0x000000009d006b6c      0xb2c build/default/production/_ext/1990330219/AD.o
-                0x000000009d006b6c                AD_Init
-                0x000000009d006cb8                AD_AddPins
-                0x000000009d006d50                AD_RemovePins
-                0x000000009d006e04                AD_ActivePins
-                0x000000009d006e28                AD_IsNewDataReady
-                0x000000009d006e68                AD_ReadADPin
-                0x000000009d006f24                AD_End
-                0x000000009d006fe8                AD_SetPins
-                0x000000009d0073bc                ADCIntHandler
+.text           0x000000009d00606c     0x16dc
+ .text          0x000000009d00606c      0xbb0 build/default/production/_ext/1990330219/IO_Ports.o
+                0x000000009d00606c                IO_PortsSetPortDirection
+                0x000000009d0060ec                IO_PortsSetPortInputs
+                0x000000009d006168                IO_PortsSetPortOutputs
+                0x000000009d0061e4                IO_PortsReadPort
+                0x000000009d0062e4                IO_PortsWritePort
+                0x000000009d006364                IO_PortsSetPortBits
+                0x000000009d0063e0                IO_PortsClearPortBits
+                0x000000009d00645c                IO_PortsTogglePortBits
+                0x000000009d0064d8                PortReadV
+                0x000000009d0065a8                PortReadW
+                0x000000009d006678                PortReadX
+                0x000000009d0067b8                PortReadY
+                0x000000009d0068f8                PortReadZ
+                0x000000009d006a38                PortHandleHardwareIndirection
+ .text          0x000000009d006c1c      0xb2c build/default/production/_ext/1990330219/AD.o
+                0x000000009d006c1c                AD_Init
+                0x000000009d006d68                AD_AddPins
+                0x000000009d006e00                AD_RemovePins
+                0x000000009d006eb4                AD_ActivePins
+                0x000000009d006ed8                AD_IsNewDataReady
+                0x000000009d006f18                AD_ReadADPin
+                0x000000009d006fd4                AD_End
+                0x000000009d007098                AD_SetPins
+                0x000000009d00746c                ADCIntHandler
 
-.text           0x000000009d007698     0x14c8
- .text          0x000000009d007698      0xa88 build/default/production/bosshog.o
-                0x000000009d007698                Bosshog_Init
-                0x000000009d007920                Bosshog_LeftMtrSpeed
-                0x000000009d007a48                Bosshog_RightMtrSpeed
-                0x000000009d007b60                Bosshog_BatteryVoltage
-                0x000000009d007b94                BosshogReadCenterTape
-                0x000000009d007bc4                BosshogReadLeftTape
-                0x000000009d007bf4                BosshogReadRightTape
-                0x000000009d007c24                BosshogReadBackTape
-                0x000000009d007c54                BosshogReadTopRightTape
-                0x000000009d007c84                BosshogReadTopLeftTape
-                0x000000009d007cb4                BosshogReadTopCenterTape
-                0x000000009d007ce4                BosshogSetServo
-                0x000000009d007d5c                BosshogReadTrackWire
-                0x000000009d007e2c                BosshogReadBeacon
-                0x000000009d007e5c                Bosshog_ReadFrontLeftBumper
-                0x000000009d007e94                Bosshog_ReadFrontRightBumper
-                0x000000009d007ecc                Bosshog_ReadRearLeftBumper
-                0x000000009d007f04                Bosshog_ReadRearRightBumper
-                0x000000009d007f3c                Bosshog_ReadSideBumper
-                0x000000009d007f74                Bosshog_ReadTopFrontRightBumper
-                0x000000009d007fac                Bosshog_ReadTopFrontLeftBumper
-                0x000000009d007fe4                Bosshog_ReadTopBackRightBumper
-                0x000000009d00801c                Bosshog_ReadTopBackLeftBumper
-                0x000000009d008054                Bosshog_ReadBumpers
- .text          0x000000009d008120      0xa40 build/default/production/BosshogSubHSM.o
-                0x000000009d008120                InitBosshogSubHSM
-                0x000000009d00818c                Init_Relocate_SubHSM
-                0x000000009d0081f8                Init_Navigate_SubHSM
-                0x000000009d008264                Init_Identify_SubHSM
-                0x000000009d0082d0                RunBosshogSubHSM
-                0x000000009d0083dc                Run_Relocate_SubHSM
-                0x000000009d008588                Run_Navigate_SubHSM
-                0x000000009d008750                Run_Identify_SubHSM
+.text           0x000000009d007748     0x14c8
+ .text          0x000000009d007748      0xa88 build/default/production/bosshog.o
+                0x000000009d007748                Bosshog_Init
+                0x000000009d0079d0                Bosshog_LeftMtrSpeed
+                0x000000009d007af8                Bosshog_RightMtrSpeed
+                0x000000009d007c10                Bosshog_BatteryVoltage
+                0x000000009d007c44                BosshogReadCenterTape
+                0x000000009d007c74                BosshogReadLeftTape
+                0x000000009d007ca4                BosshogReadRightTape
+                0x000000009d007cd4                BosshogReadBackTape
+                0x000000009d007d04                BosshogReadTopRightTape
+                0x000000009d007d34                BosshogReadTopLeftTape
+                0x000000009d007d64                BosshogReadTopCenterTape
+                0x000000009d007d94                BosshogSetServo
+                0x000000009d007e0c                BosshogReadTrackWire
+                0x000000009d007edc                BosshogReadBeacon
+                0x000000009d007f0c                Bosshog_ReadFrontLeftBumper
+                0x000000009d007f44                Bosshog_ReadFrontRightBumper
+                0x000000009d007f7c                Bosshog_ReadRearLeftBumper
+                0x000000009d007fb4                Bosshog_ReadRearRightBumper
+                0x000000009d007fec                Bosshog_ReadSideBumper
+                0x000000009d008024                Bosshog_ReadTopFrontRightBumper
+                0x000000009d00805c                Bosshog_ReadTopFrontLeftBumper
+                0x000000009d008094                Bosshog_ReadTopBackRightBumper
+                0x000000009d0080cc                Bosshog_ReadTopBackLeftBumper
+                0x000000009d008104                Bosshog_ReadBumpers
+ .text          0x000000009d0081d0      0xa40 build/default/production/BosshogSubHSM.o
+                0x000000009d0081d0                InitBosshogSubHSM
+                0x000000009d00823c                Init_Relocate_SubHSM
+                0x000000009d0082a8                Init_Navigate_SubHSM
+                0x000000009d008314                Init_Identify_SubHSM
+                0x000000009d008380                RunBosshogSubHSM
+                0x000000009d00848c                Run_Relocate_SubHSM
+                0x000000009d008638                Run_Navigate_SubHSM
+                0x000000009d008800                Run_Identify_SubHSM
 
-.text           0x000000009d008b60     0x1078
- .text          0x000000009d008b60      0x8b4 build/default/production/_ext/1990330219/roach.o
-                0x000000009d008b60                Roach_Init
-                0x000000009d008d68                Roach_LeftMtrSpeed
-                0x000000009d008e90                Roach_RightMtrSpeed
-                0x000000009d008fa8                Roach_LightLevel
-                0x000000009d008fdc                Roach_BatteryVoltage
-                0x000000009d009010                Roach_ReadFrontLeftBumper
-                0x000000009d009048                Roach_ReadFrontRightBumper
-                0x000000009d009080                Roach_ReadRearLeftBumper
-                0x000000009d0090b8                Roach_ReadRearRightBumper
-                0x000000009d0090f0                Roach_ReadBumpers
-                0x000000009d0091bc                Roach_LEDSSet
-                0x000000009d0092a8                Roach_LEDSGet
-                0x000000009d00936c                Roach_BarGraph
- .text          0x000000009d009414      0x7c4 build/default/production/_ext/1990330219/pwm.o
-                0x000000009d009414                PWM_Init
-                0x000000009d009470                PWM_SetFrequency
-                0x000000009d0095bc                PWM_GetFrequency
-                0x000000009d0095f8                PWM_AddPins
-                0x000000009d009730                PWM_RemovePins
-                0x000000009d00988c                PWM_ListPins
-                0x000000009d0098b0                PWM_SetDutyCycle
-                0x000000009d0099e0                PWM_GetDutyCycle
-                0x000000009d009b24                PWM_End
+.text           0x000000009d008c10     0x1078
+ .text          0x000000009d008c10      0x8b4 build/default/production/_ext/1990330219/roach.o
+                0x000000009d008c10                Roach_Init
+                0x000000009d008e18                Roach_LeftMtrSpeed
+                0x000000009d008f40                Roach_RightMtrSpeed
+                0x000000009d009058                Roach_LightLevel
+                0x000000009d00908c                Roach_BatteryVoltage
+                0x000000009d0090c0                Roach_ReadFrontLeftBumper
+                0x000000009d0090f8                Roach_ReadFrontRightBumper
+                0x000000009d009130                Roach_ReadRearLeftBumper
+                0x000000009d009168                Roach_ReadRearRightBumper
+                0x000000009d0091a0                Roach_ReadBumpers
+                0x000000009d00926c                Roach_LEDSSet
+                0x000000009d009358                Roach_LEDSGet
+                0x000000009d00941c                Roach_BarGraph
+ .text          0x000000009d0094c4      0x7c4 build/default/production/_ext/1990330219/pwm.o
+                0x000000009d0094c4                PWM_Init
+                0x000000009d009520                PWM_SetFrequency
+                0x000000009d00966c                PWM_GetFrequency
+                0x000000009d0096a8                PWM_AddPins
+                0x000000009d0097e0                PWM_RemovePins
+                0x000000009d00993c                PWM_ListPins
+                0x000000009d009960                PWM_SetDutyCycle
+                0x000000009d009a90                PWM_GetDutyCycle
+                0x000000009d009bd4                PWM_End
 
 .text._do_print_cdnopuxX
-                0x000000009d009bd8      0x764
+                0x000000009d009c88      0x764
  .text._do_print_cdnopuxX
-                0x000000009d009bd8      0x764 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
-                0x000000009d009bd8                _do_print_cdnopuxX
+                0x000000009d009c88      0x764 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+                0x000000009d009c88                _do_print_cdnopuxX
 
-.text           0x000000009d00a33c      0xc50
- .text          0x000000009d00a33c      0x64c build/default/production/_ext/1990330219/ES_Timers.o
-                0x000000009d00a33c                ES_Timer_Init
-                0x000000009d00a3c0                ES_Timer_SetTimer
-                0x000000009d00a454                ES_Timer_StartTimer
-                0x000000009d00a51c                ES_Timer_StopTimer
-                0x000000009d00a608                ES_Timer_InitTimer
-                0x000000009d00a6fc                ES_Timer_GetTime
-                0x000000009d00a720                Timer1IntHandler
- .text          0x000000009d00a988      0x604 build/default/production/_ext/1990330219/serial.o
-                0x000000009d00a988                SERIAL_Init
-                0x000000009d00aac0                PutChar
-                0x000000009d00ab88                GetChar
-                0x000000009d00ac38                _mon_putc
-                0x000000009d00ac7c                _mon_puts
-                0x000000009d00acf8                _mon_getc
-                0x000000009d00ad48                IsReceiveEmpty
-                0x000000009d00ad88                IsTransmitEmpty
-                0x000000009d00adc8                IntUart1Handler
+.text           0x000000009d00a3ec      0xc50
+ .text          0x000000009d00a3ec      0x64c build/default/production/_ext/1990330219/ES_Timers.o
+                0x000000009d00a3ec                ES_Timer_Init
+                0x000000009d00a470                ES_Timer_SetTimer
+                0x000000009d00a504                ES_Timer_StartTimer
+                0x000000009d00a5cc                ES_Timer_StopTimer
+                0x000000009d00a6b8                ES_Timer_InitTimer
+                0x000000009d00a7ac                ES_Timer_GetTime
+                0x000000009d00a7d0                Timer1IntHandler
+ .text          0x000000009d00aa38      0x604 build/default/production/_ext/1990330219/serial.o
+                0x000000009d00aa38                SERIAL_Init
+                0x000000009d00ab70                PutChar
+                0x000000009d00ac38                GetChar
+                0x000000009d00ace8                _mon_putc
+                0x000000009d00ad2c                _mon_puts
+                0x000000009d00ada8                _mon_getc
+                0x000000009d00adf8                IsReceiveEmpty
+                0x000000009d00ae38                IsTransmitEmpty
+                0x000000009d00ae78                IntUart1Handler
 
-.text           0x000000009d00af8c      0x5c0
- .text          0x000000009d00af8c      0x5c0 build/default/production/_ext/1990330219/timers.o
-                0x000000009d00af8c                TIMERS_Init
-                0x000000009d00b040                TIMERS_SetTimer
-                0x000000009d00b0a8                TIMERS_StartTimer
-                0x000000009d00b10c                TIMERS_StopTimer
-                0x000000009d00b174                TIMERS_InitTimer
-                0x000000009d00b218                TIMERS_IsTimerActive
-                0x000000009d00b28c                TIMERS_IsTimerExpired
-                0x000000009d00b300                TIMERS_ClearTimerExpired
-                0x000000009d00b368                TIMERS_GetTime
-                0x000000009d00b38c                Timer5IntHandler
+.text           0x000000009d00b03c      0x5c0
+ .text          0x000000009d00b03c      0x5c0 build/default/production/_ext/1990330219/timers.o
+                0x000000009d00b03c                TIMERS_Init
+                0x000000009d00b0f0                TIMERS_SetTimer
+                0x000000009d00b158                TIMERS_StartTimer
+                0x000000009d00b1bc                TIMERS_StopTimer
+                0x000000009d00b224                TIMERS_InitTimer
+                0x000000009d00b2c8                TIMERS_IsTimerActive
+                0x000000009d00b33c                TIMERS_IsTimerExpired
+                0x000000009d00b3b0                TIMERS_ClearTimerExpired
+                0x000000009d00b418                TIMERS_GetTime
+                0x000000009d00b43c                Timer5IntHandler
 
-.rodata         0x000000009d00b54c      0x44c
- .rodata        0x000000009d00b54c      0x44c build/default/production/_ext/1990330219/IO_Ports.o
+.rodata         0x000000009d00b5fc      0x44c
+ .rodata        0x000000009d00b5fc      0x44c build/default/production/_ext/1990330219/IO_Ports.o
 
-.text           0x000000009d00b998      0x834
- .text          0x000000009d00b998      0x43c build/default/production/_ext/1990330219/ES_Framework.o
-                0x000000009d00b998                ES_Initialize
-                0x000000009d00bac0                ES_Run
-                0x000000009d00bc0c                ES_PostAll
-                0x000000009d00bcf4                ES_PostToService
- .text          0x000000009d00bdd4      0x3f8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_umoddi3.o)
-                0x000000009d00bdd4                __umoddi3
+.text           0x000000009d00ba48      0x834
+ .text          0x000000009d00ba48      0x43c build/default/production/_ext/1990330219/ES_Framework.o
+                0x000000009d00ba48                ES_Initialize
+                0x000000009d00bb70                ES_Run
+                0x000000009d00bcbc                ES_PostAll
+                0x000000009d00bda4                ES_PostToService
+ .text          0x000000009d00be84      0x3f8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_umoddi3.o)
+                0x000000009d00be84                __umoddi3
 
-.text           0x000000009d00c1cc      0x6f4
- .text          0x000000009d00c1cc      0x3ec c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_udivdi3.o)
-                0x000000009d00c1cc                __udivdi3
- .text          0x000000009d00c5b8      0x308 build/default/production/BosshogTimers.o
-                0x000000009d00c5b8                Init_timer_5_sec
-                0x000000009d00c640                Init_jig_timer
-                0x000000009d00c6c8                Run_timer_5_sec
-                0x000000009d00c77c                Run_jig_timer
-                0x000000009d00c830                Post_timer_5_sec
-                0x000000009d00c878                Post_jig_timer
+.text           0x000000009d00c27c      0x3ec
+ .text          0x000000009d00c27c      0x3ec c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(_udivdi3.o)
+                0x000000009d00c27c                __udivdi3
 
-.rodata         0x000000009d00c8c0      0x5e4
- .rodata        0x000000009d00c8c0      0x2fc build/default/production/EventService.o
- .rodata        0x000000009d00cbbc      0x2e8 build/default/production/BosshogSubHSM.o
+.rodata         0x000000009d00c668      0x3b0
+ .rodata        0x000000009d00c668      0x3b0 build/default/production/EventService.o
 
-.rodata         0x000000009d00cea4      0x580
- .rodata        0x000000009d00cea4      0x2e4 build/default/production/BosshogES_Main.o
- .rodata        0x000000009d00d188      0x29c build/default/production/_ext/1990330219/ES_Framework.o
+.text           0x000000009d00ca18      0x308
+ .text          0x000000009d00ca18      0x308 build/default/production/BosshogTimers.o
+                0x000000009d00ca18                Init_timer_5_sec
+                0x000000009d00caa0                Init_jig_timer
+                0x000000009d00cb28                Run_timer_5_sec
+                0x000000009d00cbdc                Run_jig_timer
+                0x000000009d00cc90                Post_timer_5_sec
+                0x000000009d00ccd8                Post_jig_timer
 
-.rodata         0x000000009d00d424      0x518
- .rodata        0x000000009d00d424      0x290 build/default/production/BosshogHSM.o
- .rodata        0x000000009d00d6b4      0x288 build/default/production/_ext/1990330219/ES_Timers.o
+.rodata         0x000000009d00cd20      0x5cc
+ .rodata        0x000000009d00cd20      0x2e8 build/default/production/BosshogSubHSM.o
+ .rodata        0x000000009d00d008      0x2e4 build/default/production/BosshogES_Main.o
 
-.text.fpsubadd  0x000000009d00d93c      0x278
+.rodata         0x000000009d00d2ec      0x52c
+ .rodata        0x000000009d00d2ec      0x29c build/default/production/_ext/1990330219/ES_Framework.o
+ .rodata        0x000000009d00d588      0x290 build/default/production/BosshogHSM.o
+
+.rodata         0x000000009d00d818      0x288
+ .rodata        0x000000009d00d818      0x288 build/default/production/_ext/1990330219/ES_Timers.o
+
+.text.fpsubadd  0x000000009d00daa0      0x278
  .text.fpsubadd
-                0x000000009d00d93c      0x278 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libm.a(fp32subadd.o)
-                0x000000009d00d93c                fpsub
-                0x000000009d00d93c                __subsf3
-                0x000000009d00d944                __addsf3
-                0x000000009d00d944                fpadd
+                0x000000009d00daa0      0x278 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libm.a(fp32subadd.o)
+                0x000000009d00daa0                fpsub
+                0x000000009d00daa0                __subsf3
+                0x000000009d00daa8                __addsf3
+                0x000000009d00daa8                fpadd
 
-.text           0x000000009d00dbb4      0x26c
- .text          0x000000009d00dbb4      0x26c build/default/production/_ext/1990330219/ES_Queue.o
-                0x000000009d00dbb4                ES_InitQueue
-                0x000000009d00dc14                ES_EnQueueFIFO
-                0x000000009d00dcd8                ES_DeQueue
-                0x000000009d00dde4                ES_IsQueueEmpty
+.text           0x000000009d00dd18      0x26c
+ .text          0x000000009d00dd18      0x26c build/default/production/_ext/1990330219/ES_Queue.o
+                0x000000009d00dd18                ES_InitQueue
+                0x000000009d00dd78                ES_EnQueueFIFO
+                0x000000009d00de3c                ES_DeQueue
+                0x000000009d00df48                ES_IsQueueEmpty
 
-.rodata         0x000000009d00de20      0x4b8
- .rodata        0x000000009d00de20      0x268 build/default/production/BosshogTimers.o
- .rodata        0x000000009d00e088      0x250 build/default/production/_ext/1990330219/ES_CheckEvents.o
+.rodata         0x000000009d00df84      0x4b8
+ .rodata        0x000000009d00df84      0x268 build/default/production/BosshogTimers.o
+ .rodata        0x000000009d00e1ec      0x250 build/default/production/_ext/1990330219/ES_CheckEvents.o
 
-.rodata         0x000000009d00e2d8      0x490
- .rodata        0x000000009d00e2d8      0x248 build/default/production/_ext/1990330219/ES_KeyboardInput.o
- .rodata        0x000000009d00e520      0x248 build/default/production/_ext/1990330219/ES_PostList.o
+.rodata         0x000000009d00e43c      0x490
+ .rodata        0x000000009d00e43c      0x248 build/default/production/_ext/1990330219/ES_KeyboardInput.o
+ .rodata        0x000000009d00e684      0x248 build/default/production/_ext/1990330219/ES_PostList.o
 
-.rodata         0x000000009d00e768      0x490
- .rodata        0x000000009d00e768      0x248 build/default/production/_ext/1990330219/ES_Queue.o
- .rodata        0x000000009d00e9b0      0x248 build/default/production/_ext/1990330219/ES_TattleTale.o
+.rodata         0x000000009d00e8cc      0x490
+ .rodata        0x000000009d00e8cc      0x248 build/default/production/_ext/1990330219/ES_Queue.o
+ .rodata        0x000000009d00eb14      0x248 build/default/production/_ext/1990330219/ES_TattleTale.o
 
-.rodata         0x000000009d00ebf8      0x248
- .rodata        0x000000009d00ebf8      0x248 build/default/production/BosshogEventChecker.o
+.rodata         0x000000009d00ed5c      0x248
+ .rodata        0x000000009d00ed5c      0x248 build/default/production/BosshogEventChecker.o
 
-.text           0x000000009d00ee40      0x2c4
- .text          0x000000009d00ee40      0x178 build/default/production/BosshogEventChecker.o
-                0x000000009d00ee40                TemplateCheckBattery
-                0x000000009d00eed8                BeaconEvent
- .text          0x000000009d00efb8      0x14c build/default/production/_ext/1990330219/BOARD.o
-                0x000000009d00efb8                BOARD_Init
-                0x000000009d00f038                BOARD_End
-                0x000000009d00f0dc                BOARD_GetPBClock
+.text           0x000000009d00efa4      0x2c4
+ .text          0x000000009d00efa4      0x178 build/default/production/BosshogEventChecker.o
+                0x000000009d00efa4                TemplateCheckBattery
+                0x000000009d00f03c                BeaconEvent
+ .text          0x000000009d00f11c      0x14c build/default/production/_ext/1990330219/BOARD.o
+                0x000000009d00f11c                BOARD_Init
+                0x000000009d00f19c                BOARD_End
+                0x000000009d00f240                BOARD_GetPBClock
 
-.text           0x000000009d00f104      0x124
- .text          0x000000009d00f104      0x124 build/default/production/_ext/1990330219/ES_KeyboardInput.o
-                0x000000009d00f104                InitKeyboardInput
-                0x000000009d00f17c                PostKeyboardInput
-                0x000000009d00f1c4                RunKeyboardInput
-                0x000000009d00f204                KeyboardInput_PrintEvents
+.text           0x000000009d00f268      0x124
+ .text          0x000000009d00f268      0x124 build/default/production/_ext/1990330219/ES_KeyboardInput.o
+                0x000000009d00f268                InitKeyboardInput
+                0x000000009d00f2e0                PostKeyboardInput
+                0x000000009d00f328                RunKeyboardInput
+                0x000000009d00f368                KeyboardInput_PrintEvents
 
-.rodata         0x000000009d00f228      0x120
- .rodata        0x000000009d00f228      0x120 build/default/production/_ext/1990330219/LED.o
+.rodata         0x000000009d00f38c      0x120
+ .rodata        0x000000009d00f38c      0x120 build/default/production/_ext/1990330219/LED.o
 
-.text           0x000000009d00f348      0x110
- .text          0x000000009d00f348      0x110 build/default/production/BosshogHSM.o
-                0x000000009d00f348                InitBosshogHSM
-                0x000000009d00f3c8                PostBosshogHSM
-                0x000000009d00f410                RunBosshogHSM
+.text           0x000000009d00f4ac      0x110
+ .text          0x000000009d00f4ac      0x110 build/default/production/BosshogHSM.o
+                0x000000009d00f4ac                InitBosshogHSM
+                0x000000009d00f52c                PostBosshogHSM
+                0x000000009d00f574                RunBosshogHSM
 
-.rodata         0x000000009d00f458       0xf0
- .rodata        0x000000009d00f458       0xf0 build/default/production/_ext/1990330219/roach.o
+.rodata         0x000000009d00f5bc       0xf0
+ .rodata        0x000000009d00f5bc       0xf0 build/default/production/_ext/1990330219/roach.o
 
 .text._outcnvrt
-                0x000000009d00f548       0xe8
+                0x000000009d00f6ac       0xe8
  .text._outcnvrt
-                0x000000009d00f548       0xe8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+                0x000000009d00f6ac       0xe8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
 
-.text           0x000000009d00f630       0xdc
- .text          0x000000009d00f630       0xdc build/default/production/BosshogES_Main.o
-                0x000000009d00f630                main
+.text           0x000000009d00f794       0xdc
+ .text          0x000000009d00f794       0xdc build/default/production/BosshogES_Main.o
+                0x000000009d00f794                main
 
 .text.general_exception
-                0x000000009d00f70c       0xdc
+                0x000000009d00f870       0xdc
  .text.general_exception
-                0x000000009d00f70c       0xdc c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
-                0x000000009d00f70c                _general_exception_context
+                0x000000009d00f870       0xdc c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(general-exception.o)
+                0x000000009d00f870                _general_exception_context
 
 .text._flsbuf_simple
-                0x000000009d00f7e8       0xd4
+                0x000000009d00f94c       0xd4
  .text._flsbuf_simple
-                0x000000009d00f7e8       0xd4 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
-                0x000000009d00f7e8                _flsbuf_simple
+                0x000000009d00f94c       0xd4 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
+                0x000000009d00f94c                _flsbuf_simple
 
-.text           0x000000009d00f8bc       0xac
- .text          0x000000009d00f8bc       0xac build/default/production/_ext/1990330219/ES_CheckEvents.o
-                0x000000009d00f8bc                ES_CheckUserEvents
+.text           0x000000009d00fa20       0xac
+ .text          0x000000009d00fa20       0xac build/default/production/_ext/1990330219/ES_CheckEvents.o
+                0x000000009d00fa20                ES_CheckUserEvents
 
 .text.repl.constprop.0
-                0x000000009d00f968       0xa8
+                0x000000009d00facc       0xa8
  .text.repl.constprop.0
-                0x000000009d00f968       0xa8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+                0x000000009d00facc       0xa8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
 
-.rodata         0x000000009d00fa10       0xa0
- .rodata        0x000000009d00fa10       0xa0 build/default/production/_ext/1990330219/RC_Servo.o
+.rodata         0x000000009d00fb74       0xa0
+ .rodata        0x000000009d00fb74       0xa0 build/default/production/_ext/1990330219/RC_Servo.o
 
-.text.fputc     0x000000009d00fab0       0xa0
- .text.fputc    0x000000009d00fab0       0xa0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputc.o)
-                0x000000009d00fab0                fputc
+.text.fputc     0x000000009d00fc14       0xa0
+ .text.fputc    0x000000009d00fc14       0xa0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputc.o)
+                0x000000009d00fc14                fputc
 
-.text           0x000000009d00fb50       0x84
- .text          0x000000009d00fb50       0x84 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
-                0x000000009d00fb50                __pic32_data_init
+.text           0x000000009d00fcb4       0x84
+ .text          0x000000009d00fcb4       0x84 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(pic32_data_init.o)
+                0x000000009d00fcb4                __pic32_data_init
 
-.text.fptoul    0x000000009d00fbd4       0x7c
- .text.fptoul   0x000000009d00fbd4       0x7c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libm.a(fptoul.o)
-                0x000000009d00fbd4                __fixunssfsi
-                0x000000009d00fbd4                fptoul
-                0x000000009d00fbd4                fptoui
+.text.fptoul    0x000000009d00fd38       0x7c
+ .text.fptoul   0x000000009d00fd38       0x7c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libm.a(fptoul.o)
+                0x000000009d00fd38                __fixunssfsi
+                0x000000009d00fd38                fptoul
+                0x000000009d00fd38                fptoui
 
 .text._fwrite_simple
-                0x000000009d00fc50       0x74
+                0x000000009d00fdb4       0x74
  .text._fwrite_simple
-                0x000000009d00fc50       0x74 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
-                0x000000009d00fc50                _fwrite_simple
+                0x000000009d00fdb4       0x74 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
+                0x000000009d00fdb4                _fwrite_simple
 
 .text._fflush_simple
-                0x000000009d00fcc4       0x70
+                0x000000009d00fe28       0x70
  .text._fflush_simple
-                0x000000009d00fcc4       0x70 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
-                0x000000009d00fcc4                _fflush_simple
+                0x000000009d00fe28       0x70 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
+                0x000000009d00fe28                _fflush_simple
 
-.text.sitofp    0x000000009d00fd34       0x60
- .text.sitofp   0x000000009d00fd34       0x60 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libm.a(sitofp.o)
-                0x000000009d00fd34                __floatsisf
-                0x000000009d00fd34                litofp
-                0x000000009d00fd34                sitofp
+.text.sitofp    0x000000009d00fe98       0x60
+ .text.sitofp   0x000000009d00fe98       0x60 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libm.a(sitofp.o)
+                0x000000009d00fe98                __floatsisf
+                0x000000009d00fe98                litofp
+                0x000000009d00fe98                sitofp
 
-.text.strlen    0x000000009d00fd94       0x5c
- .text.strlen   0x000000009d00fd94       0x5c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(strlen.o)
-                0x000000009d00fd94                strlen
+.text.strlen    0x000000009d00fef8       0x5c
+ .text.strlen   0x000000009d00fef8       0x5c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(strlen.o)
+                0x000000009d00fef8                strlen
 
-.text.fputs     0x000000009d00fdf0       0x58
- .text.fputs    0x000000009d00fdf0       0x58 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputs.o)
-                0x000000009d00fdf0                fputs
+.text.fputs     0x000000009d00ff54       0x58
+ .text.fputs    0x000000009d00ff54       0x58 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputs.o)
+                0x000000009d00ff54                fputs
 
 .text.main_entry
-                0x000000009d00fe48       0x54
+                0x000000009d00ffac       0x54
  .text.main_entry
-                0x000000009d00fe48       0x54 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
-                0x000000009d00fe7c                __crt0_exit
+                0x000000009d00ffac       0x54 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
+                0x000000009d00ffe0                __crt0_exit
 
 .text._mon_write
-                0x000000009d00fe9c       0x54
+                0x000000009d010000       0x54
  .text._mon_write
-                0x000000009d00fe9c       0x54 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
-                0x000000009d00fe9c                _mon_write
+                0x000000009d010000       0x54 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
+                0x000000009d010000                _mon_write
 
-.text.puts      0x000000009d00fef0       0x50
- .text.puts     0x000000009d00fef0       0x50 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputs.o)
-                0x000000009d00fef0                puts
+.text.puts      0x000000009d010054       0x50
+ .text.puts     0x000000009d010054       0x50 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputs.o)
+                0x000000009d010054                puts
 
-.text           0x000000009d00ff40       0x48
- .text          0x000000009d00ff40       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(floatunsisf.o)
-                0x000000009d00ff40                __floatunsisf
+.text           0x000000009d0100a4       0x48
+ .text          0x000000009d0100a4       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1\libgcc.a(floatunsisf.o)
+                0x000000009d0100a4                __floatunsisf
 
 .text._bootstrap_exception_handler
-                0x000000009d00ff88       0x48
+                0x000000009d0100ec       0x48
  .text._bootstrap_exception_handler
-                0x000000009d00ff88       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
-                0x000000009d00ff88                _bootstrap_exception_handler
+                0x000000009d0100ec       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
+                0x000000009d0100ec                _bootstrap_exception_handler
 
 .text._general_exception_handler
-                0x000000009d00ffd0       0x48
+                0x000000009d010134       0x48
  .text._general_exception_handler
-                0x000000009d00ffd0       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
-                0x000000009d00ffd0                _general_exception_handler
+                0x000000009d010134       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-general-exception-handler.o)
+                0x000000009d010134                _general_exception_handler
 
 .vector_default
-                0x000000009d010018       0x48
+                0x000000009d01017c       0x48
  .vector_default
-                0x000000009d010018       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
-                0x000000009d010018                _DefaultInterrupt
+                0x000000009d01017c       0x48 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(defaultinterrupt.o)
+                0x000000009d01017c                _DefaultInterrupt
 
-.text           0x000000009d010060       0x44
- .text          0x000000009d010060       0x44 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
-                0x000000009d010060                __pic32_software_reset
+.text           0x000000009d0101c4       0x44
+ .text          0x000000009d0101c4       0x44 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\pic32_software_reset.o
+                0x000000009d0101c4                __pic32_software_reset
 
-.rodata         0x000000009d0100a4       0x78
- .rodata        0x000000009d0100a4       0x3c build/default/production/_ext/1990330219/AD.o
- .rodata        0x000000009d0100e0       0x3c build/default/production/_ext/1990330219/pwm.o
+.rodata         0x000000009d010208       0x78
+ .rodata        0x000000009d010208       0x3c build/default/production/_ext/1990330219/AD.o
+ .rodata        0x000000009d010244       0x3c build/default/production/_ext/1990330219/pwm.o
 
 .text._printf_cdnopuxX
-                0x000000009d01011c       0x3c
+                0x000000009d010280       0x3c
  .text._printf_cdnopuxX
-                0x000000009d01011c       0x3c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(printf_cdnopuxX.eo)
-                0x000000009d01011c                _printf_cdnopuxX
+                0x000000009d010280       0x3c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(printf_cdnopuxX.eo)
+                0x000000009d010280                _printf_cdnopuxX
 
 .text._filbuf_simple
-                0x000000009d010158       0x34
+                0x000000009d0102bc       0x34
  .text._filbuf_simple
-                0x000000009d010158       0x34 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
-                0x000000009d010158                _filbuf_simple
+                0x000000009d0102bc       0x34 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
+                0x000000009d0102bc                _filbuf_simple
 
 .text._fsync_simple
-                0x000000009d01018c       0x30
+                0x000000009d0102f0       0x30
  .text._fsync_simple
-                0x000000009d01018c       0x30 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
-                0x000000009d01018c                _fsync_simple
+                0x000000009d0102f0       0x30 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
+                0x000000009d0102f0                _fsync_simple
 
-.text.putchar   0x000000009d0101bc       0x24
- .text.putchar  0x000000009d0101bc       0x24 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputc.o)
-                0x000000009d0101bc                putchar
+.text.putchar   0x000000009d010320       0x24
+ .text.putchar  0x000000009d010320       0x24 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputc.o)
+                0x000000009d010320                putchar
 
-.rodata         0x000000009d0101e0       0x20
- .rodata        0x000000009d0101e0       0x20 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+.rodata         0x000000009d010344       0x20
+ .rodata        0x000000009d010344       0x20 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
 
 .text._vfprintf_cdnopuxX
-                0x000000009d010200       0x1c
+                0x000000009d010364       0x1c
  .text._vfprintf_cdnopuxX
-                0x000000009d010200       0x1c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
-                0x000000009d010200                _vfprintf_cdnopuxX
+                0x000000009d010364       0x1c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+                0x000000009d010364                _vfprintf_cdnopuxX
 
-.text.putc      0x000000009d01021c       0x1c
- .text.putc     0x000000009d01021c       0x1c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputc.o)
-                0x000000009d01021c                putc
+.text.putc      0x000000009d010380       0x1c
+ .text.putc     0x000000009d010380       0x1c c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputc.o)
+                0x000000009d010380                putc
 
-.MIPS.abiflags  0x000000009d010238       0x18
+.MIPS.abiflags  0x000000009d0103a0       0x18
  .MIPS.abiflags
-                0x000000009d010238       0x18 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\debug-exception-return.o
+                0x000000009d0103a0       0x18 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\debug-exception-return.o
 
-.text           0x000000009d010250       0x18
- .text          0x000000009d010250       0x18 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
-                0x000000009d010250                _nmi_handler
+.text           0x000000009d0103b8       0x18
+ .text          0x000000009d0103b8       0x18 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-nmi-handler.o)
+                0x000000009d0103b8                _nmi_handler
 
-.text._io_exit  0x000000009d010268       0x14
+.text._io_exit  0x000000009d0103d0       0x14
  .text._io_exit
-                0x000000009d010268       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
-                0x000000009d010268                _io_exit
+                0x000000009d0103d0       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+                0x000000009d0103d0                _io_exit
 
-.rodata         0x000000009d01027c       0x14
- .rodata        0x000000009d01027c       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobdata.o)
-                0x000000009d01027c                _io_funcs
+.rodata         0x000000009d0103e4       0x14
+ .rodata        0x000000009d0103e4       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobdata.o)
+                0x000000009d0103e4                _io_funcs
 
-.text._io_exit  0x000000009d010290       0x14
+.text._io_exit  0x000000009d0103f8       0x14
  .text._io_exit
-                0x000000009d010290       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
+                0x000000009d0103f8       0x14 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_iobfuncs.o)
 
 .text._on_reset
-                0x000000009d0102a4        0x8
+                0x000000009d01040c        0x8
  .text._on_reset
-                0x000000009d0102a4        0x8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
-                0x000000009d0102a4                _on_reset
+                0x000000009d01040c        0x8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-reset.o)
+                0x000000009d01040c                _on_reset
 
 .text._on_bootstrap
-                0x000000009d0102ac        0x8
+                0x000000009d010414        0x8
  .text._on_bootstrap
-                0x000000009d0102ac        0x8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
-                0x000000009d0102ac                _on_bootstrap
+                0x000000009d010414        0x8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-on-bootstrap.o)
+                0x000000009d010414                _on_bootstrap
 
-.rodata.str1.4  0x000000009d0102b4        0xc
+.rodata.str1.4  0x000000009d01041c        0x8
  .rodata.str1.4
-                0x000000009d0102b4        0x8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+                0x000000009d01041c        0x8 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(_doprnt_cdnopuxX.eo)
+
+.rodata.str1.4  0x000000009d01039c        0x4
  .rodata.str1.4
-                0x000000009d0102bc        0x4 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputs.o)
+                0x000000009d01039c        0x4 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\liblega-c.a(fputs.o)
 
 .text%z157      0x0000000000000000        0x0
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(_mon_write.o)
@@ -3272,13 +3281,13 @@ LOAD data_init
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc32/v3.01/bin/bin/../../lib/gcc/pic32mx/8.3.1/../../../../pic32mx/lib\libpic32.a(default-bootstrap-exception-handler.o)
 
 .text%z215      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccZ6OdqB.o
+ .text          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccYqLHLu.o
 
 .text%z216      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccJLBZgz.o
+ .text          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccypN2LM.o
 
 .text%z217      0x0000000000000000        0x0
- .text          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\cc7AfhpZ.o
+ .text          0x0000000000000000        0x0 C:\Users\sindurka\AppData\Local\Temp\ccWFPLLw.o
 
 .text%z218      0x0000000000000000        0x0
  .text          0x0000000000000000        0x0 build/default/production/_ext/1990330219/ES_TattleTale.o
