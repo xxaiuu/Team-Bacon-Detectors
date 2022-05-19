@@ -9,7 +9,7 @@ build/default/production/EventService.o: EventService.c \
  ES_Configure.h EventService.h ES_Configure.h BosshogHSM.h \
  BosshogTimers.h C:/ECE118/include/ES_Events.h \
  C:/ECE118/include/ES_TattleTale.h EventService.h BosshogEventChecker.h \
- bosshog.h BosshogHSM.h
+ bosshog.h C:/ECE118/include/IO_Ports.h BosshogHSM.h
 
 C:/ECE118/include/BOARD.h:
 
@@ -60,5 +60,7 @@ EventService.h:
 BosshogEventChecker.h:
 
 bosshog.h:
+
+C:/ECE118/include/IO_Ports.h:
 
 BosshogHSM.h:

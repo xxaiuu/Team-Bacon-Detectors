@@ -7,7 +7,8 @@ build/default/production/BosshogHSM.o: BosshogHSM.c ES_Configure.h \
  C:/ECE118/include/ES_Queue.h C:/ECE118/include/ES_ServiceHeaders.h \
  ES_Configure.h EventService.h ES_Configure.h BosshogHSM.h \
  BosshogTimers.h C:/ECE118/include/ES_Events.h C:/ECE118/include/BOARD.h \
- C:/ECE118/include/ES_TattleTale.h BosshogHSM.h BosshogSubHSM.h bosshog.h
+ C:/ECE118/include/ES_TattleTale.h BosshogHSM.h BosshogSubHSM.h bosshog.h \
+ C:/ECE118/include/IO_Ports.h
 
 ES_Configure.h:
 
@@ -56,3 +57,5 @@ BosshogHSM.h:
 BosshogSubHSM.h:
 
 bosshog.h:
+
+C:/ECE118/include/IO_Ports.h:
