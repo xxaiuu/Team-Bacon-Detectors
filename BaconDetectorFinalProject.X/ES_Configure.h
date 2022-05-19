@@ -75,6 +75,7 @@ typedef enum {
     FIVE_SEC_TIMER,
     JIGGY_TIME,
             SPIN_AROUND,
+            HI_IM_LOST,
 	/* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
@@ -121,6 +122,7 @@ static const char *EventNames[] = {
     "FIVE_SEC_TIMER",
     "JIGGY_TIME",
     "SPIN_AROUND",
+    "HI_IM_LOST",
 	"NUMBEROFEVENTS",
 };
 
@@ -144,7 +146,7 @@ static const char *EventNames[] = {
 #define TIMER1_RESP_FUNC Post_timer_5_sec
 #define TIMER2_RESP_FUNC Post_jig_timer
 #define TIMER3_RESP_FUNC Post_180_timer
-#define TIMER4_RESP_FUNC TIMER_UNUSED
+#define TIMER4_RESP_FUNC Post_Lost_timer
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
 #define TIMER7_RESP_FUNC TIMER_UNUSED
@@ -168,6 +170,7 @@ static const char *EventNames[] = {
 #define Five_Second_Timer 1
 #define Timer_For_Jig 2
 #define Timer_For_180 3
+#define Timer_For_Lost 4
 
 /****************************************************************************/
 // The maximum number of services sets an upper bound on the number of 

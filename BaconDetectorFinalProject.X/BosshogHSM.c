@@ -305,12 +305,13 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case FindNext:
-            printf("In FindNext state. Not Implemented Yet. \r\n");
+            //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
-            
-            
-                        //Transitions
+            ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
+
+
+            //Transitions
             switch (ThisEvent.EventType) {
 
                 case BEACON_DETECTED:
@@ -323,30 +324,86 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     // Timer will need to be used and adjusted
                     Bosshog_LeftMtrSpeed(motorspeed);
                     Bosshog_RightMtrSpeed(-motorspeed);
-                    
+
                     nextState = FindNextInverse;
                     makeTransition = TRUE;
 
                     break;
+
+                case HI_IM_LOST:
+                    nextState = CantFind;
+                    makeTransition = TRUE;
+                    break;
+
                 default:
                     break;
             }
-            
+
             break;
 
 
         case FindNextInverse:
-            printf("In FindNext state. Not Implemented Yet. \r\n");
+            //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
-            
-            
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+
+                case BEACON_DETECTED:
+                    nextState = Navigate;
+                    makeTransition = TRUE;
+
+                    break;
+
+                case HI_IM_LOST:
+                    nextState = CantFind;
+                    makeTransition = TRUE;
+                    break;
+
+                default:
+                    break;
+            }
+
+
             break;
-            
+
         case CantFind:
             printf("In FindNext state. Not Implemented Yet. \r\n");
             // no sub hsm
             //remember to initialize in previous state transition 
+
+            //Transitions
+            switch (ThisEvent.EventType) {
+
+                case FRB_PRESSED:
+                    nextState = Identify;
+                    makeTransition = TRUE;
+
+                    break;
+
+                case FLB_PRESSED:
+                    nextState = Identify;
+                    makeTransition = TRUE;
+                    break;
+
+                case BL_TAPE_BLACK:
+                    nextState = Relocate;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+
+                    break;
+
+                case BR_TAPE_BLACK:
+                    nextState = Relocate;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+
+                    break;
+
+                default:
+                    break;
+            }
             break;
 
 

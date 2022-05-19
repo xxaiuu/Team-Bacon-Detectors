@@ -26,6 +26,8 @@
 #define TIMER_1_TICKS 5000 
 #define TIMER_JIG_TICKS 1000 
 #define TIMER_180_SPIN_TICKS 3500 
+#define TIMER_LOST_TICKS 7000 
+
 
 /*******************************************************************************
  * PUBLIC FUNCTION PROTOTYPES                                                  *
@@ -33,16 +35,19 @@
 uint8_t Init_timer_5_sec(uint8_t Priority);
 uint8_t Init_jig_timer(uint8_t Priority);
 uint8_t Init_180_timer(uint8_t Priority);
+uint8_t Init_Lost_timer(uint8_t Priority);
 
 
 uint8_t Post_timer_5_sec(ES_Event ThisEvent);
 uint8_t Post_jig_timer(ES_Event ThisEvent);
 uint8_t Post_180_timer(ES_Event ThisEvent);
+uint8_t Post_Lost_timer(ES_Event ThisEvent);
 
 
 ES_Event Run_timer_5_sec(ES_Event ThisEvent);
 ES_Event Run_jig_timer(ES_Event ThisEvent);
 ES_Event Run_180_timer(ES_Event ThisEvent);
+ES_Event Run_Lost_timer(ES_Event ThisEvent);
 
 #endif	
 
