@@ -20,7 +20,7 @@
 //defines for keyboard input
 //#define USE_KEYBOARD_INPUT
 //What State machine are we testing
-//#define POSTFUNCTION_FOR_KEYBOARD_INPUT PostGenericService
+#define POSTFUNCTION_FOR_KEYBOARD_INPUT PostBosshogHSM//PostGenericService
 
 //define for TattleTale
 #define USE_TATTLETALE

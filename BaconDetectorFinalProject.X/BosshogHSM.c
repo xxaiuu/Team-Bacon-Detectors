@@ -155,7 +155,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent)
             // transition from the initial pseudo-state into the actual
             // initial state
             // Initialize all sub-state machines
-            InitBosshogSubHSM();
+            Init_Relocate_SubHSM();
+            Init_Navigate_SubHSM();
             // now put the machine into the actual initial state
             nextState = Sweep;
             makeTransition = TRUE;
