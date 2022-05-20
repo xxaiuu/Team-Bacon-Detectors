@@ -64,7 +64,7 @@ static ES_Event storedEvent;
  * PRIVATE MODULE VARIABLES                                                    *
  ******************************************************************************/
 
-static uint8_t lastBeacon = BEACON_ABSENT;
+static uint8_t lastBeacon = BEACON_PRESENT;
 
 
 /* Any private module level variable that you might need for keeping track of
@@ -121,7 +121,7 @@ uint8_t BeaconEvent(void){
     currBeacon = BosshogReadBeacon();
     uint8_t WasEvent = FALSE;
     if (currBeacon != lastBeacon && currBeacon == BEACON_PRESENT){
-        //printf("Beacon FOUND\r\n");
+        printf("Beacon FOUND\r\n");
         //Bosshog_LeftMtrSpeed(50);
         ES_Event BeaconEvent;
         BeaconEvent.EventType = BEACON_DETECTED; 
@@ -130,7 +130,7 @@ uint8_t BeaconEvent(void){
         PostBosshogHSM(BeaconEvent);
         WasEvent = TRUE;
     }else if (currBeacon != lastBeacon && currBeacon == BEACON_ABSENT){
-        //printf("Beacon LOST\r\n");
+        printf("Beacon LOST\r\n");
         //Bosshog_LeftMtrSpeed(0);
         ES_Event BeaconEvent;
         BeaconEvent.EventType = BEACON_LOST; 
