@@ -130,16 +130,16 @@ static uint8_t MyPriority;
  *        to rename this to something appropriate.
  *        Returns TRUE if successful, FALSE otherwise
  * @author J. Edward Carryer, 2011.10.23 19:25 */
-uint8_t InitBosshogSubHSM(void) {
-    ES_Event returnEvent;
-
-    CurrentState = InitPSubState;
-    returnEvent = RunBosshogSubHSM(INIT_EVENT);
-    if (returnEvent.EventType == ES_NO_EVENT) {
-        return TRUE;
-    }
-    return FALSE;
-}
+//uint8_t InitBosshogSubHSM(void) {
+//    ES_Event returnEvent;
+//
+//    CurrentState = InitPSubState;
+//    returnEvent = RunBosshogSubHSM(INIT_EVENT);
+//    if (returnEvent.EventType == ES_NO_EVENT) {
+//        return TRUE;
+//    }
+//    return FALSE;
+//}
 
 uint8_t Init_Relocate_SubHSM(void) {
     ES_Event returnEvent;
@@ -228,50 +228,53 @@ uint8_t Init_FindNextInverse_SubHSM(void) {
  *       not consumed as these need to pass pack to the higher level state machine.
  * @author J. Edward Carryer, 2011.10.23 19:25
  * @author Gabriel H Elkaim, 2011.10.23 19:25 */
-ES_Event RunBosshogSubHSM(ES_Event ThisEvent) {
-    uint8_t makeTransition = FALSE; // use to flag transition
-    BosshogSubHSMState_t nextState; // <- change type to correct enum
 
-    ES_Tattle(); // trace call stack
+//Not actually using this sub hsm
 
-    switch (CurrentState) {
-        case InitPSubState: // If current state is initial Psedudo State
-            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
-            {
-                // this is where you would put any actions associated with the
-                // transition from the initial pseudo-state into the actual
-                // initial state
-
-                // now put the machine into the actual initial state
-                nextState = SubFirstState;
-                makeTransition = TRUE;
-                ThisEvent.EventType = ES_NO_EVENT;
-            }
-            break;
-
-        case SubFirstState: // in the first state, replace this with correct names
-            switch (ThisEvent.EventType) {
-                case ES_NO_EVENT:
-                default: // all unhandled events pass the event back up to the next level
-                    break;
-            }
-            break;
-
-        default: // all unhandled states fall into here
-            break;
-    } // end switch on Current State
-
-    if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
-        // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
-        CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
-    }
-
-    ES_Tail(); // trace call stack end
-    return ThisEvent;
-}
-
+//ES_Event RunBosshogSubHSM(ES_Event ThisEvent) {
+//    uint8_t makeTransition = FALSE; // use to flag transition
+//    BosshogSubHSMState_t nextState; // <- change type to correct enum
+//
+//    ES_Tattle(); // trace call stack
+//
+//    switch (CurrentState) {
+//        case InitPSubState: // If current state is initial Psedudo State
+//            if (ThisEvent.EventType == ES_INIT)// only respond to ES_Init
+//            {
+//                // this is where you would put any actions associated with the
+//                // transition from the initial pseudo-state into the actual
+//                // initial state
+//
+//                // now put the machine into the actual initial state
+//                nextState = SubFirstState;
+//                makeTransition = TRUE;
+//                ThisEvent.EventType = ES_NO_EVENT;
+//            }
+//            break;
+//
+//        case SubFirstState: // in the first state, replace this with correct names
+//            switch (ThisEvent.EventType) {
+//                case ES_NO_EVENT:
+//                default: // all unhandled events pass the event back up to the next level
+//                    break;
+//            }
+//            break;
+//
+//        default: // all unhandled states fall into here
+//            break;
+//    } // end switch on Current State
+//
+//    if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
+//        // recursively call the current state with an exit event
+//        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+//        CurrentState = nextState;
+//        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+//    }
+//
+//    ES_Tail(); // trace call stack end
+//    return ThisEvent;
+//}
+//
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -323,11 +326,11 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == BL_TAPE_BLACK) {
                 //slight drift right
                 Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed - 10);
+                Bosshog_LeftMtrSpeed(motorspeed - 5);
             }
             if (ThisEvent.EventType == BR_TAPE_BLACK) {
                 //slight drift left
-                Bosshog_RightMtrSpeed(motorspeed - 10);
+                Bosshog_RightMtrSpeed(motorspeed - 5);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
 
@@ -340,9 +343,9 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        Run_Relocate_SubHSM(EXIT_EVENT); // <- rename to your own Run function
         CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+        Run_Relocate_SubHSM(ENTRY_EVENT); // <- rename to your own Run function
     }
 
     ES_Tail(); // trace call stack end
@@ -431,9 +434,9 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        Run_Navigate_SubHSM(EXIT_EVENT); // <- rename to your own Run function
         CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+        Run_Navigate_SubHSM(ENTRY_EVENT); // <- rename to your own Run function
     }
 
     ES_Tail(); // trace call stack end
@@ -770,9 +773,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        Run_Identify_SubHSM(EXIT_EVENT); // <- rename to your own Run function
         CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+        Run_Identify_SubHSM(ENTRY_EVENT); // <- rename to your own Run function
     }
 
     ES_Tail(); // trace call stack end
@@ -904,9 +907,9 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        Run_Deposit_SubHSM(EXIT_EVENT); // <- rename to your own Run function
         CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+        Run_Deposit_SubHSM(ENTRY_EVENT); // <- rename to your own Run function
     }
 
     ES_Tail(); // trace call stack end
@@ -984,9 +987,9 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        Run_FindNext_SubHSM(EXIT_EVENT); // <- rename to your own Run function
         CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+        Run_FindNext_SubHSM(ENTRY_EVENT); // <- rename to your own Run function
     }
 
     ES_Tail(); // trace call stack end
@@ -1063,9 +1066,9 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
     if (makeTransition == TRUE) { // making a state transition, send EXIT and ENTRY
         // recursively call the current state with an exit event
-        RunBosshogSubHSM(EXIT_EVENT); // <- rename to your own Run function
+        Run_FindNextInverse_SubHSM(EXIT_EVENT); // <- rename to your own Run function
         CurrentState = nextState;
-        RunBosshogSubHSM(ENTRY_EVENT); // <- rename to your own Run function
+        Run_FindNextInverse_SubHSM(ENTRY_EVENT); // <- rename to your own Run function
     }
 
     ES_Tail(); // trace call stack end
