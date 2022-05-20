@@ -34,8 +34,8 @@
 #include "BosshogSubHSM.h"
 #include "bosshog.h"
 
-#define SideBumper
-//#define NoSideBumper
+//#define SideBumper
+#define NoSideBumper
 //#define motorspeed 75
 
 /*******************************************************************************
@@ -504,13 +504,17 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 #ifdef NoSideBumper
         case NoSideAlign:
-            //drift left
 
-            Bosshog_RightMtrSpeed(motorspeed + 10);
+            //drift left
+            Bosshog_RightMtrSpeed(motorspeed + 5);
             Bosshog_LeftMtrSpeed(motorspeed);
             //first bumper hit
-            nextState = Validate;
-            makeTransition = TRUE;
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
+                nextState = Validate;
+                makeTransition = TRUE;
+            }
 
             break;
 
@@ -643,21 +647,21 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 #endif
 #ifdef NoSideBumper
             //Tank turn and then drift left over and over 
-                        if ((ThisEvent.EventType == FRB_PRESSED) || (ThisEvent.EventType == FLB_PRESSED)) {
+            if ((ThisEvent.EventType == FRB_PRESSED) || (ThisEvent.EventType == FLB_PRESSED)) {
                 //tank turn
                 Bosshog_RightMtrSpeed(-motorspeed);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
             if ((ThisEvent.EventType == BRB_PRESSED) || (ThisEvent.EventType == BLB_PRESSED)) {
                 //slight turn left
-                Bosshog_RightMtrSpeed(motorspeed+5);
+                Bosshog_RightMtrSpeed(motorspeed + 5);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
-            
+
 #endif
-            
-            
-            
+
+
+
             //Transitions
             if (BosshogReadTopLeftTape() == TAPE_BLACK) {
                 nextState = TLT_TRT_One_For_Locate;

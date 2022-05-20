@@ -46,16 +46,16 @@ int main(void) {
             Bosshog_RightMtrSpeed(0);
         }
         if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(MTRSpeed);
+            Bosshog_LeftMtrSpeed(MTRSpeed+2);
             Bosshog_RightMtrSpeed(MTRSpeed);
         }
         if (BosshogReadCenterTape()){
             
-            Bosshog_LeftMtrSpeed(-MTRSpeed);
-            Bosshog_RightMtrSpeed(-MTRSpeed);
+            Bosshog_LeftMtrSpeed(-MTRSpeed-7);
+            Bosshog_RightMtrSpeed(-MTRSpeed); //need to go slower
         }
         if ( BosshogReadBackTape()){
-            Bosshog_LeftMtrSpeed(MTRSpeed);
+            Bosshog_LeftMtrSpeed(MTRSpeed+2);
             Bosshog_RightMtrSpeed(MTRSpeed);
         }
         
