@@ -46,10 +46,10 @@
  * as well. */
 
 //init bumper states
-static uint8_t LastFRB = BUMPER_NOT_TRIPPED;
-static uint8_t LastFLB = BUMPER_NOT_TRIPPED;
-static uint8_t LastBRB = BUMPER_NOT_TRIPPED;
-static uint8_t LastBLB = BUMPER_NOT_TRIPPED;
+static uint8_t LastFRB = BUMPER_TRIPPED;
+static uint8_t LastFLB = BUMPER_TRIPPED;
+static uint8_t LastBRB = BUMPER_TRIPPED;
+static uint8_t LastBLB = BUMPER_TRIPPED;
 static uint8_t LastSB = BUMPER_NOT_TRIPPED;
 
 //init TrackWire states
@@ -128,7 +128,7 @@ uint8_t FRBEvent(void) {
         BumperEvent.EventType = FRB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
 #ifndef EVENTCHECKER_TEST
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
@@ -140,7 +140,7 @@ uint8_t FRBEvent(void) {
         ES_Event BumperEvent;
         BumperEvent.EventType = FRB_RELEASED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
     LastFRB = (CurrBumper | CurrBumperTop);
@@ -160,7 +160,7 @@ uint8_t FLBEvent(void) {
         BumperEvent.EventType = FLB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
 #ifndef EVENTCHECKER_TEST
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
@@ -171,7 +171,7 @@ uint8_t FLBEvent(void) {
         ES_Event BumperEvent;
         BumperEvent.EventType = FLB_RELEASED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
     LastFLB = (CurrBumper | CurrBumperTop);
@@ -191,7 +191,7 @@ uint8_t BRBEvent(void) {
         BumperEvent.EventType = BRB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
 #ifndef EVENTCHECKER_TEST
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
@@ -202,7 +202,7 @@ uint8_t BRBEvent(void) {
         ES_Event BumperEvent;
         BumperEvent.EventType = BRB_RELEASED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
     LastBRB = (CurrBumper | CurrBumperTop);
@@ -222,7 +222,7 @@ uint8_t BLBEvent(void) {
         BumperEvent.EventType = BLB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
 #ifndef EVENTCHECKER_TEST
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
@@ -233,7 +233,7 @@ uint8_t BLBEvent(void) {
         ES_Event BumperEvent;
         BumperEvent.EventType = BLB_RELEASED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
     LastBLB = (CurrBumper | CurrBumperTop);
@@ -251,7 +251,7 @@ uint8_t SBEvent(void) {
         BumperEvent.EventType = SB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
 #ifndef EVENTCHECKER_TEST
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
@@ -262,7 +262,7 @@ uint8_t SBEvent(void) {
         ES_Event BumperEvent;
         BumperEvent.EventType = SB_RELEASED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
-        //PostBosshogHSM(BumperEvent);
+        PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
     LastSB = CurrBumper;
@@ -338,7 +338,6 @@ uint8_t BCTEvent(void) {
         TapeEvent.EventType = BC_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-        //printf("BCTEvent\r\n");
         printf("BCT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);

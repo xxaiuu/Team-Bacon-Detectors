@@ -40,7 +40,6 @@
  ******************************************************************************/
 //Include any defines you need to do
 //#define motorspeed 75
-#define motorspeed 0
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -161,6 +160,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 Init_Navigate_SubHSM();
                 Init_Identify_SubHSM();
                 Init_Deposit_SubHSM();
+                Init_FindNext_SubHSM();
+                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
                 nextState = Sweep;
                 makeTransition = TRUE;
@@ -173,7 +174,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // Real Initial State of Top HSM
         case Sweep:
             // No Sub HSM in this State
-
+            printf("Sweep \r\n");
             // Tank Turn Sweep Right
             Bosshog_LeftMtrSpeed(motorspeed);
             Bosshog_RightMtrSpeed(-motorspeed);
@@ -209,6 +210,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
         case Relocate:
             //NOTE: the SubState Machine runs and responds to events before anything in the this
             //state machine does
+            printf("Relocate \r\n");
 
             //Run the appropriate Sub HSM 
             ThisEvent = Run_Relocate_SubHSM(ThisEvent);
@@ -227,6 +229,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case Navigate:
+             printf("Navigate \r\n");
+
             //printf("In Navigate state. Not Implemented Yet. \r\n");
             //has sub HSM
             ThisEvent = Run_Navigate_SubHSM(ThisEvent);
@@ -259,7 +263,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case Identify:
-            printf("In Identify state. Not Fully Implemented Yet. \r\n");
+            printf("Identify \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
@@ -293,6 +297,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case Deposit:
+                        printf("Deposit \r\n");
+
             //printf("In Deposit state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
@@ -305,6 +311,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case FindNext:
+                        printf("FindNext \r\n");
+
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
@@ -343,6 +351,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case FindNextInverse:
+                        printf("FindNextInverse \r\n");
+
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
@@ -369,7 +379,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             break;
 
         case CantFind:
-            printf("In FindNext state. Not Implemented Yet. \r\n");
+            printf("CantFind \r\n");
             // no sub hsm
             //remember to initialize in previous state transition 
 

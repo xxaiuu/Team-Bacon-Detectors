@@ -34,7 +34,7 @@
 #include "BosshogSubHSM.h"
 #include "bosshog.h"
 
-#define motorspeed 75
+//#define motorspeed 75
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -308,6 +308,8 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
 
         case AlignCenterTape: // in the first state, replace this with correct names
             //TANK TURN LEFT
+                        printf("Relocate -> AlignCenterTape \r\n");
+
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
 
@@ -326,6 +328,8 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
             break;
 
         case WalkAlongLine:
+                                    printf("Relocate -> WalkAlongLine \r\n");
+
             if (ThisEvent.EventType == BL_TAPE_BLACK) {
                 //slight drift right
                 Bosshog_RightMtrSpeed(motorspeed);
@@ -379,6 +383,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Follow: // in the first state, replace this with correct names
+                                    printf("Navigate -> Follow \r\n");
+
             //Go forward
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
@@ -398,6 +404,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Jig:
+                                    printf("Navigate -> Jig \r\n");
 
             //Jig, turn in place to the left for 25 degree and then turn in place right for 50 degree 
             //In theory, it should be able to find the signal again as it was already found before
@@ -467,6 +474,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Align: // this is the first state
+                                                printf("Identify -> Align \r\n");
+
             //Turn Right
             Bosshog_RightMtrSpeed(-motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
@@ -481,7 +490,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     Bosshog_LeftMtrSpeed(0);
 
                     break;
-
+                case BLB_PRESSED:                    
+                    Bosshog_RightMtrSpeed(motorspeed+10);
+                    Bosshog_LeftMtrSpeed(motorspeed);
+                    break;
+                    
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
@@ -490,16 +503,17 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
         case Validate:
             //This state checks the top center tape
+                                                printf("Identify -> Validate \r\n");
 
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TC_TAPE_BLACK:
+            switch (BosshogReadTopCenterTape()) {
+                case TAPE_BLACK:
                     nextState = IsDead;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
                     break;
-                case TC_TAPE_WHITE:
+                case TAPE_WHITE:
                     nextState = Locate;
                     makeTransition = TRUE;
                     break;
@@ -515,6 +529,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
         case IsDead:
             //set motors to go forward
+                                                            printf("Identify -> IsDead \r\n");
+
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
 
@@ -554,6 +570,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case ReAlign:
+                                                            printf("Identify -> ReAlign \r\n");
+
             //Motors turn left
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
@@ -570,6 +588,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case Evade:
+                                                            printf("Identify -> Evade \r\n");
+
             //turn back and left
             Bosshog_RightMtrSpeed(-motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed - 15);
@@ -588,6 +608,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case Locate:
+                                                            printf("Identify -> Locate \r\n");
+
             //go straight
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
@@ -640,6 +662,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Corner:
+                                                            printf("Identify -> Corner \r\n");
+
             //Turn Hard Right
             Bosshog_RightMtrSpeed(motorspeed + 25);
             Bosshog_LeftMtrSpeed(motorspeed - 25);
@@ -667,6 +691,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case BackLocate:
+                                                            printf("Identify -> BackLocate \r\n");
+
             // go straight back and do the inverse logic of Locate
             Bosshog_RightMtrSpeed(-motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
@@ -714,6 +740,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case BackCorner:
+                                                            printf("Identify -> BackCorner \r\n");
+
             //Turn Back Left
             Bosshog_RightMtrSpeed(motorspeed - 25);
             Bosshog_LeftMtrSpeed(motorspeed + 25);

@@ -121,8 +121,8 @@ uint8_t BeaconEvent(void){
     currBeacon = BosshogReadBeacon();
     uint8_t WasEvent = FALSE;
     if (currBeacon != lastBeacon && currBeacon == BEACON_PRESENT){
-        printf("Beacon FOUND\r\n");
-        Bosshog_LeftMtrSpeed(50);
+        //printf("Beacon FOUND\r\n");
+        //Bosshog_LeftMtrSpeed(50);
         ES_Event BeaconEvent;
         BeaconEvent.EventType = BEACON_DETECTED; 
         BeaconEvent.EventParam = (uint16_t) currBeacon;
@@ -130,8 +130,8 @@ uint8_t BeaconEvent(void){
         PostBosshogHSM(BeaconEvent);
         WasEvent = TRUE;
     }else if (currBeacon != lastBeacon && currBeacon == BEACON_ABSENT){
-        printf("Beacon LOST\r\n");
-        Bosshog_LeftMtrSpeed(0);
+        //printf("Beacon LOST\r\n");
+        //Bosshog_LeftMtrSpeed(0);
         ES_Event BeaconEvent;
         BeaconEvent.EventType = BEACON_LOST; 
         BeaconEvent.EventParam = (uint16_t) currBeacon;
