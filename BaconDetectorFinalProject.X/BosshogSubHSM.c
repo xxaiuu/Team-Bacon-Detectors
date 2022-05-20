@@ -64,8 +64,8 @@ typedef enum {
     Dispense,
     Spin,
     EvadeTower,
-            SpinOtherWay,
-            EvadeOtherWay,
+    SpinOtherWay,
+    EvadeOtherWay,
 } BosshogSubHSMState_t;
 
 
@@ -213,16 +213,6 @@ uint8_t Init_FindNextInverse_SubHSM(void) {
     return FALSE;
 }
 
-
-
-
-
-
-
-
-
-
-
 /**
  * @Function RunTemplateSubHSM(ES_Event ThisEvent)
  * @param ThisEvent - the event (type and param) to be responded.
@@ -308,7 +298,7 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
 
         case AlignCenterTape: // in the first state, replace this with correct names
             //TANK TURN LEFT
-                        printf("Relocate -> AlignCenterTape \r\n");
+            printf("Relocate -> AlignCenterTape \r\n");
 
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(-motorspeed);
@@ -328,7 +318,7 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
             break;
 
         case WalkAlongLine:
-                                    printf("Relocate -> WalkAlongLine \r\n");
+            printf("Relocate -> WalkAlongLine \r\n");
 
             if (ThisEvent.EventType == BL_TAPE_BLACK) {
                 //slight drift right
@@ -383,7 +373,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Follow: // in the first state, replace this with correct names
-                                    printf("Navigate -> Follow \r\n");
+            printf("Navigate -> Follow \r\n");
 
             //Go forward
             Bosshog_RightMtrSpeed(motorspeed);
@@ -404,7 +394,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Jig:
-                                    printf("Navigate -> Jig \r\n");
+            printf("Navigate -> Jig \r\n");
 
             //Jig, turn in place to the left for 25 degree and then turn in place right for 50 degree 
             //In theory, it should be able to find the signal again as it was already found before
@@ -474,7 +464,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Align: // this is the first state
-                                                printf("Identify -> Align \r\n");
+            printf("Identify -> Align \r\n");
 
             //Turn Right
             Bosshog_RightMtrSpeed(-motorspeed);
@@ -490,11 +480,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     Bosshog_LeftMtrSpeed(0);
 
                     break;
-                case BLB_PRESSED:                    
-                    Bosshog_RightMtrSpeed(motorspeed+10);
+                case BLB_PRESSED:
+                    Bosshog_RightMtrSpeed(motorspeed + 10);
                     Bosshog_LeftMtrSpeed(motorspeed);
                     break;
-                    
+
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
@@ -503,7 +493,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
         case Validate:
             //This state checks the top center tape
-                                                printf("Identify -> Validate \r\n");
+            printf("Identify -> Validate \r\n");
 
             //Transitions
             switch (BosshogReadTopCenterTape()) {
@@ -529,7 +519,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
         case IsDead:
             //set motors to go forward
-                                                            printf("Identify -> IsDead \r\n");
+            printf("Identify -> IsDead \r\n");
 
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
@@ -548,14 +538,14 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
                 //check tape sensor and transition off that
                 //Transitions
-                switch (ThisEvent.EventType) {
-                    case TC_TAPE_BLACK:
+                switch (BosshogReadTopCenterTape()) {
+                    case TAPE_BLACK:
                         nextState = Evade;
                         makeTransition = TRUE;
                         ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
                         break;
-                    case TC_TAPE_WHITE:
+                    case TAPE_WHITE:
                         nextState = Locate;
                         makeTransition = TRUE;
                         break;
@@ -570,7 +560,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case ReAlign:
-                                                            printf("Identify -> ReAlign \r\n");
+            printf("Identify -> ReAlign \r\n");
 
             //Motors turn left
             Bosshog_RightMtrSpeed(motorspeed);
@@ -588,7 +578,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case Evade:
-                                                            printf("Identify -> Evade \r\n");
+            printf("Identify -> Evade \r\n");
 
             //turn back and left
             Bosshog_RightMtrSpeed(-motorspeed);
@@ -608,7 +598,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case Locate:
-                                                            printf("Identify -> Locate \r\n");
+            printf("Identify -> Locate \r\n");
 
             //go straight
             Bosshog_RightMtrSpeed(motorspeed);
@@ -626,13 +616,19 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             }
 
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TL_TAPE_BLACK:
-                    nextState = TLT_TRT_One_For_Locate;
-                    makeTransition = TRUE;
-                    break;
+            if (BosshogReadTopLeftTape() == TAPE_BLACK) {
+                nextState = TLT_TRT_One_For_Locate;
+                makeTransition = TRUE;
+            }
 
-                case TC_TAPE_BLACK:
+
+            switch (ThisEvent.EventType) {
+//                case TL_TAPE_BLACK:
+//                    nextState = TLT_TRT_One_For_Locate;
+//                    makeTransition = TRUE;
+//                    break;
+
+                case BC_TAPE_BLACK:
                     nextState = BackLocate;
                     makeTransition = TRUE;
                     break;
@@ -646,12 +642,12 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
         case TLT_TRT_One_For_Locate:
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TR_TAPE_BLACK:
+            switch (BosshogReadTopRightTape()) {
+                case TAPE_BLACK:
                     nextState = Corner;
                     makeTransition = TRUE;
                     break;
-                case TR_TAPE_WHITE:
+                case TAPE_WHITE:
                     nextState = Locate;
                     makeTransition = TRUE;
                     break;
@@ -662,11 +658,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Corner:
-                                                            printf("Identify -> Corner \r\n");
+            printf("Identify -> Corner \r\n");
 
             //Turn Hard Right
-            Bosshog_RightMtrSpeed(motorspeed + 25);
-            Bosshog_LeftMtrSpeed(motorspeed - 25);
+            Bosshog_RightMtrSpeed(motorspeed + 10);
+            Bosshog_LeftMtrSpeed(motorspeed - 10);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -691,7 +687,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case BackLocate:
-                                                            printf("Identify -> BackLocate \r\n");
+            printf("Identify -> BackLocate \r\n");
 
             // go straight back and do the inverse logic of Locate
             Bosshog_RightMtrSpeed(-motorspeed);
@@ -701,17 +697,17 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == SB_RELEASED) {
                 //slight turn left
                 Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed - 10);
+                Bosshog_LeftMtrSpeed(motorspeed - 5);
             }
             if (ThisEvent.EventType == SB_PRESSED) {
                 //slight turn right
-                Bosshog_RightMtrSpeed(motorspeed - 10);
+                Bosshog_RightMtrSpeed(motorspeed - 5);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
 
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TL_TAPE_BLACK:
+            switch (BosshogReadTopLeftTape()) {
+                case TAPE_BLACK:
                     nextState = TLT_TRT_One_For_BackLocate;
                     makeTransition = TRUE;
                     break;
@@ -724,12 +720,12 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
         case TLT_TRT_One_For_BackLocate:
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TR_TAPE_BLACK:
+            switch (BosshogReadTopRightTape()) {
+                case TAPE_BLACK:
                     nextState = BackCorner;
                     makeTransition = TRUE;
                     break;
-                case TR_TAPE_WHITE:
+                case TAPE_WHITE:
                     nextState = BackLocate;
                     makeTransition = TRUE;
                     break;
@@ -740,11 +736,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case BackCorner:
-                                                            printf("Identify -> BackCorner \r\n");
+            printf("Identify -> BackCorner \r\n");
 
             //Turn Back Left
-            Bosshog_RightMtrSpeed(motorspeed - 25);
-            Bosshog_LeftMtrSpeed(motorspeed + 25);
+            Bosshog_RightMtrSpeed(motorspeed - 10);
+            Bosshog_LeftMtrSpeed(motorspeed + 10);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -822,8 +818,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             }
 
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TR_TAPE_BLACK:
+            switch (BosshogReadTopRightTape()) {
+                case TAPE_BLACK:
                     nextState = TLT_and_TRT_One_For_Deposit;
                     makeTransition = TRUE;
                     break;
@@ -838,13 +834,13 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
         case TLT_and_TRT_One_For_Deposit:
             //Transitions
-            switch (ThisEvent.EventType) {
-                case TL_TAPE_BLACK:
+            switch (BosshogReadTopLeftTape()) {
+                case TAPE_BLACK:
                     nextState = Scan;
                     makeTransition = TRUE;
                     break;
 
-                case TL_TAPE_WHITE:
+                case TAPE_WHITE:
                     nextState = DepositInit;
                     makeTransition = TRUE;
                     break;
@@ -860,8 +856,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
 
-            switch (ThisEvent.EventType) {
-                case TC_TAPE_BLACK:
+            switch (BosshogReadTopCenterTape()) {
+                case TAPE_BLACK:
                     nextState = TCT_and_TRT_One_For_Deposit;
                     makeTransition = TRUE;
                     break;
@@ -873,13 +869,13 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             break;
 
         case TCT_and_TRT_One_For_Deposit:
-            switch (ThisEvent.EventType) {
-                case TR_TAPE_BLACK:
+            switch (BosshogReadTopRightTape()) {
+                case TAPE_BLACK:
                     nextState = Dispense;
                     makeTransition = TRUE;
                     break;
 
-                case TR_TAPE_WHITE:
+                case TAPE_WHITE:
                     nextState = Scan;
                     makeTransition = TRUE;
                     break;
@@ -996,7 +992,6 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
     ES_Tail(); // trace call stack end
     return ThisEvent;
 }
-
 
 ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
     uint8_t makeTransition = FALSE; // use to flag transition

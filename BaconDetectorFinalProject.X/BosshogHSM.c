@@ -229,7 +229,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case Navigate:
-             printf("Navigate \r\n");
+            printf("Navigate \r\n");
 
             //printf("In Navigate state. Not Implemented Yet. \r\n");
             //has sub HSM
@@ -276,6 +276,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case FIVE_SEC_TIMER:
                     nextState = FindNext;
                     makeTransition = TRUE;
+                    Init_FindNext_SubHSM();
+
                     //                //start 5 second timer
                     //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
 
@@ -297,7 +299,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case Deposit:
-                        printf("Deposit \r\n");
+            printf("Deposit \r\n");
 
             //printf("In Deposit state. Not Implemented Yet. \r\n");
             //has sub HSM
@@ -306,12 +308,12 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             nextState = FindNext;
             makeTransition = TRUE;
-
+            Init_FindNext_SubHSM();
             break;
 
 
         case FindNext:
-                        printf("FindNext \r\n");
+            printf("FindNext \r\n");
 
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
@@ -325,6 +327,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case BEACON_DETECTED:
                     nextState = Navigate;
                     makeTransition = TRUE;
+                    Init_Navigate_SubHSM();
 
                     break;
                 case BB_TAPE_BLACK:
@@ -335,6 +338,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                     nextState = FindNextInverse;
                     makeTransition = TRUE;
+                    Init_FindNextInverse_SubHSM();
 
                     break;
 
@@ -351,7 +355,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case FindNextInverse:
-                        printf("FindNextInverse \r\n");
+            printf("FindNextInverse \r\n");
 
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
@@ -363,6 +367,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case BEACON_DETECTED:
                     nextState = Navigate;
                     makeTransition = TRUE;
+                    Init_Navigate_SubHSM();
 
                     break;
 
@@ -389,18 +394,21 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case FRB_PRESSED:
                     nextState = Identify;
                     makeTransition = TRUE;
+                    Init_Identify_SubHSM();
 
                     break;
 
                 case FLB_PRESSED:
                     nextState = Identify;
                     makeTransition = TRUE;
+                    Init_Identify_SubHSM();
                     break;
 
                 case BL_TAPE_BLACK:
                     nextState = Relocate;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+                    Init_Relocate_SubHSM();
 
                     break;
 
@@ -408,6 +416,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     nextState = Relocate;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+                    Init_Relocate_SubHSM();
 
                     break;
 
