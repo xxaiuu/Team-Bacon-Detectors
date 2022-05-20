@@ -34,6 +34,8 @@
 #include "BosshogSubHSM.h"
 #include "bosshog.h"
 
+#define SideBumper
+//#define NoSideBumper
 //#define motorspeed 75
 
 /*******************************************************************************
@@ -66,6 +68,7 @@ typedef enum {
     EvadeTower,
     SpinOtherWay,
     EvadeOtherWay,
+    NoSideAlign,
 } BosshogSubHSMState_t;
 
 
@@ -96,6 +99,7 @@ static const char *StateNames[] = {
     "EvadeTower",
     "SpinOtherWay",
     "EvadeOtherWay",
+    "NoSideAlign",
 };
 
 
@@ -406,12 +410,12 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
             //mess with jig time to change angle
             //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed((motorspeed - 10));
+            Bosshog_LeftMtrSpeed(-(motorspeed - 10));
 
             if (ThisEvent.EventType == JIGGY_TIME) {
-                Bosshog_RightMtrSpeed(-motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(-(motorspeed - 10));
+                Bosshog_LeftMtrSpeed((motorspeed - 10));
             }
 
             //Transitions
@@ -475,6 +479,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
             //Transitions
             switch (ThisEvent.EventType) {
+#ifdef SideBumper
                 case SB_PRESSED:
                     nextState = Validate;
                     makeTransition = TRUE;
@@ -483,16 +488,34 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     Bosshog_LeftMtrSpeed(0);
 
                     break;
+#endif
+#ifdef NoSideBumper
                 case BLB_PRESSED:
-                    Bosshog_RightMtrSpeed(motorspeed + 10);
-                    Bosshog_LeftMtrSpeed(motorspeed);
+                    //move to another state
+                    nextState = NoSideAlign;
+                    makeTransition = TRUE;
                     break;
+#endif 
 
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
 
             break;
+#ifdef NoSideBumper
+        case NoSideAlign:
+            //drift left
+
+            Bosshog_RightMtrSpeed(motorspeed + 10);
+            Bosshog_LeftMtrSpeed(motorspeed);
+            //first bumper hit
+            nextState = Validate;
+            makeTransition = TRUE;
+
+            break;
+
+#endif
+
 
         case Validate:
             //This state checks the top center tape
@@ -606,7 +629,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //go straight
             Bosshog_RightMtrSpeed(motorspeed);
             Bosshog_LeftMtrSpeed(motorspeed);
-
+#ifdef SideBumper
             if (ThisEvent.EventType == SB_RELEASED) {
                 //slight turn left
                 Bosshog_RightMtrSpeed(motorspeed);
@@ -617,7 +640,24 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 Bosshog_RightMtrSpeed(motorspeed - 10);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
-
+#endif
+#ifdef NoSideBumper
+            //Tank turn and then drift left over and over 
+                        if ((ThisEvent.EventType == FRB_PRESSED) || (ThisEvent.EventType == FLB_PRESSED)) {
+                //tank turn
+                Bosshog_RightMtrSpeed(-motorspeed);
+                Bosshog_LeftMtrSpeed(motorspeed);
+            }
+            if ((ThisEvent.EventType == BRB_PRESSED) || (ThisEvent.EventType == BLB_PRESSED)) {
+                //slight turn left
+                Bosshog_RightMtrSpeed(motorspeed+5);
+                Bosshog_LeftMtrSpeed(motorspeed);
+            }
+            
+#endif
+            
+            
+            
             //Transitions
             if (BosshogReadTopLeftTape() == TAPE_BLACK) {
                 nextState = TLT_TRT_One_For_Locate;
@@ -626,10 +666,10 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
             switch (ThisEvent.EventType) {
-//                case TL_TAPE_BLACK:
-//                    nextState = TLT_TRT_One_For_Locate;
-//                    makeTransition = TRUE;
-//                    break;
+                    //                case TL_TAPE_BLACK:
+                    //                    nextState = TLT_TRT_One_For_Locate;
+                    //                    makeTransition = TRUE;
+                    //                    break;
 
                 case BC_TAPE_BLACK:
                     nextState = BackLocate;
