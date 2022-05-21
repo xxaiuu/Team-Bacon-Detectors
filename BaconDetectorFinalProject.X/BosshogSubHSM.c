@@ -69,6 +69,7 @@ typedef enum {
     SpinOtherWay,
     EvadeOtherWay,
     NoSideAlign,
+            Stop,
 } BosshogSubHSMState_t;
 
 
@@ -100,6 +101,7 @@ static const char *StateNames[] = {
     "SpinOtherWay",
     "EvadeOtherWay",
     "NoSideAlign",
+    "Stop",
 };
 
 
@@ -307,8 +309,8 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
             //TANK TURN LEFT
             printf("Relocate -> AlignCenterTape \r\n");
 
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
 
             //Transitions
@@ -329,12 +331,12 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
 
             if (ThisEvent.EventType == BL_TAPE_BLACK) {
                 //slight drift right
-                Bosshog_RightMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 Bosshog_LeftMtrSpeed(motorspeed - 5);
             }
             if (ThisEvent.EventType == BR_TAPE_BLACK) {
                 //slight drift left
-                Bosshog_RightMtrSpeed(motorspeed - 5);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 5);
                 Bosshog_LeftMtrSpeed(motorspeed);
             }
 
@@ -383,7 +385,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             printf("Navigate -> Follow \r\n");
 
             //Go forward
-            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
             Bosshog_LeftMtrSpeed(motorspeed);
 
 
@@ -392,7 +394,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
                 case BEACON_LOST:
                     nextState = Jig;
                     makeTransition = TRUE;
-                    ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+                    ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS);
 
                     break;
 
@@ -413,11 +415,11 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
             //mess with jig time to change angle
             //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
-            Bosshog_RightMtrSpeed((motorspeed - 10));
+            Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 10));
             Bosshog_LeftMtrSpeed(-(motorspeed - 10));
 
             if (ThisEvent.EventType == JIGGY_TIME) {
-                Bosshog_RightMtrSpeed(-(motorspeed - 10));
+                Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 10));
                 Bosshog_LeftMtrSpeed((motorspeed - 10));
             }
 
@@ -473,55 +475,80 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             }
             break;
 
+        case Stop:
+                        printf("Identify -> Stop \r\n");
+
+             Bosshog_RightMtrSpeed(0);
+                    Bosshog_LeftMtrSpeed(0);
+                    break;
+            
+            
         case Align: // this is the first state
             printf("Identify -> Align \r\n");
 
             //Turn Right
-            Bosshog_RightMtrSpeed(-motorspeed);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
             //Transitions
             switch (ThisEvent.EventType) {
-#ifdef SideBumper
-                case SB_PRESSED:
-                    nextState = Validate;
-                    makeTransition = TRUE;
+                    //                case SB_PRESSED:
+                    //                    nextState = Validate;
+                    //                    makeTransition = TRUE;
+                    //
+                    //                    Bosshog_RightMtrSpeed(0);
+                    //                    Bosshog_LeftMtrSpeed(0);
+                    //
+                    //                    break;
 
-                    Bosshog_RightMtrSpeed(0);
-                    Bosshog_LeftMtrSpeed(0);
-
-                    break;
-#endif
-#ifdef NoSideBumper
                 case BLB_PRESSED:
                     //move to another state
                     nextState = NoSideAlign;
                     makeTransition = TRUE;
+//                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
+
+//                    nextState = Stop;
+//                    makeTransition = TRUE;
                     break;
-#endif 
+
+                case BRB_PRESSED:
+                    //move to another state
+                    nextState = NoSideAlign;
+                    makeTransition = TRUE;
+                    //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
+
+//                     nextState = Stop;
+//                    makeTransition = TRUE;
+                    break;
 
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
 
             break;
-#ifdef NoSideBumper
         case NoSideAlign:
 
             //hard left
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED+15);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             //first bumper hit
             if (ThisEvent.EventType == FLB_PRESSED) {
+                printf("FRONT BUMPER GOT PRESSED \r\n");
                 Bosshog_RightMtrSpeed(0);
                 Bosshog_LeftMtrSpeed(0);
-                nextState = Validate;
+                nextState = Stop;//Validate;
+                makeTransition = TRUE;
+            }
+            if (ThisEvent.EventType == SB_PRESSED) {
+                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
+                nextState = Stop;//Validate;
                 makeTransition = TRUE;
             }
 
             break;
 
-#endif
 
 
         case Validate:
@@ -529,21 +556,21 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> Validate \r\n");
 
             //Transitions
-//            switch (BosshogReadTopCenterTape()) {
-//                case TAPE_BLACK:
-//                    nextState = IsDead;
-//                    makeTransition = TRUE;
-//                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-//
-//                    break;
-//                case TAPE_WHITE:
-//                    nextState = Locate;
-//                    makeTransition = TRUE;
-//                    break;
-//
-//                default: // all unhandled events pass the event back up to the next level
-//                    break;
-//            }
+            //            switch (BosshogReadTopCenterTape()) {
+            //                case TAPE_BLACK:
+            //                    nextState = IsDead;
+            //                    makeTransition = TRUE;
+            //                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+            //
+            //                    break;
+            //                case TAPE_WHITE:
+            //                    nextState = Locate;
+            //                    makeTransition = TRUE;
+            //                    break;
+            //
+            //                default: // all unhandled events pass the event back up to the next level
+            //                    break;
+            //            }
 
 
             break;
@@ -554,8 +581,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //set motors to go forward
             printf("Identify -> IsDead \r\n");
 
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
             //also a transition but during the duration the timer is still active
             //if (ThisEvent.EventType == SB_RELEASED) {
@@ -598,8 +625,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> ReAlign \r\n");
 
             //Motors turn left
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
             //Transition
             if (ThisEvent.EventType == SB_PRESSED) {
@@ -616,13 +643,13 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> Evade \r\n");
 
             //turn back and left
-            Bosshog_RightMtrSpeed(-motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed - 15);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED - 15);
 
             if (ThisEvent.EventType == BB_TAPE_BLACK) {
                 //set motors forward
-                Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 
 
@@ -636,31 +663,31 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> Locate \r\n");
 
             //go straight
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 #ifdef SideBumper
             if (ThisEvent.EventType == SB_RELEASED) {
                 //slight turn left
-                Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed - 10);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
             }
             if (ThisEvent.EventType == SB_PRESSED) {
                 //slight turn right
-                Bosshog_RightMtrSpeed(motorspeed - 10);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 #endif
 #ifdef NoSideBumper
             //Tank turn and then drift left over and over 
             if ((ThisEvent.EventType == FRB_PRESSED) || (ThisEvent.EventType == FLB_PRESSED)) {
                 //tank turn
-                Bosshog_RightMtrSpeed(-motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
             if ((ThisEvent.EventType == BRB_PRESSED) || (ThisEvent.EventType == BLB_PRESSED)) {
                 //slight turn left
-                Bosshog_RightMtrSpeed(motorspeed + 5);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 5);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 
 #endif
@@ -713,8 +740,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> Corner \r\n");
 
             //Turn Hard Right
-            Bosshog_RightMtrSpeed(motorspeed + 10);
-            Bosshog_LeftMtrSpeed(motorspeed - 10);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 10);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -742,19 +769,19 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> BackLocate \r\n");
 
             // go straight back and do the inverse logic of Locate
-            Bosshog_RightMtrSpeed(-motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
             // no logic change. the logic makes sense in my head?
             if (ThisEvent.EventType == SB_RELEASED) {
                 //slight turn left
-                Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed - 5);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 5);
             }
             if (ThisEvent.EventType == SB_PRESSED) {
                 //slight turn right
-                Bosshog_RightMtrSpeed(motorspeed - 5);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 5);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 
             //Transitions
@@ -791,8 +818,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> BackCorner \r\n");
 
             //Turn Back Left
-            Bosshog_RightMtrSpeed(motorspeed - 10);
-            Bosshog_LeftMtrSpeed(motorspeed + 10);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 10);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -854,19 +881,19 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
         case DepositInit: // in the first state, replace this with correct names
             //Drive Backward
-            Bosshog_RightMtrSpeed(-motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
 
             if (ThisEvent.EventType == SB_RELEASED) {
                 //slight turn left
-                Bosshog_RightMtrSpeed(motorspeed);
-                Bosshog_LeftMtrSpeed(motorspeed - 10);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
             }
             if (ThisEvent.EventType == SB_PRESSED) {
                 //slight turn right
-                Bosshog_RightMtrSpeed(motorspeed - 10);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 
             //Transitions
@@ -905,8 +932,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
         case Scan:
             //go forward and align with side
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
             switch (BosshogReadTopCenterTape()) {
                 case TAPE_BLACK:
@@ -988,8 +1015,8 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
 
         case Spin: // in the first state, replace this with correct names
             //Spin backward, towards left
-            Bosshog_RightMtrSpeed(-motorspeed - 10);
-            Bosshog_LeftMtrSpeed(-motorspeed);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED - 10);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -1010,8 +1037,8 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
 
         case EvadeTower:
             //go forward and slightly left
-            Bosshog_RightMtrSpeed(motorspeed + 10);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 10);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -1068,8 +1095,8 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
         case SpinOtherWay: // in the first state, replace this with correct names
             //Spin backward, towards right
-            Bosshog_RightMtrSpeed(-motorspeed);
-            Bosshog_LeftMtrSpeed(-motorspeed - 10);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED - 10);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -1090,8 +1117,8 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
         case EvadeOtherWay:
             //go forward and slightly right
-            Bosshog_RightMtrSpeed(motorspeed);
-            Bosshog_LeftMtrSpeed(motorspeed + 10);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 10);
 
             //Transitions
             switch (ThisEvent.EventType) {

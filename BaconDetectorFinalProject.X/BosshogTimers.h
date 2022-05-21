@@ -24,7 +24,7 @@
 
 //~~~~ TIMER TICK DEFINITONS WHERE EACH IS IN ms~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #define TIMER_1_TICKS 5000 
-#define TIMER_JIG_TICKS 1000 
+#define TIMER_JIG_TICKS 750 
 #define TIMER_180_SPIN_TICKS 3500 
 #define TIMER_LOST_TICKS 7000 
 
