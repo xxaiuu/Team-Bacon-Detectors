@@ -69,7 +69,9 @@ typedef enum {
     SpinOtherWay,
     EvadeOtherWay,
     NoSideAlign,
-            Stop,
+    Stop,
+    AlignBackUp,
+    AlignDriftLeft,
 } BosshogSubHSMState_t;
 
 
@@ -102,6 +104,8 @@ static const char *StateNames[] = {
     "EvadeOtherWay",
     "NoSideAlign",
     "Stop",
+    "AlignBackUp",
+    "AlignDriftLeft",
 };
 
 
@@ -469,85 +473,115 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 // initial state
 
                 // now put the machine into the actual initial state
-                nextState = Align;
+                //nextState = Align;
+                nextState = AlignBackUp;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
             }
             break;
 
         case Stop:
-                        printf("Identify -> Stop \r\n");
+            printf("Identify -> Stop \r\n");
 
-             Bosshog_RightMtrSpeed(0);
-                    Bosshog_LeftMtrSpeed(0);
-                    break;
-            
-            
-        case Align: // this is the first state
-            printf("Identify -> Align \r\n");
+            Bosshog_RightMtrSpeed(0);
+            Bosshog_LeftMtrSpeed(0);
+            break;
 
-            //Turn Right
+        case AlignBackUp:
             Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+            if (ThisEvent.EventType == ALIGNING_TIMER) {
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
 
-            //Transitions
-            switch (ThisEvent.EventType) {
-                    //                case SB_PRESSED:
-                    //                    nextState = Validate;
-                    //                    makeTransition = TRUE;
-                    //
-                    //                    Bosshog_RightMtrSpeed(0);
-                    //                    Bosshog_LeftMtrSpeed(0);
-                    //
-                    //                    break;
+                nextState = AlignDriftLeft;
+                makeTransition = TRUE;
 
-                case BLB_PRESSED:
-                    //move to another state
-                    nextState = NoSideAlign;
-                    makeTransition = TRUE;
-//                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
-
-//                    nextState = Stop;
-//                    makeTransition = TRUE;
-                    break;
-
-                case BRB_PRESSED:
-                    //move to another state
-                    nextState = NoSideAlign;
-                    makeTransition = TRUE;
-                    //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
-
-//                     nextState = Stop;
-//                    makeTransition = TRUE;
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
             }
 
             break;
-        case NoSideAlign:
 
-            //hard left
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED+15);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-            //first bumper hit
-            if (ThisEvent.EventType == FLB_PRESSED) {
-                printf("FRONT BUMPER GOT PRESSED \r\n");
+        case AlignDriftLeft:
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 5);
+
+            if (ThisEvent.EventType == ALIGNING_TIMER) {
                 Bosshog_RightMtrSpeed(0);
                 Bosshog_LeftMtrSpeed(0);
-                nextState = Stop;//Validate;
+
+                nextState = Stop;
                 makeTransition = TRUE;
-            }
-            if (ThisEvent.EventType == SB_PRESSED) {
-                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
-                Bosshog_RightMtrSpeed(0);
-                Bosshog_LeftMtrSpeed(0);
-                nextState = Stop;//Validate;
-                makeTransition = TRUE;
+
             }
 
             break;
+
+            //
+            //        case Align: // this is the first state
+            //            printf("Identify -> Align \r\n");
+            //
+            //            //Turn Right
+            //            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //
+            //            //Transitions
+            //            switch (ThisEvent.EventType) {
+            //                    //                case SB_PRESSED:
+            //                    //                    nextState = Validate;
+            //                    //                    makeTransition = TRUE;
+            //                    //
+            //                    //                    Bosshog_RightMtrSpeed(0);
+            //                    //                    Bosshog_LeftMtrSpeed(0);
+            //                    //
+            //                    //                    break;
+            //
+            //                case BLB_PRESSED:
+            //                    //move to another state
+            //                    nextState = NoSideAlign;
+            //                    makeTransition = TRUE;
+            //                    //                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
+            //
+            //                    //                    nextState = Stop;
+            //                    //                    makeTransition = TRUE;
+            //                    break;
+            //
+            //                case BRB_PRESSED:
+            //                    //move to another state
+            //                    nextState = NoSideAlign;
+            //                    makeTransition = TRUE;
+            //                    //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
+            //
+            //                    //                     nextState = Stop;
+            //                    //                    makeTransition = TRUE;
+            //                    break;
+            //
+            //                default: // all unhandled events pass the event back up to the next level
+            //                    break;
+            //            }
+            //
+            //            break;
+            //        case NoSideAlign:
+            //
+            //            //hard left
+            //            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 15);
+            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //            //first bumper hit
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            //                printf("FRONT BUMPER GOT PRESSED \r\n");
+            //                Bosshog_RightMtrSpeed(0);
+            //                Bosshog_LeftMtrSpeed(0);
+            //                nextState = Stop; //Validate;
+            //                makeTransition = TRUE;
+            //            }
+            //            if (ThisEvent.EventType == SB_PRESSED) {
+            //                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
+            //                Bosshog_RightMtrSpeed(0);
+            //                Bosshog_LeftMtrSpeed(0);
+            //                nextState = Stop; //Validate;
+            //                makeTransition = TRUE;
+            //            }
+            //
+            //            break;
 
 
 

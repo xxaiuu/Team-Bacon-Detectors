@@ -47,13 +47,13 @@ typedef enum {
     BATTERY_CONNECTED,
     BATTERY_DISCONNECTED,
     FRB_PRESSED,
-    FLB_PRESSED, 
-    BRB_PRESSED, 
+    FLB_PRESSED,
+    BRB_PRESSED,
     BLB_PRESSED,
     SB_PRESSED,
     FRB_RELEASED,
-    FLB_RELEASED, 
-    BRB_RELEASED, 
+    FLB_RELEASED,
+    BRB_RELEASED,
     BLB_RELEASED,
     SB_RELEASED,
     TRACK_WIRE_DETECTED,
@@ -69,39 +69,40 @@ typedef enum {
     TR_TAPE_WHITE,
     BEACON_DETECTED,
     BEACON_LOST,
-    TAPE_ALIGNED,  //TCT TRT black so we are aligned with hole to desposit
-    WALL_EDGE,     //TLT TRT black so we are at the edge of the wall need to turn
-            
+    TAPE_ALIGNED, //TCT TRT black so we are aligned with hole to desposit
+    WALL_EDGE, //TLT TRT black so we are at the edge of the wall need to turn
+
     FIVE_SEC_TIMER,
     JIGGY_TIME,
-            SPIN_AROUND,
-            HI_IM_LOST,
-	/* User-defined events end here */
+    SPIN_AROUND,
+    HI_IM_LOST,
+    ALIGNING_TIMER,
+    /* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
 
 static const char *EventNames[] = {
-	"ES_NO_EVENT",
-	"ES_ERROR",
-	"ES_INIT",
-	"ES_ENTRY",
-	"ES_EXIT",
-	"ES_KEYINPUT",
-	"ES_LISTEVENTS",
-	"ES_TIMEOUT",
-	"ES_TIMERACTIVE",
-	"ES_TIMERSTOPPED",
-	"BATTERY_CONNECTED",
-	"BATTERY_DISCONNECTED",
-    
+    "ES_NO_EVENT",
+    "ES_ERROR",
+    "ES_INIT",
+    "ES_ENTRY",
+    "ES_EXIT",
+    "ES_KEYINPUT",
+    "ES_LISTEVENTS",
+    "ES_TIMEOUT",
+    "ES_TIMERACTIVE",
+    "ES_TIMERSTOPPED",
+    "BATTERY_CONNECTED",
+    "BATTERY_DISCONNECTED",
+
     "FRB_PRESSED",
-    "FLB_PRESSED", 
-    "BRB_PRESSED", 
+    "FLB_PRESSED",
+    "BRB_PRESSED",
     "BLB_PRESSED",
     "SB_PRESSED",
     "FRB_RELEASED",
-    "FLB_RELEASED", 
-    "BRB_RELEASED", 
+    "FLB_RELEASED",
+    "BRB_RELEASED",
     "BLB_RELEASED",
     "SB_RELEASED",
     "TRACK_WIRE_DETECTED",
@@ -123,7 +124,8 @@ static const char *EventNames[] = {
     "JIGGY_TIME",
     "SPIN_AROUND",
     "HI_IM_LOST",
-	"NUMBEROFEVENTS",
+    "NUMBEROFEVENTS",
+    "ALIGNING_TIMER",
 };
 
 
@@ -147,7 +149,7 @@ static const char *EventNames[] = {
 #define TIMER2_RESP_FUNC Post_jig_timer
 #define TIMER3_RESP_FUNC Post_180_timer
 #define TIMER4_RESP_FUNC Post_Lost_timer
-#define TIMER5_RESP_FUNC TIMER_UNUSED
+#define TIMER5_RESP_FUNC Post_Align_timer
 #define TIMER6_RESP_FUNC TIMER_UNUSED
 #define TIMER7_RESP_FUNC TIMER_UNUSED
 #define TIMER8_RESP_FUNC TIMER_UNUSED
@@ -171,6 +173,7 @@ static const char *EventNames[] = {
 #define Timer_For_Jig 2
 #define Timer_For_180 3
 #define Timer_For_Lost 4
+#define Timer_For_Align 5
 
 /****************************************************************************/
 // The maximum number of services sets an upper bound on the number of 
@@ -181,7 +184,7 @@ static const char *EventNames[] = {
 /****************************************************************************/
 // This macro determines that nuber of services that are *actually* used in
 // a particular application. It will vary in value from 1 to MAX_NUM_SERVICES
-#define NUM_SERVICES 6
+#define NUM_SERVICES 8
 
 /****************************************************************************/
 // These are the definitions for Service 0, the lowest priority service
@@ -267,11 +270,11 @@ static const char *EventNames[] = {
 // These are the definitions for Service 6
 #if NUM_SERVICES > 6
 // the header file with the public fuction prototypes
-#define SERV_6_HEADER "TestService.h"
+#define SERV_6_HEADER "BosshogTimers.h"
 // the name of the Init function
-#define SERV_6_INIT TestServiceInit
+#define SERV_6_INIT Init_Lost_timer
 // the name of the run function
-#define SERV_6_RUN TestServiceRun
+#define SERV_6_RUN Run_Lost_timer
 // How big should this services Queue be?
 #define SERV_6_QUEUE_SIZE 3
 #endif
@@ -280,11 +283,11 @@ static const char *EventNames[] = {
 // These are the definitions for Service 7
 #if NUM_SERVICES > 7
 // the header file with the public fuction prototypes
-#define SERV_7_HEADER "TestService.h"
+#define SERV_7_HEADER "BosshogTimers.h"
 // the name of the Init function
-#define SERV_7_INIT TestServiceInit
+#define SERV_7_INIT Init_Align_timer
 // the name of the run function
-#define SERV_7_RUN TestServiceRun
+#define SERV_7_RUN Run_Align_timer
 // How big should this services Queue be?
 #define SERV_7_QUEUE_SIZE 3
 #endif

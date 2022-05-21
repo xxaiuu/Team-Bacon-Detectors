@@ -24,6 +24,7 @@ static uint8_t MyPriority1; // TIMER 1 PRIORITY
 static uint8_t MyPriority2; // TIMER JIG PRIORITY
 static uint8_t MyPriority3; // TIMER 180 SPIN PRIORITY
 static uint8_t MyPriority4; // TIMER LOST PRIORITY
+static uint8_t MyPriority5; // TIMER ALIGN PRIORITY
 
 
 
@@ -96,6 +97,24 @@ uint8_t Init_Lost_timer(uint8_t Priority)
         return FALSE;
     }
 }
+
+uint8_t Init_Align_timer(uint8_t Priority)
+{
+    ES_Event TIMER;
+
+    MyPriority5 = Priority;
+
+
+    // post the initial transition event
+    ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS); 
+    TIMER.EventType = ES_INIT;
+    if (ES_PostToService(MyPriority5, TIMER) == TRUE) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+}
+
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -220,6 +239,36 @@ ES_Event Run_Lost_timer(ES_Event this_timer)
     
     return timer;
 }
+
+
+ES_Event Run_Align_timer(ES_Event this_timer)
+{
+    ES_Event timer;
+    timer.EventType = ES_NO_EVENT; // assume no errors
+
+
+    switch (this_timer.EventType) {
+    case ES_INIT:
+        break;
+    case ES_TIMERACTIVE: 
+    case ES_TIMERSTOPPED: 
+        break; 
+
+    case ES_TIMEOUT:
+        //ES_Timer_InitTimer(TURN_LEFT_TIMER, TIMER_1_TICKS); 
+
+        timer.EventType = ALIGNING_TIMER;
+
+        PostBosshogHSM(timer);
+
+        break;
+        
+    }
+
+    
+    return timer;
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -243,4 +292,9 @@ uint8_t Post_180_timer(ES_Event this_timer)
 uint8_t Post_Lost_timer(ES_Event this_timer)
 {
     return ES_PostToService(MyPriority4, this_timer);
+}
+
+uint8_t Post_Align_timer(ES_Event this_timer)
+{
+    return ES_PostToService(MyPriority5, this_timer);
 }
