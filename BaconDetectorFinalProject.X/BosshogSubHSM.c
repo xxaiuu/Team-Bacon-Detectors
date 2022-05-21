@@ -392,6 +392,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
                 case BEACON_LOST:
                     nextState = Jig;
                     makeTransition = TRUE;
+                    ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+
                     break;
 
                 default: // all unhandled events pass the event back up to the next level
@@ -402,6 +404,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
         case Jig:
             printf("Navigate -> Jig \r\n");
+
 
             //Jig, turn in place to the left for 25 degree and then turn in place right for 50 degree 
             //In theory, it should be able to find the signal again as it was already found before
@@ -505,9 +508,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 #ifdef NoSideBumper
         case NoSideAlign:
 
-            //drift left
-            Bosshog_RightMtrSpeed(motorspeed + 5);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            //hard left
+            Bosshog_RightMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(-motorspeed);
             //first bumper hit
             if (ThisEvent.EventType == FLB_PRESSED) {
                 Bosshog_RightMtrSpeed(0);
@@ -526,21 +529,21 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> Validate \r\n");
 
             //Transitions
-            switch (BosshogReadTopCenterTape()) {
-                case TAPE_BLACK:
-                    nextState = IsDead;
-                    makeTransition = TRUE;
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-
-                    break;
-                case TAPE_WHITE:
-                    nextState = Locate;
-                    makeTransition = TRUE;
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
-            }
+//            switch (BosshogReadTopCenterTape()) {
+//                case TAPE_BLACK:
+//                    nextState = IsDead;
+//                    makeTransition = TRUE;
+//                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+//
+//                    break;
+//                case TAPE_WHITE:
+//                    nextState = Locate;
+//                    makeTransition = TRUE;
+//                    break;
+//
+//                default: // all unhandled events pass the event back up to the next level
+//                    break;
+//            }
 
 
             break;
@@ -555,7 +558,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             Bosshog_LeftMtrSpeed(motorspeed);
 
             //also a transition but during the duration the timer is still active
-            if (ThisEvent.EventType == SB_RELEASED) {
+            //if (ThisEvent.EventType == SB_RELEASED) {
+            if (ThisEvent.EventType == FLB_RELEASED) {
+
                 nextState = ReAlign;
                 makeTransition = TRUE;
             }

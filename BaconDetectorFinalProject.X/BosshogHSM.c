@@ -269,30 +269,30 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
 
 
-            //Transitions
-            switch (ThisEvent.EventType) {
-                    //If any of the front bumpers get press, move to the identify state
-                    //and start a 5 second timer
-                case FIVE_SEC_TIMER:
-                    nextState = FindNext;
-                    makeTransition = TRUE;
-                    Init_FindNext_SubHSM();
-
-                    //                //start 5 second timer
-                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-
-                    break;
-                case TRACK_WIRE_DETECTED:
-                    nextState = Deposit;
-                    makeTransition = TRUE;
-                    Init_Deposit_SubHSM();
-                    //                //start 5 second timer
-                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-
-                    break;
-                default:
-                    break;
-            }
+//            //Transitions
+//            switch (ThisEvent.EventType) {
+//                    //If any of the front bumpers get press, move to the identify state
+//                    //and start a 5 second timer
+//                case FIVE_SEC_TIMER:
+//                    nextState = FindNext;
+//                    makeTransition = TRUE;
+//                    Init_FindNext_SubHSM();
+//
+//                    //                //start 5 second timer
+//                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+//
+//                    break;
+//                case TRACK_WIRE_DETECTED:
+//                    nextState = Deposit;
+//                    makeTransition = TRUE;
+//                    Init_Deposit_SubHSM();
+//                    //                //start 5 second timer
+//                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+//
+//                    break;
+//                default:
+//                    break;
+//            }
 
             break;
 
