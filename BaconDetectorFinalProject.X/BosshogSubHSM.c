@@ -36,7 +36,6 @@
 
 //#define SideBumper
 #define NoSideBumper
-//#define motorspeed 75
 
 /*******************************************************************************
  * MODULE #DEFINES                                                             *
@@ -336,12 +335,12 @@ ES_Event Run_Relocate_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == BL_TAPE_BLACK) {
                 //slight drift right
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(motorspeed - 5);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 5);
             }
             if (ThisEvent.EventType == BR_TAPE_BLACK) {
                 //slight drift left
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 5);
-                Bosshog_LeftMtrSpeed(motorspeed);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 
             //exit out of top hsm when 5 timer second is over
@@ -390,7 +389,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
             //Go forward
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(motorspeed);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
 
             //Transitions
@@ -420,11 +419,11 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             //mess with jig time to change angle
             //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
             Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 10));
-            Bosshog_LeftMtrSpeed(-(motorspeed - 10));
+            Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 10));
 
             if (ThisEvent.EventType == JIGGY_TIME) {
                 Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 10));
-                Bosshog_LeftMtrSpeed((motorspeed - 10));
+                Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 10));
             }
 
             //Transitions
@@ -496,14 +495,17 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
                 nextState = AlignDriftLeft;
                 makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Align, 700);
+
 
             }
 
             break;
 
         case AlignDriftLeft:
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 5);
+            printf("DOING THE SIDE SCOOT\r\n");
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+            Bosshog_LeftMtrSpeed(BOSSHOG_MAX_SPEED - 20);
 
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 Bosshog_RightMtrSpeed(0);
@@ -511,7 +513,24 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
                 nextState = Stop;
                 makeTransition = TRUE;
+            }
 
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                printf("FRONT BUMPER GOT PRESSED \r\n");
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
+                nextState = AlignBackUp; //Validate;
+
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Align, 550);
+
+            }
+            if (ThisEvent.EventType == SB_PRESSED) {
+                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
+                nextState = Stop; //Validate;
+                makeTransition = TRUE;
             }
 
             break;

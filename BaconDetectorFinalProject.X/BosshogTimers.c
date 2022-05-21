@@ -106,7 +106,7 @@ uint8_t Init_Align_timer(uint8_t Priority)
 
 
     // post the initial transition event
-    ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS); 
+    //ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS); 
     TIMER.EventType = ES_INIT;
     if (ES_PostToService(MyPriority5, TIMER) == TRUE) {
         return TRUE;

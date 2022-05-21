@@ -176,8 +176,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // No Sub HSM in this State
             printf("Sweep \r\n");
             // Tank Turn Sweep Right
-            Bosshog_LeftMtrSpeed(motorspeed);
-            Bosshog_RightMtrSpeed(-motorspeed);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
 
 
             //Transition 
@@ -266,6 +266,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             printf("Identify \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
+                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS); 
+
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
 
 
@@ -333,8 +335,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case BB_TAPE_BLACK:
                     //DO 180 DEGREE TANK TURN
                     // Timer will need to be used and adjusted
-                    Bosshog_LeftMtrSpeed(motorspeed);
-                    Bosshog_RightMtrSpeed(-motorspeed);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
 
                     nextState = FindNextInverse;
                     makeTransition = TRUE;
