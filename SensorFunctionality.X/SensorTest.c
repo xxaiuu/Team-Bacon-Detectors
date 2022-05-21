@@ -14,148 +14,150 @@
 #include <stdio.h>
 
 int main(void) {
-    
+
     BOARD_Init();
     TIMERS_Init();
     Bosshog_Init();
-    
+
     int MTRSpeed = 65;
-    
+
     printf("Starting Test Harness");
-    while(1){
-        
-//        if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
-//            printf("Top Front Right\r\n");
-//        }
-//        if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
-//            printf("Top Front Left\r\n");
-//        }
-//        if(Bosshog_ReadTopBackRightBumper() == BUMPER_TRIPPED){
-//            printf("Top Back Right\r\n");
-//        }
-//        if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
-//            printf("Top Back Left\r\n");
-//        }
-//        if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
-//            printf("Side\r\n");
-//        }
-        
-        
-        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(0);
-            Bosshog_RightMtrSpeed(0);
+    while (1) {
+
+        //        if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
+        //            printf("Top Front Right\r\n");
+        //        }
+        //        if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
+        //            printf("Top Front Left\r\n");
+        //        }
+        //        if(Bosshog_ReadTopBackRightBumper() == BUMPER_TRIPPED){
+        //            printf("Top Back Right\r\n");
+        //        }
+        //        if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
+        //            printf("Top Back Left\r\n");
+        //        }
+        //        if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
+        //            printf("Side\r\n");
+        //        }
+
+
+        if (Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED) {
+            BosshogSetServo(1800);
+
         }
-        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
-            Bosshog_LeftMtrSpeed(MTRSpeed+2);
-            Bosshog_RightMtrSpeed(MTRSpeed);
-        }
-        if (BosshogReadCenterTape()){
-            
-            Bosshog_LeftMtrSpeed(-MTRSpeed-7);
-            Bosshog_RightMtrSpeed(-MTRSpeed); //need to go slower
-        }
-        if ( BosshogReadBackTape()){
-            Bosshog_LeftMtrSpeed(MTRSpeed+2);
-            Bosshog_RightMtrSpeed(MTRSpeed);
+        if (Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED) {
+            BosshogSetServo(1000);
+
         }
         
-//        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(0);
-//        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(MTRSpeed);
-//        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-//            Bosshog_LeftMtrSpeed(-MTRSpeed);
-//        } else {
-//            Bosshog_LeftMtrSpeed(0);
-//        }
-//       
-//        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-//            Bosshog_RightMtrSpeed(0);
-//        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
-//            Bosshog_RightMtrSpeed(MTRSpeed);
-//        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-//            Bosshog_RightMtrSpeed(-MTRSpeed);
-//        }  else {
-//            Bosshog_RightMtrSpeed(0);
-//        }
-       
         
-       
-    }
-    
-//    Servo Test    
-//    printf("Servo\r\n");
-//    while(1){
-//        BosshogSetServo(2000);
+//        if (BosshogReadCenterTape()) {
 //
-//    }
-    
-    
-//    //testing Track Wire Detector
-//    int prevTrack = 1; 
-//    int currTrack; 
-//    while (1){
-//        currTrack = HuggerReadTrackWire(1);
-//        //printf("Y03: %d\r\n", PORTW05_BIT);
-//        if (prevTrack != currTrack && (currTrack != 0)){
-//            printf("Track: %d\r\n", currTrack);
-//            prevTrack = currTrack; 
+//            Bosshog_LeftMtrSpeed(-MTRSpeed - 7);
+//            Bosshog_RightMtrSpeed(-MTRSpeed); //need to go slower
 //        }
-//        
-//    }
-    
-    
-//    //testing Beacon Detector
-//    int prevBeacon = 1; 
-//    int currBeacon; 
-//    while (1){
-//        currBeacon = HuggerReadBeacon();
-//        //printf("Y03: %d\r\n", PORTW05_BIT);
-//        if (prevBeacon != currBeacon){
-//            printf("Beacon: %d\r\n", currBeacon);
-//            prevBeacon = currBeacon; 
+//        if (BosshogReadBackTape()) {
+//            Bosshog_LeftMtrSpeed(MTRSpeed + 2);
+//            Bosshog_RightMtrSpeed(MTRSpeed);
 //        }
-//        
-//    }
-    
-    
-//    //testing tape sensors
-//    PORTW05_TRIS = 1; //set W05 as input 
-//    int prevTape = 1; 
-//    int currTape; 
-//    while (1){
-//        currTape = PORTW05_BIT;
-//        printf("Y03: %d\r\n", PORTW05_BIT);
-//        if (prevTape != currTape){
-//            printf("Tape: %d\r\n", currTape);
-//            prevTape = currTape; 
-//        }
-//        
-//    }
-    
-//    //Testing bumper switches
-//     PORTW05_TRIS = 1;  // Setting W05 was input
-//     int prevVal = 1; 
-//     int switch_signal;
-//     while(1){
-//         switch_signal = PORTW05_BIT;
-////         printf("W05: %d\r\n", PORTW05_BIT);
-//         
-//         if (prevVal != switch_signal){
-//            printf("SWITCH: %d\r\n", switch_signal);
-//            prevVal = switch_signal; 
-//        }
-//     }
-    
-//    //testing pins
-//    PORTV03_TRIS = 0; //set W05 as input 
-    
+
+        //        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+        //            Bosshog_LeftMtrSpeed(0);
+        //        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
+        //            Bosshog_LeftMtrSpeed(MTRSpeed);
+        //        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+        //            Bosshog_LeftMtrSpeed(-MTRSpeed);
+        //        } else {
+        //            Bosshog_LeftMtrSpeed(0);
+        //        }
+        //       
+        //        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+        //            Bosshog_RightMtrSpeed(0);
+        //        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
+        //            Bosshog_RightMtrSpeed(MTRSpeed);
+        //        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+        //            Bosshog_RightMtrSpeed(-MTRSpeed);
+        //        }  else {
+        //            Bosshog_RightMtrSpeed(0);
+        //        }
+
+
+
+    }
+
+    //    Servo Test    
+    //    printf("Servo\r\n");
+    //    while(1){
+    //        BosshogSetServo(2000);
+    //
+    //    }
+
+
+    //    //testing Track Wire Detector
+    //    int prevTrack = 1; 
+    //    int currTrack; 
+    //    while (1){
+    //        currTrack = HuggerReadTrackWire(1);
+    //        //printf("Y03: %d\r\n", PORTW05_BIT);
+    //        if (prevTrack != currTrack && (currTrack != 0)){
+    //            printf("Track: %d\r\n", currTrack);
+    //            prevTrack = currTrack; 
+    //        }
+    //        
+    //    }
+
+
+    //    //testing Beacon Detector
+    //    int prevBeacon = 1; 
+    //    int currBeacon; 
+    //    while (1){
+    //        currBeacon = HuggerReadBeacon();
+    //        //printf("Y03: %d\r\n", PORTW05_BIT);
+    //        if (prevBeacon != currBeacon){
+    //            printf("Beacon: %d\r\n", currBeacon);
+    //            prevBeacon = currBeacon; 
+    //        }
+    //        
+    //    }
+
+
+    //    //testing tape sensors
+    //    PORTW05_TRIS = 1; //set W05 as input 
+    //    int prevTape = 1; 
+    //    int currTape; 
+    //    while (1){
+    //        currTape = PORTW05_BIT;
+    //        printf("Y03: %d\r\n", PORTW05_BIT);
+    //        if (prevTape != currTape){
+    //            printf("Tape: %d\r\n", currTape);
+    //            prevTape = currTape; 
+    //        }
+    //        
+    //    }
+
+    //    //Testing bumper switches
+    //     PORTW05_TRIS = 1;  // Setting W05 was input
+    //     int prevVal = 1; 
+    //     int switch_signal;
+    //     while(1){
+    //         switch_signal = PORTW05_BIT;
+    ////         printf("W05: %d\r\n", PORTW05_BIT);
+    //         
+    //         if (prevVal != switch_signal){
+    //            printf("SWITCH: %d\r\n", switch_signal);
+    //            prevVal = switch_signal; 
+    //        }
+    //     }
+
+    //    //testing pins
+    //    PORTV03_TRIS = 0; //set W05 as input 
+
     /*******************************************************************************
      Set All pins to Output and drive them high.
     
      Using an LED (circuit) and a jump wire, each pin was tested to see if
      it would make the LED light up as it should when driven high. 
-    ********************************************************************************/    
+     ********************************************************************************/
     /* 
     //PORT V TEST
     PORTV03_TRIS = 0;
@@ -267,6 +269,6 @@ int main(void) {
         PORTZ12_LAT = 1;
         
     }
-    */   
+     */
     return 0;
 }
