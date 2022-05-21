@@ -57,7 +57,7 @@
 #define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
 #define REAR_RIGHT_BUMPER_BIT _RD8                      //PORTZ08_BIT
 #define REAR_LEFT_BUMPER_BIT _RB10                      //PORTW04_BIT
-#define SIDE_BUMPER_BIT PORTX09_BIT
+#define TOP_BACK_SIDE_BUMPER_BIT PORTX09_BIT
 #define TOP_FRONT_LEFT_BUMPER_BIT PORTX11_BIT
 #define TOP_FRONT_RIGHT_BUMPER_BIT PORTX08_BIT
 #define TOP_BACK_LEFT_BUMPER_BIT PORTX12_BIT
@@ -74,7 +74,7 @@
 #define FRONT_RIGHT_BUMPER_TRIS _TRISD9
 #define REAR_RIGHT_BUMPER_TRIS _TRISD8
 #define REAR_LEFT_BUMPER_TRIS _TRISB10
-#define SIDE_BUMPER_TRIS PORTX09_TRIS
+#define TOP_BACK_SIDE_BUMPER_TRIS PORTX09_TRIS
 #define TOP_FRONT_LEFT_BUMPER_TRIS PORTX11_TRIS
 #define TOP_FRONT_RIGHT_BUMPER_TRIS PORTX08_TRIS
 #define TOP_BACK_LEFT_BUMPER_TRIS PORTX12_TRIS
@@ -243,7 +243,7 @@ unsigned char Bosshog_ReadRearRightBumper(void);
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the rear right bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Bosshog_ReadSideBumper(void);
+unsigned char Bosshog_ReadTopBackSideBumper(void);
 
 /**
  * @Function Bosshog_ReadFrontRightBumper(void)

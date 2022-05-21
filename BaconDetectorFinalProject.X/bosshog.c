@@ -123,7 +123,7 @@ void Bosshog_Init(void)
     FRONT_RIGHT_BUMPER_TRIS = 1;
     REAR_RIGHT_BUMPER_TRIS = 1;
     REAR_LEFT_BUMPER_TRIS = 1;
-    SIDE_BUMPER_TRIS = 1;
+    TOP_BACK_SIDE_BUMPER_TRIS = 1;
     TOP_FRONT_LEFT_BUMPER_TRIS = 1;
     TOP_FRONT_RIGHT_BUMPER_TRIS = 1;
     TOP_BACK_LEFT_BUMPER_TRIS = 1;
@@ -377,9 +377,9 @@ unsigned char Bosshog_ReadRearRightBumper(void)
     return !REAR_RIGHT_BUMPER_BIT;
 }
 
-unsigned char Bosshog_ReadSideBumper(void)
+unsigned char Bosshog_ReadTopBackSideBumper(void)
 {
-    return !SIDE_BUMPER_BIT;
+    return !TOP_BACK_SIDE_BUMPER_BIT;
 }
 
 unsigned char Bosshog_ReadTopFrontRightBumper(void){

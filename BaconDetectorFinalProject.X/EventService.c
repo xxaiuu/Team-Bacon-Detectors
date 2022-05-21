@@ -118,11 +118,12 @@ uint8_t PostEventService(ES_Event ThisEvent) {
 
 uint8_t FRBEvent(void) {
     static uint8_t CurrBumper;
-    static uint8_t CurrBumperTop;
+    //static uint8_t CurrBumperTop;
     CurrBumper = Bosshog_ReadFrontRightBumper();
-    CurrBumperTop = Bosshog_ReadTopFrontRightBumper();
+    //CurrBumperTop = Bosshog_ReadTopFrontRightBumper();
     uint8_t WasEvent = FALSE;
-    if ((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED) {
+    //if ((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED) {
+    if ((CurrBumper) != LastFRB && (CurrBumper) == BUMPER_TRIPPED) {
         printf(" FRB PRESSED \r\n");
         ES_Event BumperEvent;
         BumperEvent.EventType = FRB_PRESSED;
@@ -134,7 +135,8 @@ uint8_t FRBEvent(void) {
 #endif  
         WasEvent = TRUE;
     } else //if (CurrBumper != LastFRB && CurrBumper == BUMPER_NOT_TRIPPED) {
-        if ((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_NOT_TRIPPED) {
+        //if ((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_NOT_TRIPPED) {
+        if ((CurrBumper) != LastFRB && (CurrBumper) == BUMPER_NOT_TRIPPED) {
         printf(" FRB RELEASED \r\n");
 
         ES_Event BumperEvent;
@@ -143,17 +145,20 @@ uint8_t FRBEvent(void) {
         PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
-    LastFRB = (CurrBumper | CurrBumperTop);
+    //LastFRB = (CurrBumper | CurrBumperTop);
+    LastFRB = (CurrBumper);
     return WasEvent;
 }
 
 uint8_t FLBEvent(void) {
     static uint8_t CurrBumper;
-    static uint8_t CurrBumperTop;
+    static uint8_t CurrBumperTopFrontLeft;
+    static uint8_t CurrBumperTopFrontRight;
     CurrBumper = Bosshog_ReadFrontLeftBumper();
-    CurrBumperTop = Bosshog_ReadTopFrontLeftBumper();
+    CurrBumperTopFrontLeft = Bosshog_ReadTopFrontLeftBumper();
+    CurrBumperTopFrontRight = Bosshog_ReadTopFrontRightBumper();
     uint8_t WasEvent = FALSE;
-    if ((CurrBumper | CurrBumperTop) != LastFLB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED) {
+    if ((CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) != LastFLB && (CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) == BUMPER_TRIPPED) {
         printf(" FLB PRESSED \r\n");
 
         ES_Event BumperEvent;
@@ -165,7 +170,7 @@ uint8_t FLBEvent(void) {
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
-    } else if ((CurrBumper | CurrBumperTop) != LastFLB && (CurrBumper | CurrBumperTop) == BUMPER_NOT_TRIPPED) {
+    } else if ((CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) != LastFLB && (CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) == BUMPER_NOT_TRIPPED) {
         printf(" FLB RELEASED \r\n");
 
         ES_Event BumperEvent;
@@ -174,7 +179,7 @@ uint8_t FLBEvent(void) {
         PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
-    LastFLB = (CurrBumper | CurrBumperTop);
+    LastFLB = (CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight);
     return WasEvent;
 }
 
@@ -211,11 +216,13 @@ uint8_t BRBEvent(void) {
 
 uint8_t BLBEvent(void) {
     static uint8_t CurrBumper;
-    static uint8_t CurrBumperTop;
+    static uint8_t CurrBumperTopBackSide;
+    static uint8_t CurrBumperTopBackLeft;
     CurrBumper = Bosshog_ReadRearLeftBumper();
-    CurrBumperTop = Bosshog_ReadTopBackLeftBumper();
+    CurrBumperTopBackLeft = Bosshog_ReadTopBackLeftBumper();
+    CurrBumperTopBackSide = Bosshog_ReadTopBackSideBumper();
     uint8_t WasEvent = FALSE;
-    if ((CurrBumper | CurrBumperTop) != LastBLB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED) {
+    if ((CurrBumper | CurrBumperTopBackSide | CurrBumperTopBackLeft) != LastBLB && (CurrBumper | CurrBumperTopBackLeft | CurrBumperTopBackSide) == BUMPER_TRIPPED) {
         printf(" BLB PRESSED \r\n");
 
         ES_Event BumperEvent;
@@ -227,7 +234,7 @@ uint8_t BLBEvent(void) {
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
-    } else if ((CurrBumper | CurrBumperTop) != LastBLB && (CurrBumper | CurrBumperTop) == BUMPER_NOT_TRIPPED) {
+    } else if ((CurrBumper | CurrBumperTopBackLeft | CurrBumperTopBackSide) != LastBLB && (CurrBumper | CurrBumperTopBackSide | CurrBumperTopBackLeft) == BUMPER_NOT_TRIPPED) {
         printf(" BLB RELEASED \r\n");
 
         ES_Event BumperEvent;
@@ -236,38 +243,38 @@ uint8_t BLBEvent(void) {
         PostBosshogHSM(BumperEvent);
         WasEvent = TRUE;
     }
-    LastBLB = (CurrBumper | CurrBumperTop);
+    LastBLB = (CurrBumper | CurrBumperTopBackSide | CurrBumperTopBackLeft);
     return WasEvent;
 }
 
-uint8_t SBEvent(void) {
-    static uint8_t CurrBumper;
-    CurrBumper = Bosshog_ReadSideBumper();
-    uint8_t WasEvent = FALSE;
-    if (CurrBumper != LastSB && CurrBumper == BUMPER_TRIPPED) {
-        printf(" SB PRESSED \r\n");
-
-        ES_Event BumperEvent;
-        BumperEvent.EventType = SB_PRESSED;
-        BumperEvent.EventParam = (uint16_t) CurrBumper;
-#ifndef EVENTCHECKER_TEST
-        PostBosshogHSM(BumperEvent);
-#else
-        SaveEvent(BumperEvent);
-#endif  
-        WasEvent = TRUE;
-    } else if (CurrBumper != LastSB && CurrBumper == BUMPER_NOT_TRIPPED) {
-        printf(" SB RELEASED \r\n");
-
-        ES_Event BumperEvent;
-        BumperEvent.EventType = SB_RELEASED;
-        BumperEvent.EventParam = (uint16_t) CurrBumper;
-        PostBosshogHSM(BumperEvent);
-        WasEvent = TRUE;
-    }
-    LastSB = CurrBumper;
-    return WasEvent;
-}
+//uint8_t SBEvent(void) {
+//    static uint8_t CurrBumper;
+//    CurrBumper = Bosshog_ReadSideBumper();
+//    uint8_t WasEvent = FALSE;
+//    if (CurrBumper != LastSB && CurrBumper == BUMPER_TRIPPED) {
+//        printf(" SB PRESSED \r\n");
+//
+//        ES_Event BumperEvent;
+//        BumperEvent.EventType = SB_PRESSED;
+//        BumperEvent.EventParam = (uint16_t) CurrBumper;
+//#ifndef EVENTCHECKER_TEST
+//        PostBosshogHSM(BumperEvent);
+//#else
+//        SaveEvent(BumperEvent);
+//#endif  
+//        WasEvent = TRUE;
+//    } else if (CurrBumper != LastSB && CurrBumper == BUMPER_NOT_TRIPPED) {
+//        printf(" SB RELEASED \r\n");
+//
+//        ES_Event BumperEvent;
+//        BumperEvent.EventType = SB_RELEASED;
+//        BumperEvent.EventParam = (uint16_t) CurrBumper;
+//        PostBosshogHSM(BumperEvent);
+//        WasEvent = TRUE;
+//    }
+//    LastSB = CurrBumper;
+//    return WasEvent;
+//}
 
 uint8_t TrackWireEvent(void) {
 
@@ -559,7 +566,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             FLBEvent();
             BRBEvent();
             BLBEvent();
-            SBEvent();
+            //SBEvent();
             TrackWireEvent();
             BLTEvent();
             BCTEvent();
