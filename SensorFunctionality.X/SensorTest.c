@@ -41,15 +41,22 @@ int main(void) {
         //        }
 
 
-        if (Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED) {
-            BosshogSetServo(1800);
-
+        if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
+            //BosshogSetServo(1800);
+            printf("TOP BACK LEFT\r\n");
         }
-        if (Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED) {
+        if (Bosshog_ReadSideBumper() == BUMPER_TRIPPED) {
             BosshogSetServo(1000);
-
+            printf("SIDE BUMPER\r\n");
         }
-        
+        if (Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED) {
+            BosshogSetServo(1000);
+            printf("TOP FRONT RIGHT BUMPER\r\n");
+        }
+        if (Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED) {
+            BosshogSetServo(1000);
+            printf("TOP FRONT LEFT BUMPER\r\n");
+        }
         
 //        if (BosshogReadCenterTape()) {
 //
