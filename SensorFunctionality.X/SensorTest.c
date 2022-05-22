@@ -12,6 +12,7 @@
 #include "IO_Ports.h"
 #include "bosshog.h"
 #include <stdio.h>
+#include "pwm.h"
 
 int main(void) {
 
@@ -20,6 +21,13 @@ int main(void) {
     Bosshog_Init();
 
     int MTRSpeed = 65;
+    
+    
+    //PWM STUFF
+    PWM_Init();
+    PWM_AddPins(PWM_PORTY04);
+    PWM_SetFrequency(MIN_PWM_FREQ);
+    
 
     printf("Starting Test Harness");
     while (1) {
@@ -43,20 +51,15 @@ int main(void) {
 
         if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
             //BosshogSetServo(1800);
+            PWM_SetDutyCycle(PWM_PORTY04, 500);
             printf("TOP BACK LEFT\r\n");
         }
-        if (Bosshog_ReadSideBumper() == BUMPER_TRIPPED) {
-            BosshogSetServo(1000);
-            printf("SIDE BUMPER\r\n");
+        if (Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED) {
+            //BosshogSetServo(1000);
+            PWM_SetDutyCycle(PWM_PORTY04, 100);
+            printf("TOP BACK SIDE BUMPER\r\n");
         }
-        if (Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED) {
-            BosshogSetServo(1000);
-            printf("TOP FRONT RIGHT BUMPER\r\n");
-        }
-        if (Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED) {
-            BosshogSetServo(1000);
-            printf("TOP FRONT LEFT BUMPER\r\n");
-        }
+        
         
 //        if (BosshogReadCenterTape()) {
 //

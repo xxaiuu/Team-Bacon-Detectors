@@ -24,6 +24,11 @@
 /*******************************************************************************
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
+#define motorspeed 55
+#define LEFT_MOTOR_SPEED 57
+#define RIGHT_MOTOR_SPEED 55
+
+
 #define BUMPER_TRIPPED 1
 #define BUMPER_NOT_TRIPPED 0
 
@@ -52,7 +57,7 @@
 #define FRONT_RIGHT_BUMPER_BIT _RD9                     //PORTY08_BIT
 #define REAR_RIGHT_BUMPER_BIT _RD8                      //PORTZ08_BIT
 #define REAR_LEFT_BUMPER_BIT _RB10                      //PORTW04_BIT
-#define SIDE_BUMPER_BIT PORTX09_BIT
+#define TOP_BACK_SIDE_BUMPER_BIT PORTX09_BIT
 #define TOP_FRONT_LEFT_BUMPER_BIT PORTX11_BIT
 #define TOP_FRONT_RIGHT_BUMPER_BIT PORTX08_BIT
 #define TOP_BACK_LEFT_BUMPER_BIT PORTX12_BIT
@@ -69,7 +74,7 @@
 #define FRONT_RIGHT_BUMPER_TRIS _TRISD9
 #define REAR_RIGHT_BUMPER_TRIS _TRISD8
 #define REAR_LEFT_BUMPER_TRIS _TRISB10
-#define SIDE_BUMPER_TRIS PORTX09_TRIS
+#define TOP_BACK_SIDE_BUMPER_TRIS PORTX09_TRIS
 #define TOP_FRONT_LEFT_BUMPER_TRIS PORTX11_TRIS
 #define TOP_FRONT_RIGHT_BUMPER_TRIS PORTX08_TRIS
 #define TOP_BACK_LEFT_BUMPER_TRIS PORTX12_TRIS
@@ -82,7 +87,8 @@
 #define BACK_TAPESENSOR_TRIS PORTZ06_TRIS
 #define TOPLEFT_TAPESENSOR_TRIS PORTZ07_TRIS
 #define TOPRIGHT_TAPESENSOR_TRIS PORTZ09_TRIS
-#define TOPCENTER_TAPESENSOR_TRIS PORTZ10_TRIS
+//#define TOPCENTER_TAPESENSOR_TRIS PORTZ10_TRIS
+#define TOPCENTER_TAPESENSOR_TRIS PORTY07_TRIS
 
 
 
@@ -92,14 +98,17 @@
 #define BACK_TAPESENSOR_BIT PORTZ06_BIT
 #define TOPLEFT_TAPESENSOR_BIT PORTZ07_BIT
 #define TOPRIGHT_TAPESENSOR_BIT PORTZ09_BIT
-#define TOPCENTER_TAPESENSOR_BIT PORTZ10_BIT
+//#define TOPCENTER_TAPESENSOR_BIT PORTZ10_BIT
+#define TOPCENTER_TAPESENSOR_BIT PORTY07_BIT
 
 // Servo for launching mechanism
 #define RCSERVO_PIN RC_PORTW07
+#define LAUNCH 1200
+#define LOAD 2000
 
 //Track Wire Detectors
-#define TRACKWIRE_1 AD_PORTV5
-#define TRACKWIRE_2 AD_PORTV6
+#define TRACKWIRE_1 AD_PORTV8
+#define TRACKWIRE_2 AD_PORTV5
 #define TRACKWIRE_HIGH 700
 #define TRACKWIRE_LOW 100
 
@@ -234,7 +243,7 @@ unsigned char Bosshog_ReadRearRightBumper(void);
  * @return BUMPER_TRIPPED or BUMPER_NOT_TRIPPED
  * @brief  Returns the state of the rear right bumper
  * @author Max Dunne, 2012.01.06 */
-unsigned char Bosshog_ReadSideBumper(void);
+unsigned char Bosshog_ReadTopBackSideBumper(void);
 
 /**
  * @Function Bosshog_ReadFrontRightBumper(void)

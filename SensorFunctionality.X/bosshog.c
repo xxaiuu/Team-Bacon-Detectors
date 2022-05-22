@@ -11,6 +11,7 @@
 #include <xc.h>
 #include "IO_Ports.h"
 #include "RC_Servo.h"
+#include <stdio.h>
 
 #include <pwm.h>
 #include <serial.h>
@@ -122,7 +123,7 @@ void Bosshog_Init(void)
     FRONT_RIGHT_BUMPER_TRIS = 1;
     REAR_RIGHT_BUMPER_TRIS = 1;
     REAR_LEFT_BUMPER_TRIS = 1;
-    SIDE_BUMPER_TRIS = 1;
+    TOP_BACK_SIDE_BUMPER_TRIS = 1;
     TOP_FRONT_LEFT_BUMPER_TRIS = 1;
     TOP_FRONT_RIGHT_BUMPER_TRIS = 1;
     TOP_BACK_LEFT_BUMPER_TRIS = 1;
@@ -159,7 +160,7 @@ void Bosshog_Init(void)
     //    printf("Current pins: %d\n",AD_ActivePins());
     //    printf("Add Result: %d\n",AD_AddPins(LIGHT_SENSOR));
     //    while(1);
-    AD_AddPins(AD_PORTV5 | AD_PORTV6);
+    AD_AddPins(TRACKWIRE_1 | TRACKWIRE_2);
     
 
     //enable interrupts
@@ -301,20 +302,24 @@ uint8_t BosshogReadTrackWire(char num){
     unsigned int ADReading = 0;
     if(!num){
         //read TrackWire_1
-        if (AD_IsNewDataReady()){
+        //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_1);
-        }
+            //printf("T1: %d\r\n", ADReading);
+
+        //}
     }else if(num){
         //read TrackWire_2
-        if (AD_IsNewDataReady()){
+        //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_2);
-        }
+                       //printf("T2: %d\r\n", ADReading);
+
+        //}
     }
     
     //Hysteresis
     if (ADReading > TRACKWIRE_HIGH) return 2;
-    if (ADReading < TRACKWIRE_LOW) return 1;
-    return 0;
+    else if (ADReading < TRACKWIRE_LOW) return 1;
+    else return 0;
     
 }
 
@@ -372,9 +377,9 @@ unsigned char Bosshog_ReadRearRightBumper(void)
     return !REAR_RIGHT_BUMPER_BIT;
 }
 
-unsigned char Bosshog_ReadSideBumper(void)
+unsigned char Bosshog_ReadTopBackSideBumper(void)
 {
-    return !SIDE_BUMPER_BIT;
+    return !TOP_BACK_SIDE_BUMPER_BIT;
 }
 
 unsigned char Bosshog_ReadTopFrontRightBumper(void){
