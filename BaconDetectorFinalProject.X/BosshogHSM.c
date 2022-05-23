@@ -56,6 +56,7 @@ typedef enum {
     FindNext,
     FindNextInverse,
     CantFind,
+    TopStop,
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
@@ -68,6 +69,7 @@ static const char *StateNames[] = {
     "FindNext",
     "FindNextInverse",
     "CantFind",
+    "TopStop",
 };
 
 
@@ -156,18 +158,23 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 // transition from the initial pseudo-state into the actual
                 // initial state
                 // Initialize all sub-state machines
-//                Init_Relocate_SubHSM();
-//                Init_Navigate_SubHSM();
-//                Init_Identify_SubHSM();
-//                Init_Deposit_SubHSM();
-//                Init_FindNext_SubHSM();
-//                Init_FindNextInverse_SubHSM();
+                //                Init_Relocate_SubHSM();
+                //                Init_Navigate_SubHSM();
+                //                Init_Identify_SubHSM();
+                //                Init_Deposit_SubHSM();
+                //                Init_FindNext_SubHSM();
+                //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
                 nextState = Sweep;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
                 ;
             }
+            break;
+
+        case TopStop:
+            Bosshog_LeftMtrSpeed(0);
+            Bosshog_RightMtrSpeed(0);
             break;
 
 
@@ -266,35 +273,40 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             printf("Identify \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
-                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS); 
+            ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
 
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
-
-
-//            //Transitions
-//            switch (ThisEvent.EventType) {
-//                    //If any of the front bumpers get press, move to the identify state
-//                    //and start a 5 second timer
-//                case FIVE_SEC_TIMER:
-//                    nextState = FindNext;
-//                    makeTransition = TRUE;
-//                    Init_FindNext_SubHSM();
-//
-//                    //                //start 5 second timer
-//                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-//
-//                    break;
-//                case TRACK_WIRE_DETECTED:
-//                    nextState = Deposit;
-//                    makeTransition = TRUE;
-//                    Init_Deposit_SubHSM();
-//                    //                //start 5 second timer
-//                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-//
-//                    break;
-//                default:
-//                    break;
+            
+//            if (BosshogReadCenterTape() == TAPE_BLACK && BosshogReadRightTape() == TAPE_BLACK){
+//                nextState = TopStop;
+//                makeTransition = TRUE;
 //            }
+
+
+            //            //Transitions
+            //            switch (ThisEvent.EventType) {
+            //                    //If any of the front bumpers get press, move to the identify state
+            //                    //and start a 5 second timer
+            //                case FIVE_SEC_TIMER:
+            //                    nextState = FindNext;
+            //                    makeTransition = TRUE;
+            //                    Init_FindNext_SubHSM();
+            //
+            //                    //                //start 5 second timer
+            //                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+            //
+            //                    break;
+            //                case TRACK_WIRE_DETECTED:
+            //                    nextState = Deposit;
+            //                    makeTransition = TRUE;
+            //                    Init_Deposit_SubHSM();
+            //                    //                //start 5 second timer
+            //                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+            //
+            //                    break;
+            //                default:
+            //                    break;
+            //            }
 
             break;
 

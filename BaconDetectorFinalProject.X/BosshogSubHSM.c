@@ -555,7 +555,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //                    break;
 
                 case BLB_PRESSED:
+                    
                     //move to another state
+                    printf("BLB PRESSED SHOULD STOP TANK TURN\r\n");
                     nextState = NoSideAlign;
                     makeTransition = TRUE;
                     //                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
@@ -583,13 +585,21 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 //                nextState = TLT_TRT_One_For_Locate;
 //                makeTransition = TRUE;
 //            }
+            
+//            printf("about to run tape checking code\r\n");
+//            if (BosshogReadTopCenterTape() == TAPE_BLACK && BosshogReadTopRightTape() == TAPE_BLACK){
+//                printf("Detected two black tape sensors\r\n");
+//                nextState = Stop;
+//                makeTransition = TRUE;
+//            }
 
+            
             break;
         case NoSideAlign:
 
             //hard left
             Bosshog_RightMtrSpeed(100);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED-25);
             //first bumper hit
             if (ThisEvent.EventType == FLB_PRESSED) {
                 printf("FRONT BUMPER GOT PRESSED \r\n");
@@ -624,6 +634,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 //
 //                default: // all unhandled events pass the event back up to the next level
 //                    break;
+//            }
+            
+//            if (BosshogReadTopCenterTape() == TAPE_BLACK && BosshogReadTopRightTape() == TAPE_BLACK){
+//                nextState = Stop;
+//                makeTransition = TRUE;
 //            }
 
             break;
