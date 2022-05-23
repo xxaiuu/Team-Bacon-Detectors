@@ -463,7 +463,6 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
     uint8_t makeTransition = FALSE; // use to flag transition
     BosshogSubHSMState_t nextState; // <- change type to correct enum
 
-    int n = 0;
     ES_Tattle(); // trace call stack
 
     switch (CurrentState) {
@@ -626,7 +625,6 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 
                 nextState = WallHug;
                 makeTransition = TRUE;
-                n = 1;
                 //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
@@ -695,10 +693,10 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
             }
-            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
-            //                nextState = Stop;
-            //                makeTransition = TRUE;
-            //            }
+//            if (ThisEvent.EventType == TAPE_ALIGNED) {
+//                nextState = Stop;
+//                makeTransition = TRUE;
+//                }
 
             break;
 
