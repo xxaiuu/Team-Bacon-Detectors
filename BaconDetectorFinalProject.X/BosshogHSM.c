@@ -255,6 +255,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                     break;
                 case FLB_PRESSED:
+                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                     nextState = Identify;
                     makeTransition = TRUE;
                     //                //start 5 second timer
