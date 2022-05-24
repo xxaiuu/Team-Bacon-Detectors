@@ -698,6 +698,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 //                makeTransition = TRUE;
 //                }
 
+            if(ThisEvent.EventType == TRACK_WIRE_DETECTED){
+                nextState = Stop;
+                makeTransition = TRUE;
+            }
+            
             break;
 
 

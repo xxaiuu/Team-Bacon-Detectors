@@ -28,6 +28,7 @@ int main(void) {
 //    PWM_AddPins(PWM_PORTY04);
 //    PWM_SetFrequency(MIN_PWM_FREQ);
     
+    
 
     printf("Starting Test Harness");
     while (1) {
@@ -47,14 +48,16 @@ int main(void) {
         //        if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
         //            printf("Side\r\n");
         //        }
-
+//BosshogReadTrackWire(1);
 
         if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
+            //LOAD
             BosshogSetServo(1800);
             //PWM_SetDutyCycle(PWM_PORTY04, 500);
             printf("TOP BACK LEFT\r\n");
         }
         if (Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED) {
+            //LAUNCH
             BosshogSetServo(1250);
             //PWM_SetDutyCycle(PWM_PORTY04, 100);
             printf("TOP BACK SIDE BUMPER\r\n");

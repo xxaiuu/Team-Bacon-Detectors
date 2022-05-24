@@ -304,14 +304,14 @@ uint8_t BosshogReadTrackWire(char num){
         //read TrackWire_1
         //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_1);
-            //printf("T1: %d\r\n", ADReading);
+            printf("T1: %d\r\n", ADReading);
 
         //}
     }else if(num){
         //read TrackWire_2
         //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_2);
-                       //printf("T2: %d\r\n", ADReading);
+            printf("T2: %d\r\n", ADReading);
 
         //}
     }
