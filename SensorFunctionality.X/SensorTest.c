@@ -39,15 +39,17 @@ int main(void) {
                 if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
                     printf("Top Front Left\r\n");
                 }
-                if(Bosshog_ReadTopBackRightBumper() == BUMPER_TRIPPED){
-                    printf("Top Back Right\r\n");
+                if(Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED){
+                    printf("Top Back Side\r\n");
+                    BosshogSetServo(1800);
+
                 }
                 if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
                     printf("Top Back Left\r\n");
+                    BosshogSetServo(1250);
+
                 }
-                if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
-                    printf("Side\r\n");
-                }
+                
 //BosshogReadTrackWire(1);
 
 //        if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
