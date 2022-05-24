@@ -1057,6 +1057,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 nextState = DepositInit;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
+                                ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+
             }
             break;
 
@@ -1065,28 +1067,34 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
             Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
-
-            if (ThisEvent.EventType == SB_RELEASED) {
-                //slight turn left
-                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+            //0.75 seconds of backing up
+            if (ThisEvent.EventType == JIGGY_TIME){
+                nextState = Scan;
+                makeTransition = TRUE;
+                
             }
-            if (ThisEvent.EventType == SB_PRESSED) {
-                //slight turn right
-                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-            }
+//
+//            if (ThisEvent.EventType == SB_RELEASED) {
+//                //slight turn left
+//                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+//            }
+//            if (ThisEvent.EventType == SB_PRESSED) {
+//                //slight turn right
+//                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//            }
 
             //Transitions
-            switch (BosshogReadTopRightTape()) {
-                case TAPE_BLACK:
-                    nextState = TLT_and_TRT_One_For_Deposit;
-                    makeTransition = TRUE;
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
-            }
+//            switch (BosshogReadTopRightTape()) {
+//                case TAPE_BLACK:
+//                    nextState = TLT_and_TRT_One_For_Deposit;
+//                    makeTransition = TRUE;
+//                    break;
+//
+//                default: // all unhandled events pass the event back up to the next level
+//                    break;
+//            }
 
             break;
 
@@ -1116,15 +1124,22 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
             Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
-            switch (BosshogReadTopCenterTape()) {
-                case TAPE_BLACK:
-                    nextState = TCT_and_TRT_One_For_Deposit;
-                    makeTransition = TRUE;
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
+            if (ThisEvent.EventType == TAPE_ALIGNED) {
+                nextState = Dispense;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
             }
+
+
+//            switch (BosshogReadTopCenterTape()) {
+//                case TAPE_BLACK:
+//                    nextState = TCT_and_TRT_One_For_Deposit;
+//                    makeTransition = TRUE;
+//                    break;
+//
+//                default: // all unhandled events pass the event back up to the next level
+//                    break;
+//            }
 
             break;
 
@@ -1150,11 +1165,17 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //Turn motor off
             Bosshog_RightMtrSpeed(0);
             Bosshog_LeftMtrSpeed(0);
+            BosshogSetServo(LAUNCH);
 
+//            if(ThisEvent.EventType == ALIGNING_TIMER){
+//                            BosshogSetServo(LOAD);
+//                
+//            }
             //Relocate Sensor
             //exits out of the subhsm as makeTransition is false 
             //and no other cases are being handled. Top level auto sends it to find next state
             break;
+
 
 
         default: // all unhandled states fall into here

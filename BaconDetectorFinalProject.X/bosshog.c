@@ -141,7 +141,7 @@ void Bosshog_Init(void)
     //RCServo INIT
     RC_Init();
     RC_AddPins(RCSERVO_PIN);
-    
+    BosshogSetServo(LOAD);
     
     //Beacon INIT
     BEACON_TRIS = 1;

@@ -280,6 +280,13 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
 
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
+            
+               if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
+                nextState = Deposit;
+                makeTransition = TRUE;
+                Init_Deposit_SubHSM();
+            }
+            
 
             //            if (BosshogReadCenterTape() == TAPE_BLACK && BosshogReadRightTape() == TAPE_BLACK){
             //                nextState = TopStop;
@@ -322,11 +329,14 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //printf("In Deposit state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
+                //ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+
+            
             ThisEvent = Run_Deposit_SubHSM(ThisEvent);
 
-            nextState = FindNext;
-            makeTransition = TRUE;
-            Init_FindNext_SubHSM();
+//            nextState = FindNext;
+//            makeTransition = TRUE;
+//            Init_FindNext_SubHSM();
             break;
 
 
