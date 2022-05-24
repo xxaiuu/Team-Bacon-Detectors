@@ -72,6 +72,7 @@ typedef enum {
     AlignBackUp,
     AlignDriftLeft,
     WallHug,
+    PreWallHug,
 } BosshogSubHSMState_t;
 
 
@@ -107,6 +108,7 @@ static const char *StateNames[] = {
     "AlignBackUp",
     "AlignDriftLeft",
     "WallHug",
+    "PreWallHug",
 };
 
 
@@ -481,12 +483,6 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             }
             break;
 
-        case Stop:
-            printf("Identify -> Stop \r\n");
-
-            Bosshog_RightMtrSpeed(0);
-            Bosshog_LeftMtrSpeed(0);
-            break;
 
             //        case AlignBackUp:
             //            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -536,14 +532,19 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //            }
             //
             //            break;
+        case Stop:
+            printf("Identify -> Stop \r\n");
 
+            Bosshog_RightMtrSpeed(0);
+            Bosshog_LeftMtrSpeed(0);
+            break;
 
         case Align: // this is the first state
             printf("Identify -> Align \r\n");
 
             //Turn Right
-//            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED-10));
+//            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED-10));
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -561,9 +562,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //move to another state
                     printf("BLB PRESSED SHOULD STOP TANK TURN\r\n");
                     //nextState = NoSideAlign;
-                    Bosshog_RightMtrSpeed(100);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-                    nextState = WallHug;
+                                        Bosshog_RightMtrSpeed(100);
+                                        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                    nextState = WallHug; //WallHug;
                     makeTransition = TRUE;
                     //                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
 
@@ -574,9 +575,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 case BRB_PRESSED:
                     //move to another state
                     //nextState = NoSideAlign;
-                    Bosshog_RightMtrSpeed(100);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-                    nextState = WallHug;
+                                        Bosshog_RightMtrSpeed(100);
+                                        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                    nextState = WallHug; //WallHug;
                     makeTransition = TRUE;
                     //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
 
@@ -589,6 +590,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //                    makeTransition = TRUE;
                     //                    break;
 
+                    
+//                case ALIGNING_TIMER:
+//                                        nextState = PreWallHug; //WallHug;
+//                    makeTransition = TRUE;
+//                    break;
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
@@ -608,79 +614,95 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
             break;
-        case NoSideAlign:
-
-            //hard left
-            Bosshog_RightMtrSpeed(100);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-            //first bumper hit
-            if (ThisEvent.EventType == FLB_PRESSED) {
-                printf("FRONT BUMPER GOT PRESSED \r\n");
-                //                Bosshog_RightMtrSpeed(0);
-                //                Bosshog_LeftMtrSpeed(0);
-                // nextState = Stop; //Validate;
-                // nextState = Align;
 
 
-                
-                nextState = WallHug;
-                makeTransition = TRUE;
-                //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-            }
+//        case PreWallHug:
+//            //drift left
+//            Bosshog_RightMtrSpeed(100);
+//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+//
+////            if (ThisEvent.EventType == BLB_PRESSED || ThisEvent.EventType == BRB_PRESSED) {
+////                PostBosshogHSM(ThisEvent);
+////            }
+//
+//            nextState = WallHug;
+//            makeTransition = TRUE;
+//            break;
 
-            //            switch(ThisEvent.EventType){
+
+            //        case NoSideAlign:
+            //
+            //            //hard left
+            //            Bosshog_RightMtrSpeed(100);
+            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+            //            //first bumper hit
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            //                printf("FRONT BUMPER GOT PRESSED \r\n");
+            //                //                Bosshog_RightMtrSpeed(0);
+            //                //                Bosshog_LeftMtrSpeed(0);
+            //                // nextState = Stop; //Validate;
+            //                // nextState = Align;
+            //
+            //
             //                
-            //                case TAPE_ALIGN:
-            //                    nextState = Stop;
-            //                    makeTransition = TRUE;
-            //                    break;
-            //                default:
-            //                    break;
-            //            }
-            //            
-
-            //                        if (ThisEvent.EventType == SB_PRESSED) {
-            //                            printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
-            //                            Bosshog_RightMtrSpeed(0);
-            //                            Bosshog_LeftMtrSpeed(0);
-            //                            nextState = Stop; //Validate;
-            //                            makeTransition = TRUE;
-            //                        }
-
-            //            if (ThisEvent.EventType == SB_PRESSED) {
-            //                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
-            //                Bosshog_RightMtrSpeed(0);
-            //                Bosshog_LeftMtrSpeed(0);
-            //                nextState = Stop; //Validate;
+            //                nextState = WallHug;
             //                makeTransition = TRUE;
+            //                //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             //            }
             //
+            //            //            switch(ThisEvent.EventType){
+            //            //                
+            //            //                case TAPE_ALIGN:
+            //            //                    nextState = Stop;
+            //            //                    makeTransition = TRUE;
+            //            //                    break;
+            //            //                default:
+            //            //                    break;
+            //            //            }
+            //            //            
             //
-            //            switch (BosshogReadTopLeftTape()) {
-            //                case TAPE_BLACK:
-            //                    nextState = TLT_TRT_One_For_BackLocate;
-            //                    makeTransition = TRUE;
-            //                    break;
+            //            //                        if (ThisEvent.EventType == SB_PRESSED) {
+            //            //                            printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
+            //            //                            Bosshog_RightMtrSpeed(0);
+            //            //                            Bosshog_LeftMtrSpeed(0);
+            //            //                            nextState = Stop; //Validate;
+            //            //                            makeTransition = TRUE;
+            //            //                        }
             //
-            //                default: // all unhandled events pass the event back up to the next level
-            //                    break;
-            //            }
-
-            //            if (BosshogReadTopCenterTape() == TAPE_BLACK && BosshogReadTopRightTape() == TAPE_BLACK){
-            //                nextState = Stop;
-            //                makeTransition = TRUE;
-            //            }
-
-            break;
+            //            //            if (ThisEvent.EventType == SB_PRESSED) {
+            //            //                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
+            //            //                Bosshog_RightMtrSpeed(0);
+            //            //                Bosshog_LeftMtrSpeed(0);
+            //            //                nextState = Stop; //Validate;
+            //            //                makeTransition = TRUE;
+            //            //            }
+            //            //
+            //            //
+            //            //            switch (BosshogReadTopLeftTape()) {
+            //            //                case TAPE_BLACK:
+            //            //                    nextState = TLT_TRT_One_For_BackLocate;
+            //            //                    makeTransition = TRUE;
+            //            //                    break;
+            //            //
+            //            //                default: // all unhandled events pass the event back up to the next level
+            //            //                    break;
+            //            //            }
+            //
+            //            //            if (BosshogReadTopCenterTape() == TAPE_BLACK && BosshogReadTopRightTape() == TAPE_BLACK){
+            //            //                nextState = Stop;
+            //            //                makeTransition = TRUE;
+            //            //            }
+            //
+            //            break;
 
         case WallHug:
             printf("In WallHug State \r\n");
-//            if (n == 1) {
-//                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-//                n = 0;
-//            }
+            //            if (n == 1) {
+            //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //                n = 0;
+            //            }
 
             if (ThisEvent.EventType == FLB_PRESSED) {
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -693,16 +715,16 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
             }
-//            if (ThisEvent.EventType == TAPE_ALIGNED) {
-//                nextState = Stop;
-//                makeTransition = TRUE;
-//                }
+            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
+            //                nextState = Stop;
+            //                makeTransition = TRUE;
+            //                }
 
-            if(ThisEvent.EventType == TRACK_WIRE_DETECTED){
+            if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
                 nextState = Stop;
                 makeTransition = TRUE;
             }
-            
+
             break;
 
 

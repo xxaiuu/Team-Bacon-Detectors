@@ -251,6 +251,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     makeTransition = TRUE;
                     //                //start 5 second timer
                     //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                     Init_Identify_SubHSM();
 
                     break;
@@ -275,14 +277,14 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             printf("Identify \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
-            ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+            //ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
 
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
-            
-//            if (BosshogReadCenterTape() == TAPE_BLACK && BosshogReadRightTape() == TAPE_BLACK){
-//                nextState = TopStop;
-//                makeTransition = TRUE;
-//            }
+
+            //            if (BosshogReadCenterTape() == TAPE_BLACK && BosshogReadRightTape() == TAPE_BLACK){
+            //                nextState = TopStop;
+            //                makeTransition = TRUE;
+            //            }
 
 
             //            //Transitions

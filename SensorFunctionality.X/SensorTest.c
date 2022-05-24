@@ -33,36 +33,36 @@ int main(void) {
     printf("Starting Test Harness");
     while (1) {
 
-        //        if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
-        //            printf("Top Front Right\r\n");
-        //        }
-        //        if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
-        //            printf("Top Front Left\r\n");
-        //        }
-        //        if(Bosshog_ReadTopBackRightBumper() == BUMPER_TRIPPED){
-        //            printf("Top Back Right\r\n");
-        //        }
-        //        if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
-        //            printf("Top Back Left\r\n");
-        //        }
-        //        if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
-        //            printf("Side\r\n");
-        //        }
+                if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
+                    printf("Top Front Right\r\n");
+                }
+                if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
+                    printf("Top Front Left\r\n");
+                }
+                if(Bosshog_ReadTopBackRightBumper() == BUMPER_TRIPPED){
+                    printf("Top Back Right\r\n");
+                }
+                if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
+                    printf("Top Back Left\r\n");
+                }
+                if(Bosshog_ReadSideBumper() == BUMPER_TRIPPED){
+                    printf("Side\r\n");
+                }
 //BosshogReadTrackWire(1);
 
-        if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
-            //LOAD
-            BosshogSetServo(1800);
-            //PWM_SetDutyCycle(PWM_PORTY04, 500);
-            printf("TOP BACK LEFT\r\n");
-        }
-        if (Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED) {
-            //LAUNCH
-            BosshogSetServo(1250);
-            //PWM_SetDutyCycle(PWM_PORTY04, 100);
-            printf("TOP BACK SIDE BUMPER\r\n");
-        }
-        
+//        if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
+//            //LOAD
+//            BosshogSetServo(1800);
+//            //PWM_SetDutyCycle(PWM_PORTY04, 500);
+//            printf("TOP BACK LEFT\r\n");
+//        }
+//        if (Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED) {
+//            //LAUNCH
+//            BosshogSetServo(1250);
+//            //PWM_SetDutyCycle(PWM_PORTY04, 100);
+//            printf("TOP BACK SIDE BUMPER\r\n");
+//        }
+//        
         
 //        if (BosshogReadCenterTape()) {
 //

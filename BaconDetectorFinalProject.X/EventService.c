@@ -496,7 +496,7 @@ uint8_t TL_and_TR_Event(void) {
         TapeEvent.EventType = WALL_EDGE;
         TapeEvent.EventParam = (uint16_t) CurrTapeTL + CurrTapeTR;
 #ifndef EVENTCHECKER_TEST
-        printf("TL and TR EVENT\r\n");
+        //printf("TL and TR EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -520,7 +520,7 @@ uint8_t TR_and_TC_Event(void) {
         TapeEvent.EventType = TAPE_ALIGNED;
         TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR;
 #ifndef EVENTCHECKER_TEST
-        printf("TR and TC EVENT\r\n");
+        //printf("TR and TC EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
