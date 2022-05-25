@@ -93,6 +93,7 @@ uint8_t InitEventService(uint8_t Priority) {
 
     //start timer
     ES_Timer_InitTimer(EVENT_TIMER, 5);
+    //ES_Timer_InitTimer(EVENT_TIMER, 10);  //10ms
 
     // post the initial transition event
     ThisEvent.EventType = ES_INIT;
@@ -580,6 +581,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TR_and_TC_Event();
             //reset ES TIMER
             ES_Timer_InitTimer(EVENT_TIMER, 5);
+            //ES_Timer_InitTimer(EVENT_TIMER, 10); //10ms
             //        if (batVoltage > BATTERY_DISCONNECT_THRESHOLD) { // is battery connected?
             //            curEvent = BATTERY_CONNECTED;
             //        } else {

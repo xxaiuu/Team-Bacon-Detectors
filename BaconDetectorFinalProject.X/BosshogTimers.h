@@ -27,7 +27,7 @@
 #define TIMER_JIG_TICKS 750 
 #define TIMER_180_SPIN_TICKS 3500 
 #define TIMER_LOST_TICKS 7000 
-#define TIMER_ALIGN_TICKS 2000 
+#define TIMER_ALIGN_TICKS 600 
 
 
 /*******************************************************************************

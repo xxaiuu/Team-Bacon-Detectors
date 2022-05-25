@@ -55,7 +55,7 @@ uint8_t Init_jig_timer(uint8_t Priority)
 
 
     // post the initial transition event
-    ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+    //ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
     TIMER.EventType = ES_INIT;
     if (ES_PostToService(MyPriority2, TIMER) == TRUE) {
         return TRUE;
@@ -72,7 +72,7 @@ uint8_t Init_180_timer(uint8_t Priority)
 
 
     // post the initial transition event
-    ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); 
+    //ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); 
     TIMER.EventType = ES_INIT;
     if (ES_PostToService(MyPriority3, TIMER) == TRUE) {
         return TRUE;
@@ -89,7 +89,7 @@ uint8_t Init_Lost_timer(uint8_t Priority)
 
 
     // post the initial transition event
-    ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS); 
+    //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS); 
     TIMER.EventType = ES_INIT;
     if (ES_PostToService(MyPriority4, TIMER) == TRUE) {
         return TRUE;

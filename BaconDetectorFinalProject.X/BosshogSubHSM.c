@@ -543,8 +543,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("Identify -> Align \r\n");
 
             //Turn Right
-//            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED-10));
-//            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED-10));
+            //            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED-10));
+            //            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED-10));
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -562,8 +562,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //move to another state
                     printf("BLB PRESSED SHOULD STOP TANK TURN\r\n");
                     //nextState = NoSideAlign;
-                                        Bosshog_RightMtrSpeed(100);
-                                        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
                     nextState = WallHug; //WallHug;
                     makeTransition = TRUE;
                     //                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
@@ -575,8 +575,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 case BRB_PRESSED:
                     //move to another state
                     //nextState = NoSideAlign;
-                                        Bosshog_RightMtrSpeed(100);
-                                        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
                     nextState = WallHug; //WallHug;
                     makeTransition = TRUE;
                     //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
@@ -590,11 +590,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //                    makeTransition = TRUE;
                     //                    break;
 
-                    
-//                case ALIGNING_TIMER:
-//                                        nextState = PreWallHug; //WallHug;
-//                    makeTransition = TRUE;
-//                    break;
+
+                    //                case ALIGNING_TIMER:
+                    //                                        nextState = PreWallHug; //WallHug;
+                    //                    makeTransition = TRUE;
+                    //                    break;
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
@@ -616,18 +616,18 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
 
-//        case PreWallHug:
-//            //drift left
-//            Bosshog_RightMtrSpeed(100);
-//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-//
-////            if (ThisEvent.EventType == BLB_PRESSED || ThisEvent.EventType == BRB_PRESSED) {
-////                PostBosshogHSM(ThisEvent);
-////            }
-//
-//            nextState = WallHug;
-//            makeTransition = TRUE;
-//            break;
+            //        case PreWallHug:
+            //            //drift left
+            //            Bosshog_RightMtrSpeed(100);
+            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+            //
+            ////            if (ThisEvent.EventType == BLB_PRESSED || ThisEvent.EventType == BRB_PRESSED) {
+            ////                PostBosshogHSM(ThisEvent);
+            ////            }
+            //
+            //            nextState = WallHug;
+            //            makeTransition = TRUE;
+            //            break;
 
 
             //        case NoSideAlign:
@@ -1057,49 +1057,54 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 nextState = DepositInit;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
-                                ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
 
             }
             break;
 
-        case DepositInit: // in the first state, replace this with correct names
+        case DepositInit: // in first state, replace this with correct names
             //Drive Backward
+            printf("IN DEPOSITINIT - BACKING UP \r\n");
             Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
             Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
             //0.75 seconds of backing up
-            if (ThisEvent.EventType == JIGGY_TIME){
+            if (ThisEvent.EventType == ALIGNING_TIMER) {
                 nextState = Scan;
-                makeTransition = TRUE;
-                
-            }
-//
-//            if (ThisEvent.EventType == SB_RELEASED) {
-//                //slight turn left
+                //go forward and align with side
 //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
-//            }
-//            if (ThisEvent.EventType == SB_PRESSED) {
-//                //slight turn right
-//                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-//            }
+                makeTransition = TRUE;
+
+            }
+            //
+            //            if (ThisEvent.EventType == SB_RELEASED) {
+            //                //slight turn left
+            //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+            //            }
+            //            if (ThisEvent.EventType == SB_PRESSED) {
+            //                //slight turn right
+            //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //            }
 
             //Transitions
-//            switch (BosshogReadTopRightTape()) {
-//                case TAPE_BLACK:
-//                    nextState = TLT_and_TRT_One_For_Deposit;
-//                    makeTransition = TRUE;
-//                    break;
-//
-//                default: // all unhandled events pass the event back up to the next level
-//                    break;
-//            }
+            //            switch (BosshogReadTopRightTape()) {
+            //                case TAPE_BLACK:
+            //                    nextState = TLT_and_TRT_One_For_Deposit;
+            //                    makeTransition = TRUE;
+            //                    break;
+            //
+            //                default: // all unhandled events pass the event back up to the next level
+            //                    break;
+            //            }
 
             break;
 
             //exit out of top hsm when 5 timer second is over
 
+#if 0
         case TLT_and_TRT_One_For_Deposit:
             //Transitions
             switch (BosshogReadTopLeftTape()) {
@@ -1118,28 +1123,30 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             }
 
             break;
+#endif
 
         case Scan:
-            //go forward and align with side
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //            //go forward and align with side
+                        Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
             if (ThisEvent.EventType == TAPE_ALIGNED) {
                 nextState = Dispense;
                 makeTransition = TRUE;
-                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+               
             }
 
 
-//            switch (BosshogReadTopCenterTape()) {
-//                case TAPE_BLACK:
-//                    nextState = TCT_and_TRT_One_For_Deposit;
-//                    makeTransition = TRUE;
-//                    break;
-//
-//                default: // all unhandled events pass the event back up to the next level
-//                    break;
-//            }
+            //            switch (BosshogReadTopCenterTape()) {
+            //                case TAPE_BLACK:
+            //                    nextState = TCT_and_TRT_One_For_Deposit;
+            //                    makeTransition = TRUE;
+            //                    break;
+            //
+            //                default: // all unhandled events pass the event back up to the next level
+            //                    break;
+            //            }
 
             break;
 
@@ -1167,10 +1174,10 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             Bosshog_LeftMtrSpeed(0);
             BosshogSetServo(LAUNCH);
 
-//            if(ThisEvent.EventType == ALIGNING_TIMER){
-//                            BosshogSetServo(LOAD);
-//                
-//            }
+            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
+                BosshogSetServo(LOAD);
+
+            }
             //Relocate Sensor
             //exits out of the subhsm as makeTransition is false 
             //and no other cases are being handled. Top level auto sends it to find next state
