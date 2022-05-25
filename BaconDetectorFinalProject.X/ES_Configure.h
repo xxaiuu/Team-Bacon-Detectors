@@ -77,6 +77,7 @@ typedef enum {
     SPIN_AROUND,
     HI_IM_LOST,
     ALIGNING_TIMER,
+    DEPOSITEXIT,
     /* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
@@ -124,8 +125,10 @@ static const char *EventNames[] = {
     "JIGGY_TIME",
     "SPIN_AROUND",
     "HI_IM_LOST",
-    "NUMBEROFEVENTS",
     "ALIGNING_TIMER",
+    "DEPOSITEXIT",
+    "NUMBEROFEVENTS",
+
 };
 
 
