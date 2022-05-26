@@ -334,15 +334,15 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             ThisEvent = Run_Deposit_SubHSM(ThisEvent);
 
-//            if (ThisEvent.EventType == DEPOSITEXIT) {
+            if (ThisEvent.EventType == DEPOSITEXIT) {
 //                Bosshog_RightMtrSpeed(0);
 //                Bosshog_LeftMtrSpeed(0);
-//
-//                nextState = FindNext;
-//                makeTransition = TRUE;
-//                Init_FindNext_SubHSM();
-//
-//            }
+
+                nextState = FindNext;
+                makeTransition = TRUE;
+                Init_FindNext_SubHSM();
+
+            }
             //            nextState = FindNext;
             //            makeTransition = TRUE;
             //            Init_FindNext_SubHSM();
@@ -361,12 +361,12 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //Transitions
             switch (ThisEvent.EventType) {
 
-//                case BEACON_DETECTED:
-//                    nextState = TopStop; //Navigate;
-//                    makeTransition = TRUE;
-//                    Init_Navigate_SubHSM();
-//
-//                    break;
+                case BEACON_DETECTED:
+                    nextState = Navigate;
+                    makeTransition = TRUE;
+                    Init_Navigate_SubHSM();
+
+                    break;
                     //                case BB_TAPE_BLACK:
                     //                    //DO 180 DEGREE TANK TURN
                     //                    // Timer will need to be used and adjusted
