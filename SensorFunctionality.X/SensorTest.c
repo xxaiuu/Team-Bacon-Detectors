@@ -21,84 +21,89 @@ int main(void) {
     Bosshog_Init();
 
     int MTRSpeed = 65;
-    
-    
+
+
     //PWM STUFF
-//    PWM_Init();
-//    PWM_AddPins(PWM_PORTY04);
-//    PWM_SetFrequency(MIN_PWM_FREQ);
-    
-    
+    //    PWM_Init();
+    //    PWM_AddPins(PWM_PORTY04);
+    //    PWM_SetFrequency(MIN_PWM_FREQ);
+
+
 
     printf("Starting Test Harness");
     while (1) {
 
-                if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
-                    printf("Top Front Right\r\n");
-                }
-                if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
-                    printf("Top Front Left\r\n");
-                }
-                if(Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED){
-                    printf("Top Back Side\r\n");
-                    BosshogSetServo(1800);
-
-                }
-                if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
-                    printf("Top Back Left\r\n");
-                    BosshogSetServo(1250);
-
-                }
-                
-//BosshogReadTrackWire(1);
-
-//        if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
-//            //LOAD
-//            BosshogSetServo(1800);
-//            //PWM_SetDutyCycle(PWM_PORTY04, 500);
-//            printf("TOP BACK LEFT\r\n");
-//        }
-//        if (Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED) {
-//            //LAUNCH
-//            BosshogSetServo(1250);
-//            //PWM_SetDutyCycle(PWM_PORTY04, 100);
-//            printf("TOP BACK SIDE BUMPER\r\n");
-//        }
-//        
-        
-//        if (BosshogReadCenterTape()) {
-//
-//            Bosshog_LeftMtrSpeed(-MTRSpeed - 7);
-//            Bosshog_RightMtrSpeed(-MTRSpeed); //need to go slower
-//        }
-//        if (BosshogReadBackTape()) {
-//            Bosshog_LeftMtrSpeed(MTRSpeed + 2);
-//            Bosshog_RightMtrSpeed(MTRSpeed);
-//        }
-
-        //        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-        //            Bosshog_LeftMtrSpeed(0);
-        //        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
-        //            Bosshog_LeftMtrSpeed(MTRSpeed);
-        //        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
-        //            Bosshog_LeftMtrSpeed(-MTRSpeed);
-        //        } else {
-        //            Bosshog_LeftMtrSpeed(0);
-        //        }
-        //       
-        //        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-        //            Bosshog_RightMtrSpeed(0);
-        //        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
-        //            Bosshog_RightMtrSpeed(MTRSpeed);
-        //        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
-        //            Bosshog_RightMtrSpeed(-MTRSpeed);
-        //        }  else {
-        //            Bosshog_RightMtrSpeed(0);
-        //        }
-
-
+        printf("BD: %d\r\n", BosshogReadBeacon());
 
     }
+
+
+    //                if(Bosshog_ReadTopFrontRightBumper() == BUMPER_TRIPPED ){
+    //                    printf("Top Front Right\r\n");
+    //                }
+    //                if(Bosshog_ReadTopFrontLeftBumper() == BUMPER_TRIPPED){
+    //                    printf("Top Front Left\r\n");
+    //                }
+    //                if(Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED){
+    //                    printf("Top Back Side\r\n");
+    //                    BosshogSetServo(1800);
+    //
+    //                }
+    //                if(Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED){
+    //                    printf("Top Back Left\r\n");
+    //                    BosshogSetServo(1250);
+    //
+    //                }
+
+    //BosshogReadTrackWire(1);
+
+    //        if (Bosshog_ReadTopBackLeftBumper() == BUMPER_TRIPPED) {
+    //            //LOAD
+    //            BosshogSetServo(1800);
+    //            //PWM_SetDutyCycle(PWM_PORTY04, 500);
+    //            printf("TOP BACK LEFT\r\n");
+    //        }
+    //        if (Bosshog_ReadTopBackSideBumper() == BUMPER_TRIPPED) {
+    //            //LAUNCH
+    //            BosshogSetServo(1250);
+    //            //PWM_SetDutyCycle(PWM_PORTY04, 100);
+    //            printf("TOP BACK SIDE BUMPER\r\n");
+    //        }
+    //        
+
+    //        if (BosshogReadCenterTape()) {
+    //
+    //            Bosshog_LeftMtrSpeed(-MTRSpeed - 7);
+    //            Bosshog_RightMtrSpeed(-MTRSpeed); //need to go slower
+    //        }
+    //        if (BosshogReadBackTape()) {
+    //            Bosshog_LeftMtrSpeed(MTRSpeed + 2);
+    //            Bosshog_RightMtrSpeed(MTRSpeed);
+    //        }
+
+    //        if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED && Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+    //            Bosshog_LeftMtrSpeed(0);
+    //        } else if(Bosshog_ReadFrontLeftBumper() == BUMPER_TRIPPED){
+    //            Bosshog_LeftMtrSpeed(MTRSpeed);
+    //        } else if(Bosshog_ReadRearLeftBumper() == BUMPER_TRIPPED){
+    //            Bosshog_LeftMtrSpeed(-MTRSpeed);
+    //        } else {
+    //            Bosshog_LeftMtrSpeed(0);
+    //        }
+    //       
+    //        if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED && Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+    //            Bosshog_RightMtrSpeed(0);
+    //        } else if(Bosshog_ReadFrontRightBumper() == BUMPER_TRIPPED){
+    //            Bosshog_RightMtrSpeed(MTRSpeed);
+    //        } else if(Bosshog_ReadRearRightBumper() == BUMPER_TRIPPED){
+    //            Bosshog_RightMtrSpeed(-MTRSpeed);
+    //        }  else {
+    //            Bosshog_RightMtrSpeed(0);
+    //        }
+
+
+
+
 
     //    Servo Test    
     //    printf("Servo\r\n");

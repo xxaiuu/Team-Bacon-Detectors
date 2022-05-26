@@ -25,8 +25,8 @@
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
 #define motorspeed 55
-#define LEFT_MOTOR_SPEED 57
-#define RIGHT_MOTOR_SPEED 55
+#define LEFT_MOTOR_SPEED 67//69
+#define RIGHT_MOTOR_SPEED 60
 
 
 #define BUMPER_TRIPPED 1
@@ -103,8 +103,8 @@
 
 // Servo for launching mechanism
 #define RCSERVO_PIN RC_PORTW07
-#define LAUNCH 1200
-#define LOAD 2000
+#define LAUNCH 1250
+#define LOAD 1800
 
 //Track Wire Detectors
 #define TRACKWIRE_1 AD_PORTV8
@@ -113,8 +113,9 @@
 #define TRACKWIRE_LOW 100
 
 //Beacon Detector
-#define BEACON_TRIS PORTW05_TRIS
-#define BEACON_BIT PORTW05_BIT
+//#define BEACON_TRIS PORTW05_TRIS
+//#define BEACON_BIT PORTW05_BIT
+#define BEACON_BIT AD_PORTW5
 
 
 #define BOSSHOG_BAT_VOLTAGE BAT_VOLTAGE

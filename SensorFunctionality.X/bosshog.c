@@ -141,10 +141,10 @@ void Bosshog_Init(void)
     //RCServo INIT
     RC_Init();
     RC_AddPins(RCSERVO_PIN);
+    BosshogSetServo(LOAD);
     
-    
-    //Beacon INIT
-    BEACON_TRIS = 1;
+//    //Beacon INIT
+//    BEACON_TRIS = 1;
     
     //set up the light bank
 
@@ -160,7 +160,7 @@ void Bosshog_Init(void)
     //    printf("Current pins: %d\n",AD_ActivePins());
     //    printf("Add Result: %d\n",AD_AddPins(LIGHT_SENSOR));
     //    while(1);
-    AD_AddPins(TRACKWIRE_1 | TRACKWIRE_2);
+    AD_AddPins(TRACKWIRE_1 | TRACKWIRE_2 | BEACON_BIT);
     
 
     //enable interrupts
@@ -304,14 +304,14 @@ uint8_t BosshogReadTrackWire(char num){
         //read TrackWire_1
         //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_1);
-            printf("T1: %d\r\n", ADReading);
+            //printf("T1: %d\r\n", ADReading);
 
         //}
     }else if(num){
         //read TrackWire_2
         //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_2);
-            printf("T2: %d\r\n", ADReading);
+                       //printf("T2: %d\r\n", ADReading);
 
         //}
     }
@@ -328,7 +328,9 @@ uint8_t BosshogReadTrackWire(char num){
  * @return 
  */
 uint8_t BosshogReadBeacon(void){
-    return BEACON_BIT;
+    //return BEACON_BIT;
+    return(AD_ReadADPin(BEACON_BIT));
+
 }
 
 
