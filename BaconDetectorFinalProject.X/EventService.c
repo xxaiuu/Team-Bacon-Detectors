@@ -57,6 +57,9 @@ static uint8_t LastTrack1 = TRACK_WIRE_ABSENT;
 static uint8_t LastTrack2 = TRACK_WIRE_ABSENT;
 static uint8_t LastBothTrack = 0;
 
+//init Beacon states
+static uint8_t LastBeacon = BEACON_ABSENT; 
+
 //init LastTape states
 static uint8_t LastBLT = TAPE_WHITE;
 static uint8_t LastBCT = TAPE_WHITE;
@@ -314,6 +317,39 @@ uint8_t TrackWireEvent(void) {
 
     LastTrack1 = CurrTrack1;
     LastTrack2 = CurrTrack2;
+    return WasEvent;
+}
+
+uint8_t BeaconEvent(void) {
+
+    uint8_t RawBeacon = BosshogReadBeacon(); 
+    uint8_t CurrBeacon;
+    
+    if (RawBeacon > BEACON_HIGH) CurrBeacon = BEACON_PRESENT;
+    else CurrBeacon = BEACON_ABSENT;
+    
+    uint8_t WasEvent = FALSE;
+
+    if (CurrBeacon != LastBeacon && CurrBeacon == BEACON_PRESENT){
+        printf("Beacon FOUND\r\n");
+        //Bosshog_LeftMtrSpeed(50);
+        ES_Event BeaconEvent;
+        BeaconEvent.EventType = BEACON_DETECTED; 
+        BeaconEvent.EventParam = (uint16_t) CurrBeacon;
+        //printf("BEACONDETECTED\r\n");
+        PostBosshogHSM(BeaconEvent);
+        WasEvent = TRUE;
+    }else if (CurrBeacon != LastBeacon && CurrBeacon == BEACON_ABSENT){
+        printf("Beacon LOST\r\n");
+        //Bosshog_LeftMtrSpeed(0);
+        ES_Event BeaconEvent;
+        BeaconEvent.EventType = BEACON_LOST; 
+        BeaconEvent.EventParam = (uint16_t) CurrBeacon;
+        //printf("BEACONLOST\r\n");
+        PostBosshogHSM(BeaconEvent);
+        WasEvent = TRUE;
+    }
+    LastBeacon = CurrBeacon; 
     return WasEvent;
 }
 
@@ -581,6 +617,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TCTEvent();
             //TL_and_TR_Event();
             TR_and_TC_Event();
+            BeaconEvent();
             //reset ES TIMER
             ES_Timer_InitTimer(EVENT_TIMER, 5);
             //ES_Timer_InitTimer(EVENT_TIMER, 10); //10ms

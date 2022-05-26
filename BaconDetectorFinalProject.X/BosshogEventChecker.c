@@ -115,6 +115,7 @@ uint8_t TemplateCheckBattery(void) {
     return (returnVal);
 }
 
+#if 0 
 uint8_t BeaconEvent(void){
     //printf("Running BeaconEvent Checker\r\n");
     uint8_t currBeacon;
@@ -142,6 +143,7 @@ uint8_t BeaconEvent(void){
     lastBeacon = currBeacon; 
     return WasEvent;
 }
+#endif
 
 /* 
  * The Test Harness for the event checkers is conditionally compiled using
