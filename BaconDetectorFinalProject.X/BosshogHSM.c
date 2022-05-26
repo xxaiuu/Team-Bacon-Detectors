@@ -334,10 +334,15 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             ThisEvent = Run_Deposit_SubHSM(ThisEvent);
 
-            if (ThisEvent.EventType == DEPOSITEXIT) {
-                Bosshog_RightMtrSpeed(0);
-                Bosshog_LeftMtrSpeed(0);
-            }
+//            if (ThisEvent.EventType == DEPOSITEXIT) {
+//                Bosshog_RightMtrSpeed(0);
+//                Bosshog_LeftMtrSpeed(0);
+//
+//                nextState = FindNext;
+//                makeTransition = TRUE;
+//                Init_FindNext_SubHSM();
+//
+//            }
             //            nextState = FindNext;
             //            makeTransition = TRUE;
             //            Init_FindNext_SubHSM();
@@ -350,34 +355,34 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
-            ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
-
+            // ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
+            ThisEvent = Run_FindNext_SubHSM(ThisEvent);
 
             //Transitions
             switch (ThisEvent.EventType) {
 
-                case BEACON_DETECTED:
-                    nextState = Navigate;
-                    makeTransition = TRUE;
-                    Init_Navigate_SubHSM();
+//                case BEACON_DETECTED:
+//                    nextState = TopStop; //Navigate;
+//                    makeTransition = TRUE;
+//                    Init_Navigate_SubHSM();
+//
+//                    break;
+                    //                case BB_TAPE_BLACK:
+                    //                    //DO 180 DEGREE TANK TURN
+                    //                    // Timer will need to be used and adjusted
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    //
+                    //                    nextState = FindNextInverse;
+                    //                    makeTransition = TRUE;
+                    //                    Init_FindNextInverse_SubHSM();
+                    //
+                    //                    break;
 
-                    break;
-                case BB_TAPE_BLACK:
-                    //DO 180 DEGREE TANK TURN
-                    // Timer will need to be used and adjusted
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-
-                    nextState = FindNextInverse;
-                    makeTransition = TRUE;
-                    Init_FindNextInverse_SubHSM();
-
-                    break;
-
-                case HI_IM_LOST:
-                    nextState = CantFind;
-                    makeTransition = TRUE;
-                    break;
+                    //                case HI_IM_LOST:
+                    //                    nextState = CantFind;
+                    //                    makeTransition = TRUE;
+                    //                    break;
 
                 default:
                     break;

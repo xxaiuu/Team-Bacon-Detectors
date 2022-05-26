@@ -492,12 +492,14 @@ uint8_t TL_and_TR_Event(void) {
     CurrTapeTL = BosshogReadTopLeftTape();
     CurrTapeTR = BosshogReadTopRightTape();
     uint8_t WasEvent = FALSE;
-    if ((CurrTapeTL != LastTLT && CurrTapeTL == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)) {
-        ES_Event TapeEvent;
+    //if ((CurrTapeTL != LastTLT && CurrTapeTL == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)) {
+        if (CurrTapeTL == TAPE_BLACK && CurrTapeTR == TAPE_BLACK){
+  
+    ES_Event TapeEvent;
         TapeEvent.EventType = WALL_EDGE;
         TapeEvent.EventParam = (uint16_t) CurrTapeTL + CurrTapeTR;
 #ifndef EVENTCHECKER_TEST
-        //printf("TL and TR EVENT\r\n");
+        printf("TL and TR EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
