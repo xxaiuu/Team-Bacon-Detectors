@@ -139,7 +139,7 @@ ES_Event Run_timer_5_sec(ES_Event this_timer_five_sec)
         //ES_Timer_InitTimer(TURN_LEFT_TIMER, TIMER_1_TICKS); 
 
         timer5.EventType = FIVE_SEC_TIMER;
-        //printf("5 sec timer over \r\n");
+        printf("5 sec timer over \r\n");
         PostBosshogHSM(timer5);
 
         break;
@@ -170,7 +170,7 @@ ES_Event Run_jig_timer(ES_Event this_timer)
         //ES_Timer_InitTimer(TURN_LEFT_TIMER, TIMER_1_TICKS); 
 
         timer5.EventType = JIGGY_TIME;
-        //printf("JIG TIME \r\n");
+        printf("JIG TIME \r\n");
         PostBosshogHSM(timer5);
 
         break;
@@ -201,7 +201,7 @@ ES_Event Run_180_timer(ES_Event this_timer)
         timer.EventType = SPIN_AROUND;
         Bosshog_RightMtrSpeed(0);
         Bosshog_LeftMtrSpeed(0);
-        //printf("180 Spin \r\n");
+        printf("180 Spin \r\n");
         PostBosshogHSM(timer);
 
         break;
@@ -229,7 +229,7 @@ ES_Event Run_Lost_timer(ES_Event this_timer)
         //ES_Timer_InitTimer(TURN_LEFT_TIMER, TIMER_1_TICKS); 
 
         timer.EventType = HI_IM_LOST;
-        //printf("180 Spin \r\n");
+        printf("180 Spin \r\n");
         PostBosshogHSM(timer);
 
         break;
@@ -258,6 +258,7 @@ ES_Event Run_Align_timer(ES_Event this_timer)
         //ES_Timer_InitTimer(TURN_LEFT_TIMER, TIMER_1_TICKS); 
 
         timer.EventType = ALIGNING_TIMER;
+        printf("Align Spin \r\n");
 
         PostBosshogHSM(timer);
 
