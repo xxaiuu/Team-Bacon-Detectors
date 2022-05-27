@@ -846,9 +846,15 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                 printf("TANK TURN SINCE FRONT GOT HIT");
             }
+//            if (ThisEvent.EventType == FRB_PRESSED) {
+//                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//                printf("TANK TURN SINCE FRONT GOT HIT");
+//            }
+            
             if (ThisEvent.EventType == BLB_PRESSED) {
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
             }
@@ -1366,7 +1372,7 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
 
 
             //Spin backward, towards left
-            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED + 12);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED - 15);
             Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
 
             //Transitions
@@ -1377,9 +1383,12 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
 
                     //start timer
                     //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS); 
+                    ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS);
                     break;
 
+                case BRB_PRESSED:
+                    nextState = EvadeTower;
+                    makeTransition = TRUE;
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }

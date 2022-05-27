@@ -25,7 +25,7 @@
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
 #define motorspeed 55
-#define LEFT_MOTOR_SPEED 69 //74//69
+#define LEFT_MOTOR_SPEED 71 //74//69
 #define RIGHT_MOTOR_SPEED 60 //65//60
 
 
