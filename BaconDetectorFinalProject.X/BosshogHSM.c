@@ -57,6 +57,7 @@ typedef enum {
     FindNextInverse,
     CantFind,
     TopStop,
+            IdentifyNoTrack,
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
@@ -70,6 +71,7 @@ static const char *StateNames[] = {
     "FindNextInverse",
     "CantFind",
     "TopStop",
+    "IdentifyNoTrack",
 };
 
 
@@ -251,23 +253,23 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     //If any of the front bumpers get press, move to the identify state
                     //and start a 5 second timer
                 case FRB_PRESSED:
-                    nextState = Identify;
+                    nextState = IdentifyNoTrack; //Identify;
                     makeTransition = TRUE;
                     //                //start 5 second timer
-                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
                     Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                    Init_Identify_SubHSM();
+                   // Init_Identify_SubHSM();
 
                     break;
                 case FLB_PRESSED:
                     Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                    nextState = Identify;
+                    nextState = IdentifyNoTrack; //Identify;
                     makeTransition = TRUE;
                     //                //start 5 second timer
-                    //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
-                    Init_Identify_SubHSM();
+                                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+                  //  Init_Identify_SubHSM();
 
                     break;
                 default:
@@ -275,7 +277,45 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             }
 
             break;
+        case IdentifyNoTrack:
+            
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                printf("TANK TURN SINCE FRONT GOT HIT");
+            }
+//            if (ThisEvent.EventType == FRB_PRESSED) {
+//                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//                printf("TANK TURN SINCE FRONT GOT HIT");
+//            }
+            if (ThisEvent.EventType == BLB_PRESSED) {
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                printf("TURN LEFT SINCE BACK GOT HIT");
 
+            }
+                        if (ThisEvent.EventType == BRB_PRESSED) {
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                printf("TURN LEFT SINCE BACK GOT HIT");
+
+            }
+            
+            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
+            //                nextState = Stop;
+            //                makeTransition = TRUE;
+            //                }
+
+            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
+                nextState = Identify;//Validate;
+                makeTransition = TRUE;
+                Init_Identify_SubHSM();
+            }
+
+            
+            
+            break;
 
         case Identify:
             printf("Identify \r\n");

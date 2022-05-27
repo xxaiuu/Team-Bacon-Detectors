@@ -402,16 +402,16 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             }
             break;
 
-        case Stop:
-            Bosshog_RightMtrSpeed(0);
-            Bosshog_LeftMtrSpeed(0);
-
-            if(ThisEvent.EventType == ALIGNING_TIMER){
-                    nextState = Follow;
-                    makeTransition = TRUE;
-            }
-            
-            break;
+//        case Stop:
+//            Bosshog_RightMtrSpeed(0);
+//            Bosshog_LeftMtrSpeed(0);
+//
+//            if (ThisEvent.EventType == ALIGNING_TIMER) {
+//                nextState = Follow;
+//                makeTransition = TRUE;
+//            }
+//
+//            break;
 
         case Follow: // in the first state, replace this with correct names
             printf("Navigate -> Follow \r\n");
@@ -463,7 +463,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             //            //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_DETECTED:
-                    nextState = Stop; //Follow; //JigPause;
+                    nextState = Follow; //JigPause;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
                     break;
@@ -502,7 +502,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             //            //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_DETECTED:
-                    nextState = Stop; //Follow; //JigPause;
+                    nextState = Follow; //JigPause;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
                     break;
@@ -537,7 +537,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             //            //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_DETECTED:
-                    nextState = Stop; //Follow; //JigPause;
+                    nextState = Follow; //JigPause;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
                     break;
@@ -566,7 +566,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             //            //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_DETECTED:
-                    nextState = Stop; //Follow; //JigPause;
+                    nextState = Follow; //JigPause;
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
                     break;
@@ -613,9 +613,10 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
                 // now put the machine into the actual initial state
                 //nextState = Align;
-                nextState = Align;
+                nextState = WallHug;//Align;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
+                
             }
             break;
 
@@ -857,7 +858,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //                }
 
             if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
-                nextState = Stop;
+                nextState = Stop;//Validate;
                 makeTransition = TRUE;
             }
 
@@ -865,8 +866,31 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case Validate:
-            //This state checks the top center tape
-            printf("Identify -> Validate \r\n");
+//            //This state checks the top center tape
+//            printf("Identify -> Validate \r\n");
+//
+//            if (ThisEvent.EventType == FLB_PRESSED) {
+//                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//                printf("TANK TURN SINCE FRONT GOT HIT");
+//            }
+//            if (ThisEvent.EventType == BLB_PRESSED) {
+//                Bosshog_RightMtrSpeed(100);
+//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+//                printf("TURN LEFT SINCE BACK GOT HIT");
+//
+//            }
+//            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
+//            //                nextState = Stop;
+//            //                makeTransition = TRUE;
+//            //                }
+//
+//            if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
+//                nextState = Stop;
+//                makeTransition = TRUE;
+//            }
+
+
 
             //Transitions
             //            switch (BosshogReadTopCenterTape()) {
