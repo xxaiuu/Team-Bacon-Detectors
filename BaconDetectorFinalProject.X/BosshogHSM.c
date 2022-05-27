@@ -165,9 +165,13 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Init_FindNext_SubHSM();
                 //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
-                nextState = Sweep;
+                nextState = Navigate; //Sweep;
+                                    Init_Navigate_SubHSM();
+
+                
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
+                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
                 ;
             }
             break;

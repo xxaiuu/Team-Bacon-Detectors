@@ -39,7 +39,7 @@ uint8_t Init_timer_5_sec(uint8_t Priority)
 
 
     // post the initial transition event
-    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
+    //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS); 
     TIMER.EventType = ES_INIT;
     if (ES_PostToService(MyPriority1, TIMER) == TRUE) {
         return TRUE;

@@ -76,8 +76,10 @@ typedef enum {
     Wiggle,
     DepositExit,
     AlignTank,
-    //JigPause,
+    JigPause,
     //DepositEdge,
+    JigMore,
+    JigMoreTwo,
 } BosshogSubHSMState_t;
 
 
@@ -117,8 +119,10 @@ static const char *StateNames[] = {
     "Wiggle",
     "DepositExit",
     "AlignTank",
-    //"JigPause",
+    "JigPause",
     //"DepositEdge",
+    "JigMore",
+    "JigMoreTwo",
 };
 
 
@@ -398,6 +402,17 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             }
             break;
 
+        case Stop:
+            Bosshog_RightMtrSpeed(0);
+            Bosshog_LeftMtrSpeed(0);
+
+            if(ThisEvent.EventType == ALIGNING_TIMER){
+                    nextState = Follow;
+                    makeTransition = TRUE;
+            }
+            
+            break;
+
         case Follow: // in the first state, replace this with correct names
             printf("Navigate -> Follow \r\n");
 
@@ -436,22 +451,66 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 20));
 
             if (ThisEvent.EventType == JIGGY_TIME) {
-                Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 20));
-                Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 20));
+                nextState = JigPause;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS);
+
+                //                Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 15));
+                //                Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 15));
             }
 
 
-            //Transitions
+            //            //Transitions
             switch (ThisEvent.EventType) {
                 case BEACON_DETECTED:
-                    nextState = Follow; //JigPause;
+                    nextState = Stop; //Follow; //JigPause;
                     makeTransition = TRUE;
-                    // ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+                    ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
                     break;
 
                 default: // all unhandled events pass the event back up to the next level
                     break;
             }
+            break;
+
+        case JigPause:
+
+            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 21));
+            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 21));
+            if (ThisEvent.EventType == JIGGY_TIME) {
+                nextState = JigMore;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS);
+
+                //                Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 15));
+                //                Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 15));
+            }
+
+
+            //                        switch (ThisEvent.EventType) {
+            //                case BEACON_DETECTED:
+            //                    nextState = Follow; //JigPause;
+            //                    makeTransition = TRUE;
+            //                    // ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+            //                    break;
+            //
+            //                default: // all unhandled events pass the event back up to the next level
+            //                    break;
+            //            }
+            //         
+
+            //            //Transitions
+            switch (ThisEvent.EventType) {
+                case BEACON_DETECTED:
+                    nextState = Stop; //Follow; //JigPause;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+            break;
 
             //        case JigPause:
             //            Bosshog_RightMtrSpeed(0);
@@ -463,6 +522,60 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             //            }
             //            break;
 
+        case JigMore:
+            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 25));
+            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 25));
+            if (ThisEvent.EventType == JIGGY_TIME) {
+                nextState = JigMoreTwo;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS);
+
+                //                Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 15));
+                //                Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 15));
+            }
+
+            //            //Transitions
+            switch (ThisEvent.EventType) {
+                case BEACON_DETECTED:
+                    nextState = Stop; //Follow; //JigPause;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
+
+        case JigMoreTwo:
+            Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 22));
+            Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 22));
+
+            if (ThisEvent.EventType == JIGGY_TIME) {
+                nextState = Jig;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Timer_For_Jig, TIMER_JIG_TICKS);
+
+                //                Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 15));
+                //                Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 15));
+            }
+
+
+
+            //            //Transitions
+            switch (ThisEvent.EventType) {
+                case BEACON_DETECTED:
+                    nextState = Stop; //Follow; //JigPause;
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+                    break;
+
+                default: // all unhandled events pass the event back up to the next level
+                    break;
+            }
+
+            break;
 
             //exit out of top hsm when front bumper is hit
 
@@ -1334,12 +1447,12 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
                 //ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
             }
 
-//            if (ThisEvent.EventType == SPIN_AROUND) {
-//                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 4);
-//                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-//
-//            }
+            //            if (ThisEvent.EventType == SPIN_AROUND) {
+            //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 4);
+            //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+            //
+            //            }
             //            nextState = WallHug; //WallHug;
             //            makeTransition = TRUE;
 
