@@ -25,8 +25,8 @@
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
 #define motorspeed 55
-#define LEFT_MOTOR_SPEED 71 //74//69
-#define RIGHT_MOTOR_SPEED 60 //65//60
+#define LEFT_MOTOR_SPEED 61//71 //74//69
+#define RIGHT_MOTOR_SPEED 50//60 //65//60
 
 
 #define BUMPER_TRIPPED 1
@@ -121,6 +121,9 @@
 
 
 #define BOSSHOG_BAT_VOLTAGE BAT_VOLTAGE
+
+static volatile uint8_t TowerFirstHitTime = 0;
+
 
 /**
  * @Function BOSSHOG_Init(void)

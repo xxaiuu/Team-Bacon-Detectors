@@ -90,7 +90,6 @@ static const char *StateNames[] = {
 static BosshogHSMState_t CurrentState = Init; // <- change enum name to match ENUM
 static uint8_t MyPriority;
 
-
 /*******************************************************************************
  * PUBLIC FUNCTIONS                                                            *
  ******************************************************************************/
@@ -257,28 +256,36 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     //and start a 5 second timer
                 case FRB_PRESSED:
                     printf("(FRB)Suppose to tank turn \r\n");
-                    
-                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    TowerFirstHitTime = ES_Timer_GetTime();
+//                    Bosshog_RightMtrSpeed(-100);
+//                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED-20);
+                    Bosshog_RightMtrSpeed(-80);
                     Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
-                    nextState = IdentifyNoTrack; //Identify;
+                    nextState = Identify;
                     makeTransition = TRUE;
                     //                //start 5 second timer
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+                    //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
-                    // Init_Identify_SubHSM();
+                    Init_Identify_SubHSM();
 
                     break;
                 case FLB_PRESSED:
                     printf("(FLB)Suppose to tank turn \r\n");
-
-                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    TowerFirstHitTime = ES_Timer_GetTime();
+//                    Bosshog_RightMtrSpeed(-100);
+//                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                    Bosshog_RightMtrSpeed(-80);
                     Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                    nextState = IdentifyNoTrack; //Identify;
+                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    nextState = Identify;
                     makeTransition = TRUE;
                     //                //start 5 second timer
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-                    //  Init_Identify_SubHSM();
+                    //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+                    Init_Identify_SubHSM();
 
                     break;
                 default:
@@ -287,6 +294,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             break;
         case IdentifyNoTrack:
+            printf("IdentifyNoTrack \r\n");
 
             if (ThisEvent.EventType == FLB_PRESSED) {
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -334,7 +342,9 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
 
-            if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
+
+            if (ThisEvent.EventType == TRACK_WIRE_DETECTED && ES_Timer_GetTime() > (TowerFirstHitTime + 5000)) {
+                //if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
                 nextState = Deposit;
                 makeTransition = TRUE;
                 Init_Deposit_SubHSM();
