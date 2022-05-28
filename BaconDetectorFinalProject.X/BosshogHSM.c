@@ -166,10 +166,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Init_FindNext_SubHSM();
                 //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
-                nextState = Sweep;
-                // nextState = Navigate; 
+                //nextState = Sweep;
+                nextState = FindNext; 
 
-                //Init_Navigate_SubHSM();
+                Init_FindNext_SubHSM();
+
 
 
                 makeTransition = TRUE;
@@ -421,35 +422,35 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
             ThisEvent = Run_FindNext_SubHSM(ThisEvent);
 
-            //Transitions
-            switch (ThisEvent.EventType) {
-
-                case BEACON_DETECTED:
-                    nextState = Navigate;
-                    makeTransition = TRUE;
-                    Init_Navigate_SubHSM();
-
-                    break;
-                    //                case BB_TAPE_BLACK:
-                    //                    //DO 180 DEGREE TANK TURN
-                    //                    // Timer will need to be used and adjusted
-                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                    //
-                    //                    nextState = FindNextInverse;
-                    //                    makeTransition = TRUE;
-                    //                    Init_FindNextInverse_SubHSM();
-                    //
-                    //                    break;
-
-                    //                case HI_IM_LOST:
-                    //                    nextState = CantFind;
-                    //                    makeTransition = TRUE;
-                    //                    break;
-
-                default:
-                    break;
-            }
+//            //Transitions
+//            switch (ThisEvent.EventType) {
+//
+//                case BEACON_DETECTED:
+//                    nextState = Navigate;
+//                    makeTransition = TRUE;
+//                    Init_Navigate_SubHSM();
+//
+//                    break;
+//                    //                case BB_TAPE_BLACK:
+//                    //                    //DO 180 DEGREE TANK TURN
+//                    //                    // Timer will need to be used and adjusted
+//                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+//                    //
+//                    //                    nextState = FindNextInverse;
+//                    //                    makeTransition = TRUE;
+//                    //                    Init_FindNextInverse_SubHSM();
+//                    //
+//                    //                    break;
+//
+//                    //                case HI_IM_LOST:
+//                    //                    nextState = CantFind;
+//                    //                    makeTransition = TRUE;
+//                    //                    break;
+//
+//                default:
+//                    break;
+//            }
 
             break;
 
