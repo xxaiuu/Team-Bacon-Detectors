@@ -166,10 +166,10 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Init_FindNext_SubHSM();
                 //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
-                //nextState = Sweep;
-                nextState = FindNext; 
+                nextState = Sweep;
+                //nextState = FindNext; 
 
-                Init_FindNext_SubHSM();
+                //Init_FindNext_SubHSM();
 
 
 
@@ -191,8 +191,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // No Sub HSM in this State
             printf("Sweep \r\n");
             // Tank Turn Sweep Right
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED + 20);
 
 
             //Transition 
@@ -258,10 +258,10 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case FRB_PRESSED:
                     printf("(FRB)Suppose to tank turn \r\n");
                     TowerFirstHitTime = ES_Timer_GetTime();
-//                    Bosshog_RightMtrSpeed(-100);
-//                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED-20);
-                    Bosshog_RightMtrSpeed(-80);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    //                    Bosshog_RightMtrSpeed(-100);
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED-20);
+                    Bosshog_RightMtrSpeed(-60);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
                     //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
@@ -276,10 +276,10 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case FLB_PRESSED:
                     printf("(FLB)Suppose to tank turn \r\n");
                     TowerFirstHitTime = ES_Timer_GetTime();
-//                    Bosshog_RightMtrSpeed(-100);
-//                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
-                    Bosshog_RightMtrSpeed(-80);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    //                    Bosshog_RightMtrSpeed(-100);
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                    Bosshog_RightMtrSpeed(-60);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
                     //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                     nextState = Identify;
@@ -294,46 +294,46 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             }
 
             break;
-        case IdentifyNoTrack:
-            printf("IdentifyNoTrack \r\n");
-
-            if (ThisEvent.EventType == FLB_PRESSED) {
-                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                printf("TANK TURN SINCE FRONT GOT HIT");
-            }
-            //            if (ThisEvent.EventType == FRB_PRESSED) {
+            //        case IdentifyNoTrack:
+            //            printf("IdentifyNoTrack \r\n");
+            //
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
             //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
             //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             //                printf("TANK TURN SINCE FRONT GOT HIT");
             //            }
-            if (ThisEvent.EventType == BLB_PRESSED) {
-                Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-                printf("TURN LEFT SINCE BACK GOT HIT");
-
-            }
-            if (ThisEvent.EventType == BRB_PRESSED) {
-                Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-                printf("TURN LEFT SINCE BACK GOT HIT");
-
-            }
-
-            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
-            //                nextState = Stop;
+            //            //            if (ThisEvent.EventType == FRB_PRESSED) {
+            //            //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //            //                printf("TANK TURN SINCE FRONT GOT HIT");
+            //            //            }
+            //            if (ThisEvent.EventType == BLB_PRESSED) {
+            //                Bosshog_RightMtrSpeed(100);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+            //                printf("TURN LEFT SINCE BACK GOT HIT");
+            //
+            //            }
+            //            if (ThisEvent.EventType == BRB_PRESSED) {
+            //                Bosshog_RightMtrSpeed(100);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+            //                printf("TURN LEFT SINCE BACK GOT HIT");
+            //
+            //            }
+            //
+            //            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
+            //            //                nextState = Stop;
+            //            //                makeTransition = TRUE;
+            //            //                }
+            //
+            //            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
+            //                nextState = Identify; //Validate;
             //                makeTransition = TRUE;
-            //                }
-
-            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
-                nextState = Identify; //Validate;
-                makeTransition = TRUE;
-                Init_Identify_SubHSM();
-            }
-
-
-
-            break;
+            //                Init_Identify_SubHSM();
+            //            }
+            //
+            //
+            //
+            //            break;
 
         case Identify:
             printf("Identify \r\n");
@@ -403,6 +403,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Bosshog_LeftMtrSpeed(0);
 
                 nextState = FindNext;
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
+                //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
                 makeTransition = TRUE;
                 Init_FindNext_SubHSM();
 
@@ -422,35 +427,42 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
             ThisEvent = Run_FindNext_SubHSM(ThisEvent);
 
-//            //Transitions
-//            switch (ThisEvent.EventType) {
-//
-//                case BEACON_DETECTED:
-//                    nextState = Navigate;
-//                    makeTransition = TRUE;
-//                    Init_Navigate_SubHSM();
-//
-//                    break;
-//                    //                case BB_TAPE_BLACK:
-//                    //                    //DO 180 DEGREE TANK TURN
-//                    //                    // Timer will need to be used and adjusted
-//                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-//                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-//                    //
-//                    //                    nextState = FindNextInverse;
-//                    //                    makeTransition = TRUE;
-//                    //                    Init_FindNextInverse_SubHSM();
-//                    //
-//                    //                    break;
-//
-//                    //                case HI_IM_LOST:
-//                    //                    nextState = CantFind;
-//                    //                    makeTransition = TRUE;
-//                    //                    break;
-//
-//                default:
-//                    break;
+
+//            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
+//                nextState = FindNextInverse;
+//                makeTransition = TRUE;
 //            }
+            //Transitions
+//                        switch (ThisEvent.EventType) {
+//            
+//                            case BEACON_DETECTED:
+//                                nextState = Navigate;
+//                                Init_Navigate_SubHSM();
+//                                //nextState = TopStop; 
+//                                makeTransition = TRUE;
+//                                
+//            
+//                                break;
+//                                //                case BB_TAPE_BLACK:
+//                                //                    //DO 180 DEGREE TANK TURN
+//                                //                    // Timer will need to be used and adjusted
+//                                //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//                                //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+//                                //
+//                                //                    nextState = FindNextInverse;
+//                                //                    makeTransition = TRUE;
+//                                //                    Init_FindNextInverse_SubHSM();
+//                                //
+//                                //                    break;
+//            
+//                                //                case HI_IM_LOST:
+//                                //                    nextState = CantFind;
+//                                //                    makeTransition = TRUE;
+//                                //                    break;
+//            
+//                            default:
+//                                break;
+//                   }
 
             break;
 
@@ -461,6 +473,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
+            ThisEvent = Run_FindNext_SubHSM(ThisEvent);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -471,11 +484,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     Init_Navigate_SubHSM();
 
                     break;
-
-                case HI_IM_LOST:
-                    nextState = CantFind;
-                    makeTransition = TRUE;
-                    break;
+                    //
+                    //                case HI_IM_LOST:
+                    //                    nextState = CantFind;
+                    //                    makeTransition = TRUE;
+                    //                    break;
 
                 default:
                     break;

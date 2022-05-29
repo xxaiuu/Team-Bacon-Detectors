@@ -452,8 +452,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
             //mess with jig time to change angle
             //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
-            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 13));
-            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 13));
+            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 20));
+            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 20));
 
             if (ThisEvent.EventType == JIGGY_TIME) {
                 nextState = JigPause;
@@ -480,8 +480,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
         case JigPause:
 
-            Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 13));
-            Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 13));
+            Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 20));
+            Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 20));
             if (ThisEvent.EventType == JIGGY_TIME) {
                 nextState = JigMore;
                 makeTransition = TRUE;
@@ -863,8 +863,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
             if (ThisEvent.EventType == BLB_PRESSED) {
                 ES_Timer_InitTimer(Stall_Timer, 2000);
-                Bosshog_RightMtrSpeed(95);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
             }
@@ -879,7 +879,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 20);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 20);
 
 
             }
@@ -1203,6 +1203,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //0.75 seconds of backing up
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 nextState = Scan;
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
                 //go forward and align with side
                 //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
@@ -1258,9 +1260,13 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 #endif
 
         case Scan:
+
+
             //            //go forward and align with side
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            if (ThisEvent.EventType == ES_TIMEOUT) {
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+            }
             //
             //            if (ThisEvent.EventType == WALL_EDGE) {
             //                nextState = DepositEdge;
@@ -1272,6 +1278,11 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 makeTransition = TRUE;
                 ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
+            }
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 5);
+                ES_Timer_InitTimer(Unstuck_Timer, 500);
             }
 
 
@@ -1420,83 +1431,102 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Spin: // in the first state, replace this with correct names
-            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            printf("BEACON VALUE:  %d   \r\n", BosshogReadBeacon());
+
+
+            printf("In Spin (WallHug Inverse) State \r\n");
+            //            if (n == 1) {
             //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 4);
-            //                printf("TANK TURN SINCE FRONT GOT HIT");
-            //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-            //                //ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
-            //
-            //            }
-            //            if (ThisEvent.EventType == BLB_PRESSED) {
-            //                Bosshog_RightMtrSpeed(80);
-            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
-            //                printf("TURN LEFT SINCE BACK GOT HIT");
-            //                ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-            //                //ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
-            //
-            //
-            //            }
-            //
-            //            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
-            //                Bosshog_RightMtrSpeed(80);
-            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
-            //                //ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //                n = 0;
             //            }
 
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            if (ThisEvent.EventType == ES_TIMEOUT) {
 
-            //Spin backward, towards left
-            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED - 27);
-            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED+5);
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED-20);
+                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
 
-            //Transitions
-            switch (ThisEvent.EventType) {
-                case BLB_PRESSED:
-                    nextState = EvadeTower;
-                    makeTransition = TRUE;
-//                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 7);
-//                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-
-                    //start timer
-                    //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-                    ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400);
-                    break;
-
-                    //                case BRB_PRESSED:
-                    //                    nextState = EvadeTower;
-                    //                    makeTransition = TRUE;
-                default: // all unhandled events pass the event back up to the next level
-                    break;
+                printf("Backpetaling and FRONT GOT HIT");
             }
+            //            if (ThisEvent.EventType == FRB_PRESSED) {
+            //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //                printf("TANK TURN SINCE FRONT GOT HIT");
+            //            }
+
+            if (ThisEvent.EventType == BLB_PRESSED) {
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400);
+                printf("BackPetaling\r\n");
+
+            }
+            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
+            //                nextState = Stop;
+            //                makeTransition = TRUE;
+            //                }
+            if (ThisEvent.EventType == SPIN_AROUND) {
+                nextState = EvadeTower;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Unstuck_Timer, 1000);
+
+
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+
+
+            }
+            //if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
 
             break;
 
         case EvadeTower:
             //go forward and slightly left
 
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 28);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 5);
-
             if (ThisEvent.EventType == ES_TIMEOUT) {
-                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED - 27);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED+5);
+
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+            }
+
+
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+
+                //                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                printf("TANK TURN SINCE FRONT GOT HIT");
+
                 nextState = Spin;
                 makeTransition = TRUE;
             }
-            //Transitions
-            //            switch (ThisEvent.EventType) {
-            //                case JIGGY_TIME:
-            //                    //FIVE_SEC_TIMER:
-            //                    nextState = Spin;
-            //                    makeTransition = TRUE;
-            //
-            //                    break;
-            //
-            //                default: // all unhandled events pass the event back up to the next level
-            //                    break;
-            //            }
+
+            if (ThisEvent.EventType == BLB_PRESSED) {
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED - 20);
+                printf("TURN LEFT SINCE BACK GOT HIT");
+
+                nextState = Spin;
+                makeTransition = TRUE;
+
+            }
+
+
 
             break;
+
             //jumps out of sub hsm whenever a beacon is detected or when a back tape is detected black
             // or cant find timer expires
 

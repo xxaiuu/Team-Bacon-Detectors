@@ -15,7 +15,12 @@ void main(void)
     printf("Starting ES Framework Template\r\n");
     printf("using the 2nd Generation Events & Services Framework\r\n");
 
-
+//    while (1){
+//        printf("testing motor straightness\r\n");
+//        Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+//        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//    }
+    
     // Your hardware initialization function calls go here
 
     // now initialize the Events and Services Framework and start it running
