@@ -5,8 +5,7 @@
 #include "ES_Framework.h"
 #include "bosshog.h"
 
-void main(void)
-{
+void main(void) {
     ES_Return_t ErrorType;
 
     BOARD_Init();
@@ -15,12 +14,17 @@ void main(void)
     printf("Starting ES Framework Template\r\n");
     printf("using the 2nd Generation Events & Services Framework\r\n");
 
-//    while (1){
-//        printf("testing motor straightness\r\n");
-//        Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+//    printf("testing beacon detector\r\n");
+//    while (1) {
+//        Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
 //        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+//        uint8_t RawBeacon = BosshogReadBeacon();
+//        if (RawBeacon > BEACON_HIGH) {
+//            Bosshog_RightMtrSpeed(0);
+//            Bosshog_LeftMtrSpeed(0);
+//        }
 //    }
-    
+
     // Your hardware initialization function calls go here
 
     // now initialize the Events and Services Framework and start it running
@@ -31,15 +35,15 @@ void main(void)
     }
     //if we got to here, there was an error
     switch (ErrorType) {
-    case FailedPointer:
-        printf("Failed on NULL pointer");
-        break;
-    case FailedInit:
-        printf("Failed Initialization");
-        break;
-    default:
-        printf("Other Failure: %d", ErrorType);
-        break;
+        case FailedPointer:
+            printf("Failed on NULL pointer");
+            break;
+        case FailedInit:
+            printf("Failed Initialization");
+            break;
+        default:
+            printf("Other Failure: %d", ErrorType);
+            break;
     }
     for (;;)
         ;

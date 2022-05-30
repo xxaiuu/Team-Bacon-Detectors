@@ -423,7 +423,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
             //Go forward
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 1);
 
 
             //Transitions
@@ -705,9 +705,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     printf("BLB PRESSED SHOULD STOP TANK TURN\r\n");
                     //nextState = NoSideAlign;
                     Bosshog_RightMtrSpeed(100);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                    Bosshog_LeftMtrSpeed(0);
                     nextState = WallHug; //WallHug;
-                    ES_Timer_InitTimer(Stall_Timer, 3000);
+                    ES_Timer_InitTimer(Stall_Timer, 5000);
                     makeTransition = TRUE;
                     //                    printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
 
@@ -719,7 +719,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //move to another state
                     //nextState = NoSideAlign;
                     Bosshog_RightMtrSpeed(100);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
+                    Bosshog_LeftMtrSpeed(0);
+                    ES_Timer_InitTimer(Stall_Timer, 5000);
                     nextState = WallHug; //WallHug;
                     makeTransition = TRUE;
                     //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
@@ -848,7 +849,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //            }
 
             if (ThisEvent.EventType == FLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 2000);
+                ES_Timer_InitTimer(Stall_Timer, 5000);
                 //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED-20);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -862,9 +863,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //            }
 
             if (ThisEvent.EventType == BLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 2000);
+                ES_Timer_InitTimer(Stall_Timer, 5000);
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                Bosshog_LeftMtrSpeed(0);
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
             }
@@ -903,7 +904,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
             if (ThisEvent.EventType == FLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 3000);
+                ES_Timer_InitTimer(Stall_Timer, 5000);
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                 Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 20);
                 //                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -915,9 +916,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             }
 
             if (ThisEvent.EventType == BLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 3000);
+                ES_Timer_InitTimer(Stall_Timer, 5000);
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                Bosshog_LeftMtrSpeed(0);
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
                 nextState = WallHug;
@@ -1203,8 +1204,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //0.75 seconds of backing up
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 nextState = Scan;
-                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 30);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 30);
                 //go forward and align with side
                 //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);

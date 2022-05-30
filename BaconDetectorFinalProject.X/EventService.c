@@ -58,7 +58,7 @@ static uint8_t LastTrack2 = TRACK_WIRE_ABSENT;
 static uint8_t LastBothTrack = 0;
 
 //init Beacon states
-static uint8_t LastBeacon = BEACON_ABSENT; 
+static uint8_t LastBeacon = BEACON_PRESENT;//BEACON_ABSENT; 
 
 //init LastTape states
 static uint8_t LastBLT = TAPE_WHITE;

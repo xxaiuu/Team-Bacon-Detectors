@@ -191,8 +191,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // No Sub HSM in this State
             printf("Sweep \r\n");
             // Tank Turn Sweep Right
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
-            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED + 20);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED + 10);
 
 
             //Transition 
@@ -260,8 +260,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     TowerFirstHitTime = ES_Timer_GetTime();
                     //                    Bosshog_RightMtrSpeed(-100);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED-20);
-                    Bosshog_RightMtrSpeed(-60);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                    Bosshog_RightMtrSpeed(-100);
+                    Bosshog_LeftMtrSpeed(100 - 20);
                     //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
@@ -278,8 +278,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     TowerFirstHitTime = ES_Timer_GetTime();
                     //                    Bosshog_RightMtrSpeed(-100);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
-                    Bosshog_RightMtrSpeed(-60);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                    Bosshog_RightMtrSpeed(-100);
+                    Bosshog_LeftMtrSpeed(100 - 20);
                     //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                     nextState = Identify;
@@ -433,36 +433,36 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 //                makeTransition = TRUE;
 //            }
             //Transitions
-//                        switch (ThisEvent.EventType) {
-//            
-//                            case BEACON_DETECTED:
-//                                nextState = Navigate;
-//                                Init_Navigate_SubHSM();
-//                                //nextState = TopStop; 
-//                                makeTransition = TRUE;
-//                                
-//            
-//                                break;
-//                                //                case BB_TAPE_BLACK:
-//                                //                    //DO 180 DEGREE TANK TURN
-//                                //                    // Timer will need to be used and adjusted
-//                                //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-//                                //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-//                                //
-//                                //                    nextState = FindNextInverse;
-//                                //                    makeTransition = TRUE;
-//                                //                    Init_FindNextInverse_SubHSM();
-//                                //
-//                                //                    break;
-//            
-//                                //                case HI_IM_LOST:
-//                                //                    nextState = CantFind;
-//                                //                    makeTransition = TRUE;
-//                                //                    break;
-//            
-//                            default:
-//                                break;
-//                   }
+                        switch (ThisEvent.EventType) {
+            
+                            case BEACON_DETECTED:
+                                nextState = Navigate;
+                                Init_Navigate_SubHSM();
+                                //nextState = TopStop; 
+                                makeTransition = TRUE;
+                                
+            
+                                break;
+                                //                case BB_TAPE_BLACK:
+                                //                    //DO 180 DEGREE TANK TURN
+                                //                    // Timer will need to be used and adjusted
+                                //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                                //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                                //
+                                //                    nextState = FindNextInverse;
+                                //                    makeTransition = TRUE;
+                                //                    Init_FindNextInverse_SubHSM();
+                                //
+                                //                    break;
+            
+                                //                case HI_IM_LOST:
+                                //                    nextState = CantFind;
+                                //                    makeTransition = TRUE;
+                                //                    break;
+            
+                            default:
+                                break;
+                   }
 
             break;
 
