@@ -81,6 +81,7 @@ typedef enum {
     JigMore,
     JigMoreTwo,
     Unstuck,
+    ForwardAlign,
 } BosshogSubHSMState_t;
 
 
@@ -125,6 +126,7 @@ static const char *StateNames[] = {
     "JigMore",
     "JigMoreTwo",
     "Unstuck",
+    "ForwardAlign",
 };
 
 
@@ -899,7 +901,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == ES_TIMEOUT) {
 
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(75);
+                Bosshog_LeftMtrSpeed(0);
             }
 
 
@@ -1176,9 +1178,14 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 nextState = DepositInit;
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
-                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+                //                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
 
             }
+            break;
+
+        case Stop:
+            Bosshog_RightMtrSpeed(0);
+            Bosshog_LeftMtrSpeed(0);
             break;
 
         case DepositInit: // in first state, replace this with correct names
@@ -1186,7 +1193,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
             Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED-10);
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED - 10);
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
@@ -1202,17 +1209,29 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
             //  }
 
-            //0.75 seconds of backing up
-            if (ThisEvent.EventType == ALIGNING_TIMER) {
-                nextState = Scan;
-//                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
-//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
-                //go forward and align with side
-                //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            if (ThisEvent.EventType == WALL_EDGE) {
+                nextState = ForwardAlign;
+
                 makeTransition = TRUE;
 
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
+
+
+                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+
             }
+            //            //0.75 seconds of backing up
+            //            if (ThisEvent.EventType == ALIGNING_TIMER) {
+            //                nextState = Scan;
+            ////                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
+            ////                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+            //                //go forward and align with side
+            //                //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            //                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //                makeTransition = TRUE;
+
+            //            }
             //
             //            if (ThisEvent.EventType == SB_RELEASED) {
             //                //slight turn left
@@ -1240,36 +1259,34 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
             //exit out of top hsm when 5 timer second is over
 
-#if 0
-        case TLT_and_TRT_One_For_Deposit:
-            //Transitions
-            switch (BosshogReadTopLeftTape()) {
-                case TAPE_BLACK:
-                    nextState = Scan;
-                    makeTransition = TRUE;
-                    break;
+        case ForwardAlign:
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //0.75 seconds of backing up
+            if (ThisEvent.EventType == ALIGNING_TIMER) {
+                //nextState = Stop;
+                nextState = Scan;
+                //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
+                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+                //go forward and align with side
+                //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                makeTransition = TRUE;
 
-                case TAPE_WHITE:
-                    nextState = DepositInit;
-                    makeTransition = TRUE;
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
             }
-
             break;
-#endif
 
         case Scan:
-                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
 
             //            //go forward and align with side
-//            if (ThisEvent.EventType == ES_TIMEOUT) {
-//                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
-//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
-//            }
+            //            if (ThisEvent.EventType == ES_TIMEOUT) {
+            //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+            //            }
             //
             //            if (ThisEvent.EventType == WALL_EDGE) {
             //                nextState = DepositEdge;
@@ -1282,11 +1299,11 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
 
             }
-//            if (ThisEvent.EventType == FLB_PRESSED) {
-//                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
-//                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 5);
-//                ES_Timer_InitTimer(Unstuck_Timer, 500);
-//            }
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 10);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 5);
+            //                ES_Timer_InitTimer(Unstuck_Timer, 500);
+            //            }
 
 
             //            switch (BosshogReadTopCenterTape()) {

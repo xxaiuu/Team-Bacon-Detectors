@@ -615,7 +615,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TLTEvent();
             TRTEvent();
             TCTEvent();
-            //TL_and_TR_Event();
+            TL_and_TR_Event();
             TR_and_TC_Event();
             BeaconEvent();
             //reset ES TIMER

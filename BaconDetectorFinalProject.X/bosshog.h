@@ -113,7 +113,7 @@
 //Track Wire Detectors
 #define TRACKWIRE_1 AD_PORTV8
 #define TRACKWIRE_2 AD_PORTV5
-#define TRACKWIRE_HIGH 600//700
+#define TRACKWIRE_HIGH 500//600//700
 #define TRACKWIRE_LOW 100
 
 //Beacon Detector
