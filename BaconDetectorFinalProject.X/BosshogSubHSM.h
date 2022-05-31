@@ -58,7 +58,7 @@ uint8_t Init_Identify_SubHSM(void);
 uint8_t Init_Deposit_SubHSM(void);
 uint8_t Init_FindNext_SubHSM(void);
 uint8_t Init_FindNextInverse_SubHSM(void);
-
+//uint8_t Init_ForwardNext_SubHSM(void);
 
 
 /**
@@ -83,6 +83,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent);
 ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent);
 ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent);
 ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent);
+//ES_Event Run_ForwardNext_SubHSM(ES_Event ThisEvent);
 
 
 #endif /* SUB_HSM_Template_H */

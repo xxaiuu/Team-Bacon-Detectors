@@ -58,6 +58,7 @@ typedef enum {
     CantFind,
     TopStop,
     IdentifyNoTrack,
+    ForwardNext,
 } BosshogHSMState_t;
 
 static const char *StateNames[] = {
@@ -72,6 +73,7 @@ static const char *StateNames[] = {
     "CantFind",
     "TopStop",
     "IdentifyNoTrack",
+    "ForwardNext",
 };
 
 
@@ -170,7 +172,6 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //nextState = FindNext; 
 
                 //Init_FindNext_SubHSM();
-
 
 
                 makeTransition = TRUE;
@@ -429,41 +430,61 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             ThisEvent = Run_FindNext_SubHSM(ThisEvent);
 
 
-//            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
-//                nextState = FindNextInverse;
-//                makeTransition = TRUE;
-//            }
+            //            if (ThisEvent.EventType == FIVE_SEC_TIMER) {
+            //                nextState = FindNextInverse;
+            //                makeTransition = TRUE;
+            //            }
             //Transitions
-                        switch (ThisEvent.EventType) {
-            
-                            case BEACON_DETECTED:
-                                nextState = Navigate;
-                                Init_Navigate_SubHSM();
-                                //nextState = TopStop; 
-                                makeTransition = TRUE;
-                                
-            
-                                break;
-                                //                case BB_TAPE_BLACK:
-                                //                    //DO 180 DEGREE TANK TURN
-                                //                    // Timer will need to be used and adjusted
-                                //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                                //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                                //
-                                //                    nextState = FindNextInverse;
-                                //                    makeTransition = TRUE;
-                                //                    Init_FindNextInverse_SubHSM();
-                                //
-                                //                    break;
-            
-                                //                case HI_IM_LOST:
-                                //                    nextState = CantFind;
-                                //                    makeTransition = TRUE;
-                                //                    break;
-            
-                            default:
-                                break;
-                   }
+            switch (ThisEvent.EventType) {
+
+                case BEACON_DETECTED:
+                    nextState = ForwardNext;
+                    //Init_ForwardNext_SubHSM();
+                    //                                nextState = Navigate;
+                    //                                Init_Navigate_SubHSM();
+                    //nextState = TopStop; 
+                    makeTransition = TRUE;
+
+
+                    break;
+                    //                case BB_TAPE_BLACK:
+                    //                    //DO 180 DEGREE TANK TURN
+                    //                    // Timer will need to be used and adjusted
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    //
+                    //                    nextState = FindNextInverse;
+                    //                    makeTransition = TRUE;
+                    //                    Init_FindNextInverse_SubHSM();
+                    //
+                    //                    break;
+
+                    //                case HI_IM_LOST:
+                    //                    nextState = CantFind;
+                    //                    makeTransition = TRUE;
+                    //                    break;
+
+                default:
+                    break;
+            }
+
+            break;
+
+
+
+        case ForwardNext:
+            // ThisEvent = Run_ForwardNext_SubHSM(ThisEvent);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 10);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+
+            if (ThisEvent.EventType == BEACON_DETECTED) {
+
+                nextState = Navigate;
+                makeTransition = TRUE;
+
+                Init_Navigate_SubHSM();
+
+            }
 
             break;
 

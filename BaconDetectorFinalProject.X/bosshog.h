@@ -27,7 +27,7 @@
 #define motorspeed 55
 //70 is lowest speed to run motors at without stalling
 #define LEFT_MOTOR_SPEED 85//68//71 //74//69
-#define RIGHT_MOTOR_SPEED 85//60//60 //65//60
+#define RIGHT_MOTOR_SPEED 87//60//60 //65//60
 
 #define BACK_LEFT_MOTOR_SPEED 87//68//71 //74//69
 #define BACK_RIGHT_MOTOR_SPEED 85//60//60 //65//60
