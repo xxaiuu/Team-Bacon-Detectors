@@ -347,6 +347,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == TRACK_WIRE_DETECTED && ES_Timer_GetTime() > (TowerFirstHitTime + 5000)) {
                 //if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
                 nextState = Deposit;
+                //nextState = TopStop;
                 makeTransition = TRUE;
                 Init_Deposit_SubHSM();
             }

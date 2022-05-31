@@ -14,12 +14,12 @@ void main(void) {
     printf("Starting ES Framework Template\r\n");
     printf("using the 2nd Generation Events & Services Framework\r\n");
 
-//    printf("testing beacon detector\r\n");
+//  //  printf("testing beacon detector\r\n");
 //    while (1) {
 //        Bosshog_RightMtrSpeed(0);
 //        Bosshog_LeftMtrSpeed(0);
-//        unsigned int RawBeacon = BosshogReadTrackWire(1);
-//        printf("AD: %d\r\n", RawBeacon);
+//        unsigned int RawBeacon = BosshogReadTrackWire(0);
+//       // printf("AD: %d\r\n", RawBeacon);
 ////        if (RawBeacon > BEACON_HIGH) {
 ////                    printf("AD: %d\r\n", RawBeacon);
 ////            printf("BEACON HIGH\r\n");
