@@ -65,9 +65,9 @@ static uint8_t LastBLT = TAPE_WHITE;
 static uint8_t LastBCT = TAPE_WHITE;
 static uint8_t LastBRT = TAPE_WHITE;
 static uint8_t LastBBT = TAPE_WHITE;
-static uint8_t LastTLT = TAPE_WHITE;
-static uint8_t LastTRT = TAPE_WHITE;
-static uint8_t LastTCT = TAPE_WHITE;
+static uint8_t LastTLT = TAPE_BLACK;
+static uint8_t LastTRT = TAPE_BLACK;
+static uint8_t LastTCT = TAPE_BLACK;
 
 static uint8_t MyPriority;
 
@@ -283,8 +283,8 @@ uint8_t BLBEvent(void) {
 uint8_t TrackWireEvent(void) {
 
     int numTracks = 0;
-    uint8_t CurrTrack1 = BosshogReadTrackWire(0);
-    uint8_t CurrTrack2 = BosshogReadTrackWire(1);
+    unsigned int  CurrTrack1 = BosshogReadTrackWire(0);
+    unsigned int  CurrTrack2 = BosshogReadTrackWire(1);
     uint8_t WasEvent = FALSE;
 //    if (CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT) {
 //        printf("TRACKWIRE 1 EVENT\r\n");
@@ -322,8 +322,8 @@ uint8_t TrackWireEvent(void) {
 
 uint8_t BeaconEvent(void) {
 
-    uint8_t RawBeacon = BosshogReadBeacon(); 
-    uint8_t CurrBeacon;
+    unsigned int RawBeacon = BosshogReadBeacon(); 
+    unsigned int CurrBeacon;
     
     if (RawBeacon > BEACON_HIGH) CurrBeacon = BEACON_PRESENT;
     else CurrBeacon = BEACON_ABSENT;

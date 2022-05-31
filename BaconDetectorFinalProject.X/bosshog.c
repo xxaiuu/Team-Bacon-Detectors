@@ -298,7 +298,7 @@ void BosshogSetServo(int newPos){
  *         1 - LOW
  *         0 - NULL (deadzone, remain unchanged)
  */
-uint8_t BosshogReadTrackWire(char num){
+unsigned int  BosshogReadTrackWire(char num){
     unsigned int ADReading = 0;
     if(!num){
         //read TrackWire_1
@@ -311,7 +311,7 @@ uint8_t BosshogReadTrackWire(char num){
         //read TrackWire_2
         //if (AD_IsNewDataReady()){
             ADReading = AD_ReadADPin(TRACKWIRE_2);
-                       //printf("T2: %d\r\n", ADReading);
+            //printf("T2: %d\r\n", ADReading);
 
         //}
     }

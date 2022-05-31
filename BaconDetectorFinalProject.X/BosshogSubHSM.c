@@ -1184,8 +1184,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
         case DepositInit: // in first state, replace this with correct names
             //Drive Backward
             printf("IN DEPOSITINIT - BACKING UP \r\n");
-            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+            Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED);
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED);
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
@@ -1204,8 +1204,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //0.75 seconds of backing up
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 nextState = Scan;
-                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 30);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 30);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
                 //go forward and align with side
                 //                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);

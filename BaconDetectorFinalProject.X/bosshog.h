@@ -29,6 +29,9 @@
 #define LEFT_MOTOR_SPEED 85//68//71 //74//69
 #define RIGHT_MOTOR_SPEED 85//60//60 //65//60
 
+#define BACK_LEFT_MOTOR_SPEED 87//68//71 //74//69
+#define BACK_RIGHT_MOTOR_SPEED 85//60//60 //65//60
+
 
 #define BUMPER_TRIPPED 1
 #define BUMPER_NOT_TRIPPED 0
@@ -110,7 +113,7 @@
 //Track Wire Detectors
 #define TRACKWIRE_1 AD_PORTV8
 #define TRACKWIRE_2 AD_PORTV5
-#define TRACKWIRE_HIGH 490//700
+#define TRACKWIRE_HIGH 600//700
 #define TRACKWIRE_LOW 100
 
 //Beacon Detector
@@ -193,7 +196,7 @@ void BosshogSetServo(int newPos);
  *         1 - LOW
  *         0 - NULL (deadzone, remain unchanged)
  */
-uint8_t BosshogReadTrackWire(char num);
+unsigned int  BosshogReadTrackWire(char num);
 
 /**
  * Function to read Beacon Detector
