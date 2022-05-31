@@ -46,10 +46,10 @@
  * as well. */
 
 //init bumper states
-static uint8_t LastFRB = BUMPER_TRIPPED;
-static uint8_t LastFLB = BUMPER_TRIPPED;
-static uint8_t LastBRB = BUMPER_TRIPPED;
-static uint8_t LastBLB = BUMPER_TRIPPED;
+static uint8_t LastFRB = BUMPER_NOT_TRIPPED;
+static uint8_t LastFLB = BUMPER_NOT_TRIPPED;
+static uint8_t LastBRB = BUMPER_NOT_TRIPPED;
+static uint8_t LastBLB = BUMPER_NOT_TRIPPED;
 static uint8_t LastSB = BUMPER_NOT_TRIPPED;
 
 //init TrackWire states
@@ -58,7 +58,7 @@ static uint8_t LastTrack2 = TRACK_WIRE_ABSENT;
 static uint8_t LastBothTrack = 0;
 
 //init Beacon states
-static uint8_t LastBeacon = BEACON_PRESENT;//BEACON_ABSENT; 
+static uint8_t LastBeacon = BEACON_ABSENT; 
 
 //init LastTape states
 static uint8_t LastBLT = TAPE_WHITE;

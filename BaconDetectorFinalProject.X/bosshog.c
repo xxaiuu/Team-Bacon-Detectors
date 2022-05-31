@@ -327,7 +327,7 @@ uint8_t BosshogReadTrackWire(char num){
  * Function to read Beacon Detector
  * @return 
  */
-uint8_t BosshogReadBeacon(void){
+unsigned int BosshogReadBeacon(void){
     //return BEACON_BIT;
     return(AD_ReadADPin(BEACON_BIT));
 

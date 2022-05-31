@@ -14,16 +14,17 @@ void main(void) {
     printf("Starting ES Framework Template\r\n");
     printf("using the 2nd Generation Events & Services Framework\r\n");
 
-//    printf("testing beacon detector\r\n");
-//    while (1) {
-//        Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-//        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-//        uint8_t RawBeacon = BosshogReadBeacon();
-//        if (RawBeacon > BEACON_HIGH) {
-//            Bosshog_RightMtrSpeed(0);
-//            Bosshog_LeftMtrSpeed(0);
-//        }
-//    }
+    printf("testing beacon detector\r\n");
+    while (1) {
+//        Bosshog_RightMtrSpeed(0);
+//        Bosshog_LeftMtrSpeed(0);
+        unsigned int RawBeacon = BosshogReadBeacon();
+        //printf("AD: %d\r\n", RawBeacon);
+        if (RawBeacon > BEACON_HIGH) {
+                    printf("AD: %d\r\n", RawBeacon);
+            printf("BEACON HIGH\r\n");
+        }
+    }
 
     // Your hardware initialization function calls go here
 

@@ -25,6 +25,7 @@
  * PUBLIC FUNCTION PROTOTYPES                                                  *
  ******************************************************************************/
 #define motorspeed 55
+//70 is lowest speed to run motors at without stalling
 #define LEFT_MOTOR_SPEED 85//68//71 //74//69
 #define RIGHT_MOTOR_SPEED 85//60//60 //65//60
 
@@ -116,8 +117,8 @@
 //#define BEACON_TRIS PORTW05_TRIS
 //#define BEACON_BIT PORTW05_BIT
 #define BEACON_BIT AD_PORTW5
-#define BEACON_HIGH 100//700
-#define BEACON_LOW 25
+#define BEACON_HIGH 800//700
+#define BEACON_LOW 600
 
 
 #define BOSSHOG_BAT_VOLTAGE BAT_VOLTAGE
@@ -198,7 +199,7 @@ uint8_t BosshogReadTrackWire(char num);
  * Function to read Beacon Detector
  * @return 
  */
-uint8_t BosshogReadBeacon(void);
+unsigned int BosshogReadBeacon(void);
 
 
 /**
