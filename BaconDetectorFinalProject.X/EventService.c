@@ -58,7 +58,7 @@ static uint8_t LastTrack2 = TRACK_WIRE_ABSENT;
 static uint8_t LastBothTrack = 0;
 
 //init Beacon states
-static uint8_t LastBeacon = BEACON_ABSENT; 
+static uint8_t LastBeacon = BEACON_ABSENT;
 
 //init LastTape states
 static uint8_t LastBLT = TAPE_WHITE;
@@ -283,24 +283,24 @@ uint8_t BLBEvent(void) {
 uint8_t TrackWireEvent(void) {
 
     int numTracks = 0;
-    unsigned int  CurrTrack1 = BosshogReadTrackWire(0);
-    unsigned int  CurrTrack2 = BosshogReadTrackWire(1);
+    unsigned int CurrTrack1 = BosshogReadTrackWire(0);
+    unsigned int CurrTrack2 = BosshogReadTrackWire(1);
     uint8_t WasEvent = FALSE;
-//    if (CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT) {
-//        printf("TRACKWIRE 1 EVENT\r\n");
-//        numTracks++;
-//    }
-//    if (CurrTrack2 != LastTrack2 && CurrTrack2 == TRACK_WIRE_PRESENT) {
-//        printf("TRACKWIRE 22222 \r\n");
-//        numTracks++;
-//    }
+    //    if (CurrTrack1 != LastTrack1 && CurrTrack1 == TRACK_WIRE_PRESENT) {
+    //        printf("TRACKWIRE 1 EVENT\r\n");
+    //        numTracks++;
+    //    }
+    //    if (CurrTrack2 != LastTrack2 && CurrTrack2 == TRACK_WIRE_PRESENT) {
+    //        printf("TRACKWIRE 22222 \r\n");
+    //        numTracks++;
+    //    }
     //if (numTracks == 2) {
     //printf("%d,%d\r\n",CurrTrack1,CurrTrack2);
-    if ((CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_ABSENT) || ((CurrTrack1 == TRACK_WIRE_ABSENT && CurrTrack2 == TRACK_WIRE_PRESENT))){
+    if ((CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_ABSENT) || ((CurrTrack1 == TRACK_WIRE_ABSENT && CurrTrack2 == TRACK_WIRE_PRESENT))) {
         //printf("only seeing one\r\n");
         LastBothTrack = 0;
     }
-    if (CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_PRESENT  && (LastBothTrack == 0)){
+    if (CurrTrack1 == TRACK_WIRE_PRESENT && CurrTrack2 == TRACK_WIRE_PRESENT && (LastBothTrack == 0)) {
         printf("TWO TRACK WIRES\r\n");
         LastBothTrack = 1;
         ES_Event TrackEvent;
@@ -322,34 +322,34 @@ uint8_t TrackWireEvent(void) {
 
 uint8_t BeaconEvent(void) {
 
-    unsigned int RawBeacon = BosshogReadBeacon(); 
+    unsigned int RawBeacon = BosshogReadBeacon();
     unsigned int CurrBeacon;
-    
+
     if (RawBeacon > BEACON_HIGH) CurrBeacon = BEACON_PRESENT;
     else CurrBeacon = BEACON_ABSENT;
-    
+
     uint8_t WasEvent = FALSE;
 
-    if (CurrBeacon != LastBeacon && CurrBeacon == BEACON_PRESENT){
+    if (CurrBeacon != LastBeacon && CurrBeacon == BEACON_PRESENT) {
         printf("Beacon FOUND\r\n");
         //Bosshog_LeftMtrSpeed(50);
         ES_Event BeaconEvent;
-        BeaconEvent.EventType = BEACON_DETECTED; 
+        BeaconEvent.EventType = BEACON_DETECTED;
         BeaconEvent.EventParam = (uint16_t) CurrBeacon;
         //printf("BEACONDETECTED\r\n");
         PostBosshogHSM(BeaconEvent);
         WasEvent = TRUE;
-    }else if (CurrBeacon != LastBeacon && CurrBeacon == BEACON_ABSENT){
+    } else if (CurrBeacon != LastBeacon && CurrBeacon == BEACON_ABSENT) {
         printf("Beacon LOST\r\n");
         //Bosshog_LeftMtrSpeed(0);
         ES_Event BeaconEvent;
-        BeaconEvent.EventType = BEACON_LOST; 
+        BeaconEvent.EventType = BEACON_LOST;
         BeaconEvent.EventParam = (uint16_t) CurrBeacon;
         //printf("BEACONLOST\r\n");
         PostBosshogHSM(BeaconEvent);
         WasEvent = TRUE;
     }
-    LastBeacon = CurrBeacon; 
+    LastBeacon = CurrBeacon;
     return WasEvent;
 }
 
@@ -529,13 +529,13 @@ uint8_t TL_and_TR_Event(void) {
     CurrTapeTR = BosshogReadTopRightTape();
     uint8_t WasEvent = FALSE;
     //if ((CurrTapeTL != LastTLT && CurrTapeTL == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)) {
-        if (CurrTapeTL == TAPE_BLACK && CurrTapeTR == TAPE_BLACK){
-  
-    ES_Event TapeEvent;
+    if (CurrTapeTL == TAPE_BLACK && CurrTapeTR == TAPE_BLACK) {
+
+        ES_Event TapeEvent;
         TapeEvent.EventType = WALL_EDGE;
         TapeEvent.EventParam = (uint16_t) CurrTapeTL + CurrTapeTR;
 #ifndef EVENTCHECKER_TEST
-        printf("TL and TR EVENT\r\n");
+        //printf("TL and TR EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -554,7 +554,7 @@ uint8_t TR_and_TC_Event(void) {
     CurrTapeTR = BosshogReadTopRightTape();
     uint8_t WasEvent = FALSE;
     //if ((CurrTapeTC != LastTCT && CurrTapeTC == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)) {
-    if (CurrTapeTC == TAPE_BLACK && CurrTapeTR == TAPE_BLACK){
+    if (CurrTapeTC == TAPE_BLACK && CurrTapeTR == TAPE_BLACK) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TAPE_ALIGNED;
         TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR;
@@ -569,6 +569,34 @@ uint8_t TR_and_TC_Event(void) {
     }
     LastTRT = CurrTapeTR;
     LastTCT = CurrTapeTC;
+    return WasEvent;
+}
+
+uint8_t TR_TL_TC_Event(void) {
+    static uint8_t CurrTapeTC, CurrTapeTR, CurrTapeTL;
+    CurrTapeTC = BosshogReadTopCenterTape();
+    CurrTapeTR = BosshogReadTopRightTape();
+    CurrTapeTL = BosshogReadTopRightTape();
+
+    uint8_t WasEvent = FALSE;
+    //if ((CurrTapeTC != LastTCT && CurrTapeTC == TAPE_BLACK) && (CurrTapeTR != LastTRT && CurrTapeTR == TAPE_BLACK)) {
+    if (CurrTapeTC == TAPE_BLACK && CurrTapeTR == TAPE_BLACK && CurrTapeTL == TAPE_BLACK) {
+        ES_Event TapeEvent;
+        TapeEvent.EventType = DEADBOT;
+        TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR + CurrTapeTL;
+#ifndef EVENTCHECKER_TEST
+        //printf("TR and TC EVENT\r\n");
+
+        PostBosshogHSM(TapeEvent);
+#else
+        SaveEvent(BumperEvent);
+#endif  
+        WasEvent = TRUE;
+    }
+    LastTRT = CurrTapeTR;
+    LastTCT = CurrTapeTC;
+        LastTLT = CurrTapeTL;
+
     return WasEvent;
 }
 
@@ -618,6 +646,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TL_and_TR_Event();
             TR_and_TC_Event();
             BeaconEvent();
+            TR_TL_TC_Event();
             //reset ES TIMER
             ES_Timer_InitTimer(EVENT_TIMER, 5);
             //ES_Timer_InitTimer(EVENT_TIMER, 10); //10ms

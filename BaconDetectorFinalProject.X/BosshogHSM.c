@@ -258,7 +258,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     //and start a 5 second timer
                 case FRB_PRESSED:
                     printf("(FRB)Suppose to tank turn \r\n");
-                    TowerFirstHitTime = ES_Timer_GetTime();
+                    //TowerFirstHitTime = ES_Timer_GetTime();
                     //                    Bosshog_RightMtrSpeed(-100);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED-20);
                     Bosshog_RightMtrSpeed(-100);
@@ -276,7 +276,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     break;
                 case FLB_PRESSED:
                     printf("(FLB)Suppose to tank turn \r\n");
-                    TowerFirstHitTime = ES_Timer_GetTime();
+                    //TowerFirstHitTime = ES_Timer_GetTime();
                     //                    Bosshog_RightMtrSpeed(-100);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
                     Bosshog_RightMtrSpeed(-100);
@@ -345,13 +345,22 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             ThisEvent = Run_Identify_SubHSM(ThisEvent);
 
 
-            if (ThisEvent.EventType == TRACK_WIRE_DETECTED && ES_Timer_GetTime() > (TowerFirstHitTime + 5000)) {
-                //if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
+            //if (ThisEvent.EventType == TRACK_WIRE_DETECTED && ES_Timer_GetTime() > (TowerFirstHitTime + 5000)) {
+            if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
                 nextState = Deposit;
                 //nextState = TopStop;
                 makeTransition = TRUE;
                 Init_Deposit_SubHSM();
             }
+
+//            if (ThisEvent.EventType == DEADBOT) {
+//                nextState = FindNext;
+//                makeTransition = TRUE;
+//                Init_FindNext_SubHSM();
+//
+//
+//
+//            }
 
 
             //            if (BosshogReadCenterTape() == TAPE_BLACK && BosshogReadRightTape() == TAPE_BLACK){
@@ -474,19 +483,21 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
         case ForwardNext:
             // ThisEvent = Run_ForwardNext_SubHSM(ThisEvent);
-            printf("ForwardNext \r\n");
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 10);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //printf("ForwardNext \r\n");
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
 
-            if (ThisEvent.EventType == BEACON_DETECTED) {
+            if (ThisEvent.EventType == BEACON_DETECTED) { //|| ThisEvent.EventType == BEACON_LOST) {
 
                 nextState = Navigate;
                 makeTransition = TRUE;
-//            Bosshog_RightMtrSpeed(0);
-//            Bosshog_LeftMtrSpeed(0);
+                //            Bosshog_RightMtrSpeed(0);
+                //            Bosshog_LeftMtrSpeed(0);
                 Init_Navigate_SubHSM();
 
             }
+
+
 
             break;
 

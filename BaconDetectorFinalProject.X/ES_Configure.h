@@ -78,6 +78,8 @@ typedef enum {
     HI_IM_LOST,
     ALIGNING_TIMER,
     DEPOSITEXIT,
+            DEADBOT,
+            
     /* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
@@ -127,6 +129,7 @@ static const char *EventNames[] = {
     "HI_IM_LOST",
     "ALIGNING_TIMER",
     "DEPOSITEXIT",
+    "DEADBOT",
     "NUMBEROFEVENTS",
 
 };
@@ -157,7 +160,7 @@ static const char *EventNames[] = {
 #define TIMER7_RESP_FUNC PostBosshogHSM
 #define TIMER8_RESP_FUNC PostBosshogHSM
 #define TIMER9_RESP_FUNC PostBosshogHSM
-#define TIMER10_RESP_FUNC TIMER_UNUSED
+#define TIMER10_RESP_FUNC PostBosshogHSM
 #define TIMER11_RESP_FUNC TIMER_UNUSED
 #define TIMER12_RESP_FUNC TIMER_UNUSED
 #define TIMER13_RESP_FUNC TIMER_UNUSED
