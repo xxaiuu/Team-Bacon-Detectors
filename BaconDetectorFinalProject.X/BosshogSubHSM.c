@@ -915,7 +915,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == ES_TIMEOUT) {
 
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(70);
             }
 
 
@@ -1228,8 +1228,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
                 makeTransition = TRUE;
 
-                Bosshog_RightMtrSpeed(0);
-                Bosshog_LeftMtrSpeed(0);
+//                Bosshog_RightMtrSpeed(0);
+//                Bosshog_LeftMtrSpeed(0);
 
 
                 ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
@@ -1274,8 +1274,9 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //exit out of top hsm when 5 timer second is over
 
         case ForwardAlign:
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            printf("DEPOSIT -> ForwardAlign\r\n");
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 5);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 10);
             //0.75 seconds of backing up
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 //nextState = Stop;
@@ -1287,14 +1288,15 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                 makeTransition = TRUE;
 
-                Bosshog_RightMtrSpeed(0);
-                Bosshog_LeftMtrSpeed(0);
+//                Bosshog_RightMtrSpeed(0);
+//                Bosshog_LeftMtrSpeed(0);
             }
             break;
 
         case Scan:
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 0);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+            printf("DEPOSIT -> Scan\r\n");
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED +3);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
             //            //go forward and align with side
             //            if (ThisEvent.EventType == ES_TIMEOUT) {
@@ -1362,6 +1364,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
         case Dispense:
             //Turn motor off
+            printf("Dispense\r\n");
             Bosshog_RightMtrSpeed(0);
             Bosshog_LeftMtrSpeed(0);
             BosshogSetServo(LAUNCH);
@@ -1385,6 +1388,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
 
         case Wiggle:
+            printf("Wiggle \r\n");
             if (!setDir) {
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED + 5);
                 Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 5);

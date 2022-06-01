@@ -15,8 +15,8 @@ void main(void) {
     printf("using the 2nd Generation Events & Services Framework\r\n");
   //  printf("testing beacon detector\r\n");
 //    while (1) {
-//        Bosshog_RightMtrSpeed(85);
-//        Bosshog_LeftMtrSpeed(85);
+//        Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+//        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 //        unsigned int RawBeacon = BosshogReadTrackWire(0);
 //       // printf("AD: %d\r\n", RawBeacon);
 ////        if (RawBeacon > BEACON_HIGH) {
@@ -25,7 +25,7 @@ void main(void) {
 ////        }
 //        
 //    }
-//
+
 
     // Your hardware initialization function calls go here
 

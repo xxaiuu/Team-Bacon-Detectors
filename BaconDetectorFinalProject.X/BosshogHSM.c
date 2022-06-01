@@ -474,6 +474,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
         case ForwardNext:
             // ThisEvent = Run_ForwardNext_SubHSM(ThisEvent);
+            printf("ForwardNext \r\n");
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 10);
             Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
@@ -481,7 +482,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                 nextState = Navigate;
                 makeTransition = TRUE;
-
+//            Bosshog_RightMtrSpeed(0);
+//            Bosshog_LeftMtrSpeed(0);
                 Init_Navigate_SubHSM();
 
             }
