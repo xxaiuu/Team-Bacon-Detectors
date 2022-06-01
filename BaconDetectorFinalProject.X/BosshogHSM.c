@@ -284,6 +284,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                     //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
                     nextState = Identify;
+                    printf("GOING TO Identify \r\n");
                     makeTransition = TRUE;
                     //                //start 5 second timer
                     //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
@@ -337,7 +338,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //            break;
 
         case Identify:
-            printf("Identify \r\n");
+//            printf("Identify \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
             //ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
@@ -353,14 +354,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 Init_Deposit_SubHSM();
             }
 
-//            if (ThisEvent.EventType == DEADBOT) {
-//                nextState = FindNext;
-//                makeTransition = TRUE;
-//                Init_FindNext_SubHSM();
-//
-//
-//
-//            }
+            if (ThisEvent.EventType == YEAH_ITS_A_DEADBOT) {
+                nextState = FindNext;
+                makeTransition = TRUE;
+                Init_FindNext_SubHSM();
+            }
 
 
             //            if (BosshogReadCenterTape() == TAPE_BLACK && BosshogReadRightTape() == TAPE_BLACK){

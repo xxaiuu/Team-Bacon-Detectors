@@ -25,7 +25,7 @@
 //define for TattleTale
 //#define USE_TATTLETALE
 
-//uncomment to supress the entry and exit events
+//uncomment to suppress the entry and exit events
 //#define SUPPRESS_EXIT_ENTRY_IN_TATTLE
 
 /****************************************************************************/
@@ -79,7 +79,8 @@ typedef enum {
     ALIGNING_TIMER,
     DEPOSITEXIT,
             DEADBOT,
-            
+            NOT_DEADBOT,
+            YEAH_ITS_A_DEADBOT,
     /* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
@@ -130,6 +131,8 @@ static const char *EventNames[] = {
     "ALIGNING_TIMER",
     "DEPOSITEXIT",
     "DEADBOT",
+    "NOT_DEADBOT",
+    "YEAH_ITS_A_DEADBOT",
     "NUMBEROFEVENTS",
 
 };
