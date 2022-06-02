@@ -59,7 +59,7 @@
  * @modified Gabriel H Elkaim/Max Dunne, 2016.09.12 20:08 */
 uint8_t TemplateCheckBattery(void);
 
-//uint8_t BeaconEvent(void);
+uint8_t BeaconEvent(void);
 
 #endif	/* TEMPLATEEVENTCHECKER_H */
 

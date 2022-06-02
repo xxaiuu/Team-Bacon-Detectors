@@ -128,7 +128,7 @@ uint8_t FRBEvent(void) {
     uint8_t WasEvent = FALSE;
     //if ((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED) {
     if ((CurrBumper) != LastFRB && (CurrBumper) == BUMPER_TRIPPED) {
-//        printf(" FRB PRESSED \r\n");
+        //        printf(" FRB PRESSED \r\n");
         ES_Event BumperEvent;
         BumperEvent.EventType = FRB_PRESSED;
         BumperEvent.EventParam = (uint16_t) CurrBumper;
@@ -141,7 +141,7 @@ uint8_t FRBEvent(void) {
     } else //if (CurrBumper != LastFRB && CurrBumper == BUMPER_NOT_TRIPPED) {
         //if ((CurrBumper | CurrBumperTop) != LastFRB && (CurrBumper | CurrBumperTop) == BUMPER_NOT_TRIPPED) {
         if ((CurrBumper) != LastFRB && (CurrBumper) == BUMPER_NOT_TRIPPED) {
-//        printf(" FRB RELEASED \r\n");
+        //        printf(" FRB RELEASED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = FRB_RELEASED;
@@ -163,7 +163,7 @@ uint8_t FLBEvent(void) {
     CurrBumperTopFrontRight = Bosshog_ReadTopFrontRightBumper();
     uint8_t WasEvent = FALSE;
     if ((CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) != LastFLB && (CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) == BUMPER_TRIPPED) {
-//        printf(" FLB PRESSED \r\n");
+        //        printf(" FLB PRESSED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = FLB_PRESSED;
@@ -175,7 +175,7 @@ uint8_t FLBEvent(void) {
 #endif  
         WasEvent = TRUE;
     } else if ((CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) != LastFLB && (CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) == BUMPER_NOT_TRIPPED) {
-//        printf(" FLB RELEASED \r\n");
+        //        printf(" FLB RELEASED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = FLB_RELEASED;
@@ -194,7 +194,7 @@ uint8_t BRBEvent(void) {
     CurrBumperTop = Bosshog_ReadTopBackRightBumper();
     uint8_t WasEvent = FALSE;
     if ((CurrBumper | CurrBumperTop) != LastBRB && (CurrBumper | CurrBumperTop) == BUMPER_TRIPPED) {
-//        printf(" BRB PRESSED \r\n");
+        //        printf(" BRB PRESSED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = BRB_PRESSED;
@@ -206,7 +206,7 @@ uint8_t BRBEvent(void) {
 #endif  
         WasEvent = TRUE;
     } else if ((CurrBumper | CurrBumperTop) != LastBRB && (CurrBumper | CurrBumperTop) == BUMPER_NOT_TRIPPED) {
-//        printf(" BRB RELEASED \r\n");
+        //        printf(" BRB RELEASED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = BRB_RELEASED;
@@ -227,7 +227,7 @@ uint8_t BLBEvent(void) {
     CurrBumperTopBackSide = Bosshog_ReadTopBackSideBumper();
     uint8_t WasEvent = FALSE;
     if ((CurrBumper | CurrBumperTopBackSide | CurrBumperTopBackLeft) != LastBLB && (CurrBumper | CurrBumperTopBackLeft | CurrBumperTopBackSide) == BUMPER_TRIPPED) {
-//        printf(" BLB PRESSED \r\n");
+        //        printf(" BLB PRESSED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = BLB_PRESSED;
@@ -239,7 +239,7 @@ uint8_t BLBEvent(void) {
 #endif  
         WasEvent = TRUE;
     } else if ((CurrBumper | CurrBumperTopBackLeft | CurrBumperTopBackSide) != LastBLB && (CurrBumper | CurrBumperTopBackSide | CurrBumperTopBackLeft) == BUMPER_NOT_TRIPPED) {
-//        printf(" BLB RELEASED \r\n");
+        //        printf(" BLB RELEASED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = BLB_RELEASED;
@@ -362,7 +362,7 @@ uint8_t BLTEvent(void) {
         TapeEvent.EventType = BL_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("BLT EVENT\r\n");
+        //        printf("BLT EVENT\r\n");
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
@@ -382,7 +382,7 @@ uint8_t BCTEvent(void) {
         TapeEvent.EventType = BC_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("BCT EVENT\r\n");
+        //        printf("BCT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -403,7 +403,7 @@ uint8_t BRTEvent(void) {
         TapeEvent.EventType = BR_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("BRT EVENT\r\n");
+        //        printf("BRT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -424,7 +424,7 @@ uint8_t BBTEvent(void) {
         TapeEvent.EventType = BB_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("BBT EVENT\r\n");
+        //        printf("BBT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -445,7 +445,7 @@ uint8_t TLTEvent(void) {
         TapeEvent.EventType = TL_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("TLT EVENT (Black)\r\n");
+        //        printf("TLT EVENT (Black)\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -456,7 +456,7 @@ uint8_t TLTEvent(void) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TL_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
-//        printf("TLT EVENT (White)\r\n");
+        //        printf("TLT EVENT (White)\r\n");
 
         PostBosshogHSM(TapeEvent);
         WasEvent = TRUE;
@@ -474,7 +474,7 @@ uint8_t TRTEvent(void) {
         TapeEvent.EventType = TR_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("TRT EVENT (Black)\r\n");
+        //        printf("TRT EVENT (Black)\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -485,7 +485,7 @@ uint8_t TRTEvent(void) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TR_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
-//        printf("TRT EVENT (White)\r\n");
+        //        printf("TRT EVENT (White)\r\n");
 
         PostBosshogHSM(TapeEvent);
         WasEvent = TRUE;
@@ -503,7 +503,7 @@ uint8_t TCTEvent(void) {
         TapeEvent.EventType = TC_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-//        printf("TCT EVENT\r\n");
+        //        printf("TCT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -514,7 +514,7 @@ uint8_t TCTEvent(void) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TC_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
-//        printf("TCT EVENT\r\n");
+        //        printf("TCT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
         WasEvent = TRUE;
@@ -592,7 +592,7 @@ uint8_t TR_TL_TC_Event(void) {
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
-    }else {
+    } else {
         ES_Event TapeEvent;
         TapeEvent.EventType = NOT_DEADBOT;
         TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR + CurrTapeTL;
@@ -607,7 +607,7 @@ uint8_t TR_TL_TC_Event(void) {
     }
     LastTRT = CurrTapeTR;
     LastTCT = CurrTapeTC;
-        LastTLT = CurrTapeTL;
+    LastTLT = CurrTapeTL;
 
     return WasEvent;
 }
@@ -657,7 +657,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TCTEvent();
             TL_and_TR_Event();
             TR_and_TC_Event();
-            BeaconEvent();
+            //BeaconEvent();
             TR_TL_TC_Event();
             //reset ES TIMER
             ES_Timer_InitTimer(EVENT_TIMER, 5);

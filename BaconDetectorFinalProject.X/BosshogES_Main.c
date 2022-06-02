@@ -16,8 +16,8 @@ void main(void) {
   //  printf("testing beacon detector\r\n");
 //    while (1) {
 //        Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-//        Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-//        unsigned int RawBeacon = BosshogReadTrackWire(0);
+//        Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+//        //unsigned int RawBeacon = BosshogReadTrackWire(0);
 //       // printf("AD: %d\r\n", RawBeacon);
 ////        if (RawBeacon > BEACON_HIGH) {
 ////                    printf("AD: %d\r\n", RawBeacon);
