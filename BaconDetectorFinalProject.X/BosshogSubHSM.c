@@ -929,11 +929,12 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 makeTransition = TRUE;
             }
 
-            if (ThisEvent.EventType == BC_TAPE_BLACK) {
+            if (ThisEvent.EventType == BB_TAPE_BLACK) {
                 printf("Edge tape found!!!!!!!!!!!!!!!!!\r\n");
                 nextState = BackLocate;
                 printf("Going to BACKLOCATE\r\n");
-                ES_Timer_InitTimer(Stall_Timer, 5000);
+                //                ES_Timer_InitTimer(Stall_Timer, 5000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
                 Bosshog_LeftMtrSpeed(0);
                 makeTransition = TRUE;
@@ -988,11 +989,12 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //INSTEAD OF HANDLING THE DEADBOT TIMER WE WANT TO RESET IT
             //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
 
-            if (ThisEvent.EventType == BC_TAPE_BLACK) {
+            if (ThisEvent.EventType == BB_TAPE_BLACK) {
                 printf("Edge tape found!!!!!!!!!!!!!!!!!\r\n");
                 nextState = BackLocate;
                 printf("Going to BACKLOCATE\r\n");
-                ES_Timer_InitTimer(Stall_Timer, 5000);
+                //                ES_Timer_InitTimer(Stall_Timer, 5000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
                 Bosshog_LeftMtrSpeed(0);
                 makeTransition = TRUE;
@@ -1102,7 +1104,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     makeTransition = TRUE;
                     ES_Timer_InitTimer(Stall_Timer, 5000);
                     Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                    Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
                 }
 
 
@@ -1141,27 +1143,39 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //            }
 
             if (ThisEvent.EventType == BLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 5000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // restarts timer for stall detection
+                //ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 500);
                 //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED-20);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+                //Bosshog_LeftMtrSpeed(-90);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED+30);
                 //printf("TANK TURN SINCE FRONT GOT HIT");
             }
 
 
-            if (ThisEvent.EventType == FLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 5000);
-                Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
-                //printf("TURN LEFT SINCE BACK GOT HIT");
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            //                ES_Timer_InitTimer(Stall_Timer, 5000);
+            //                Bosshog_RightMtrSpeed(-100);
+            //                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+            //                //printf("TURN LEFT SINCE BACK GOT HIT");
+            //
+            //            }
 
+            //if (ThisEvent.EventType == ES_TIMEOUT) {
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // restarts timer for stall detection
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 37);
+
+                //printf("Timed Tank Turn");
             }
+
             //            if (ThisEvent.EventType == TAPE_ALIGNED) {
             //                nextState = Stop;
             //                makeTransition = TRUE;
             //                }
-            if (ThisEvent.EventType == ES_TIMEOUT) {
+            if (ThisEvent.EventType == SPIN_AROUND) {
                 nextState = UnstuckReverse;
                 printf("Detected STALL going to UNSTUCKREVERSE\r\n");
                 makeTransition = TRUE;
@@ -1205,22 +1219,23 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
             if (ThisEvent.EventType == FLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 5000);
 
-                //                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                //printf("TANK TURN SINCE FRONT GOT HIT");
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // restarts timer for stall detection
+
+
+
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 37);
                 nextState = BackLocate;
                 makeTransition = TRUE;
             }
 
             if (ThisEvent.EventType == BLB_PRESSED) {
-                ES_Timer_InitTimer(Stall_Timer, 5000);
-
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // restarts timer for stall detection
+                //ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 500); // starts duration for Tank Turn
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+                //Bosshog_LeftMtrSpeed(-90);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED+30);
 
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
@@ -1290,7 +1305,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
             Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 20);   //-10
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED - 5); // -10 // + 20 for backwards
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
@@ -1359,7 +1374,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
         case ForwardAlign:
             printf("DEPOSIT -> ForwardAlign\r\n");
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /* -5*/);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 7);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 5);
             //0.75 seconds of backing up
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 //nextState = Stop;
@@ -1555,10 +1570,10 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
 
             if (ThisEvent.EventType == BLB_PRESSED) {
                 //ES_Timer_InitTimer(Stall_Timer, 4000);
-                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //stall detection timer
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
-                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400);
+                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400); // duration timer
                 printf("BackPetaling\r\n");
 
             }
@@ -1606,7 +1621,7 @@ ES_Event Run_FindNext_SubHSM(ES_Event ThisEvent) {
             }
 
             if (ThisEvent.EventType == BLB_PRESSED) {
-                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED - 20);

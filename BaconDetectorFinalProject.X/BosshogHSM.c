@@ -484,7 +484,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // ThisEvent = Run_ForwardNext_SubHSM(ThisEvent);
             //printf("ForwardNext \r\n");
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
 
             if (ThisEvent.EventType == BEACON_DETECTED) { //|| ThisEvent.EventType == BEACON_LOST) {
 
