@@ -417,7 +417,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
                 // initial state
 
                 // now put the machine into the actual initial state
-                nextState = Stop; //Follow;
+                nextState = Follow; //Stop; 
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
             }
@@ -440,8 +440,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             printf("Navigate -> Follow \r\n");
 
             //Go forward
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 1);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED );
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 1);
 
 
             //Transitions
@@ -929,7 +929,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 makeTransition = TRUE;
             }
 
-            if (ThisEvent.EventType == BB_TAPE_BLACK) {
+            if (ThisEvent.EventType == BC_TAPE_BLACK) {
                 printf("Edge tape found!!!!!!!!!!!!!!!!!\r\n");
                 nextState = BackLocate;
                 printf("Going to BACKLOCATE\r\n");
@@ -989,7 +989,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //INSTEAD OF HANDLING THE DEADBOT TIMER WE WANT TO RESET IT
             //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
 
-            if (ThisEvent.EventType == BB_TAPE_BLACK) {
+            if (ThisEvent.EventType == BC_TAPE_BLACK) {
                 printf("Edge tape found!!!!!!!!!!!!!!!!!\r\n");
                 nextState = BackLocate;
                 printf("Going to BACKLOCATE\r\n");
@@ -1149,7 +1149,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 //Bosshog_LeftMtrSpeed(-90);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED+30);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 30);
                 //printf("TANK TURN SINCE FRONT GOT HIT");
             }
 
@@ -1235,7 +1235,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 500); // starts duration for Tank Turn
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 //Bosshog_LeftMtrSpeed(-90);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED+30);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 30);
 
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
@@ -1288,6 +1288,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
                 // now put the machine into the actual initial state
                 nextState = DepositInit;
+                printf(" going to  DEPOSITINIT - BACKING UP \r\n");
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
                 //                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
@@ -1302,10 +1303,10 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
         case DepositInit: // in first state, replace this with correct names
             //Drive Backward
-            printf("IN DEPOSITINIT - BACKING UP \r\n");
+            //            printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
-            Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED - 5); // -10 // + 20 for backwards
+            Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED+15);
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 -10); // -10 // + 20 for backwards
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
@@ -1322,8 +1323,11 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //  }
 
             if (ThisEvent.EventType == WALL_EDGE) {
+            //if (ThisEvent.EventType == DEADBOT) {
                 nextState = ForwardAlign;
+                //nextState = Stop;
 
+                printf("going to DEPOSIT -> ForwardAlign\r\n");
                 makeTransition = TRUE;
 
                 //                Bosshog_RightMtrSpeed(0);
@@ -1372,7 +1376,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //exit out of top hsm when 5 timer second is over
 
         case ForwardAlign:
-            printf("DEPOSIT -> ForwardAlign\r\n");
+            //            printf("DEPOSIT -> ForwardAlign\r\n");
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /* -5*/);
             Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 5);
             //0.75 seconds of backing up

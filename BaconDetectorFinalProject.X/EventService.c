@@ -585,7 +585,7 @@ uint8_t TR_TL_TC_Event(void) {
         TapeEvent.EventType = DEADBOT;
         TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR + CurrTapeTL;
 #ifndef EVENTCHECKER_TEST
-        //printf("TR and TC EVENT\r\n");
+        printf("TR TL TC EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else

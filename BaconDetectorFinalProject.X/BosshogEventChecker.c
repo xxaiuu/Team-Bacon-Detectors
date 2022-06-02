@@ -64,7 +64,7 @@ static ES_Event storedEvent;
  * PRIVATE MODULE VARIABLES                                                    *
  ******************************************************************************/
 
-static uint8_t lastBeacon = BEACON_PRESENT;
+static uint8_t lastBeacon = BEACON_ABSENT;
 
 
 /* Any private module level variable that you might need for keeping track of

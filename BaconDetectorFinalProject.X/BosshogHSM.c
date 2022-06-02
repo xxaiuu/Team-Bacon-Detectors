@@ -169,6 +169,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
                 nextState = Sweep;
+                printf("going to Sweep \r\n");
                 //nextState = FindNext; 
 
                 //Init_FindNext_SubHSM();
@@ -190,7 +191,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             // Real Initial State of Top HSM
         case Sweep:
             // No Sub HSM in this State
-            printf("Sweep \r\n");
+            //            printf("Sweep \r\n");
             // Tank Turn Sweep Right
             Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 10);
             Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED + 10);
@@ -338,7 +339,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //            break;
 
         case Identify:
-//            printf("Identify \r\n");
+            //            printf("Identify \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
             //ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
@@ -349,12 +350,14 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //if (ThisEvent.EventType == TRACK_WIRE_DETECTED && ES_Timer_GetTime() > (TowerFirstHitTime + 5000)) {
             if (ThisEvent.EventType == TRACK_WIRE_DETECTED) {
                 nextState = Deposit;
+                printf("going to Deposit \r\n");
+
                 //nextState = TopStop;
                 makeTransition = TRUE;
                 Init_Deposit_SubHSM();
             }
-            
-            
+
+
             if (ThisEvent.EventType == YEAH_ITS_A_DEADBOT) {
                 nextState = FindNext;
                 makeTransition = TRUE;
@@ -398,7 +401,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case Deposit:
-            printf("Deposit \r\n");
+            //            printf("Deposit \r\n");
 
             //printf("In Deposit state. Not Implemented Yet. \r\n");
             //has sub HSM
