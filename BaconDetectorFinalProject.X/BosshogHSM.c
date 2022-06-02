@@ -353,7 +353,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 makeTransition = TRUE;
                 Init_Deposit_SubHSM();
             }
-
+            
+            
             if (ThisEvent.EventType == YEAH_ITS_A_DEADBOT) {
                 nextState = FindNext;
                 makeTransition = TRUE;

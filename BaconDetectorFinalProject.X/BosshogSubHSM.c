@@ -148,6 +148,7 @@ static const char *StateNames[] = {
 static BosshogSubHSMState_t CurrentState = InitPSubState; // <- change name to match ENUM
 static uint8_t MyPriority;
 static uint8_t setDir = 0;
+static uint8_t isSecond = 0;
 
 
 /*******************************************************************************
@@ -635,6 +636,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
                 // now put the machine into the actual initial state
                 nextState = Align;
+                printf("going to Identify -> Align \r\n");
                 ES_Timer_InitTimer(Stall_Timer, 5000);
                 //nextState = WallHug; //Align;
                 makeTransition = TRUE;
@@ -700,7 +702,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
         case Align: // this is the first state
-            printf("Identify -> Align \r\n");
+            //            printf("Identify -> Align \r\n");
 
             //Turn Right
             //            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED-10));
@@ -899,6 +901,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             //                }
             if (ThisEvent.EventType == ES_TIMEOUT) {
                 nextState = Unstuck;
+                printf("Going to UNSTUCK\r\n");
                 makeTransition = TRUE;
                 ES_Timer_InitTimer(Unstuck_Timer, 1000);
 
@@ -913,6 +916,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == HI_IM_LOST) {
                 printf("HI IM LOST timer went off and I'm in WallHug\r\n");
                 nextState = Validate;
+                printf("Going to VALIDATE\r\n");
                 makeTransition = TRUE;
                 //                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
             }
@@ -924,10 +928,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 nextState = Stop; //Validate;
                 makeTransition = TRUE;
             }
-            
-            if (ThisEvent.EventType == TC_TAPE_BLACK) {
+
+            if (ThisEvent.EventType == BC_TAPE_BLACK) {
                 printf("Edge tape found!!!!!!!!!!!!!!!!!\r\n");
                 nextState = BackLocate;
+                printf("Going to BACKLOCATE\r\n");
                 ES_Timer_InitTimer(Stall_Timer, 5000);
                 Bosshog_RightMtrSpeed(-100);
                 Bosshog_LeftMtrSpeed(0);
@@ -956,6 +961,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 printf("TANK TURN SINCE FRONT GOT HIT");
 
                 nextState = WallHug;
+                printf("Going to WallHUG\r\n");
                 makeTransition = TRUE;
             }
 
@@ -970,6 +976,27 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
             }
 
+            if (ThisEvent.EventType == HI_IM_LOST) {
+                printf("HI IM LOST (DEADBOT) timer went off and I'm in WallHug\r\n");
+                nextState = Validate;
+                printf("Going to Validate\r\n");
+                makeTransition = TRUE;
+                //                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+            }
+
+
+            //INSTEAD OF HANDLING THE DEADBOT TIMER WE WANT TO RESET IT
+            //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
+
+            if (ThisEvent.EventType == BC_TAPE_BLACK) {
+                printf("Edge tape found!!!!!!!!!!!!!!!!!\r\n");
+                nextState = BackLocate;
+                printf("Going to BACKLOCATE\r\n");
+                ES_Timer_InitTimer(Stall_Timer, 5000);
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(0);
+                makeTransition = TRUE;
+            }
 
 
             break;
@@ -981,11 +1008,28 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             Bosshog_LeftMtrSpeed(0);
 
             if (ThisEvent.EventType == DEADBOT) {
-                ThisEvent.EventType = YEAH_ITS_A_DEADBOT;
+                //instead of jumping up to TOPHSM
+                printf("isSecond: = %d\r\n", isSecond);
+                if (isSecond > 3) {
+                    ThisEvent.EventType = YEAH_ITS_A_DEADBOT;
+                    isSecond = 0;
+                } else {
+                    isSecond++;
+                    ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
+                    nextState = WallHug;
+                    printf("going to WallHUG\r\n");
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Stall_Timer, 5000);
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(0);
+                }
+
+
                 printf("DEAD DEAD DEAD DEAD DEAD DEAD DEAED DEAD DEAD DEAD DEAD DEAD\r\n");
             } else if (ThisEvent.EventType == NOT_DEADBOT) {
                 printf("NOT NOT NOT NOT NOTN OTNOTN NOT NOT NOT NOT NOT NOT NOTN NOT\r\n");
                 nextState = WallHug;
+                printf("going to WallHUG\r\n");
                 makeTransition = TRUE;
                 ES_Timer_InitTimer(Stall_Timer, 5000);
                 Bosshog_RightMtrSpeed(100);
@@ -1045,11 +1089,28 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             Bosshog_LeftMtrSpeed(0);
 
             if (ThisEvent.EventType == DEADBOT) {
-                ThisEvent.EventType = YEAH_ITS_A_DEADBOT;
+                //instead of jumping up to TOPHSM
+                printf("isSecond: = %d\r\n", isSecond);
+                if (isSecond > 3) {
+                    ThisEvent.EventType = YEAH_ITS_A_DEADBOT;
+                    isSecond = 0;
+                } else {
+                    isSecond++;
+                    ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
+                    nextState = BackLocate;
+                    printf("going to Identify -> BackLocate \r\n");
+                    makeTransition = TRUE;
+                    ES_Timer_InitTimer(Stall_Timer, 5000);
+                    Bosshog_RightMtrSpeed(-100);
+                    Bosshog_LeftMtrSpeed(0);
+                }
+
+
                 printf("DEAD DEAD DEAD DEAD DEAD DEAD DEAED DEAD DEAD DEAD DEAD DEAD\r\n");
             } else if (ThisEvent.EventType == NOT_DEADBOT) {
                 printf("NOT NOT NOT NOT NOTN OTNOTN NOT NOT NOT NOT NOT NOT NOTN NOT\r\n");
                 nextState = BackLocate;
+                printf("going to Identify -> BackLocate \r\n");
                 makeTransition = TRUE;
                 ES_Timer_InitTimer(Stall_Timer, 5000);
                 Bosshog_RightMtrSpeed(-100);
@@ -1070,7 +1131,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
         case BackLocate:
-            printf("Identify -> BackLocate \r\n");
+            //            printf("Identify -> BackLocate \r\n");
 
             //            printf("In WallHug State \r\n");
             //            if (n == 1) {
@@ -1167,8 +1228,18 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 makeTransition = TRUE;
 
             }
+            if (ThisEvent.EventType == HI_IM_LOST) {
+                printf("HI IM LOST timer went off and I'm in BACKLOCATE\r\n");
+                nextState = Evade;
+                makeTransition = TRUE;
+                //                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+            }
 
+            //INSTEAD OF HANDLING THE DEADBOT TIMER WE WANT TO RESET IT
+            //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);
             break;
+
+
 
         default: // all unhandled states fall into here
             break;
@@ -1219,7 +1290,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
             Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED - 10);
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 20);   //-10
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
