@@ -61,7 +61,7 @@ typedef enum {
     BC_TAPE_BLACK,
     BR_TAPE_BLACK,
     BB_TAPE_BLACK,
-            TB_TAPE_BLACK,
+    TB_TAPE_BLACK,
 
     TL_TAPE_BLACK,
     TC_TAPE_BLACK,
@@ -69,7 +69,10 @@ typedef enum {
     TL_TAPE_WHITE,
     TC_TAPE_WHITE,
     TR_TAPE_WHITE,
-                        TB_TAPE_WHITE,
+    TB_TAPE_WHITE,
+
+    ON_BLACK_BACK_TAPE,
+
     BEACON_DETECTED,
     BEACON_LOST,
     TAPE_ALIGNED, //TCT TRT black so we are aligned with hole to desposit
@@ -81,9 +84,9 @@ typedef enum {
     HI_IM_LOST,
     ALIGNING_TIMER,
     DEPOSITEXIT,
-            DEADBOT,
-            NOT_DEADBOT,
-            YEAH_ITS_A_DEADBOT,
+    DEADBOT,
+    NOT_DEADBOT,
+    YEAH_ITS_A_DEADBOT,
     /* User-defined events end here */
     NUMBEROFEVENTS,
 } ES_EventTyp_t;
@@ -124,6 +127,8 @@ static const char *EventNames[] = {
     "TL_TAPE_WHITE",
     "TC_TAPE_WHITE",
     "TR_TAPE_WHITE",
+    "TB_TAPE_WHITE",
+    "ON_BLACK_BACK_TAPE",
     "BEACON_DETECTED",
     "BEACON_LOST",
     "TAPE_ALIGNED",

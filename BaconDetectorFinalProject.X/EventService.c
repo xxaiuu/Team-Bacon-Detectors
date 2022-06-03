@@ -433,6 +433,17 @@ uint8_t BBTEvent(void) {
 #endif  
         WasEvent = TRUE;
     }
+
+    if (LastBBT == CurrTape && CurrTape == TAPE_BLACK) {
+        ES_Event TapeEvent;
+        TapeEvent.EventType = ON_BLACK_BACK_TAPE;
+        TapeEvent.EventParam = (uint16_t) CurrTape;
+        PostBosshogHSM(TapeEvent);
+
+    }
+
+
+
     LastBBT = CurrTape;
     return WasEvent;
 }
@@ -553,25 +564,25 @@ uint8_t TBTEvent(void) {
     static uint8_t CurrTape;
     CurrTape = BosshogReadTopBackTape();
     uint8_t WasEvent = FALSE;
-    //if (CurrTape != LastTBT && CurrTape == TAPE_BLACK) {
-    if (CurrTape == TAPE_BLACK) {
+    if (/*CurrTape != LastTBT &&*/ CurrTape == TAPE_BLACK) {
+        //if (CurrTape == TAPE_BLACK) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TB_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-        //printf("TBT EVENT\r\n");
+        //printf("TBT BLACK EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
-    } else {
+    } else if (/*(CurrTape != LastTBT &&*/ CurrTape == TAPE_WHITE) {
         ES_Event TapeEvent;
         TapeEvent.EventType = TB_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-        //printf("TR and TC EVENT\r\n");
+        //printf("TBT WHITE EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
@@ -579,7 +590,7 @@ uint8_t TBTEvent(void) {
 #endif  
         WasEvent = TRUE;
     }
-    LastBBT = CurrTape;
+    LastTBT = CurrTape;
     return WasEvent;
 }
 

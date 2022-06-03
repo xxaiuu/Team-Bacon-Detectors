@@ -168,11 +168,14 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Init_FindNext_SubHSM();
                 //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
-                nextState = Sweep;
-                printf("going to Sweep \r\n");
-                //nextState = FindNext; 
+                //nextState = Sweep;
+                //printf("going to Sweep \r\n");
 
-                //Init_FindNext_SubHSM();
+                nextState = FindNext;
+                Init_FindNext_SubHSM();
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
 
 
                 makeTransition = TRUE;
@@ -362,6 +365,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 nextState = FindNext;
                 makeTransition = TRUE;
                 Init_FindNext_SubHSM();
+
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
             }
 
 
@@ -448,31 +456,31 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //Transitions
             switch (ThisEvent.EventType) {
 
-                case BEACON_DETECTED:
-//                    nextState = ForwardNext;
-//                    //                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-//                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
-//                    Bosshog_RightMtrSpeed(80);
-//                    Bosshog_LeftMtrSpeed(75);
-//
-//                    //Init_ForwardNext_SubHSM();
-//                    //                                nextState = Navigate;
-//                    //                                Init_Navigate_SubHSM();
-//                    //nextState = TopStop; 
-//                    makeTransition = TRUE;
-
-                    nextState = Navigate;
-                    makeTransition = TRUE;
-                    Bosshog_RightMtrSpeed(0);
-                    Bosshog_LeftMtrSpeed(0);
-                    Init_Navigate_SubHSM();
-
-
-                    break;
+                    //                case BEACON_DETECTED:
+                    //                    //                    nextState = ForwardNext;
+                    //                    //                    //                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+                    //                    //                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+                    //                    //                    Bosshog_RightMtrSpeed(80);
+                    //                    //                    Bosshog_LeftMtrSpeed(75);
+                    //                    //
+                    //                    //                    //Init_ForwardNext_SubHSM();
+                    //                    //                    //                                nextState = Navigate;
+                    //                    //                    //                                Init_Navigate_SubHSM();
+                    //                    //                    //nextState = TopStop; 
+                    //                    //                    makeTransition = TRUE;
+                    //
+                    //                    nextState = Navigate;
+                    //                    makeTransition = TRUE;
+                    //                    Bosshog_RightMtrSpeed(0);
+                    //                    Bosshog_LeftMtrSpeed(0);
+                    //                    Init_Navigate_SubHSM();
+                    //
+                    //
+                    //                    break;
 
 
                 case BB_TAPE_BLACK:
-
+                    //nextState = TopStop;
                     nextState = FindNextInverse;
                     makeTransition = TRUE;
 
@@ -482,7 +490,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                     ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
 
-                    Init_FindNext_SubHSM();
+                    Init_FindNextInverse_SubHSM();
 
                     break;
                     //                case BB_TAPE_BLACK:
@@ -501,6 +509,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     //                    nextState = CantFind;
                     //                    makeTransition = TRUE;
                     //                    break;
+
+                case ON_BLACK_BACK_TAPE:
+                    nextState = TopStop; //FindNextInverse;
+                    makeTransition = TRUE;
+                    break;
 
                 default:
                     break;
@@ -547,7 +560,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM
             //remember to initialize in previous state transition 
-            ThisEvent = Run_FindNext_SubHSM(ThisEvent);
+            ThisEvent = Run_FindNextInverse_SubHSM(ThisEvent);
 
             //Transitions
             switch (ThisEvent.EventType) {
@@ -574,47 +587,47 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             break;
 
-        case CantFind:
-            printf("CantFind \r\n");
-            // no sub hsm
-            //remember to initialize in previous state transition 
-
-            //Transitions
-            switch (ThisEvent.EventType) {
-
-                case FRB_PRESSED:
-                    nextState = Identify;
-                    makeTransition = TRUE;
-                    Init_Identify_SubHSM();
-
-                    break;
-
-                case FLB_PRESSED:
-                    nextState = Identify;
-                    makeTransition = TRUE;
-                    Init_Identify_SubHSM();
-                    break;
-
-                case BL_TAPE_BLACK:
-                    nextState = Relocate;
-                    makeTransition = TRUE;
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-                    Init_Relocate_SubHSM();
-
-                    break;
-
-                case BR_TAPE_BLACK:
-                    nextState = Relocate;
-                    makeTransition = TRUE;
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-                    Init_Relocate_SubHSM();
-
-                    break;
-
-                default:
-                    break;
-            }
-            break;
+            //        case CantFind:
+            //            printf("CantFind \r\n");
+            //            // no sub hsm
+            //            //remember to initialize in previous state transition 
+            //
+            //            //Transitions
+            //            switch (ThisEvent.EventType) {
+            //
+            //                case FRB_PRESSED:
+            //                    nextState = Identify;
+            //                    makeTransition = TRUE;
+            //                    Init_Identify_SubHSM();
+            //
+            //                    break;
+            //
+            //                case FLB_PRESSED:
+            //                    nextState = Identify;
+            //                    makeTransition = TRUE;
+            //                    Init_Identify_SubHSM();
+            //                    break;
+            //
+            //                case BL_TAPE_BLACK:
+            //                    nextState = Relocate;
+            //                    makeTransition = TRUE;
+            //                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+            //                    Init_Relocate_SubHSM();
+            //
+            //                    break;
+            //
+            //                case BR_TAPE_BLACK:
+            //                    nextState = Relocate;
+            //                    makeTransition = TRUE;
+            //                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+            //                    Init_Relocate_SubHSM();
+            //
+            //                    break;
+            //
+            //                default:
+            //                    break;
+            //            }
+            //            break;
 
 
 
