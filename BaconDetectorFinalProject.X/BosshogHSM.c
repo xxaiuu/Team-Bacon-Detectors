@@ -456,27 +456,27 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             //Transitions
             switch (ThisEvent.EventType) {
 
-                    //                case BEACON_DETECTED:
-                    //                    //                    nextState = ForwardNext;
-                    //                    //                    //                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-                    //                    //                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
-                    //                    //                    Bosshog_RightMtrSpeed(80);
-                    //                    //                    Bosshog_LeftMtrSpeed(75);
-                    //                    //
-                    //                    //                    //Init_ForwardNext_SubHSM();
-                    //                    //                    //                                nextState = Navigate;
-                    //                    //                    //                                Init_Navigate_SubHSM();
-                    //                    //                    //nextState = TopStop; 
-                    //                    //                    makeTransition = TRUE;
+                case BEACON_DETECTED:
+                    //                    nextState = ForwardNext;
+                    //                    //                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+                    //                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+                    //                    Bosshog_RightMtrSpeed(80);
+                    //                    Bosshog_LeftMtrSpeed(75);
                     //
-                    //                    nextState = Navigate;
+                    //                    //Init_ForwardNext_SubHSM();
+                    //                    //                                nextState = Navigate;
+                    //                    //                                Init_Navigate_SubHSM();
+                    //                    //nextState = TopStop; 
                     //                    makeTransition = TRUE;
-                    //                    Bosshog_RightMtrSpeed(0);
-                    //                    Bosshog_LeftMtrSpeed(0);
-                    //                    Init_Navigate_SubHSM();
-                    //
-                    //
-                    //                    break;
+
+                    nextState = Navigate;
+                    makeTransition = TRUE;
+                    Bosshog_RightMtrSpeed(0);
+                    Bosshog_LeftMtrSpeed(0);
+                    Init_Navigate_SubHSM();
+
+
+                    break;
 
 
                 case BB_TAPE_BLACK:
