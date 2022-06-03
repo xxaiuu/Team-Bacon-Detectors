@@ -1091,7 +1091,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == FLB_PRESSED) {
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // restarts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 40);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 43);
 
                 //printf("Timed Tank Turn");
             }

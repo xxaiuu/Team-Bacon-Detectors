@@ -450,6 +450,8 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                 case BEACON_DETECTED:
                     nextState = ForwardNext;
+                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
                     //Init_ForwardNext_SubHSM();
                     //                                nextState = Navigate;
                     //                                Init_Navigate_SubHSM();
@@ -485,9 +487,9 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
         case ForwardNext:
             // ThisEvent = Run_ForwardNext_SubHSM(ThisEvent);
-            //printf("ForwardNext \r\n");
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+            printf("ForwardNext \r\n");
+//            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
 
             if (ThisEvent.EventType == BEACON_DETECTED) { //|| ThisEvent.EventType == BEACON_LOST) {
 
@@ -500,11 +502,33 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             }
 
             if (ThisEvent.EventType == FRB_PRESSED || ThisEvent.EventType == FLB_PRESSED) {
+                printf("BUMPER HIT IN FORWARD NEXXXXXXXXXXXXXXXXXXXXXXXTTTTTTTTTTTTTTTTTTTTTTTTTTT\r\n");
                 Bosshog_RightMtrSpeed(-100);
+                //Bosshog_LeftMtrSpeed(0);
                 Bosshog_LeftMtrSpeed(100 - 20);
                 nextState = Identify;
                 makeTransition = TRUE;
                 Init_Identify_SubHSM();
+                
+                
+                
+                
+                
+                
+                printf("(FLB)Suppose to tank turn \r\n");
+                    //TowerFirstHitTime = ES_Timer_GetTime();
+                    //                    Bosshog_RightMtrSpeed(-100);
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
+                    Bosshog_RightMtrSpeed(-100);
+                    Bosshog_LeftMtrSpeed(100 - 20);
+                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                    nextState = Identify;
+                    printf("GOING TO Identify \r\n");
+                    makeTransition = TRUE;
+                    //                //start 5 second timer
+                    //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+                    Init_Identify_SubHSM();
             }
 
 

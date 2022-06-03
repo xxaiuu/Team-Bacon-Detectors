@@ -559,14 +559,14 @@ uint8_t TBTEvent(void) {
         TapeEvent.EventType = TB_TAPE_BLACK;
         TapeEvent.EventParam = (uint16_t) CurrTape;
 #ifndef EVENTCHECKER_TEST
-                printf("TBT EVENT\r\n");
+        //printf("TBT EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
-    } else{
+    } else {
         ES_Event TapeEvent;
         TapeEvent.EventType = TB_TAPE_WHITE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
@@ -620,7 +620,7 @@ uint8_t TR_TL_TC_Event(void) {
         TapeEvent.EventType = DEADBOT;
         TapeEvent.EventParam = (uint16_t) CurrTapeTC + CurrTapeTR + CurrTapeTL;
 #ifndef EVENTCHECKER_TEST
-        printf("TR TL TC EVENT\r\n");
+        //printf("TR TL TC EVENT\r\n");
 
         PostBosshogHSM(TapeEvent);
 #else
