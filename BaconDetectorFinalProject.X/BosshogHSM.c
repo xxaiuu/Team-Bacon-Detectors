@@ -168,14 +168,14 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 //                Init_FindNext_SubHSM();
                 //                Init_FindNextInverse_SubHSM();
                 // now put the machine into the actual initial state
-                //nextState = Sweep;
+                nextState = Sweep;
                 //printf("going to Sweep \r\n");
 
-                nextState = FindNext;
-                Init_FindNext_SubHSM();
-                Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
-                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
+                //                nextState = FindNext;
+                //                Init_FindNext_SubHSM();
+                //                Bosshog_RightMtrSpeed(-100);
+                //                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 50);
+                //                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
 
 
                 makeTransition = TRUE;
@@ -511,8 +511,18 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     //                    break;
 
                 case ON_BLACK_BACK_TAPE:
-                    nextState = TopStop; //FindNextInverse;
+                    //nextState = TopStop;
+                    nextState = FindNextInverse;
                     makeTransition = TRUE;
+
+
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+
+                    ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
+
+                    Init_FindNextInverse_SubHSM();
+
                     break;
 
                 default:
