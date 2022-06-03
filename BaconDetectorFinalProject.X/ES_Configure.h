@@ -62,12 +62,14 @@ typedef enum {
     BR_TAPE_BLACK,
     BB_TAPE_BLACK,
             TB_TAPE_BLACK,
+
     TL_TAPE_BLACK,
     TC_TAPE_BLACK,
     TR_TAPE_BLACK,
     TL_TAPE_WHITE,
     TC_TAPE_WHITE,
     TR_TAPE_WHITE,
+                        TB_TAPE_WHITE,
     BEACON_DETECTED,
     BEACON_LOST,
     TAPE_ALIGNED, //TCT TRT black so we are aligned with hole to desposit

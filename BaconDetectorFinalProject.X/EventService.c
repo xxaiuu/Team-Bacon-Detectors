@@ -566,6 +566,18 @@ uint8_t TBTEvent(void) {
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
+    } else{
+        ES_Event TapeEvent;
+        TapeEvent.EventType = TB_TAPE_WHITE;
+        TapeEvent.EventParam = (uint16_t) CurrTape;
+#ifndef EVENTCHECKER_TEST
+        //printf("TR and TC EVENT\r\n");
+
+        PostBosshogHSM(TapeEvent);
+#else
+        SaveEvent(BumperEvent);
+#endif  
+        WasEvent = TRUE;
     }
     LastBBT = CurrTape;
     return WasEvent;

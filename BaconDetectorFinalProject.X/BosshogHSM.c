@@ -499,6 +499,13 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
             }
 
+            if (ThisEvent.EventType == FRB_PRESSED || ThisEvent.EventType == FLB_PRESSED) {
+                Bosshog_RightMtrSpeed(-100);
+                Bosshog_LeftMtrSpeed(100 - 20);
+                nextState = Identify;
+                makeTransition = TRUE;
+                Init_Identify_SubHSM();
+            }
 
 
             break;

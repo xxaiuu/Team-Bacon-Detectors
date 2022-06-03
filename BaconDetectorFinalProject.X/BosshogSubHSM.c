@@ -726,7 +726,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //nextState = NoSideAlign;
                     Bosshog_RightMtrSpeed(100);
                     Bosshog_LeftMtrSpeed(0);
-                    nextState = WallHug; //WallHug;
+                    nextState = WallHug; //Validate; //WallHug;
                     printf("GOING TO WallHug State \r\n");
                     ES_Timer_InitTimer(Stall_Timer, 5000);
                     //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);            //dead bot timer
@@ -744,7 +744,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     Bosshog_LeftMtrSpeed(0);
                     ES_Timer_InitTimer(Stall_Timer, 5000);
                     //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);           //dead bot timer
-                    nextState = WallHug; //WallHug;
+                    nextState = WallHug;//Validate; //WallHug;
                     printf("GOING TO WallHug State \r\n");
                     makeTransition = TRUE;
                     //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
@@ -754,17 +754,11 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     //                     nextState = Stop;
                     //                    makeTransition = TRUE;
                     break;
-                    //
-                    //                case TAPE_ALIGN:
-                    //                    nextState = Stop;
-                    //                    makeTransition = TRUE;
-                    //                    break;
 
 
-                    //                case ALIGNING_TIMER:
-                    //                                        nextState = PreWallHug; //WallHug;
-                    //                    makeTransition = TRUE;
-                    //                    break;
+                    //problem: If it got stuck such that the back bumpers do not get press, 
+                    // it will unstuck however it will never go to validate
+                    // instead it will continue to wall hug. This might cause some issues
                 case ES_TIMEOUT:
                     nextState = Unstuck;
                     makeTransition = TRUE;
@@ -781,14 +775,6 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     break;
             }
 
-
-
-
-            //            if (BosshogReadTopLeftTape() == TAPE_BLACK) {
-            //                nextState = TLT_TRT_One_For_Locate;
-            //                makeTransition = TRUE;
-            //            }
-
             //            printf("about to run tape checking code\r\n");
             //            if (BosshogReadTopCenterTape() == TAPE_BLACK && BosshogReadTopRightTape() == TAPE_BLACK) {
             //                printf("Detected two black tape sensors\r\n");
@@ -800,71 +786,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             break;
 
 
-            //        case NoSideAlign:
-            //
-            //            //hard left
-            //            Bosshog_RightMtrSpeed(100);
-            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 25);
-            //            //first bumper hit
-            //            if (ThisEvent.EventType == FLB_PRESSED) {
-            //                printf("FRONT BUMPER GOT PRESSED \r\n");
-            //                //                Bosshog_RightMtrSpeed(0);
-            //                //                Bosshog_LeftMtrSpeed(0);
-            //                // nextState = Stop; //Validate;
-            //                // nextState = Align;
-            //
-            //
-            //                
-            //                nextState = WallHug;
-            //                makeTransition = TRUE;
-            //                //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-            //                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-            //            }
-            //
-            //            //            switch(ThisEvent.EventType){
-            //            //                
-            //            //                case TAPE_ALIGN:
-            //            //                    nextState = Stop;
-            //            //                    makeTransition = TRUE;
-            //            //                    break;
-            //            //                default:
-            //            //                    break;
-            //            //            }
-            //            //            
-            //
-            //            //                        if (ThisEvent.EventType == SB_PRESSED) {
-            //            //                            printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
-            //            //                            Bosshog_RightMtrSpeed(0);
-            //            //                            Bosshog_LeftMtrSpeed(0);
-            //            //                            nextState = Stop; //Validate;
-            //            //                            makeTransition = TRUE;
-            //            //                        }
-            //
-            //            //            if (ThisEvent.EventType == SB_PRESSED) {
-            //            //                printf("SIDE BUMPER GOT PRESSED YAYAY\r\n");
-            //            //                Bosshog_RightMtrSpeed(0);
-            //            //                Bosshog_LeftMtrSpeed(0);
-            //            //                nextState = Stop; //Validate;
-            //            //                makeTransition = TRUE;
-            //            //            }
-            //            //
-            //            //
-            //            //            switch (BosshogReadTopLeftTape()) {
-            //            //                case TAPE_BLACK:
-            //            //                    nextState = TLT_TRT_One_For_BackLocate;
-            //            //                    makeTransition = TRUE;
-            //            //                    break;
-            //            //
-            //            //                default: // all unhandled events pass the event back up to the next level
-            //            //                    break;
-            //            //            }
-            //
-            //            //            if (BosshogReadTopCenterTape() == TAPE_BLACK && BosshogReadTopRightTape() == TAPE_BLACK){
-            //            //                nextState = Stop;
-            //            //                makeTransition = TRUE;
-            //            //            }
-            //
-            //            break;
+
+
 
         case WallHug:
             //            printf("In WallHug State \r\n");
@@ -936,7 +859,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                ES_Timer_InitTimer(Stall_Timer, 5000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(-50);
                 makeTransition = TRUE;
             }
 
@@ -949,7 +872,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == ES_TIMEOUT) {
 
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(70);
+                Bosshog_LeftMtrSpeed(60);  //70 does orbit
             }
 
 
@@ -996,7 +919,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                ES_Timer_InitTimer(Stall_Timer, 5000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(-50);
                 makeTransition = TRUE;
             }
 
@@ -1008,8 +931,9 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             printf("MADE IT TO VALIDATEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\r\n");
             Bosshog_RightMtrSpeed(0);
             Bosshog_LeftMtrSpeed(0);
+            // if (ThisEvent.EventType == DEADBOT) {
+            if (ThisEvent.EventType == TB_TAPE_BLACK) {
 
-            if (ThisEvent.EventType == DEADBOT) {
                 //instead of jumping up to TOPHSM
                 printf("isSecond: = %d\r\n", isSecond);
                 if (isSecond > 3) {
@@ -1028,7 +952,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
                 printf("DEAD DEAD DEAD DEAD DEAD DEAD DEAED DEAD DEAD DEAD DEAD DEAD\r\n");
-            } else if (ThisEvent.EventType == NOT_DEADBOT) {
+            } else if (ThisEvent.EventType == TB_TAPE_WHITE) {
+                //NEED AN EVENTYPE TO KNOW IF IT'S WHITE TAPE - OTHERWISE WE WILL THINK A BUMPER HIT IS A WHITE TAPE EVENT OR SOMETHING
                 printf("NOT NOT NOT NOT NOTN OTNOTN NOT NOT NOT NOT NOT NOT NOTN NOT\r\n");
                 nextState = WallHug;
                 printf("going to WallHUG\r\n");
@@ -1166,7 +1091,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == FLB_PRESSED) {
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // restarts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 37);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 40);
 
                 //printf("Timed Tank Turn");
             }
@@ -1225,7 +1150,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
 
 
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 37);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 40);
                 nextState = BackLocate;
                 makeTransition = TRUE;
             }
@@ -1401,9 +1326,9 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
         case Scan:
             printf("DEPOSIT -> Scan\r\n");
             //values to use if we use forward align
-//            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 5 - 15);
-//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 15);
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED  - 15);
+            //            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 5 - 15);
+            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 15);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 15);
             Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 5 - 15);
 
             //            //go forward and align with side
