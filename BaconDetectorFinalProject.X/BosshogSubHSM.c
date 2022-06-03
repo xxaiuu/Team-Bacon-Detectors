@@ -83,6 +83,7 @@ typedef enum {
     Unstuck,
     ForwardAlign,
     UnstuckReverse,
+    Reload,
 } BosshogSubHSMState_t;
 
 
@@ -129,6 +130,7 @@ static const char *StateNames[] = {
     "Unstuck",
     "ForwardAlign",
     "UnstuckReverse",
+    "Reload",
 };
 
 
@@ -470,8 +472,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
             //mess with jig time to change angle
             //also this assumes it will find the signal right away... it will not go back and forth with the jig I believe
-            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 10));
-            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 10));
+            Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 10));
+            Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 10));
 
             if (ThisEvent.EventType == JIGGY_TIME) {
                 nextState = JigPause;
@@ -498,8 +500,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
 
         case JigPause:
 
-            Bosshog_RightMtrSpeed((RIGHT_MOTOR_SPEED - 10));
-            Bosshog_LeftMtrSpeed(-(LEFT_MOTOR_SPEED - 10));
+            Bosshog_RightMtrSpeed(-(RIGHT_MOTOR_SPEED - 10));
+            Bosshog_LeftMtrSpeed((LEFT_MOTOR_SPEED - 10));
             if (ThisEvent.EventType == JIGGY_TIME) {
                 nextState = JigMore;
                 makeTransition = TRUE;
@@ -744,7 +746,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                     Bosshog_LeftMtrSpeed(0);
                     ES_Timer_InitTimer(Stall_Timer, 5000);
                     //ES_Timer_InitTimer(Timer_For_Lost, TIMER_LOST_TICKS);           //dead bot timer
-                    nextState = WallHug;//Validate; //WallHug;
+                    nextState = WallHug; //Validate; //WallHug;
                     printf("GOING TO WallHug State \r\n");
                     makeTransition = TRUE;
                     //printf("WE ARE HERE MOTORS SHOULD STOP\r\n");
@@ -872,7 +874,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == ES_TIMEOUT) {
 
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(60);  //70 does orbit
+                Bosshog_LeftMtrSpeed(60); //70 does orbit
             }
 
 
@@ -1413,24 +1415,56 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 //                Bosshog_LeftMtrSpeed(0);
 
                 //                ThisEvent.EventType = DEPOSITEXIT;
-                nextState = DepositExit;
+                nextState = Reload;//DepositExit;
                 setDir = 0;
                 makeTransition = TRUE;
                 ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
-
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
 
             }
+
 
             break;
 
-        case DepositExit:
-            Bosshog_RightMtrSpeed(0);
-            Bosshog_LeftMtrSpeed(0);
+        case Reload:
+            //            Bosshog_RightMtrSpeed(0);
+            //            Bosshog_LeftMtrSpeed(0);
             if (ThisEvent.EventType == ALIGNING_TIMER) {
                 BosshogSetServo(LOAD);
 
-                ThisEvent.EventType = DEPOSITEXIT;
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+
+                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 500);
+
+                nextState = DepositExit;
+                makeTransition = TRUE;
+                //                ThisEvent.EventType = DEPOSITEXIT;
             }
+
+
+            break;
+
+
+        case DepositExit:
+
+            if (ThisEvent.EventType == ES_TIMEOUT) {
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
+
+
+                ThisEvent.EventType = DEPOSITEXIT;
+                //                ThisEvent.EventType = DEPOSITEXIT;
+            }
+
+            //            Bosshog_RightMtrSpeed(0);
+            //            Bosshog_LeftMtrSpeed(0);
+            //            if (ThisEvent.EventType == ALIGNING_TIMER) {
+            //                BosshogSetServo(LOAD);
+            //
+            //                ThisEvent.EventType = DEPOSITEXIT;
+            //            }
             break;
 
         default: // all unhandled states fall into here
@@ -1612,45 +1646,137 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
             break;
 
         case SpinOtherWay: // in the first state, replace this with correct names
-            //Spin backward, towards right
-            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED - 10);
+            
+               printf("In Spin (WallHug Inverse) State \r\n");
+            //            if (n == 1) {
+            //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //                n = 0;
+            //            }
 
-            //Transitions
-            switch (ThisEvent.EventType) {
-                case BRB_PRESSED:
-                    nextState = EvadeOtherWay;
-                    makeTransition = TRUE;
+            //            if (ThisEvent.EventType == FLB_PRESSED) {
+            if (ThisEvent.EventType == ES_TIMEOUT) {
 
-                    //start timer
-                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED-20);
+                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
 
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
+                printf("Backpetaling and FRONT GOT HIT");
             }
+            //            if (ThisEvent.EventType == FRB_PRESSED) {
+            //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+            //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //                printf("TANK TURN SINCE FRONT GOT HIT");
+            //            }
+
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //stall detection timer
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
+                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400); // duration timer
+                printf("BackPetaling\r\n");
+
+            }
+            //            if (ThisEvent.EventType == TAPE_ALIGNED) {
+            //                nextState = Stop;
+            //                makeTransition = TRUE;
+            //                }
+            if (ThisEvent.EventType == SPIN_AROUND) {
+                nextState = EvadeOtherWay;
+                makeTransition = TRUE;
+                ES_Timer_InitTimer(Unstuck_Timer, 1000);
+
+
+                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 20);
+
+
+            }
+            
+            
+            
+            
+//            //Spin backward, towards right
+//            Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+//            Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED - 10);
+//
+//            //Transitions
+//            switch (ThisEvent.EventType) {
+//                case BRB_PRESSED:
+//                    nextState = EvadeOtherWay;
+//                    makeTransition = TRUE;
+//
+//                    //start timer
+//                    ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
+//
+//                    break;
+//
+//                default: // all unhandled events pass the event back up to the next level
+//                    break;
+//            }
 
             break;
 
         case EvadeOtherWay:
-            //go forward and slightly right
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 10);
+            
+            
+            
+            if (ThisEvent.EventType == ES_TIMEOUT) {
 
-            //Transitions
-            switch (ThisEvent.EventType) {
-                case FIVE_SEC_TIMER:
-                    nextState = SpinOtherWay;
-                    makeTransition = TRUE;
-
-                    break;
-
-                default: // all unhandled events pass the event back up to the next level
-                    break;
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
             }
 
-            break;
+
+            if (ThisEvent.EventType == BLB_PRESSED ) {
+                //ES_Timer_InitTimer(Stall_Timer, 4000);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+                printf("TURN LEFT SINCE BACK GOT HIT");
+
+                //                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+
+                nextState = Spin;
+                makeTransition = TRUE;
+            }
+
+            if (ThisEvent.EventType == FLB_PRESSED) {
+                ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400);
+                ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
+                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 20);
+                printf("TANK TURN SINCE FRONT GOT HIT");
+
+                nextState = SpinOtherWay;
+                makeTransition = TRUE;
+
+            }
+
+
+            
+//            //go forward and slightly right
+//            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
+//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 10);
+//
+//            //Transitions
+//            switch (ThisEvent.EventType) {
+//                case FIVE_SEC_TIMER:
+//                    nextState = SpinOtherWay;
+//                    makeTransition = TRUE;
+//
+//                    break;
+//
+//                default: // all unhandled events pass the event back up to the next level
+//                    break;
+//            }
+//
+//            break;
             //jumps out of sub hsm whenever a beacon is detected or cant find timer expires
 
         default: // all unhandled states fall into here

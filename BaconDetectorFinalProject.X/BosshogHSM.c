@@ -449,15 +449,40 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             switch (ThisEvent.EventType) {
 
                 case BEACON_DETECTED:
-                    nextState = ForwardNext;
-                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
-                    //Init_ForwardNext_SubHSM();
-                    //                                nextState = Navigate;
-                    //                                Init_Navigate_SubHSM();
-                    //nextState = TopStop; 
+//                    nextState = ForwardNext;
+//                    //                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+//                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+//                    Bosshog_RightMtrSpeed(80);
+//                    Bosshog_LeftMtrSpeed(75);
+//
+//                    //Init_ForwardNext_SubHSM();
+//                    //                                nextState = Navigate;
+//                    //                                Init_Navigate_SubHSM();
+//                    //nextState = TopStop; 
+//                    makeTransition = TRUE;
+
+                    nextState = Navigate;
+                    makeTransition = TRUE;
+                    Bosshog_RightMtrSpeed(0);
+                    Bosshog_LeftMtrSpeed(0);
+                    Init_Navigate_SubHSM();
+
+
+                    break;
+
+
+                case BB_TAPE_BLACK:
+
+                    nextState = FindNextInverse;
                     makeTransition = TRUE;
 
+
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+
+                    ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
+
+                    Init_FindNext_SubHSM();
 
                     break;
                     //                case BB_TAPE_BLACK:
@@ -488,15 +513,15 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
         case ForwardNext:
             // ThisEvent = Run_ForwardNext_SubHSM(ThisEvent);
             printf("ForwardNext \r\n");
-//            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+            //            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+            //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
 
             if (ThisEvent.EventType == BEACON_DETECTED) { //|| ThisEvent.EventType == BEACON_LOST) {
 
                 nextState = Navigate;
                 makeTransition = TRUE;
-                //            Bosshog_RightMtrSpeed(0);
-                //            Bosshog_LeftMtrSpeed(0);
+                Bosshog_RightMtrSpeed(0);
+                Bosshog_LeftMtrSpeed(0);
                 Init_Navigate_SubHSM();
 
             }
@@ -509,26 +534,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 nextState = Identify;
                 makeTransition = TRUE;
                 Init_Identify_SubHSM();
-                
-                
-                
-                
-                
-                
-                printf("(FLB)Suppose to tank turn \r\n");
-                    //TowerFirstHitTime = ES_Timer_GetTime();
-                    //                    Bosshog_RightMtrSpeed(-100);
-                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 20);
-                    Bosshog_RightMtrSpeed(-100);
-                    Bosshog_LeftMtrSpeed(100 - 20);
-                    //                    Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                    //                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
-                    nextState = Identify;
-                    printf("GOING TO Identify \r\n");
-                    makeTransition = TRUE;
-                    //                //start 5 second timer
-                    //ES_Timer_InitTimer(Five_Second_Timer, TIMER_1_TICKS);
-                    Init_Identify_SubHSM();
+
             }
 
 
@@ -547,9 +553,12 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             switch (ThisEvent.EventType) {
 
                 case BEACON_DETECTED:
-                    nextState = Navigate;
+                    nextState = ForwardNext;
+                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
+
+                    //nextState = TopStop; 
                     makeTransition = TRUE;
-                    Init_Navigate_SubHSM();
 
                     break;
                     //
