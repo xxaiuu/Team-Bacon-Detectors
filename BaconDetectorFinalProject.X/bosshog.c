@@ -137,6 +137,7 @@ void Bosshog_Init(void)
     TOPLEFT_TAPESENSOR_TRIS = 1;
     TOPRIGHT_TAPESENSOR_TRIS = 1;
     TOPCENTER_TAPESENSOR_TRIS = 1;
+    TOPBACK_TAPESENSOR_TRIS = 1;
     
     //RCServo INIT
     RC_Init();
@@ -274,6 +275,10 @@ uint8_t BosshogReadTopLeftTape(void){
 
 uint8_t BosshogReadTopCenterTape(void){
     return TOPCENTER_TAPESENSOR_BIT;
+}
+
+uint8_t BosshogReadTopBackTape(void){
+    return TOPBACK_TAPESENSOR_BIT;
 }
 
 /**

@@ -93,6 +93,7 @@
 #define TOPRIGHT_TAPESENSOR_TRIS PORTZ09_TRIS
 //#define TOPCENTER_TAPESENSOR_TRIS PORTZ10_TRIS
 #define TOPCENTER_TAPESENSOR_TRIS PORTY07_TRIS
+#define TOPBACK_TAPESENSOR_TRIS PORTW08_TRIS
 
 
 
@@ -104,6 +105,8 @@
 #define TOPRIGHT_TAPESENSOR_BIT PORTZ09_BIT
 //#define TOPCENTER_TAPESENSOR_BIT PORTZ10_BIT
 #define TOPCENTER_TAPESENSOR_BIT PORTY07_BIT
+#define TOPBACK_TAPESENSOR_BIT PORTW08_BIT
+
 
 // Servo for launching mechanism
 #define RCSERVO_PIN RC_PORTW07
@@ -179,6 +182,7 @@ uint8_t BosshogReadBackTape(void);
 uint8_t BosshogReadTopRightTape(void);
 uint8_t BosshogReadTopLeftTape(void);
 uint8_t BosshogReadTopCenterTape(void);
+uint8_t BosshogReadTopBackTape(void);
 
 
 /**

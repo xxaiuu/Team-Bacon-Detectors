@@ -440,7 +440,7 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             printf("Navigate -> Follow \r\n");
 
             //Go forward
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED );
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
             Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 1);
 
 
@@ -1305,8 +1305,8 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //Drive Backward
             //            printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
-            Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED+15);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 -10); // -10 // + 20 for backwards
+            Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED + 15);
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 - 10); // -10 // + 20 for backwards
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
@@ -1322,10 +1322,14 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
             //  }
 
-            if (ThisEvent.EventType == WALL_EDGE) {
+            //if (ThisEvent.EventType == WALL_EDGE) {
             //if (ThisEvent.EventType == DEADBOT) {
-                nextState = ForwardAlign;
+            if (ThisEvent.EventType == TB_TAPE_BLACK) {
+                //nextState = ForwardAlign;
+                //ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
+
                 //nextState = Stop;
+                nextState = Scan;
 
                 printf("going to DEPOSIT -> ForwardAlign\r\n");
                 makeTransition = TRUE;
@@ -1334,7 +1338,6 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
                 //                Bosshog_LeftMtrSpeed(0);
 
 
-                ES_Timer_InitTimer(Timer_For_Align, TIMER_ALIGN_TICKS);
 
             }
             //            //0.75 seconds of backing up
@@ -1397,8 +1400,11 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
 
         case Scan:
             printf("DEPOSIT -> Scan\r\n");
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 5);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+            //values to use if we use forward align
+//            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 5 - 15);
+//            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 15);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED  - 15);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 5 - 15);
 
             //            //go forward and align with side
             //            if (ThisEvent.EventType == ES_TIMEOUT) {

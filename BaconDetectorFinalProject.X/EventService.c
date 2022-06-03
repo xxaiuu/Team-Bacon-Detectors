@@ -68,6 +68,7 @@ static uint8_t LastBBT = TAPE_WHITE;
 static uint8_t LastTLT = TAPE_BLACK;
 static uint8_t LastTRT = TAPE_BLACK;
 static uint8_t LastTCT = TAPE_BLACK;
+static uint8_t LastTBT = TAPE_BLACK;
 
 static uint8_t MyPriority;
 
@@ -548,6 +549,28 @@ uint8_t TL_and_TR_Event(void) {
     return WasEvent;
 }
 
+uint8_t TBTEvent(void) {
+    static uint8_t CurrTape;
+    CurrTape = BosshogReadTopBackTape();
+    uint8_t WasEvent = FALSE;
+    //if (CurrTape != LastTBT && CurrTape == TAPE_BLACK) {
+    if (CurrTape == TAPE_BLACK) {
+        ES_Event TapeEvent;
+        TapeEvent.EventType = TB_TAPE_BLACK;
+        TapeEvent.EventParam = (uint16_t) CurrTape;
+#ifndef EVENTCHECKER_TEST
+                printf("TBT EVENT\r\n");
+
+        PostBosshogHSM(TapeEvent);
+#else
+        SaveEvent(BumperEvent);
+#endif  
+        WasEvent = TRUE;
+    }
+    LastBBT = CurrTape;
+    return WasEvent;
+}
+
 uint8_t TR_and_TC_Event(void) {
     static uint8_t CurrTapeTC, CurrTapeTR;
     CurrTapeTC = BosshogReadTopCenterTape();
@@ -659,6 +682,7 @@ ES_Event RunEventService(ES_Event ThisEvent) {
             TR_and_TC_Event();
             //BeaconEvent();
             TR_TL_TC_Event();
+            TBTEvent();
             //reset ES TIMER
             ES_Timer_InitTimer(EVENT_TIMER, 5);
             //ES_Timer_InitTimer(EVENT_TIMER, 10); //10ms
