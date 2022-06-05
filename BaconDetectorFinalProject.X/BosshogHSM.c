@@ -482,6 +482,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case BB_TAPE_BLACK:
                     //nextState = TopStop;
                     nextState = FindNextInverse;
+                    printf("--> FindNextInverse \r\n");
                     makeTransition = TRUE;
 
 
@@ -513,6 +514,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                 case ON_BLACK_BACK_TAPE:
                     //nextState = TopStop;
                     nextState = FindNextInverse;
+                    printf("--> FindNextInverse \r\n");
                     makeTransition = TRUE;
 
 
@@ -526,8 +528,10 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     break;
 
                 case ON_BLACK_FRONT_CENTER_TAPE:
-                                        //nextState = TopStop;
+                    //nextState = TopStop;
                     nextState = FindNextInverse;
+                    printf("--> FindNextInverse \r\n");
+
                     makeTransition = TRUE;
 
 
@@ -540,8 +544,10 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                     break;
                 case BC_TAPE_BLACK:
-                                                         //nextState = TopStop;
+                    //nextState = TopStop;
                     nextState = FindNextInverse;
+                    printf("--> FindNextInverse \r\n");
+
                     makeTransition = TRUE;
 
 
@@ -553,7 +559,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
                     Init_FindNextInverse_SubHSM();
 
                     break;
-                    
+
                 default:
                     break;
             }
@@ -594,7 +600,7 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
 
         case FindNextInverse:
-            printf("FindNextInverse \r\n");
+            //printf("FindNextInverse \r\n");
 
             //printf("In FindNext state. Not Implemented Yet. \r\n");
             //has sub HSM

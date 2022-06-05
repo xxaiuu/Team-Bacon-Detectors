@@ -1331,7 +1331,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 5 - 15);
             //            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 15);
             Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 15);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 2 /*+ 5*/ - 15);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 3 /*+ 5*/ - 15);
 
             //            //go forward and align with side
             //            if (ThisEvent.EventType == ES_TIMEOUT) {
@@ -1640,6 +1640,9 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
                 // now put the machine into the actual initial state
                 nextState = SpinOtherWay;
+                Bosshog_RightMtrSpeed(100);
+                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+                printf("going to SpinOTHERWay (WallHug Inverse) State \r\n");
                 makeTransition = TRUE;
                 ThisEvent.EventType = ES_NO_EVENT;
             }
@@ -1647,7 +1650,7 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
         case SpinOtherWay: // in the first state, replace this with correct names
 
-            printf("In Spin (WallHug Inverse) State \r\n");
+            //printf("In SpinOTHERWay (WallHug Inverse) State \r\n");
             //            if (n == 1) {
             //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
             //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
@@ -1664,7 +1667,7 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
                 //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED-20);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
 
-                printf("Backpetaling and FRONT GOT HIT");
+                //printf("Backpetaling and FRONT GOT HIT");
             }
             //            if (ThisEvent.EventType == FRB_PRESSED) {
             //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -1673,12 +1676,12 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
             //            }
 
             if (ThisEvent.EventType == FLB_PRESSED) {
+                printf("FLB PRESSED in FindNextInverse\r\n");
                 //ES_Timer_InitTimer(Stall_Timer, 4000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //stall detection timer
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
                 Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED);
                 ES_Timer_InitTimer(Forward_Timer_Petal_Dance, 400); // duration timer
-                printf("BackPetaling\r\n");
 
             }
             //            if (ThisEvent.EventType == TAPE_ALIGNED) {
@@ -1692,7 +1695,7 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
 
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
-                Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 20);
+                Bosshog_LeftMtrSpeed(0);
 
 
             }
@@ -1728,7 +1731,7 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == ES_TIMEOUT) {
 
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
+                Bosshog_LeftMtrSpeed(60);
             }
 
 
@@ -1736,13 +1739,13 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
                 //ES_Timer_InitTimer(Stall_Timer, 4000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS);
                 Bosshog_RightMtrSpeed(100);
-                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+                Bosshog_LeftMtrSpeed(0);
                 printf("TURN LEFT SINCE BACK GOT HIT");
 
                 //                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
-                nextState = Spin;
+                nextState = SpinOtherWay;
                 makeTransition = TRUE;
             }
 

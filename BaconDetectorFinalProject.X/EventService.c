@@ -164,7 +164,7 @@ uint8_t FLBEvent(void) {
     CurrBumperTopFrontRight = Bosshog_ReadTopFrontRightBumper();
     uint8_t WasEvent = FALSE;
     if ((CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) != LastFLB && (CurrBumper | CurrBumperTopFrontLeft | CurrBumperTopFrontRight) == BUMPER_TRIPPED) {
-        //        printf(" FLB PRESSED \r\n");
+        printf(" FLB PRESSED \r\n");
 
         ES_Event BumperEvent;
         BumperEvent.EventType = FLB_PRESSED;
@@ -390,14 +390,13 @@ uint8_t BCTEvent(void) {
         SaveEvent(BumperEvent);
 #endif  
         WasEvent = TRUE;
-    }
-    else if(CurrTape == LastBCT && CurrTape == TAPE_BLACK){ 
+    } else if (CurrTape == LastBCT && CurrTape == TAPE_BLACK) {
         ES_Event TapeEvent;
         TapeEvent.EventType = ON_BLACK_FRONT_CENTER_TAPE;
         TapeEvent.EventParam = (uint16_t) CurrTape;
-        
+
         PostBosshogHSM(TapeEvent);
-        
+
         WasEvent = TRUE;
 
     }
