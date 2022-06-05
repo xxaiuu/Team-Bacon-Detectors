@@ -72,6 +72,7 @@ typedef enum {
     TB_TAPE_WHITE,
 
     ON_BLACK_BACK_TAPE,
+    ON_BLACK_FRONT_CENTER_TAPE,
 
     BEACON_DETECTED,
     BEACON_LOST,
@@ -129,6 +130,7 @@ static const char *EventNames[] = {
     "TR_TAPE_WHITE",
     "TB_TAPE_WHITE",
     "ON_BLACK_BACK_TAPE",
+    "ON_BLACK_FRONT_CENTER_TAPE",
     "BEACON_DETECTED",
     "BEACON_LOST",
     "TAPE_ALIGNED",

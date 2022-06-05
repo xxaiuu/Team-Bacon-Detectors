@@ -525,6 +525,35 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
 
                     break;
 
+                case ON_BLACK_FRONT_CENTER_TAPE:
+                                        //nextState = TopStop;
+                    nextState = FindNextInverse;
+                    makeTransition = TRUE;
+
+
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+
+                    ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
+
+                    Init_FindNextInverse_SubHSM();
+
+                    break;
+                case BC_TAPE_BLACK:
+                                                         //nextState = TopStop;
+                    nextState = FindNextInverse;
+                    makeTransition = TRUE;
+
+
+                    Bosshog_RightMtrSpeed(100);
+                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 50);
+
+                    ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); //using this timer to detect stalls 
+
+                    Init_FindNextInverse_SubHSM();
+
+                    break;
+                    
                 default:
                     break;
             }
@@ -576,12 +605,11 @@ ES_Event RunBosshogHSM(ES_Event ThisEvent) {
             switch (ThisEvent.EventType) {
 
                 case BEACON_DETECTED:
-                    nextState = ForwardNext;
-                    Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED /*+ 10*/);
-                    Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED - 0);
-
-                    //nextState = TopStop; 
+                    nextState = Navigate;
                     makeTransition = TRUE;
+                    Bosshog_RightMtrSpeed(0);
+                    Bosshog_LeftMtrSpeed(0);
+                    Init_Navigate_SubHSM();
 
                     break;
                     //

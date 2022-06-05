@@ -391,6 +391,16 @@ uint8_t BCTEvent(void) {
 #endif  
         WasEvent = TRUE;
     }
+    else if(CurrTape == LastBCT && CurrTape == TAPE_BLACK){ 
+        ES_Event TapeEvent;
+        TapeEvent.EventType = ON_BLACK_FRONT_CENTER_TAPE;
+        TapeEvent.EventParam = (uint16_t) CurrTape;
+        
+        PostBosshogHSM(TapeEvent);
+        
+        WasEvent = TRUE;
+
+    }
     LastBCT = CurrTape;
     return WasEvent;
 }

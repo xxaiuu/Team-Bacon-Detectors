@@ -833,6 +833,8 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 printf("Going to UNSTUCK\r\n");
                 makeTransition = TRUE;
                 ES_Timer_InitTimer(Unstuck_Timer, 1000);
+                ES_Timer_InitTimer(Stall_Timer, 5000);
+
 
 
                 Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED);
@@ -865,7 +867,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                ES_Timer_InitTimer(Stall_Timer, 5000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-65);
+                Bosshog_LeftMtrSpeed(-60);
                 makeTransition = TRUE;
             }
 
@@ -1067,7 +1069,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                Bosshog_RightMtrSpeed(-RIGHT_MOTOR_SPEED-20);
                 //                Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED -20);
                 Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-                                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED-30);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 30);
 
                 //Bosshog_LeftMtrSpeed(-90);
                 //Bosshog_LeftMtrSpeed(-LEFT_MOTOR_SPEED + 30);
@@ -1107,7 +1109,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 ES_Timer_InitTimer(Unstuck_Timer, 1000);
 
 
-                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 30);
+                Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED - 15 /*30*/);
                 Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED);
 
 
@@ -1231,7 +1233,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //            printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
             Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED + 15);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 -0); // -10 // + 20 for backwards
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 - 5); // -10 // + 20 for backwards
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
@@ -1719,7 +1721,7 @@ ES_Event Run_FindNextInverse_SubHSM(ES_Event ThisEvent) {
 
             break;
 
-        case EvadeOtherWay:
+        case EvadeOtherWay: //unstuck
 
 
 
