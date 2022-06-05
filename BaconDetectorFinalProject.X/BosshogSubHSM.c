@@ -442,8 +442,8 @@ ES_Event Run_Navigate_SubHSM(ES_Event ThisEvent) {
             printf("Navigate -> Follow \r\n");
 
             //Go forward
-            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED);
-            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 1);
+            Bosshog_RightMtrSpeed(RIGHT_MOTOR_SPEED + 10);
+            Bosshog_LeftMtrSpeed(LEFT_MOTOR_SPEED + 10 + 1);
 
 
             //Transitions
@@ -865,7 +865,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                ES_Timer_InitTimer(Stall_Timer, 5000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-60);
+                Bosshog_LeftMtrSpeed(-65);
                 makeTransition = TRUE;
             }
 
@@ -925,7 +925,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
                 //                ES_Timer_InitTimer(Stall_Timer, 5000);
                 ES_Timer_InitTimer(Timer_For_180, TIMER_180_SPIN_TICKS); // starts timer for stall detection
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-50);
+                Bosshog_LeftMtrSpeed(-65);
                 makeTransition = TRUE;
             }
 
@@ -1139,7 +1139,7 @@ ES_Event Run_Identify_SubHSM(ES_Event ThisEvent) {
             if (ThisEvent.EventType == ES_TIMEOUT) {
 
                 Bosshog_RightMtrSpeed(-100);
-                Bosshog_LeftMtrSpeed(-70);
+                Bosshog_LeftMtrSpeed(-60);
             }
 
 
@@ -1231,7 +1231,7 @@ ES_Event Run_Deposit_SubHSM(ES_Event ThisEvent) {
             //            printf("IN DEPOSITINIT - BACKING UP \r\n");
             //??????? Somehow this went straight
             Bosshog_RightMtrSpeed(-BACK_RIGHT_MOTOR_SPEED + 15);
-            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 -4); // -10 // + 20 for backwards
+            Bosshog_LeftMtrSpeed(-BACK_LEFT_MOTOR_SPEED + 15 -0); // -10 // + 20 for backwards
 
             ////while backing up, if the back left bumper gets press (reset timer), turn left until the front gets press and go backwards 
             //            if (ThisEvent.EventType == BLB_PRESSED) {
