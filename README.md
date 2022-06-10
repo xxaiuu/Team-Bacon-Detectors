@@ -1,4 +1,4 @@
-# Final Project Code For ECE118 
+# Final Project Code For ECE118 Spring 2022
 ### Group 2: Samuel Indurkar, Tony Chen and Alexandria Liu 
 
 (Note: PingSensor.X contains blocking code for ping sensors <working>, and it has a resolution of 6 inches;
